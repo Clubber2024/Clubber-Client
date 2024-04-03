@@ -1,5 +1,5 @@
 ---
-name: "\U0001F4CC [Featur]"
+name: "\U0001F4CC [Feature]"
 about: 기능 추가 이슈
 title: "[Feature]"
 labels: client, enhancement
