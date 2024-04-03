@@ -1,2 +1,0 @@
-# Clubber-Client
-frontend
