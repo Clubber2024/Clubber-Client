@@ -1,0 +1,8 @@
+.notice_lank_container {
+    display: flex;
+    flex-direction: row;
+    /* width: 72%; */
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14%;
+}

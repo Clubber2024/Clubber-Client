@@ -1,0 +1,8 @@
+.notice_container {
+    width: 57%;
+    height: 215px;
+    background-color: white;
+    border: 3px solid #60C1C3;
+    border-radius: 20px;
+    margin-right: 9px;
+}
