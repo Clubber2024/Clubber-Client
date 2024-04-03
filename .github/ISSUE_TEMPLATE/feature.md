@@ -1,18 +1,10 @@
 ---
 name: Feature
 about: 기능 추가 이슈
-title: ''
-labels: ''
-assignees: ''
-
----
-
----
-name: 'Feature'
-about: 기능 추가 이슈
-title: "\U0001F680 [Feature]"
+title: "\U0001F4CC[Feature]"
 labels: enhancement
 assignees: ''
+
 ---
 
 ## 📝 기능 설명
