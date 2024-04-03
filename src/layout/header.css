@@ -1,0 +1,45 @@
+.header_top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 57px;
+}
+
+.search_box {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 53%;
+    height: 53px;
+    /* padding: 12px 21px; */
+}
+
+input {
+    width: 100%;
+    border: 3px solid #60C1C3;
+    border-radius: 15px;
+    padding-left: 60px;
+}
+
+.search_icon {
+    position: absolute;
+    width: 30px;
+    /* height: 28px; */
+    top: 12px;
+    left: 21px;
+    /* margin: 0px; */
+}
+
+.user_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 37px;
+}
+
+.login_text {
+    font-size: 12px;
+    font-weight: 500;
+    padding-top: 3px;
+}
