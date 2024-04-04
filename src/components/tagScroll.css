@@ -1,0 +1,10 @@
+.wrapper {
+    padding: 0% 16%;
+}
+
+.tags_wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    white-space: no-wrap;
+}
