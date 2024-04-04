@@ -1,13 +1,16 @@
 import MenuBar from "../components/MenuBar";
 import TagScroll from "../components/TagScroll";
 import "./header.css";
+import { Link } from "react-router-dom";
 
 export default function Header() {
     // 모든 페이지에서 공통적으로 나타날 헤더
     return (
         <>
             <div className="header_top">
-                <img src="/CluBBer.png" alt="clubber logo" style={{paddingRight: 24}}/>
+                <Link to="/main">
+                    <img src="/CluBBer.png" alt="clubber logo" style={{paddingRight: 24}}/> 
+                </Link>
                 <div className="search_box">
                     <img className="search_icon" src="/main/search.png" alt="search_icon" />
                     <input 
