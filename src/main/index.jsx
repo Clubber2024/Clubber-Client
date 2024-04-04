@@ -1,9 +1,3 @@
-import MainBanner from "./_component/MainBanner";
-import MainLank from "./_component/MainLank";
-import MainNotice from "./_component/MainNotice";
-import Header from "../layout/Header";
-import "./mainPage.css";
-
 export default function MainPage() {
     return (
         <>

@@ -1,0 +1,22 @@
+.footer {
+    background-color: #9c9c9c26;
+    position: relative;
+    transform: translateY(0%);
+    height: 150px;
+    border-top: 1px solid #9c9c9c26;
+    text-align: center;
+    padding: 10px;
+}
+
+.p {
+    font-size: 14px;
+    padding: 0 0 0 15px;
+    margin: 10px;
+}
+.text_ContactUs {
+    border-radius: 10px 0px 0px 0px;
+    opacity: 0px;
+    padding: 0 0 0 12px;
+    margin: 10px 0 0 0;
+    font-weight: 400;
+}
