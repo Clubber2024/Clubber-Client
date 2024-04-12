@@ -1,7 +1,7 @@
-import BandTag from "./tags/BandTag";
-import GameTag from "./tags/GameTag";
-import PicTag from "./tags/PicTag";
-import "./tagScroll.css";
+import BandTag from './tags/BandTag';
+import GameTag from './tags/GameTag';
+import PicTag from './tags/PicTag';
+import './tagScroll.css';
 
 export default function TagScroll() {
     return (
@@ -24,5 +24,5 @@ export default function TagScroll() {
                 <PicTag />
             </div>
         </div>
-    )
+    );
 }

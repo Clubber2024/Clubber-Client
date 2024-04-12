@@ -17,6 +17,7 @@ export default function MainPage() {
             <MainLank />
             <MainFooter />
             */}
+
             <Header />
             <MainBanner />
             <div className="notice_lank_container">

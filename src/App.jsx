@@ -1,9 +1,11 @@
 import MainPage from './main';
+import BookMarkPage from './menu/bookmark';
+import LoginPage from './menu/login';
 
 function App() {
     return (
         <div>
-            <MainPage />
+            <BookMarkPage />
         </div>
     );
 }
