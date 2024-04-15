@@ -1,0 +1,35 @@
+.divider {
+    width: 70%;
+    height: 2px;
+    background-color: #9C9C9C4D;
+}
+
+.statics_header {
+    display: flex;
+}
+
+.statics_header button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #1954B2;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.statics_header img {
+    width: 21px;
+    height: 21px;
+    margin-bottom: 3px;
+}
+
+
+.static_bar {
+    width: 22%;
+    height: 3%;
+    border-radius: 10px;
+    background-color: #F2F2F2;
+}
