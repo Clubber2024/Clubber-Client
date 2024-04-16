@@ -4,13 +4,11 @@ import styles from './Footer.module.css';
 
 function Footer() {
     return (
-        <div>
-            <footer className={styles.footer}>
-                <p className={styles.text_ContactUs}>contact us</p>
-                <p className={styles.p}>instagram:</p>
-                <p className={styles.p}>phone-number: </p>
-                <p className={styles.p}>email:</p>
-            </footer>
+        <div className={styles.footer}>
+            <p className={styles.text_ContactUs}>contact us</p>
+            <p className={styles.p}>instagram:</p>
+            <p className={styles.p}>phone-number: </p>
+            <p className={styles.p}>email:</p>
         </div>
     );
 }

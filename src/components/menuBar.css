@@ -1,14 +1,12 @@
-
 .menu_container {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
     height: 50px;
-    border: solid #60C1C3;
+    border: solid #60c1c3;
     border-width: 2px 0px;
     padding: 0% 16%;
-    position: relative;
 }
 
 .tab_text_highlight {
@@ -20,58 +18,31 @@
 .tab_text_central {
     font-size: 16px;
     font-weight: 500;
-    color: #52555B;
+    color: #52555b;
     padding-right: 76px;
 }
 
 .tab_text_small {
     font-size: 16px;
     font-weight: 500;
-    color: #52555B;
+    color: #52555b;
     padding-right: 7px;
 }
 
 .small_club_container {
     display: flex;
     flex-direction: row;
-    align-items: initial;
-}
-
-.vertical_line {
-    width: 1.3px;
-    height: 21px;
-    background-color: #52555B80;
-    margin-right: 51px;
+    align-items: center;
 }
 
 .dropdown_btn {
     width: 8px;
     height: 7px;
-    margin-top: 5px;
 }
 
-.toggle_container {
-    position: absolute;
-    z-index: 1;
-    top: 30%;
-    left: 68%;
-}
-
-.show-toggle {
-    width: 132px;
-    height: auto;
-    background-color: white;
-    box-shadow: 1px 2px 9px #000;
-    opacity: 1;
-    margin-top: 8px;
-}
-
-.show-toggle li {
-    font-size: 14px;
-    font-weight: 500;
-    list-style-type: none;
-}
-
-.hide-toggle {
-    opacity: 0;
+.vertical_line {
+    width: 1.3px;
+    height: 21px;
+    background-color: #52555b80;
+    margin-right: 51px;
 }
