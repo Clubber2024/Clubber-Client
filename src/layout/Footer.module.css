@@ -3,6 +3,7 @@
     position: relative;
     transform: translateY(0%);
     height: 150px;
+    width: 100%;
     border-top: 1px solid #9c9c9c26;
     text-align: center;
     padding: 10px;
