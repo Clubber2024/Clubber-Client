@@ -6,7 +6,9 @@
 
 .statics_header {
     display: flex;
+    padding: 39px 0px 15px 0px;
 }
+
 
 .statics_header button {
     background-color: transparent;
@@ -23,13 +25,35 @@
 .statics_header img {
     width: 21px;
     height: 21px;
-    margin-bottom: 3px;
+    margin: 0px 0px 3px;
 }
 
 
 .static_bar {
-    width: 22%;
-    height: 3%;
+    position: relative;
+    /* width: 22%;
+    height: 3%; */
+    width: 250px;
+    height: 30px;
     border-radius: 10px;
     background-color: #F2F2F2;
+    margin-bottom: 12px;
+}
+
+.static_percentage {
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    top: 507.5px;
+    border-radius: 10px;
+    background-color: #9EDBDB;
+}
+
+.statics_body p {
+    position: absolute;
+    top: 514px;
+    left: 220px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
 }

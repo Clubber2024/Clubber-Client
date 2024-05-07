@@ -74,6 +74,7 @@
 .detail_body {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 70%;
     margin: 2.5% 0 15% 0;
 }
@@ -95,4 +96,10 @@
     border-top: 2.5px solid #60C1C3;
     border-bottom: 2.5px solid #60C1C3;
     border-radius: 2px;
+}
+
+.review_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
