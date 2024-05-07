@@ -46,3 +46,21 @@
     background-color: #52555b80;
     margin-right: 51px;
 }
+.show-toggle {
+    width: 132px;
+    height: 119px;
+    top: 271px;
+    background: #ffffff;
+    position: absolute;
+    box-shadow: 0px 0px 4px 2px #00000040;
+    transition: 1s;
+    z-index: 1;
+    margin-top: 10px;
+}
+.hide-toggle {
+    width: 132px;
+    height: 119px;
+    top: 271px;
+    position: absolute;
+    display: none;
+}

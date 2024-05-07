@@ -1,9 +1,9 @@
 import MainBanner from './_component/MainBanner';
 import MainLank from './_component/MainLank';
 import MainNotice from './_component/MainNotice';
-import Header from '../layout/Header';
+//import Header from '../layout/Header';
 import './mainPage.css';
-import Footer from '../layout/Footer';
+//import Footer from '../layout/Footer';
 
 export default function MainPage() {
     return (
@@ -17,14 +17,11 @@ export default function MainPage() {
             <MainLank />
             <MainFooter />
             */}
-
-            <Header />
             <MainBanner />
             <div className="notice_lank_container">
                 <MainNotice />
                 <MainLank />
             </div>
-            <Footer />
         </>
     );
 }
