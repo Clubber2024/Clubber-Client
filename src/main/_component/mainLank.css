@@ -2,6 +2,6 @@
     width: 43%;
     height: 215px;
     background-color: white;
-    border: 3px solid #60C1C3;
     border-radius: 20px;
+    box-shadow: 0px 0px 5px 1px #00000033;
 }
