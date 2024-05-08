@@ -13,6 +13,7 @@ function App() {
       <Routes>
       <Route path='/main' element={<DetailPage />} />
         <Route path='/menu/central_club' element={<CentralClubPage />} />
+        <Route path='/menu/small_club/detail_page/review_write' element={<ReviewWrite />} />
       </Routes>
       <Footer />
     </BrowserRouter>

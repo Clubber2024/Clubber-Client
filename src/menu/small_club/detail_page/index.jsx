@@ -33,12 +33,6 @@ export default function DetailPage() {
                     </div>
                 </div>
             </div>
-            {/* <div className="detail_tab">
-                <div onClick={onClickIntroTab}>소개</div>
-                <div className="empty_space"></div>
-                <div onClick={onClickReviewTab}>리뷰</div>
-                <div className={whichTab === "Introduction" ? "focusing_intro" : "focusing_review"}></div>
-            </div> */}
             <div className="detail_tab">
                 <button className={whichTab === "Introduction" ? "active" : ""} onClick={onClickIntroTab}>소개</button>
                 <button className={whichTab === "Review" ? "active" : ""}onClick={onClickReviewTab}>리뷰</button>
