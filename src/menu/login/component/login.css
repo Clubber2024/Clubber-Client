@@ -1,115 +1,235 @@
-.container {
-    margin: 15px auto;
-    overflow: hidden;
-    width: 500px;
-    padding: 30px 10px 10px;
-}
-.global-cont {
-    margin: auto;
-    padding: 20px;
-}
-.inner-cont {
-    margin: auto;
-    overflow: hidden;
-    text-align: center;
-}
-.iner-cont .sign {
-    overflow: hidden;
-}
-.inner_cont .sign span {
-    float: left;
-    display: block;
-    padding: 15px 0;
-    width: 240px;
-    height: 55px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 500;
-    text-align: center;
-    background-color: #d9d9d94d;
-    color: #9c9c9c;
-}
-.inner_cont .sign .active {
-    background-color: #fff;
-    border-top: 2px solid #60c1c3;
-    border-left: 1px solid#60C1C3;
-    border-right: 1px solid#60C1C3;
-    color: #60c1c3;
-    border-bottom: #9c9c9c;
-}
-.inner_cont .sign-in,
-.inner_cont .sign-up {
-    padding: 25px;
-    background-color: #fff;
-    border: 1px #9c9c9c80;
-    border-bottom: 2px solid #60c1c3;
-}
-.inner_cont .sign-in-form,
-.inner-cont .sign-up-form {
-    overflow: hidden;
-    display: none;
-}
-.inner_cont .sign-in-form-active,
-.inner_cont .sign-up-form-active {
-    display: block;
-    background-color: #fff;
-}
-.button-style {
-    padding: 0px 14px 0px 14px;
-    border-radius: 6px;
-    background-color: #fee500;
-    border-color: #fee500;
-    justify-content: center;
-    margin-top: 30px;
-    width: 480px;
-    height: 54px;
-    border-radius: 6px;
+@media screen and (min-width: 769px) {
+    .container {
+        margin: 15px auto;
+        overflow: hidden;
+        width: 500px;
+
+        padding: 30px 10px 10px;
+    }
+    .global-cont {
+        margin: auto;
+        padding: 20px;
+    }
+    .inner-cont {
+        margin: auto;
+        overflow: hidden;
+        text-align: center;
+    }
+    .iner-cont .sign {
+        overflow: hidden;
+    }
+    .inner_cont .sign span {
+        float: left;
+        display: block;
+        padding: 15px 0;
+        width: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+        background-color: #d9d9d94d;
+        color: #9c9c9c;
+    }
+    .inner_cont .sign .active {
+        background-color: #fff;
+        border-top: 2px solid #7bc8e0;
+        border-left: 1px solid#7BC8E0;
+        border-right: 1px solid#7BC8E0;
+        color: #7bc8e0;
+        border-bottom: #9c9c9c;
+    }
+    .inner_cont .sign-in,
+    .inner_cont .sign-up {
+        padding: 25px;
+        background-color: #fff;
+        border: 1px #9c9c9c80;
+        border-bottom: 2px solid #7bc8e0;
+    }
+    .inner_cont .sign-in-form,
+    .inner-cont .sign-up-form {
+        overflow: hidden;
+        display: none;
+    }
+    .inner_cont .sign-in-form-active,
+    .inner_cont .sign-up-form-active {
+        display: block;
+        background-color: #fff;
+    }
+    .button-style {
+        padding: 0px 14px 0px 14px;
+        border-radius: 6px;
+        background-color: #fee500;
+        border-color: #fee500;
+        justify-content: center;
+        margin-top: 30px;
+        width: 100%;
+        height: 50px;
+        border-radius: 6px;
+    }
+
+    .inner_cont .sign-in-form-active .kakao {
+        margin: auto;
+        width: fit-content;
+    }
+    .inner_cont .sign-in-form-active .kakaologo {
+        width: 22px;
+        height: 22px;
+        float: left;
+    }
+    .inner_cont .sign-in-form-active .text {
+        font-family: Noto Sans;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 27px;
+        width: 150px;
+        height: 27px;
+    }
+
+    .inner_cont .sign-in-form input[type='submit'],
+    .inner_cont .sign-up-form form input[type='submit'] {
+        margin-top: 10px;
+        background-color: #7bc8e0;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    input {
+        width: 480px;
+        height: 55px;
+        border-radius: 5px;
+        border: 1.3px solid #9c9c9c80;
+        margin: auto;
+        margin-top: 15px;
+        padding: 20px;
+    }
+
+    input.button-color {
+        background: #7bc8e0;
+        border-color: #7bc8e0;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 700;
+        align-items: center;
+        padding: 0;
+    }
 }
 
-.inner_cont .sign-in-form-active .kakao {
-    margin: auto;
-    width: fit-content;
-}
-.inner_cont .sign-in-form-active .kakaologo {
-    width: 22px;
-    height: 22px;
-    float: left;
-}
-.inner_cont .sign-in-form-active .text {
-    font-family: Noto Sans;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 27px;
-    width: 150px;
-    height: 27px;
-}
+@media screen and (max-width: 769px) {
+    .container {
+        margin: 10px auto;
+        overflow: hidden;
+        width: 60%;
+        padding: 20px 10px 10px;
+    }
+    .global-cont {
+        margin: auto;
+        padding: 10px;
+    }
+    .inner-cont {
+        margin: auto;
+        overflow: hidden;
+        text-align: center;
+    }
+    .iner-cont .sign {
+        overflow: hidden;
+    }
+    .inner_cont .sign span {
+        float: left;
+        display: block;
+        padding: 15px 0;
+        width: 50%;
+        height: 45px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 500;
+        text-align: center;
+        background-color: #d9d9d94d;
+        color: #9c9c9c;
+    }
+    .inner_cont .sign .active {
+        background-color: #fff;
+        border-top: 2px solid #7bc8e0;
+        border-left: 1px solid#7BC8E0;
+        border-right: 1px solid#7BC8E0;
+        color: #7bc8e0;
+        border-bottom: #9c9c9c;
+    }
+    .inner_cont .sign-in,
+    .inner_cont .sign-up {
+        padding: 25px;
+        background-color: #fff;
+        border: 1px #9c9c9c80;
+        border-bottom: 2px solid #7bc8e0;
+    }
+    .inner_cont .sign-in-form,
+    .inner-cont .sign-up-form {
+        overflow: hidden;
+        display: none;
+    }
+    .inner_cont .sign-in-form-active,
+    .inner_cont .sign-up-form-active {
+        display: block;
+        background-color: #fff;
+    }
+    .button-style {
+        padding: 0px 14px 0px 14px;
+        border-radius: 6px;
+        background-color: #fee500;
+        border-color: #fee500;
+        justify-content: center;
+        margin-top: 30px;
+        width: 100%;
+        height: 45px;
+        border-radius: 6px;
+    }
 
-.inner_cont .sign-in-form input[type='submit'],
-.inner_cont .sign-up-form form input[type='submit'] {
-    margin-top: 10px;
-    background-color: #60c1c3;
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-input {
-    width: 480px;
-    height: 55px;
-    border-radius: 5px;
-    border: 1.3px solid #9c9c9c80;
-    margin: auto;
-    margin-top: 15px;
-    padding: 20px;
-}
+    .inner_cont .sign-in-form-active .kakao {
+        margin: auto;
+        width: fit-content;
+    }
+    .inner_cont .sign-in-form-active .kakaologo {
+        width: 15px;
+        height: 15px;
+        float: left;
+        margin-top: 7px;
+    }
+    .inner_cont .sign-in-form-active .text {
+        font-family: Noto Sans;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 27px;
+        width: 120px;
+    }
 
-input.button-color {
-    background: #60c1c3;
-    border-color: #60c1c3;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 700;
-    align-items: center;
-    padding: 0;
+    .inner_cont .sign-in-form input[type='submit'],
+    .inner_cont .sign-up-form form input[type='submit'] {
+        margin-top: 10px;
+        background-color: #7bc8e0;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    input {
+        width: 100%;
+        height: 45px;
+        border-radius: 5px;
+        border: 1.3px solid #9c9c9c80;
+        margin: auto;
+        margin-top: 15px;
+        padding: 20px;
+    }
+
+    input.button-color {
+        background: #7bc8e0;
+        border-color: #7bc8e0;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 700;
+        align-items: center;
+        padding: 0;
+    }
 }

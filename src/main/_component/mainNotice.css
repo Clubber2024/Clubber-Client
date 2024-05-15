@@ -12,8 +12,8 @@
     box-shadow: 0px 0px 5px 1px #00000033;
 }
 .img_notice {
-    width: 5px;
-    height: 5px;
+    width: 3px;
+    height: 3px;
     color: black;
     margin-right: 10px;
     margin-left: 10px;
@@ -24,4 +24,20 @@
 .div_notice {
     margin-top: 9px;
     align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .notice_container {
+        width: 57%;
+        height: 215px;
+        background-color: white;
+        border-radius: 20px;
+        margin-right: 9px;
+        text-align: center;
+        font-family: Noto Sans KR;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 26.06px;
+        box-shadow: 0px 0px 5px 1px #00000033;
+    }
 }

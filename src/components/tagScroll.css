@@ -1,10 +1,25 @@
-.wrapper {
-    padding: 0% 16%;
-}
+@media screen and (min-width: 769px) {
+    .wrapper {
+        padding: 0% 16%;
+    }
 
-.tags_wrapper {
-    display: flex;
-    flex-direction: row;
-    overflow: auto;
-    white-space: no-wrap;
+    .tags_wrapper {
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+        white-space: no-wrap;
+    }
+}
+@media screen and (max-width: 769px) {
+    .wrapper {
+        padding: 0% 10%;
+        width: 100%;
+    }
+
+    .tags_wrapper {
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+        white-space: no-wrap;
+    }
 }

@@ -34,7 +34,7 @@ function Login() {
                                 <form className="sign-in-form-active" onSubmit={handleFormSubmit}>
                                     <button type="button" className="button-style">
                                         <div className="kakao">
-                                            <img className="kakaologo" alt="kakaologo" src="login/kakaologo.png" />
+                                            <img className="kakaologo" alt="kakaologo" src="/login/kakaologo.png" />
                                             <p className="text">카카오 로그인</p>
                                         </div>
                                     </button>
