@@ -1,38 +1,36 @@
 @media screen and (min-width: 769px) {
     .logo {
-        width: 327px;
-        height: 99px;
+        width: 30%;
         justify-content: center;
         display: grid;
         margin: auto;
         margin-top: 70px;
     }
     .mini_logo {
-        width: 143px;
-        height: 63px;
+        width: 30%;
         font-family: Inter;
-        font-size: 20px;
+        font-size: 21px;
         font-weight: 700;
         line-height: 24.2px;
         color: rgba(96, 193, 195, 1);
         display: grid;
-        margin: 0 auto 0;
+        margin: 0 auto;
+        margin-bottom: 3%;
         justify-content: center;
     }
 }
 @media screen and (max-width: 769px) {
     .logo {
-        width: 50%;
+        width: 30%;
         justify-content: center;
         display: grid;
         margin: auto;
         margin-top: 60px;
     }
     .mini_logo {
-        width: 143px;
-        height: 63px;
+        width: 20%;
         font-family: Inter;
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 700;
         line-height: 24.2px;
         color: rgba(96, 193, 195, 1);

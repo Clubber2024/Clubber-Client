@@ -1,6 +1,7 @@
 @media screen and (min-width: 769px) {
     .wrapper {
         padding: 0% 16%;
+        width: 100%;
     }
 
     .tags_wrapper {

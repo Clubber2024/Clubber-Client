@@ -1,0 +1,13 @@
+.tag_container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+	align-items: center; */
+    padding: 17px;
+}
+
+.tag_text {
+    padding-top: 8px;
+    font-size: 14px;
+    font-weight: 350;
+}

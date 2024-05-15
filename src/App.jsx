@@ -1,10 +1,14 @@
+import { useMediaQuery } from 'react-responsive';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+//하위 페이지
 import Header from './layout/Header';
+import Footer from './layout/Footer';
 import MainPage from './main';
 import CentralClubPage from './menu/central_club';
-import Footer from './layout/Footer';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SmallClubIT from './menu/small_club/small_club_IT';
+import SmallClub from './menu/small_club/small_club';
 import DetailPage from './menu/small_club/detail_page/index';
+import Branch from './menu/central_club/branch';
+import LoginPage from './menu/login';
 
 function App() {
     const isPc = useMediaQuery({
@@ -20,16 +24,37 @@ function App() {
     });
 
     return (
-        <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route path="/" element={<MainPage />} />
-                <Route path="/menu/central_club" element={<CentralClubPage />} />
-                <Route path="/menu/small_club/small_club_IT" element={<SmallClubIT />} />
-                <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
-            </Routes>
-            <Footer />
-        </BrowserRouter>
+        <>
+            {isPc && (
+                <BrowserRouter>
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<MainPage />} />
+                        <Route path="/menu/central_club" element={<CentralClubPage />} />
+                        <Route path="/menu/small_club/small_club" element={<SmallClub />} />
+                        <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
+                        <Route path="/menu/central_club/branch" element={<Branch />} />
+                        <Route path="/menu/login" element={<LoginPage />} />
+                    </Routes>
+                    <Footer />
+                </BrowserRouter>
+            )}
+
+            {isMobile && (
+                <BrowserRouter>
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<MainPage />} />
+                        <Route path="/menu/central_club" element={<CentralClubPage />} />
+                        <Route path="/menu/small_club/small_club" element={<SmallClub />} />
+                        <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
+                        <Route path="/menu/central_club/branch" element={<Branch />} />
+                        <Route path="/menu/login" element={<LoginPage />} />
+                    </Routes>
+                    <Footer />
+                </BrowserRouter>
+            )}
+        </>
     );
 }
 

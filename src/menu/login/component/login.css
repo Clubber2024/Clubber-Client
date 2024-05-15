@@ -1,10 +1,13 @@
 @media screen and (min-width: 769px) {
+    .wrapper {
+        width: 100%;
+    }
     .container {
-        margin: 15px auto;
-        overflow: hidden;
-        width: 500px;
-
-        padding: 30px 10px 10px;
+        width: 60%;
+        position: relative;
+        margin: auto;
+        margin-top: 2.3%;
+        margin-bottom: 25px;
     }
     .global-cont {
         margin: auto;
@@ -96,7 +99,7 @@
         transition: 0.3s;
     }
     input {
-        width: 480px;
+        width: 100%;
         height: 55px;
         border-radius: 5px;
         border: 1.3px solid #9c9c9c80;
@@ -118,7 +121,8 @@
 
 @media screen and (max-width: 769px) {
     .container {
-        margin: 10px auto;
+        margin-top: 2.3%;
+        margin: auto;
         overflow: hidden;
         width: 60%;
         padding: 20px 10px 10px;
