@@ -16,8 +16,6 @@ function LoginPage() {
                     <Login />
                 </div>
             </div>
-
-            <Footer />
         </>
     );
 }
