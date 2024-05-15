@@ -13,9 +13,10 @@
 button {
     width: 433px;
     height: 50px;
+    border: 2px;
     border-radius: 10px;
     background: #ffffff;
-    box-shadow: 0px 0px 3px 0px #0000004d;
+    box-shadow: 0px 0px 4px 0px #0000004d;
     margin: 12px auto;
     font-weight: 600;
     font-family: Noto Sans KR;
@@ -26,7 +27,7 @@ button {
 
 .button-active {
     background-color: #60c1c31a;
-    border: 2px solid #60c1c3;
+    border: 1.5px solid #60c1c3;
     color: #60c1c3;
 }
 .button_text {

@@ -74,6 +74,7 @@
 .detail_body {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 70%;
     margin: 2.5% 0 15% 0;
 }
@@ -85,14 +86,22 @@
 .detail_tab button {
     border: none;
     background-color: transparent;
+    box-shadow: none;
     cursor: pointer;
     width: 10%;
     height: 105%;
     font-weight: 500;
+    text-align: center;
 }
 
 .detail_tab button.active{
     border-top: 2.5px solid #60C1C3;
     border-bottom: 2.5px solid #60C1C3;
     border-radius: 2px;
+}
+
+.review_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

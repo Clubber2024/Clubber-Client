@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import MenuBar from '../components/MenuBar';
 import TagScroll from '../components/TagScroll';
 import './header.css';
@@ -9,14 +8,13 @@ export default function Header() {
 
     return (
         <>
-            <div className={'header_top'}>
+            <div className="header_top">
                 <Link to="/">
-                    <img src="/CluBBer.png" alt="clubber logo" className="mainLogo" />
+                    <img src="/CluBBer.png" alt="clubber logo" style={{ paddingRight: 24 }} />
                 </Link>
                 <div className="search_box">
                     <img className="search_icon" src="/main/search.png" alt="search_icon" />
                     <input
-                        className="input_search"
                         type="search"
                         placeholder="찾고 싶은 동아리를 검색해보세요!"
                         // value={value}

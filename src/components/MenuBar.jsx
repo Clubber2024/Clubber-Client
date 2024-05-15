@@ -52,33 +52,3 @@ export default function MenuBar() {
         </>
     );
 }
-
-// 단과대 메뉴바 토글 기능
-/*
-  const [isOpen, setIsOpen] = useState(false);
-	// 토글 클릭후 페이지 변환되고, 토글 자동으로 닫힘
-  const toggleState = () => {
-        setIsOpen(!isOpen);
-    };
-	const onClickToggle = () => {
-        setIsOpen(false);
-    };
-
-                        <img className="dropdown_btn" src="/buttons/dropdown_button.png" alt="dropdown button" />
-                    </button>
-                    <ul className={isOpen ? 'show-toggle' : 'hide-toggle'}>
-                        <li>
-                            <Link
-                                to="/menu/small_club/small_club"
-                                style={{ textDecoration: 'none' }}
-                                onClick={onClickToggle}
-                            >
-                                IT대
-                            </Link>
-                        </li>
-                        <li>공대</li>
-                        <li>인문대</li>
-                        <li>자연대</li>
-                        <li>경영대</li>
-                    </ul>
-*/
