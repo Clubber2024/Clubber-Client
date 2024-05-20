@@ -1,5 +1,5 @@
 import React from 'react';
-import './reviewWrite.css';
+import './_component/reviewWrite.css';
 import { useState } from 'react';
 
 function ReviewWrite() {

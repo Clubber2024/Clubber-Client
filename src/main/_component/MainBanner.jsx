@@ -18,7 +18,7 @@ export default function MainBanner() {
         <>
             <Slider {...settings}>
                 <div className="banner_container">
-                    <img src="/main/banner_img.png" alt="main banner"/>
+                    <img src="/main/banner_img.png" alt="main banner" style={{backgroundColor: "#009bcb"}}/>
                 </div>
                 <div className="banner_container">
                     <img src="/main/banner_img.png" alt="main banner"/>

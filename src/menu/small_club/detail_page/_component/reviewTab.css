@@ -1,14 +1,22 @@
 .divider {
-    width: 70%;
-    height: 2px;
-    background-color: #9C9C9C4D;
+    width: 140%;
+    border: 0.2px solid #9C9C9C4D;
+    margin: 40px 0px 40px 0px;
 }
 
 .statics_header {
     display: flex;
+    flex-direction: row;
+    padding: 39px 0px 15px 0px;
 }
 
-.statics_header button {
+.review_write_btn {
+    display: flex;
+    flex-direction: row;
+    padding-left: 150px;
+}
+
+.statics_header p {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -20,16 +28,9 @@
     align-items: center;
 }
 
-.statics_header img {
+.statics_container img {
     width: 21px;
     height: 21px;
-    margin-bottom: 3px;
+    margin: 0px 0px 3px;
 }
 
-
-.static_bar {
-    width: 22%;
-    height: 3%;
-    border-radius: 10px;
-    background-color: #F2F2F2;
-}

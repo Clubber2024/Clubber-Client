@@ -1,69 +1,152 @@
-.wrap {
-    min-height: 100%;
-    position: relative;
-    padding-bottom: 150px;
-    height: auto;
-    width: 100%;
+@media screen and (min-width: 769px) {
+    .wrap {
+        min-height: 100%;
+        position: relative;
+        padding-bottom: 150px;
+        height: auto;
+        width: 100%;
+    }
+
+    .rectangle {
+        width: 194px;
+        height: 244px;
+        border-radius: 10px;
+        background: #ffffff;
+        border: 1px solid rgba(217, 217, 217, 1);
+        float: left;
+        margin: 10px;
+        box-shadow: 0px 0px 5px 0px #0000001a;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0 0 0;
+        flex-wrap: wrap;
+    }
+
+    .header {
+        width: 100%;
+        height: 177px;
+        top: 275px;
+        margin: 0px;
+        background: #7bc8e0;
+    }
+
+    .header_title {
+        font-family: Noto Sans KR;
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 34.75px;
+        text-align: center;
+        position: relative;
+        top: 45%;
+    }
+
+    .text {
+        text-align: left;
+        border-radius: 10px 0px 0px 0px;
+        margin-top: 2px;
+        margin-bottom: 5px;
+        margin-left: 21px;
+        font-size: 16px;
+        font-weight: 400;
+        cursor: pointer;
+    }
+
+    .title {
+        height: 26px;
+        text-align: left;
+        top: 12px;
+        left: 17px;
+        font-family: Noto Sans KR;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 26.06px;
+        margin-top: 13px;
+        margin-left: 21px;
+        margin-bottom: 13px;
+    }
+    .scrollBar {
+        height: 160px;
+        overflow-y: scroll;
+        overflow: auto;
+    }
 }
 
-.rectangle {
-    width: 161px;
-    height: 206px;
-    border-radius: 10px;
-    background: #d9d9d94d;
-    border: 1px solid rgba(217, 217, 217, 1);
-    float: left;
-    margin: 10px;
-    box-shadow: 0px 0px 5px 0px #00000033;
-}
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0 0 0;
-}
+@media screen and (max-width: 769px) {
+    .wrap {
+        min-height: 100%;
+        position: relative;
+        padding-bottom: 150px;
+        height: auto;
+        width: 100%;
+    }
 
-.header {
-    width: 100%;
-    height: 177px;
-    top: 275px;
-    gap: 0px;
-    opacity: 0px;
-    margin: 0px;
-    background: #60c1c3;
-}
+    .rectangle {
+        width: 150px;
+        height: 170px;
+        border-radius: 10px;
+        background: #ffffff;
+        border: 1px solid rgba(217, 217, 217, 1);
+        float: left;
+        margin: 10px;
+        box-shadow: 0px 0px 5px 0px #0000001a;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0 0 0;
+        flex-wrap: wrap;
+    }
 
-.header_title {
-    font-family: Noto Sans KR;
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 34.75px;
-    text-align: center;
-    position: relative;
-    top: 45%;
-}
+    .header {
+        width: 100%;
+        height: 177px;
+        top: 275px;
+        margin: 0px;
+        background: #7bc8e0;
+    }
 
-.text {
-    text-align: left;
-    top: 47px;
-    left: 18px;
-    border-radius: 10px 0px 0px 0px;
-    margin-top: 2px;
-    margin-left: 18px;
-    font-size: 16px;
-    font-weight: 500;
-}
+    .header_title {
+        font-family: Noto Sans KR;
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 34.75px;
+        text-align: center;
+        position: relative;
+        top: 45%;
+    }
 
-.title {
-    height: 24px;
-    text-align: left;
-    top: 12px;
-    left: 17px;
-    font-family: Noto Sans KR;
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 26.06px;
-    margin-top: 12px;
-    margin-left: 17px;
-    margin-bottom: 11px;
+    .text {
+        text-align: left;
+        top: 47px;
+        left: 18px;
+        border-radius: 10px 0px 0px 0px;
+        margin-top: 2px;
+        margin-left: 10px;
+        font-size: 11px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .title {
+        height: 24px;
+        text-align: left;
+        top: 12px;
+        left: 17px;
+        font-family: Noto Sans KR;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 26.06px;
+        margin-top: 12px;
+        margin-left: 10px;
+        margin-bottom: 11px;
+    }
+    .scrollBar {
+        height: 100px;
+        overflow-y: scroll;
+        overflow: auto;
+    }
 }
