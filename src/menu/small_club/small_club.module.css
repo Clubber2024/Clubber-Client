@@ -8,14 +8,14 @@
     }
 
     .rectangle {
-        width: 161px;
-        height: 206px;
+        width: 194px;
+        height: 244px;
         border-radius: 10px;
-        background: #d9d9d94d;
+        background: #ffffff;
         border: 1px solid rgba(217, 217, 217, 1);
         float: left;
         margin: 10px;
-        box-shadow: 0px 0px 5px 0px #00000033;
+        box-shadow: 0px 0px 5px 0px #0000001a;
     }
     .container {
         display: flex;
@@ -45,31 +45,32 @@
 
     .text {
         text-align: left;
-        top: 47px;
-        left: 18px;
         border-radius: 10px 0px 0px 0px;
         margin-top: 2px;
-        margin-left: 18px;
+        margin-bottom: 5px;
+        margin-left: 21px;
         font-size: 16px;
-        font-weight: 500;
+        font-weight: 400;
+        cursor: pointer;
     }
 
     .title {
-        height: 24px;
+        height: 26px;
         text-align: left;
         top: 12px;
         left: 17px;
         font-family: Noto Sans KR;
-        font-size: 17px;
+        font-size: 18px;
         font-weight: 600;
         line-height: 26.06px;
-        margin-top: 12px;
-        margin-left: 17px;
-        margin-bottom: 11px;
+        margin-top: 13px;
+        margin-left: 21px;
+        margin-bottom: 13px;
     }
     .scrollBar {
-        height: 140px;
+        height: 160px;
         overflow-y: scroll;
+        overflow: auto;
     }
 }
 
@@ -84,13 +85,13 @@
 
     .rectangle {
         width: 150px;
-        height: 150px;
+        height: 170px;
         border-radius: 10px;
-        background: #d9d9d94d;
+        background: #ffffff;
         border: 1px solid rgba(217, 217, 217, 1);
         float: left;
         margin: 10px;
-        box-shadow: 0px 0px 5px 0px #00000033;
+        box-shadow: 0px 0px 5px 0px #0000001a;
     }
     .container {
         display: flex;
@@ -127,6 +128,7 @@
         margin-left: 10px;
         font-size: 11px;
         font-weight: 500;
+        cursor: pointer;
     }
 
     .title {
@@ -143,7 +145,8 @@
         margin-bottom: 11px;
     }
     .scrollBar {
-        height: 90px;
+        height: 100px;
         overflow-y: scroll;
+        overflow: auto;
     }
 }

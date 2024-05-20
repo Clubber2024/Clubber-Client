@@ -9,6 +9,7 @@ import SmallClub from './menu/small_club/small_club';
 import DetailPage from './menu/small_club/detail_page/index';
 import Branch from './menu/central_club/branch';
 import LoginPage from './menu/login';
+import BranchSmall from './menu/small_club/branch/branch_small';
 
 function App() {
     const isPc = useMediaQuery({
@@ -35,6 +36,7 @@ function App() {
                         <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
                         <Route path="/menu/central_club/branch" element={<Branch />} />
                         <Route path="/menu/login" element={<LoginPage />} />
+                        <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -50,6 +52,7 @@ function App() {
                         <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
                         <Route path="/menu/central_club/branch" element={<Branch />} />
                         <Route path="/menu/login" element={<LoginPage />} />
+                        <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -73,4 +76,7 @@ export default App;
                     <Footer />
                 </BrowserRouter>
             )}
+
+
+						<Route path="/menu/small_club/branch_small" element={<BranchSmall />} />
 */

@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from './small_club.module.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function SmallClub() {
+    const navigate = useNavigate();
+
+    const onClicked = (departmentValue) => {
+        navigate('/menu/small_club/branch/branch_small', { state: { department: departmentValue } });
+    };
     return (
         <div className={styles.wrap}>
             <div className={styles.header}>
@@ -11,8 +16,14 @@ function SmallClub() {
             <div className={styles.container}>
                 <div className={styles.rectangle}>
                     <h3 className={styles.title}>IT대학</h3>
-                    <h5 className={styles.text}>컴퓨터학부</h5>
-                    <h5 className={styles.text}>글로벌미디어학부</h5>
+
+                    <h5 className={styles.text} onClick={() => onClicked('컴퓨터학부')}>
+                        컴퓨터학부
+                    </h5>
+
+                    <h5 className={styles.text} onClick={() => onClicked('글로벌미디어학부')}>
+                        글로벌미디어학부
+                    </h5>
                     <h5 className={styles.text}>AI융합학부</h5>
                     <h5 className={styles.text}>전자정보공학부</h5>
                     <h5 className={styles.text}>소프트웨어학부</h5>
