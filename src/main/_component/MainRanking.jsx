@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import './mainRanking.css';
+import styles from './mainRanking.module.css';
 
 export default function MainRanking() {
     const [rankingData, setRankingData] = useState([]);
@@ -23,13 +23,13 @@ export default function MainRanking() {
 
     // 메인페이지에 보여줄 동아리 순위
     return (
-        <div className="container">
-            <div className="ranking_index">조회수</div>
-            <div className="ranking_container">
+        <div className={styles.container}>
+            <div className={styles.ranking_index}>조회수</div>
+            <div className={styles.ranking_container}>
                 {rankingData.map((item, index) => {
                     return (
                         <>
-                            <div key={index} className="div_ranking">
+                            <div key={index} className={styles.div_ranking}>
                                 <p>{index + 1}. </p>
                                 <p>{item.clubName}</p>
                             </div>

@@ -49,6 +49,9 @@
 
     .div_ranking p {
         margin-right: 3px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 
@@ -62,7 +65,7 @@
         position: relative;
         width: 100px;
         z-index: 1;
-        top: 300px;
+        top: 150px;
         left: 15px;
         color: black;
         background-color: #9c9c9c1a;
@@ -79,9 +82,9 @@
     .ranking_container {
         position: relative;
         z-index: 2;
-        top: 290px;
+        top: 140px;
         left: -20px;
-        width: 100%;
+        width: 80%;
         /* height: 215px; */
         background-color: white;
         border-radius: 13px;

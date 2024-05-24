@@ -24,7 +24,7 @@
         z-index: 2;
         top: 35px;
         left: 0px;
-        width: 100%;
+        width: 90%;
         /* height: 215px; */
         background-color: white;
         border-radius: 13px;
@@ -37,6 +37,7 @@
         box-shadow: 0px 0px 3px 1px #00000033;
         padding: 15px 25px;
     }
+
     /* .img_notice {
 	width: 5px;
 	height: 5px;
@@ -61,6 +62,9 @@
     .div_notice div {
         text-align: start;
         width: 70%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 
@@ -91,7 +95,7 @@
         top: 35px;
         z-index: 2;
         left: 0px;
-        width: 100%;
+        width: 80%;
         /* height: 215px; */
         background-color: white;
         border-radius: 13px;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import './mainNotice.css';
+import styles from './mainNotice.module.css';
 
 export default function MainNotice() {
     const [noticeData, setNoticeData] = useState([]);
@@ -31,11 +31,11 @@ export default function MainNotice() {
 
     // 메인 페이지에 보여줄 공지사항
     return (
-        <div className="container">
-            <div className="notice_index">공지사항</div>
-            <div className="notice_container">
+        <div className={styles.container}>
+            <div className={styles.notice_index}>공지사항</div>
+            <div className={styles.notice_container}>
                 {noticeData.map((item) => (
-                    <div key={item.noticeId} className="div_notice">
+                    <div key={item.noticeId} className={styles.div_notice}>
                         <div>{item.content}</div>
                         <p>|</p>
                         <p>{formatDate(item.createdAt)}</p>
