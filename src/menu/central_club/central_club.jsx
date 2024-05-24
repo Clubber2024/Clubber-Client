@@ -25,7 +25,6 @@ function CentralClub() {
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
                         <img src="/central/culture.png" alt="culture" className={styles.rectangle_img} />
-
                         <div className={styles.title} onClick={() => onClicked('교양분과')}>
                             교양분과
                         </div>
