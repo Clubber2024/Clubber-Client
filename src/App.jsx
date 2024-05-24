@@ -28,7 +28,7 @@ function App() {
                         <Route path="/" element={<MainPage />} />
                         <Route path="/menu/central_club/central_club" element={<CentralClub />} />
                         <Route path="/menu/small_club/small_club" element={<SmallClub />} />
-                        <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
+                        <Route path="/menu/small_club/detail_page/:clubId" element={<DetailPage />} />
                         <Route path="/menu/central_club/branch/branchCentral" element={<BranchCentral />} />
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
@@ -44,7 +44,7 @@ function App() {
                         <Route path="/" element={<MainPage />} />
                         <Route path="/menu/central_club/central_club" element={<CentralClub />} />
                         <Route path="/menu/small_club/small_club" element={<SmallClub />} />
-                        <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
+                        <Route path="/menu/small_club/detail_page/:clubId" element={<DetailPage />} />
                         <Route path="/menu/central_club/branch/branchCentral" element={<BranchCentral />} />
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />

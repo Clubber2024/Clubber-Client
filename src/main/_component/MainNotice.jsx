@@ -2,34 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './mainNotice.css';
 
-// const noticeData = [
-//     {
-//         id: 1,
-//         title: "중앙 동아리 최신 정보 업데이트 안내",
-//         date: "2024.05.14"
-//     },
-//     {
-//         id: 2,
-//         title: "해시태그 기반 검색 오류 해결 안내",
-//         date: "2024.05.14"
-//     },
-//     {
-//         id: 3,
-//         title: "구글 로그인 기능 추가 완료 안내",
-//         date: "2024.05.14"
-//     },
-//     {
-//         id: 4,
-//         title: "해시태그 기반 검색 오류 해결 안내",
-//         date: "2024.05.14"
-//     },
-//     {
-//         id: 5,
-//         title: "카카오 로그인 하기실타 ~~!",
-//         date: "2024.05.14"
-//     }
-// ]
-
 export default function MainNotice() {
     const [noticeData, setNoticeData] = useState([]);
 
