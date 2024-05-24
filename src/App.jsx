@@ -15,14 +15,6 @@ function App() {
     const isPc = useMediaQuery({
         query: '(min-width:769px)',
     });
-<<<<<<< HEAD
-    /*
-        const isTablet = useMediaQuery({
-        query: '(min-width:769px) and (max-width:1023px)',
-    });
-        */
-=======
->>>>>>> 9c6abfef11de9401e218cbd2129e6aeb368baebd
     const isMobile = useMediaQuery({
         query: '(max-width:769px)',
     });
@@ -36,13 +28,8 @@ function App() {
                         <Route path="/" element={<MainPage />} />
                         <Route path="/menu/central_club/central_club" element={<CentralClub />} />
                         <Route path="/menu/small_club/small_club" element={<SmallClub />} />
-<<<<<<< HEAD
-                        <Route path="/menu/small_club/detail_page/:clubId" element={<DetailPage />} />
-                        <Route path="/menu/central_club/branch" element={<Branch />} />
-=======
                         <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
                         <Route path="/menu/central_club/branch/branchCentral" element={<BranchCentral />} />
->>>>>>> 9c6abfef11de9401e218cbd2129e6aeb368baebd
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
                     </Routes>
@@ -70,24 +57,3 @@ function App() {
 }
 
 export default App;
-<<<<<<< HEAD
-
-/*
-{isTablet && (
-                <BrowserRouter>
-                    <Header />
-                    <Routes>
-                        <Route path="/" element={<MainPage />} />
-                        <Route path="/menu/central_club" element={<CentralClubPage />} />
-                        <Route path="/menu/small_club/small_club" element={<SmallClub />} />
-                        <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
-                    </Routes>
-                    <Footer />
-                </BrowserRouter>
-            )}
-
-
-                        <Route path="/menu/small_club/branch_small" element={<BranchSmall />} />
-*/
-=======
->>>>>>> 9c6abfef11de9401e218cbd2129e6aeb368baebd

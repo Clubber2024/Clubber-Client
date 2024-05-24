@@ -13,6 +13,7 @@
 
     .tags_wrapper::-webkit-scrollbar {
         height: 8px;
+
     }
 
     .tags_wrapper::-webkit-scrollbar-thumb {
