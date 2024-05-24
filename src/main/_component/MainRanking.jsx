@@ -2,49 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './mainRanking.css';
 
-// const rankingData = [
-//     {
-//         id: 1,
-//         name: "유어슈"
-//     },
-//     {
-//         id: 2,
-//         name: "UMC"
-//     },
-//     {
-//         id: 3,
-//         name: "SCCC"
-//     },
-//     {
-//         id: 4,
-//         name: "써밋"
-//     },
-//     {
-//         id: 5,
-//         name: "서있는 살암들"
-//     },
-//     {
-//         id: 6,
-//         name: "ASC"
-//     },
-//     {
-//         id: 7,
-//         name: "두메"
-//     },
-//     {
-//         id: 8,
-//         name: "FRAME"
-//     },
-//     {
-//         id: 9,
-//         name: "바람개비"
-//     },
-//     {
-//         id: 10,
-//         name: "멋사"
-//     }
-// ]
-
 export default function MainRanking() {
     const [rankingData, setRankingData] = useState([]);
 
@@ -77,7 +34,7 @@ export default function MainRanking() {
                                 <p>{item.clubName}</p>
                             </div>
                         </>
-                    )
+                    );
                 })}
             </div>
         </div>

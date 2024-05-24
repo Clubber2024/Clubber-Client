@@ -4,10 +4,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import MainPage from './main';
-import CentralClubPage from './menu/central_club';
+import CentralClub from './menu/central_club/central_club';
 import SmallClub from './menu/small_club/small_club';
 import DetailPage from './menu/small_club/detail_page/index';
-import Branch from './menu/central_club/branch';
+import BranchCentral from './menu/central_club/branch/branchCentral';
 import LoginPage from './menu/login';
 import BranchSmall from './menu/small_club/branch/branch_small';
 
@@ -15,11 +15,14 @@ function App() {
     const isPc = useMediaQuery({
         query: '(min-width:769px)',
     });
+<<<<<<< HEAD
     /*
         const isTablet = useMediaQuery({
         query: '(min-width:769px) and (max-width:1023px)',
     });
         */
+=======
+>>>>>>> 9c6abfef11de9401e218cbd2129e6aeb368baebd
     const isMobile = useMediaQuery({
         query: '(max-width:769px)',
     });
@@ -31,10 +34,15 @@ function App() {
                     <Header />
                     <Routes>
                         <Route path="/" element={<MainPage />} />
-                        <Route path="/menu/central_club" element={<CentralClubPage />} />
+                        <Route path="/menu/central_club/central_club" element={<CentralClub />} />
                         <Route path="/menu/small_club/small_club" element={<SmallClub />} />
+<<<<<<< HEAD
                         <Route path="/menu/small_club/detail_page/:clubId" element={<DetailPage />} />
                         <Route path="/menu/central_club/branch" element={<Branch />} />
+=======
+                        <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
+                        <Route path="/menu/central_club/branch/branchCentral" element={<BranchCentral />} />
+>>>>>>> 9c6abfef11de9401e218cbd2129e6aeb368baebd
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
                     </Routes>
@@ -47,10 +55,10 @@ function App() {
                     <Header />
                     <Routes>
                         <Route path="/" element={<MainPage />} />
-                        <Route path="/menu/central_club" element={<CentralClubPage />} />
+                        <Route path="/menu/central_club/central_club" element={<CentralClub />} />
                         <Route path="/menu/small_club/small_club" element={<SmallClub />} />
                         <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
-                        <Route path="/menu/central_club/branch" element={<Branch />} />
+                        <Route path="/menu/central_club/branch/branchCentral" element={<BranchCentral />} />
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
                     </Routes>
@@ -62,6 +70,7 @@ function App() {
 }
 
 export default App;
+<<<<<<< HEAD
 
 /*
 {isTablet && (
@@ -80,3 +89,5 @@ export default App;
 
                         <Route path="/menu/small_club/branch_small" element={<BranchSmall />} />
 */
+=======
+>>>>>>> 9c6abfef11de9401e218cbd2129e6aeb368baebd
