@@ -3,6 +3,7 @@
     width: 30%;
 }
 
+
 .ranking_index {
     position: absolute;
     z-index: 1;
@@ -48,4 +49,7 @@
 
 .div_ranking p {
     margin-right: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

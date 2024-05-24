@@ -1,4 +1,5 @@
 import "./mainBanner.css";
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -12,25 +13,27 @@ export default function MainBanner() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
     };
 
     return (
         <>
             <Slider {...settings}>
                 <div className="banner_container">
-                    <img src="/main/banner_img.png" alt="main banner" style={{backgroundColor: "#009bcb"}}/>
+                    <img src="/main/banner_img.png" alt="main banner" style={{ backgroundColor: "#009bcb" }} />
                 </div>
                 <div className="banner_container">
-                    <img src="/main/banner_img.png" alt="main banner"/>
+                    <img src="/main/banner_img.png" alt="main banner" />
                 </div>
                 <div className="banner_container">
-                    <img src="/main/banner_img.png" alt="main banner"/>
+                    <img src="/main/banner_img.png" alt="main banner" />
                 </div>
                 <div className="banner_container">
-                    <img src="/main/banner_img.png" alt="main banner"/>
+                    <img src="/main/banner_img.png" alt="main banner" />
                 </div>
                 <div className="banner_container">
-                    <img src="/main/banner_img.png" alt="main banner"/>
+                    <img src="/main/banner_img.png" alt="main banner" />
                 </div>
             </Slider>
         </>

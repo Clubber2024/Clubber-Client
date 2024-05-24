@@ -16,10 +16,10 @@ function App() {
         query: '(min-width:769px)',
     });
     /*
-		const isTablet = useMediaQuery({
+        const isTablet = useMediaQuery({
         query: '(min-width:769px) and (max-width:1023px)',
     });
-		*/
+        */
     const isMobile = useMediaQuery({
         query: '(max-width:769px)',
     });
@@ -33,7 +33,7 @@ function App() {
                         <Route path="/" element={<MainPage />} />
                         <Route path="/menu/central_club" element={<CentralClubPage />} />
                         <Route path="/menu/small_club/small_club" element={<SmallClub />} />
-                        <Route path="/menu/small_club/detail_page/index" element={<DetailPage />} />
+                        <Route path="/menu/small_club/detail_page/:clubId" element={<DetailPage />} />
                         <Route path="/menu/central_club/branch" element={<Branch />} />
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
@@ -78,5 +78,5 @@ export default App;
             )}
 
 
-						<Route path="/menu/small_club/branch_small" element={<BranchSmall />} />
+                        <Route path="/menu/small_club/branch_small" element={<BranchSmall />} />
 */

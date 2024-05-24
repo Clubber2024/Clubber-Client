@@ -11,6 +11,7 @@
         white-space: no-wrap;
     }
 }
+
 @media screen and (max-width: 769px) {
     .wrapper {
         padding: 0% 10%;

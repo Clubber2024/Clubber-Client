@@ -1,11 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from 'axios';
 import IntroductionTab from "./_component/IntroductionTab";
 import "./detailPage.css";
 import ReviewTab from "./_component/ReviewTab";
 
 export default function DetailPage() {
     const [whichTab, setWhichTab] = useState("Introduction");
-    const [tabIndex, setTabIndex] = useState(0);
+    const [detailData, setDetailData] = useState(null);
+    const clubId = useParams();
+
+    console.log(clubId);
+
+    // useEffect(() => {
+    //     const getDetailData = async () => {
+    //         try {
+    //             const res = await axios.get(`http://15.164.211.56:8080//v1/clubs/${clubId}`);
+    //             setDetailData(res.data.data);
+    //             console.log(detailData);
+    //         } catch (error) {
+    //             console.error('Error fetching data : ', error);
+    //         }
+    //     };
+    //     getDetailData();
+    // }, []);
 
     const onClickIntroTab = () => {
         setWhichTab("Introduction");
@@ -35,7 +53,7 @@ export default function DetailPage() {
             </div>
             <div className="detail_tab">
                 <button className={whichTab === "Introduction" ? "active" : ""} onClick={onClickIntroTab}>소개</button>
-                <button className={whichTab === "Review" ? "active" : ""}onClick={onClickReviewTab}>리뷰</button>
+                <button className={whichTab === "Review" ? "active" : ""} onClick={onClickReviewTab}>리뷰</button>
             </div>
             {whichTab === "Introduction" && <IntroductionTab />}
             {whichTab === "Review" && <ReviewTab />}
