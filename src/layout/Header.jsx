@@ -11,9 +11,9 @@ export default function Header() {
 
     useEffect(() => {
         const path = location.pathname;
-        if (path === '/menu/central_club') {
+        if (path.startsWith('/menu/central_club')) {
             setMenuBarActive('tab_text_central_active');
-        } else if (path === '/menu/small_club/small_club') {
+        } else if (path.startsWith('/menu/small_club')) {
             setMenuBarActive('tab_text_small_active');
         } else {
             setMenuBarActive('');
@@ -59,7 +59,7 @@ export default function Header() {
                     한눈에 보기
                 </p>
                 <div className="vertical_line"></div>
-                <Link to="/menu/central_club" style={{ textDecoration: 'none' }}>
+                <Link to="/menu/central_club/central_club" style={{ textDecoration: 'none' }}>
                     <p
                         className={
                             menubarActive === 'tab_text_central_active' ? 'tab_text_central_active' : 'tab_text_central'

@@ -123,8 +123,7 @@
 
 @media screen and (max-width: 769px) {
     .mainLogo {
-        width: 150px;
-        padding-right: 10px;
+        width: 140px;
         padding-left: 10px;
     }
     .header_top {

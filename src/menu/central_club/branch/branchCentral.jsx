@@ -1,20 +1,20 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import styles from './branch_small.module.css';
+import styles from './branchCentral.module.css';
 import axios from 'axios';
-import SmallClub from './component/smallClub';
+import CentralClub from './component/centralClub';
 import { useLocation } from 'react-router-dom';
 
-function BranchSmall() {
+function BranchCentral() {
     const [loading, setLoading] = useState(true);
     const [clubs, setClubs] = useState([]);
     const [error, setError] = useState(null);
     const location = useLocation();
-    const department = location.state.department;
+    const division = location.state.division;
 
-    const getSmallClubs = async () => {
+    const getCentralClubs = async () => {
         try {
-            const response = await axios.get(`http://15.164.211.56:8080/v1/clubs?department=${department}`);
+            const response = await axios.get(`http://15.164.211.56:8080/v1/clubs?division=${division}`);
             setClubs(response.data.data.clubs);
         } catch (error) {
             setError(error);
@@ -24,7 +24,7 @@ function BranchSmall() {
     };
 
     useEffect(() => {
-        getSmallClubs();
+        getCentralClubs();
     }, []);
 
     if (loading) return <div>Loading...</div>;
@@ -34,15 +34,15 @@ function BranchSmall() {
         <div>
             <div className={styles.wrap}>
                 <div className={styles.header}>
-                    <h2 className={styles.header_title}>{department}</h2>
+                    <h2 className={styles.header_title}>{division}</h2>
                 </div>
             </div>
             <div className={styles.container}>
                 {clubs.map((club) => (
-                    <SmallClub
+                    <CentralClub
                         key={club.clubId}
-                        imageUrl={club.imageUrl}
                         clubId={club.clubId}
+                        imageUrl={club.imageUrl}
                         clubName={club.clubName}
                         introduction={club.introduction}
                     />
@@ -52,4 +52,4 @@ function BranchSmall() {
     );
 }
 
-export default BranchSmall;
+export default BranchCentral;
