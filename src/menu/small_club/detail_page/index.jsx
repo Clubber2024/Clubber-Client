@@ -1,21 +1,23 @@
-import { useState } from "react";
-import IntroductionTab from "./_component/IntroductionTab";
-import "./detailPage.css";
-import ReviewTab from "./_component/ReviewTab";
+import { useState } from 'react';
+import IntroductionTab from './_component/IntroductionTab';
+import './detailPage.css';
+import ReviewTab from './_component/ReviewTab';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 export default function DetailPage() {
-    const [whichTab, setWhichTab] = useState("Introduction");
+    const [whichTab, setWhichTab] = useState('Introduction');
     const [tabIndex, setTabIndex] = useState(0);
 
     const onClickIntroTab = () => {
-        setWhichTab("Introduction");
-        console.log("동아리 상세 소개 탭뷰");
-    }
+        setWhichTab('Introduction');
+        console.log('동아리 상세 소개 탭뷰');
+    };
 
     const onClickReviewTab = () => {
-        setWhichTab("Review");
-        console.log("동아리 상세 리뷰 탭뷰");
-    }
+        setWhichTab('Review');
+        console.log('동아리 상세 리뷰 탭뷰');
+    };
 
     return (
         <div className="detail_container">
@@ -34,11 +36,15 @@ export default function DetailPage() {
                 </div>
             </div>
             <div className="detail_tab">
-                <button className={whichTab === "Introduction" ? "active" : ""} onClick={onClickIntroTab}>소개</button>
-                <button className={whichTab === "Review" ? "active" : ""}onClick={onClickReviewTab}>리뷰</button>
+                <button className={whichTab === 'Introduction' ? 'active' : ''} onClick={onClickIntroTab}>
+                    소개
+                </button>
+                <button className={whichTab === 'Review' ? 'active' : ''} onClick={onClickReviewTab}>
+                    리뷰
+                </button>
             </div>
-            {whichTab === "Introduction" && <IntroductionTab />}
-            {whichTab === "Review" && <ReviewTab />}
+            {whichTab === 'Introduction' && <IntroductionTab />}
+            {whichTab === 'Review' && <ReviewTab />}
         </div>
-    )
+    );
 }

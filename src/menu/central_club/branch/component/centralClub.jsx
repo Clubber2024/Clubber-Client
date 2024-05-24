@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './smallClub.module.css';
-import { LinkItem } from '../../../central_club/central_club';
+import styles from './centralClub.module.css';
+import { useNavigate } from 'react-router-dom';
+import { LinkItem } from '../../central_club';
 
-//clubid페이지로 이동할 수 있게 수정 완료
-function SmallClub({ clubId, clubName, introduction, imageUrl }) {
+function CentralClub({ clubId, imageUrl, clubName, introduction }) {
     return (
         <div className={styles.rectangle}>
             <LinkItem to={`/menu/small_club/detail_page/${clubId}`}>
-                <img src={imageUrl} alt={clubName} className={styles.image} />
+                <img className={styles.image} alt={clubName} src={imageUrl} />
                 <h3 className={styles.title}>{clubName}</h3>
                 <p className={styles.content}>{introduction}</p>
             </LinkItem>
@@ -16,11 +16,11 @@ function SmallClub({ clubId, clubName, introduction, imageUrl }) {
     );
 }
 
-SmallClub.propTypes = {
+CentralClub.propTypes = {
     clubId: PropTypes.number.isRequired,
     imageUrl: PropTypes.string.isRequired,
     clubName: PropTypes.string.isRequired,
     introduction: PropTypes.string.isRequired,
 };
 
-export default SmallClub;
+export default CentralClub;
