@@ -16,6 +16,7 @@
         float: left;
         margin: 10px;
         box-shadow: 0px 0px 5px 0px #0000001a;
+        padding-right: 2px;
     }
     .container {
         display: flex;
@@ -106,6 +107,7 @@
         float: left;
         margin: 10px;
         box-shadow: 0px 0px 5px 0px #0000001a;
+        padding-right: 2px;
     }
     .container {
         display: flex;
