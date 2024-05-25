@@ -1,6 +1,7 @@
 @media screen and (min-width: 769px) {
     .wrapper {
         padding: 0% 16%;
+        padding-bottom: 3px;
         width: 100%;
     }
 
@@ -13,11 +14,10 @@
 
     .tags_wrapper::-webkit-scrollbar {
         height: 8px;
-
     }
 
     .tags_wrapper::-webkit-scrollbar-thumb {
-        background-color: rgb(156, 156, 156);
+        background-color: #0000002a;
         border-radius: 10px;
     }
 
@@ -30,6 +30,7 @@
 @media screen and (max-width: 769px) {
     .wrapper {
         padding: 0% 10%;
+        padding-bottom: 3px;
         width: 100%;
     }
 
