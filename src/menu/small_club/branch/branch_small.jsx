@@ -30,23 +30,34 @@ function BranchSmall() {
     if (loading) return <div>Loading...</div>;
     //if (error) return <div>Error: {error.message}</div>;
 
+    const renderDataInRows = (data) => {
+        const rows = [];
+        for (let i = 0; i < data.length; i += 4) {
+            const rowItems = data.slice(i, i + 4);
+            rows.push(
+                <div className={styles.container} key={i}>
+                    {rowItems.map((club) => (
+                        <SmallClub
+                            key={club.clubId}
+                            imageUrl={club.imageUrl}
+                            clubId={club.clubId}
+                            clubName={club.clubName}
+                            introduction={club.introduction}
+                        />
+                    ))}
+                </div>
+            );
+        }
+        return rows;
+    };
+
     return (
         <div>
             <div className={styles.wrap}>
                 <div className={styles.header}>
                     <h2 className={styles.header_title}>{department}</h2>
                 </div>
-            </div>
-            <div className={styles.container}>
-                {clubs.map((club) => (
-                    <SmallClub
-                        key={club.clubId}
-                        imageUrl={club.imageUrl}
-                        clubId={club.clubId}
-                        clubName={club.clubName}
-                        introduction={club.introduction}
-                    />
-                ))}
+                {renderDataInRows(clubs)}
             </div>
         </div>
     );

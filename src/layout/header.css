@@ -67,13 +67,14 @@
         font-size: 18px;
         font-weight: 500;
         padding-right: 31px;
+        margin-bottom: 2px;
     }
 
     .tab_text_highlight_active {
         font-size: 18px;
         font-weight: 700;
         padding-right: 31px;
-        border: 0;
+        margin-bottom: 2px;
         background-color: transparent;
         cursor: pointer;
     }
@@ -293,17 +294,17 @@
         font-size: 13px;
         font-weight: 600;
         padding-right: 0;
-        border: 0;
         background-color: transparent;
         cursor: pointer;
         text-align: left;
+        margin-bottom: 2px;
     }
 
     .tab_text_highlight_active {
         font-size: 14px;
         font-weight: 700;
         padding-right: 0;
-        border: 0;
+        margin-bottom: 2px;
         background-color: transparent;
         cursor: pointer;
     }

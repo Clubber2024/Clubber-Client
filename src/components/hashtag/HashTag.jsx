@@ -1,5 +1,7 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './hashtag.css';
-import { Link } from 'react-router-dom';
+import { LinkItem } from '../../menu/central_club/central_club';
 
 const hashtag = [
     { band: '밴드' },
@@ -16,23 +18,22 @@ const hashtag = [
 ];
 
 export default function HashTag() {
+    const navigate = useNavigate();
+    const onClicked = (hashTagValue) => {
+        navigate(`/components/hashtag/component/branchHashtag`, { state: { hashtag: hashTagValue } });
+    };
     return (
         <>
             {hashtag.map((item, index) => {
                 const tagName = Object.keys(item)[0];
                 const tagVal = item[tagName];
                 return (
-                    <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
-                        <div className="tag_container">
-                            <img
-                                src={`/main/hashtag/${tagName}_icon.png`}
-                                alt={`${tagName} icon`}
-                                width={48}
-                                height={45}
-                            />
-                            <p className="tag_text"># {tagVal}</p>
-                        </div>
-                    </Link>
+                    <div className="tag_container" key={index}>
+                        <img src={`/main/hashtag/${tagName}_icon.png`} alt={`${tagName} icon`} width={48} height={45} />
+                        <p className="tag_text" onClick={() => onClicked(tagVal)}>
+                            # {tagVal}
+                        </p>
+                    </div>
                 );
             })}
         </>

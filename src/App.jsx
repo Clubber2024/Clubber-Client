@@ -10,6 +10,7 @@ import DetailPage from './menu/small_club/detail_page/index';
 import BranchCentral from './menu/central_club/branch/branchCentral';
 import LoginPage from './menu/login';
 import BranchSmall from './menu/small_club/branch/branch_small';
+import BranchHashTag from './components/hashtag/component/branchHashtag';
 
 function App() {
     const isPc = useMediaQuery({
@@ -32,6 +33,7 @@ function App() {
                         <Route path="/menu/central_club/branch/branchCentral" element={<BranchCentral />} />
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
+                        <Route path="/components/hashtag/component/branchHashtag" element={<BranchHashTag />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -48,6 +50,7 @@ function App() {
                         <Route path="/menu/central_club/branch/branchCentral" element={<BranchCentral />} />
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
+                        <Route path="/components/hashtag/component/branchHashtag" element={<BranchHashTag />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
