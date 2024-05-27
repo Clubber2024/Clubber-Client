@@ -7,9 +7,8 @@ function Footer() {
         <div className={styles.footer}>
             <div className={styles.footer_content}>
                 <p className={styles.text_ContactUs}>contact us</p>
-                <p className={styles.p}>instagram:</p>
-                <p className={styles.p}>phone-number: </p>
-                <p className={styles.p}>email:</p>
+                <br />
+                <p className={styles.p}>instagram:@clubber phone-number:010-1234-5678 email: clubber@gmail.com</p>
             </div>
         </div>
     );

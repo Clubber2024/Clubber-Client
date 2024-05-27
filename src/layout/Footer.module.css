@@ -3,7 +3,7 @@
         background-color: #9c9c9c26;
         position: relative;
         transform: translateY(0%);
-        height: 150px;
+        height: 110px;
         width: 100%;
         border-top: 1px solid #9c9c9c26;
         text-align: center;
@@ -11,15 +11,19 @@
     }
 
     .p {
-        font-size: 14px;
-        padding: 0 0 0 15px;
-        margin: 10px;
+        font-family: Noto Sans KR;
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 20.27px;
+        text-align: center;
     }
     .text_ContactUs {
-        border-radius: 10px 0px 0px 0px;
-        padding: 0 0 0 12px;
-        margin: 10px 0 0 0;
-        font-weight: 400;
+        font-family: Noto Sans KR;
+        font-size: 17px;
+        font-weight: 300;
+        line-height: 20.27px;
+        text-align: center;
+        margin-top: 23px;
     }
 }
 @media screen and (max-width: 769px) {
@@ -27,7 +31,7 @@
         background-color: #9c9c9c26;
         position: relative;
         transform: translateY(0%);
-        height: 150px;
+        height: 110px;
         width: 100%;
         border-top: 1px solid #9c9c9c26;
         text-align: center;
@@ -35,42 +39,18 @@
     }
 
     .p {
-        font-size: 14px;
-        padding: 0 0 0 15px;
-        margin: 10px;
-    }
-    .text_ContactUs {
-        border-radius: 10px 0px 0px 0px;
-        padding: 0 0 0 12px;
-        margin: 10px 0 0 0;
-        font-weight: 400;
-    }
-}
-
-@media screen and (max-width: 789px) {
-    .footer {
-        background-color: #9c9c9c26;
-        position: relative;
-        transform: translateY(0%);
-        height: 100px;
-        width: 100%;
-        border-top: 1px solid #9c9c9c26;
+        font-family: Noto Sans KR;
+        font-size: 11px;
+        font-weight: 300;
+        line-height: 20.27px;
         text-align: center;
-        padding: 0px;
-    }
-    .footer_content {
-        width: 100%;
-    }
-
-    .p {
-        font-size: 10px;
-        padding: 0 0 0 10px;
-        margin: 5px;
     }
     .text_ContactUs {
-        border-radius: 10px;
-        padding: 0 0 0 10px;
-        margin: 10px 0 0 0;
-        font-weight: 400;
+        font-family: Noto Sans KR;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 20.27px;
+        text-align: center;
+        margin-top: 23px;
     }
 }
