@@ -1,6 +1,7 @@
 @media screen and (min-width: 769px) {
     .wrapper {
         padding: 0% 16%;
+        padding-bottom: 3px;
         width: 100%;
     }
 
@@ -10,10 +11,26 @@
         overflow: auto;
         white-space: no-wrap;
     }
+
+    .tags_wrapper::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .tags_wrapper::-webkit-scrollbar-thumb {
+        background-color: #0000002a;
+        border-radius: 10px;
+    }
+
+    .tags_wrapper ::-webkit-scrollbar-track {
+        background-color: #9c9c9c1a;
+        border-radius: 10px;
+    }
 }
+
 @media screen and (max-width: 769px) {
     .wrapper {
         padding: 0% 10%;
+        padding-bottom: 3px;
         width: 100%;
     }
 
@@ -22,5 +39,19 @@
         flex-direction: row;
         overflow: auto;
         white-space: no-wrap;
+    }
+
+    .tags_wrapper::-webkit-scrollbar {
+        height: 10px;
+    }
+
+    .tags_wrapper::-webkit-scrollbar-thumb {
+        background-color: #0000002a;
+        border-radius: 10px;
+    }
+
+    .tags_wrapper ::-webkit-scrollbar-track {
+        background-color: #9c9c9c1a;
+        border-radius: 10px;
     }
 }

@@ -39,6 +39,7 @@
     }
 
     .user_container {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -119,12 +120,110 @@
         background-color: #52555b80;
         margin-right: 51px;
     }
+
+    .rectangle {
+        position: absolute;
+        z-index: 2;
+        top: 70px;
+        left: -150px;
+        width: 276px;
+        height: 138px;
+        border-radius: 15px;
+        border: 1px;
+        background: #ffffff;
+        border: 1px solid #9c9c9c80;
+        box-shadow: 0px 0px 5px 0px #0000001a;
+    }
+    .rectangle .img {
+        width: 39px;
+        margin-top: 32px;
+        margin-left: 40px;
+        display: flex;
+        float: left;
+    }
+    .rectangle .emailText {
+        position: absolute;
+        display: flex;
+        font-family: Noto Sans KR;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin-top: 32px;
+        margin-left: 110px;
+    }
+    .rectangle .logoutBtn {
+        float: left;
+        width: 64px;
+        height: 23px;
+        gap: 0px;
+        border-radius: 14px;
+        border: 0.5px;
+        opacity: 0px;
+        font-size: 12px;
+        background: #ffffff;
+        border: 0.5px solid #9c9c9c80;
+        box-shadow: 2px #00000033;
+        margin-top: 60px;
+        margin-left: 95px;
+    }
+    .rectangle .line {
+        width: 274px;
+        height: 0px;
+        border: 1px solid #9c9c9c80;
+        margin-top: 100px;
+    }
+    .rectangle .verticalLine {
+        width: 37px;
+        height: 0px;
+        transform: rotate(90deg);
+        border: 1px solid #9c9c9c80;
+        margin-top: 17px;
+        margin-left: 125px;
+        margin-right: 0;
+    }
+    .rectangle .bookmarkBtn {
+        background-color: #ffffff;
+        border: 0;
+        font-family: Noto Sans;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16.34px;
+        margin-left: 42px;
+        margin-top: 10px;
+        width: 80px;
+    }
+    .rectangle .reviewBtn {
+        background-color: #ffffff;
+        border: 0;
+        font-family: Noto Sans;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16.34px;
+        position: absolute;
+        top: 112px;
+        margin-left: 185px;
+        width: 80px;
+    }
+    .rectangle .icon_star {
+        width: 18px;
+        height: 18px;
+        float: left;
+        margin-top: 10px;
+        margin-left: 18px;
+    }
+    .rectangle .icon_message {
+        width: 18px;
+        height: 18px;
+        margin-left: 124px;
+        float: left;
+        position: absolute;
+        top: 111px;
+    }
 }
 
 @media screen and (max-width: 769px) {
     .mainLogo {
-        width: 150px;
-        padding-right: 10px;
+        width: 140px;
         padding-left: 10px;
     }
     .header_top {
@@ -168,6 +267,7 @@
         align-items: center;
         padding-left: 10px;
         padding-right: 10px;
+        position: relative;
     }
 
     .login_text {
@@ -250,5 +350,102 @@
         height: 21px;
         background-color: #52555b80;
         margin-right: 15px;
+    }
+    .rectangle {
+        position: absolute;
+        z-index: 2;
+        top: 70px;
+        left: -200px;
+        width: 276px;
+        height: 138px;
+        border-radius: 15px;
+        border: 1px;
+        background: #ffffff;
+        border: 1px solid #9c9c9c80;
+        box-shadow: 0px 0px 5px 0px #0000001a;
+    }
+    .rectangle .img {
+        width: 39px;
+        margin-top: 32px;
+        margin-left: 40px;
+        display: flex;
+        float: left;
+    }
+    .rectangle .emailText {
+        position: absolute;
+        display: flex;
+        font-family: Noto Sans KR;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin-top: 32px;
+        margin-left: 110px;
+    }
+    .rectangle .logoutBtn {
+        float: left;
+        width: 64px;
+        height: 23px;
+        gap: 0px;
+        border-radius: 14px;
+        border: 0.5px;
+        opacity: 0px;
+        font-size: 12px;
+        background: #ffffff;
+        border: 0.5px solid #9c9c9c80;
+        box-shadow: 2px #00000033;
+        margin-top: 60px;
+        margin-left: 95px;
+    }
+    .rectangle .line {
+        width: 274px;
+        height: 0px;
+        border: 1px solid #9c9c9c80;
+        margin-top: 100px;
+    }
+    .rectangle .verticalLine {
+        width: 37px;
+        height: 0px;
+        transform: rotate(90deg);
+        border: 1px solid #9c9c9c80;
+        margin-top: 17px;
+        margin-left: 125px;
+    }
+    .rectangle .bookmarkBtn {
+        background-color: #ffffff;
+        border: 0;
+        font-family: Noto Sans;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16.34px;
+        margin-left: 42px;
+        margin-top: 10px;
+        width: 80px;
+    }
+    .rectangle .reviewBtn {
+        background-color: #ffffff;
+        border: 0;
+        font-family: Noto Sans;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16.34px;
+        position: absolute;
+        top: 112px;
+        margin-left: 185px;
+        width: 80px;
+    }
+    .rectangle .icon_star {
+        width: 18px;
+        height: 18px;
+        float: left;
+        margin-top: 10px;
+        margin-left: 18px;
+    }
+    .rectangle .icon_message {
+        width: 18px;
+        height: 18px;
+        margin-left: 124px;
+        float: left;
+        position: absolute;
+        top: 111px;
     }
 }
