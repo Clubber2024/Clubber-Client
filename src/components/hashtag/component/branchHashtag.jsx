@@ -1,21 +1,23 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import styles from './branchCentral.module.css';
 import axios from 'axios';
-import CentralClub from './component/centralClub';
 import { useLocation } from 'react-router-dom';
+import HashTagClub from './hashTagClub';
+import styles from '../../../menu/central_club/branch/branchCentral.module.css';
 
-function BranchCentral() {
+function BranchHashTag() {
     const [loading, setLoading] = useState(true);
     const [clubs, setClubs] = useState([]);
     const [error, setError] = useState(null);
     const location = useLocation();
-    const division = location.state.division;
+    const hashtag = location.state?.hashtag;
 
-    const getCentralClubs = async () => {
+    const getHashTagClubs = async () => {
         try {
-            const response = await axios.get(`http://15.164.211.56:8080/v1/clubs?division=${division}`);
+            setLoading(true);
+            const response = await axios.get(`http://15.164.211.56:8080/v1/clubs?hashtag=${hashtag}`);
             setClubs(response.data.data.clubs);
+            setError(null);
         } catch (error) {
             setError(error);
         } finally {
@@ -24,8 +26,10 @@ function BranchCentral() {
     };
 
     useEffect(() => {
-        getCentralClubs();
-    }, []);
+        if (hashtag) {
+            getHashTagClubs();
+        }
+    }, [hashtag]); // hashtag 값이 변경될 때마다 호출
 
     if (loading) return <div>Loading...</div>;
     //if (error) return <div>Error: {error.message}</div>;
@@ -37,7 +41,7 @@ function BranchCentral() {
             rows.push(
                 <div className={styles.container} key={i}>
                     {rowItems.map((club) => (
-                        <CentralClub
+                        <HashTagClub
                             key={club.clubId}
                             clubId={club.clubId}
                             imageUrl={club.imageUrl}
@@ -48,13 +52,14 @@ function BranchCentral() {
                 </div>
             );
         }
+        return rows;
     };
 
     return (
         <div>
             <div className={styles.wrap}>
                 <div className={styles.header}>
-                    <h2 className={styles.header_title}>{division}</h2>
+                    <h2 className={styles.header_title}># {hashtag}</h2>
                 </div>
                 {renderDataInRows(clubs)}
             </div>
@@ -62,4 +67,4 @@ function BranchCentral() {
     );
 }
 
-export default BranchCentral;
+export default BranchHashTag;
