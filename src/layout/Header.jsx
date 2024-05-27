@@ -6,8 +6,12 @@ import { LinkItem } from '../menu/central_club/central_club';
 
 export default function Header() {
     // 모든 페이지에서 공통적으로 나타날 헤더
-    const [menubarActive, setMenuBarActive] = useState('');
     const location = useLocation();
+    const [menubarActive, setMenuBarActive] = useState('');
+    //로그인 상태 관리
+    const [isLogin, setIsLogin] = useState(true);
+    //로그인박스 표시 상태 관리
+    const [showLoginBox, setShowLoginBox] = useState(false);
 
     useEffect(() => {
         const path = location.pathname;
@@ -22,6 +26,21 @@ export default function Header() {
 
     const handleTabClick = (menu) => {
         return setMenuBarActive(menu);
+    };
+
+    //로그인박스 구현 부분
+    /* const handleLogin = () => {
+        setIsLogin(true);
+    };
+    const handleLogout = () => {
+        setIsLogin(false);
+        setShowLoginBox(false);
+    };
+		*/
+    const handleClick = () => {
+        if (isLogin) {
+            setShowLoginBox((prev) => !prev);
+        } //else{로그아웃 상태일 때}
     };
 
     return (
@@ -41,10 +60,33 @@ export default function Header() {
                     />
                 </div>
                 <div className="user_container">
-                    <img src="/buttons/user_login_icon.png" alt="user icon" width={39} height={39} />
+                    <img
+                        src="/buttons/user_login_icon.png"
+                        alt="user icon"
+                        width={39}
+                        height={39}
+                        onClick={handleClick}
+                    />
                     <LinkItem to="/menu/login">
                         <p className="login_text">로그인</p>
                     </LinkItem>
+                    {isLogin && showLoginBox && (
+                        <div className="rectangle">
+                            <div>
+                                <img className="img" src="/buttons/user_login_icon.png" alt="user icon" />
+
+                                <p className="emailText">clubber@naver.com</p>
+                                <button className="logoutBtn">로그아웃</button>
+                            </div>
+                            <div className="line">
+                                <img className="icon_star" src="/main/starYellow.png" alt="star" />
+                                <p className="bookmarkBtn">나의 즐겨찾기</p>
+                            </div>
+                            <div className="verticalLine"></div>
+                            <img className="icon_message" src="/main/message-text.png" alt="message" />
+                            <p className="reviewBtn">내가 쓴 리뷰</p>
+                        </div>
+                    )}
                 </div>
             </div>
             <TagScroll />
