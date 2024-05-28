@@ -59,37 +59,36 @@ export default function Header() {
                     // onChange={onChange}
                     />
                 </div>
-                <div className="user_container">
-                    <LinkItem to="/menu/login">
+                <LinkItem to="/menu/login">
+                    <div className="user_container">
                         <img
                             src="/buttons/user_login_icon.png"
                             alt="user icon"
-                            width={35}
-                            height={35}
+                            width={39}
+                            height={39}
                             onClick={handleClick}
                         />
-                    </LinkItem>
-                    <LinkItem to="/menu/login">
                         <p className="login_text">로그인</p>
-                    </LinkItem>
-                    {isLogin && showLoginBox && (
-                        <div className="rectangle">
-                            <div>
-                                <img className="img" src="/buttons/user_login_icon.png" alt="user icon" />
 
-                                <p className="emailText">clubber@naver.com</p>
-                                <button className="logoutBtn">로그아웃</button>
+                        {isLogin && showLoginBox && (
+                            <div className="rectangle">
+                                <div>
+                                    <img className="img" src="/buttons/user_login_icon.png" alt="user icon" />
+
+                                    <p className="emailText">clubber@naver.com</p>
+                                    <button className="logoutBtn">로그아웃</button>
+                                </div>
+                                <div className="line">
+                                    <img className="icon_star" src="/main/starYellow.png" alt="star" />
+                                    <p className="bookmarkBtn">나의 즐겨찾기</p>
+                                </div>
+                                <div className="verticalLine"></div>
+                                <img className="icon_message" src="/main/message-text.png" alt="message" />
+                                <p className="reviewBtn">내가 쓴 리뷰</p>
                             </div>
-                            <div className="line">
-                                <img className="icon_star" src="/main/starYellow.png" alt="star" />
-                                <p className="bookmarkBtn">나의 즐겨찾기</p>
-                            </div>
-                            <div className="verticalLine"></div>
-                            <img className="icon_message" src="/main/message-text.png" alt="message" />
-                            <p className="reviewBtn">내가 쓴 리뷰</p>
-                        </div>
-                    )}
-                </div>
+                        )}
+                    </div>
+                </LinkItem>
             </div>
             <TagScroll />
             <div className="menu_container">
@@ -113,21 +112,19 @@ export default function Header() {
                         중앙 동아리
                     </p>
                 </Link>
-                <div className="toggle_container">
-                    <button className="small_club_container">
-                        <Link to="/menu/small_club/small_club" style={{ textDecoration: 'none' }}>
-                            <p
-                                className={
-                                    menubarActive === 'tab_text_small_active'
-                                        ? 'tab_text_small_active'
-                                        : 'tab_text_small'
-                                }
-                                onClick={() => handleTabClick('tab_text_small_active')}
-                            >
-                                단과대
-                            </p>
-                        </Link>
-                    </button>
+                <div className="small_club_container">
+                    <Link to="/menu/small_club/small_club" style={{ textDecoration: 'none' }}>
+                        <p
+                            className={
+                                menubarActive === 'tab_text_small_active'
+                                    ? 'tab_text_small_active'
+                                    : 'tab_text_small'
+                            }
+                            onClick={() => handleTabClick('tab_text_small_active')}
+                        >
+                            단과대
+                        </p>
+                    </Link>
                 </div>
             </div>
         </>

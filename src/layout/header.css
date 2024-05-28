@@ -44,13 +44,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
         padding-left: 37px;
     }
 
     .login_text {
         font-size: 12px;
         font-weight: 500;
-        padding-top: 3px;
     }
 
     .menu_container {
@@ -68,14 +68,13 @@
         font-size: 18px;
         font-weight: 500;
         padding-right: 31px;
-        margin-bottom: 2px;
     }
 
     .tab_text_highlight_active {
         font-size: 18px;
         font-weight: 700;
         padding-right: 31px;
-        margin-bottom: 2px;
+        border: 0;
         background-color: transparent;
         cursor: pointer;
     }
@@ -99,7 +98,6 @@
         font-weight: 500;
         color: #52555b;
         padding-right: 7px;
-
     }
 
     .tab_text_small_active {
@@ -307,17 +305,17 @@
         font-size: 13px;
         font-weight: 600;
         padding-right: 0;
+        border: 0;
         background-color: transparent;
         cursor: pointer;
         text-align: left;
-        margin-bottom: 2px;
     }
 
     .tab_text_highlight_active {
         font-size: 14px;
         font-weight: 700;
         padding-right: 0;
-        margin-bottom: 2px;
+        border: 0;
         background-color: transparent;
         cursor: pointer;
     }
