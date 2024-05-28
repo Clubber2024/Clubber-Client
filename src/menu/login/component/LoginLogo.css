@@ -6,19 +6,21 @@
         margin: auto;
         margin-top: 70px;
     }
+
     .mini_logo {
         width: 30%;
         font-family: Inter;
         font-size: 21px;
         font-weight: 700;
         line-height: 24.2px;
-        color: rgba(96, 193, 195, 1);
+        color: #7BC8E0;
         display: grid;
         margin: 0 auto;
         margin-bottom: 3%;
         justify-content: center;
     }
 }
+
 @media screen and (max-width: 769px) {
     .logo {
         width: 30%;
@@ -27,13 +29,14 @@
         margin: auto;
         margin-top: 60px;
     }
+
     .mini_logo {
         width: 20%;
         font-family: Inter;
-        font-size: 15px;
+        font-size: 13px;
         font-weight: 700;
         line-height: 24.2px;
-        color: rgba(96, 193, 195, 1);
+        color: #7BC8E0;
         display: grid;
         margin: 0 auto 0;
         justify-content: center;

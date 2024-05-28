@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './centralClub.module.css';
-import { LinkItem } from '../../central_club';
+import styles from '../../../menu/central_club/branch/component/centralClub.module.css';
+import { LinkItem } from '../../../menu/central_club/central_club';
 
-function CentralClub({ clubId, imageUrl, clubName, introduction }) {
+function HashTagClub({ clubId, imageUrl, clubName, introduction }) {
     return (
         <div className={styles.rectangle}>
             <LinkItem to={`/menu/small_club/detail_page/${clubId}`}>
@@ -15,11 +15,11 @@ function CentralClub({ clubId, imageUrl, clubName, introduction }) {
     );
 }
 
-CentralClub.propTypes = {
+HashTagClub.propTypes = {
     clubId: PropTypes.number.isRequired,
     imageUrl: PropTypes.string.isRequired,
     clubName: PropTypes.string.isRequired,
     introduction: PropTypes.string.isRequired,
 };
 
-export default CentralClub;
+export default HashTagClub;

@@ -4,6 +4,7 @@
         padding-right: 10px;
         padding-left: 10px;
     }
+
     .header_top {
         display: flex;
         flex-direction: row;
@@ -43,13 +44,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
         padding-left: 37px;
     }
 
     .login_text {
         font-size: 12px;
         font-weight: 500;
-        padding-top: 3px;
     }
 
     .menu_container {
@@ -84,6 +85,7 @@
         color: #52555b;
         padding-right: 76px;
     }
+
     .tab_text_central_active {
         font-size: 16px;
         font-weight: 700;
@@ -134,6 +136,7 @@
         border: 1px solid #9c9c9c80;
         box-shadow: 0px 0px 5px 0px #0000001a;
     }
+
     .rectangle .img {
         width: 39px;
         margin-top: 32px;
@@ -141,6 +144,7 @@
         display: flex;
         float: left;
     }
+
     .rectangle .emailText {
         position: absolute;
         display: flex;
@@ -151,6 +155,7 @@
         margin-top: 32px;
         margin-left: 110px;
     }
+
     .rectangle .logoutBtn {
         float: left;
         width: 64px;
@@ -166,12 +171,14 @@
         margin-top: 60px;
         margin-left: 95px;
     }
+
     .rectangle .line {
         width: 274px;
         height: 0px;
         border: 1px solid #9c9c9c80;
         margin-top: 100px;
     }
+
     .rectangle .verticalLine {
         width: 37px;
         height: 0px;
@@ -181,6 +188,7 @@
         margin-left: 125px;
         margin-right: 0;
     }
+
     .rectangle .bookmarkBtn {
         background-color: #ffffff;
         border: 0;
@@ -192,6 +200,7 @@
         margin-top: 10px;
         width: 80px;
     }
+
     .rectangle .reviewBtn {
         background-color: #ffffff;
         border: 0;
@@ -204,6 +213,7 @@
         margin-left: 185px;
         width: 80px;
     }
+
     .rectangle .icon_star {
         width: 18px;
         height: 18px;
@@ -211,6 +221,7 @@
         margin-top: 10px;
         margin-left: 18px;
     }
+
     .rectangle .icon_message {
         width: 18px;
         height: 18px;
@@ -226,6 +237,7 @@
         width: 140px;
         padding-left: 10px;
     }
+
     .header_top {
         display: flex;
         flex-direction: row;
@@ -351,6 +363,7 @@
         background-color: #52555b80;
         margin-right: 15px;
     }
+
     .rectangle {
         position: absolute;
         z-index: 2;
@@ -364,6 +377,7 @@
         border: 1px solid #9c9c9c80;
         box-shadow: 0px 0px 5px 0px #0000001a;
     }
+
     .rectangle .img {
         width: 39px;
         margin-top: 32px;
@@ -371,6 +385,7 @@
         display: flex;
         float: left;
     }
+
     .rectangle .emailText {
         position: absolute;
         display: flex;
@@ -381,6 +396,7 @@
         margin-top: 32px;
         margin-left: 110px;
     }
+
     .rectangle .logoutBtn {
         float: left;
         width: 64px;
@@ -396,12 +412,14 @@
         margin-top: 60px;
         margin-left: 95px;
     }
+
     .rectangle .line {
         width: 274px;
         height: 0px;
         border: 1px solid #9c9c9c80;
         margin-top: 100px;
     }
+
     .rectangle .verticalLine {
         width: 37px;
         height: 0px;
@@ -410,6 +428,7 @@
         margin-top: 17px;
         margin-left: 125px;
     }
+
     .rectangle .bookmarkBtn {
         background-color: #ffffff;
         border: 0;
@@ -421,6 +440,7 @@
         margin-top: 10px;
         width: 80px;
     }
+
     .rectangle .reviewBtn {
         background-color: #ffffff;
         border: 0;
@@ -433,6 +453,7 @@
         margin-left: 185px;
         width: 80px;
     }
+
     .rectangle .icon_star {
         width: 18px;
         height: 18px;
@@ -440,6 +461,7 @@
         margin-top: 10px;
         margin-left: 18px;
     }
+
     .rectangle .icon_message {
         width: 18px;
         height: 18px;
