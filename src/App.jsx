@@ -11,6 +11,7 @@ import BranchCentral from './menu/central_club/branch/branchCentral';
 import LoginPage from './menu/login';
 import KakaoRedirection from './menu/login/component/kakaoRedirection';
 import BranchSmall from './menu/small_club/branch/branch_small';
+import BranchHashTag from './components/hashtag/component/branchHashtag';
 import ReviewWrite from './menu/small_club/detail_page/review_write';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
+                        <Route path="/components/hashtag/component/branchHashtag" element={<BranchHashTag />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -55,6 +57,7 @@ function App() {
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
+                        <Route path="/components/hashtag/component/branchHashtag" element={<BranchHashTag />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
