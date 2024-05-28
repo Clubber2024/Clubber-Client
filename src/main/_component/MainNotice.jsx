@@ -7,7 +7,7 @@ export default function MainNotice() {
 
     const getNoticeData = async () => {
         try {
-            const res = await axios.get(`http://15.164.211.56:8080/v1/notices`);
+            const res = await axios.get(`http://15.164.211.56/v1/notices`);
             if (res.data.success) {
                 setNoticeData(res.data.data);
                 console.log(res.data.data);

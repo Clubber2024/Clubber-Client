@@ -36,12 +36,14 @@ export default function Header() {
                         className="input_header"
                         type="search"
                         placeholder="찾고 싶은 동아리를 검색해보세요!"
-                        // value={value}
-                        // onChange={onChange}
+                    // value={value}
+                    // onChange={onChange}
                     />
                 </div>
                 <div className="user_container">
-                    <img src="/buttons/user_login_icon.png" alt="user icon" width={39} height={39} />
+                    <LinkItem to="/menu/login">
+                        <img src="/buttons/user_login_icon.png" alt="user icon" width={35} height={35} />
+                    </LinkItem>
                     <LinkItem to="/menu/login">
                         <p className="login_text">로그인</p>
                     </LinkItem>

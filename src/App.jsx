@@ -9,7 +9,9 @@ import SmallClub from './menu/small_club/small_club';
 import DetailPage from './menu/small_club/detail_page/index';
 import BranchCentral from './menu/central_club/branch/branchCentral';
 import LoginPage from './menu/login';
+import KakaoRedirection from './menu/login/component/kakaoRedirection';
 import BranchSmall from './menu/small_club/branch/branch_small';
+import ReviewWrite from './menu/small_club/detail_page/review_write';
 
 function App() {
     const isPc = useMediaQuery({
@@ -27,10 +29,13 @@ function App() {
                     <Routes>
                         <Route path="/" element={<MainPage />} />
                         <Route path="/menu/central_club/central_club" element={<CentralClub />} />
+                        {/* <Route path="/menu/central_club/detail_page/review_write" element={<ReviewWrite />} /> */}
                         <Route path="/menu/small_club/small_club" element={<SmallClub />} />
                         <Route path="/menu/small_club/detail_page/:clubId" element={<DetailPage />} />
+                        <Route path="/menu/small_club/detail_page/review_write" element={<ReviewWrite />} />
                         <Route path="/menu/central_club/branch/branchCentral" element={<BranchCentral />} />
                         <Route path="/menu/login" element={<LoginPage />} />
+                        <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
                     </Routes>
                     <Footer />
@@ -45,8 +50,10 @@ function App() {
                         <Route path="/menu/central_club/central_club" element={<CentralClub />} />
                         <Route path="/menu/small_club/small_club" element={<SmallClub />} />
                         <Route path="/menu/small_club/detail_page/:clubId" element={<DetailPage />} />
+                        <Route path="/menu/small_club/detail_page/review_write" element={<ReviewWrite />} />
                         <Route path="/menu/central_club/branch/branchCentral" element={<BranchCentral />} />
                         <Route path="/menu/login" element={<LoginPage />} />
+                        <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
                     </Routes>
                     <Footer />

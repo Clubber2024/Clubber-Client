@@ -4,6 +4,7 @@
         padding-right: 10px;
         padding-left: 10px;
     }
+
     .header_top {
         display: flex;
         flex-direction: row;
@@ -83,6 +84,7 @@
         color: #52555b;
         padding-right: 76px;
     }
+
     .tab_text_central_active {
         font-size: 16px;
         font-weight: 700;
@@ -95,6 +97,7 @@
         font-weight: 500;
         color: #52555b;
         padding-right: 7px;
+
     }
 
     .tab_text_small_active {
@@ -126,6 +129,7 @@
         width: 140px;
         padding-left: 10px;
     }
+
     .header_top {
         display: flex;
         flex-direction: row;
