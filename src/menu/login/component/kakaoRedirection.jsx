@@ -1,6 +1,6 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useEffect } from "react";
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 export default function KakaoRedirection() {
     // const [userId, setUserId] = useState(0);
@@ -40,10 +40,11 @@ export default function KakaoRedirection() {
         if (code) {
             console.log('Authorization Code : ', code);
             axios
-                .get(`http://15.164.211.56/v1/auths/oauth/kakao?code=${code}`)
+                .get(`http://13.125.141.171/v1/auths/oauth/kakao?code=${code}`)
                 .then((res) => {
                     const accessToken = res.data.accessToken;
                     localStorage.setItem('accessToken', accessToken);
+
                     // 메인 페이지 이동
                     navigate(`/`);
                 })
@@ -53,7 +54,5 @@ export default function KakaoRedirection() {
         }
     }, [location.search, navigate]);
 
-    return (
-        <>loading...</>
-    );
+    return <>loading...</>;
 }

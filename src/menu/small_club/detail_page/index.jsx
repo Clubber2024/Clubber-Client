@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import IntroductionTab from "./_component/IntroductionTab";
-import ReviewTab from "./_component/ReviewTab";
-import "./detailPage.css";
+import IntroductionTab from './_component/IntroductionTab';
+import ReviewTab from './_component/ReviewTab';
+import './detailPage.css';
 
-export default function DetailPage({ }) {
+export default function DetailPage({}) {
     const url = window.location.href; // 현재 URL 가져오기
     const urlParts = url.split('/'); // URL을 '/' 기준으로 분할
     const clubId = urlParts[urlParts.length - 1]; // 마지막 부분이 clubId
@@ -13,13 +13,13 @@ export default function DetailPage({ }) {
     const intClubId = parseInt(clubId, 10);
 
     console.log(clubId);
-    const [whichTab, setWhichTab] = useState("Introduction");
+    const [whichTab, setWhichTab] = useState('Introduction');
     const [detailData, setDetailData] = useState([]);
 
     const getDetailData = async () => {
         try {
             console.log(intClubId);
-            const res = await axios.get(`http://15.164.211.56:8080/v1/clubs/${intClubId}`);
+            const res = await axios.get(`http://13.125.141.171/v1/clubs/${intClubId}`);
             if (res.data.success) {
                 setDetailData(res.data.data);
                 console.log(res.data.data);
@@ -46,7 +46,11 @@ export default function DetailPage({ }) {
     return (
         <div className="detail_container">
             <div className="detail_header_container">
-                <img className="detail_logo" src={detailData.imageUrl || '/detail/club_logo_summit.png'} alt={`${detailData.clubName} logo`} />
+                <img
+                    className="detail_logo"
+                    src={detailData.imageUrl || '/detail/club_logo_summit.png'}
+                    alt={`${detailData.clubName} logo`}
+                />
                 <div className="detail_header">
                     <div className="detail_header_name">
                         <h3>{detailData.clubName}</h3>
@@ -60,10 +64,23 @@ export default function DetailPage({ }) {
                 </div>
             </div>
             <div className="detail_tab">
-                <button className={whichTab === "Introduction" ? "active" : ""} onClick={onClickIntroTab}>소개</button>
-                <button className={whichTab === "Review" ? "active" : ""} onClick={onClickReviewTab}>리뷰</button>
+                <button className={whichTab === 'Introduction' ? 'active' : ''} onClick={onClickIntroTab}>
+                    소개
+                </button>
+                <button className={whichTab === 'Review' ? 'active' : ''} onClick={onClickReviewTab}>
+                    리뷰
+                </button>
             </div>
-            {whichTab === 'Introduction' && <IntroductionTab clubName={detailData.clubName} college={detailData.college} department={detailData.department} introduction={detailData.introduction} instagram={detailData.instagram} imgUrl={detailData.imageUrl} />}
+            {whichTab === 'Introduction' && (
+                <IntroductionTab
+                    clubName={detailData.clubName}
+                    college={detailData.college}
+                    department={detailData.department}
+                    introduction={detailData.introduction}
+                    instagram={detailData.instagram}
+                    imgUrl={detailData.imageUrl}
+                />
+            )}
             {whichTab === 'Review' && <ReviewTab />}
         </div>
     );

@@ -13,6 +13,7 @@ import KakaoRedirection from './menu/login/component/kakaoRedirection';
 import BranchSmall from './menu/small_club/branch/branch_small';
 import BranchHashTag from './components/hashtag/component/branchHashtag';
 import ReviewWrite from './menu/small_club/detail_page/review_write';
+import Search from './menu/search/search';
 
 function App() {
     const isPc = useMediaQuery({
@@ -21,6 +22,9 @@ function App() {
     const isMobile = useMediaQuery({
         query: '(max-width:769px)',
     });
+
+    //로그인 처리
+    //const { isLogIn, setIsLogIn } = useState(false);
 
     return (
         <>
@@ -39,6 +43,7 @@ function App() {
                         <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
                         <Route path="/components/hashtag/component/branchHashtag" element={<BranchHashTag />} />
+                        <Route path="/menu/search" element={<Search />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -58,6 +63,7 @@ function App() {
                         <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
                         <Route path="/components/hashtag/component/branchHashtag" element={<BranchHashTag />} />
+                        <Route path="/menu/search" element={<Search />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>

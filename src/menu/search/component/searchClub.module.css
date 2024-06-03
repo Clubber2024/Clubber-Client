@@ -10,14 +10,15 @@
         margin: 10px;
     }
     .image {
-        position: absolute;
         width: 100%;
-        aspect-ratio: 1/1;
-        object-fit: contain;
         border-radius: 10px 10px 0px 0px;
         background: #ffffff;
+        aspect-ratio: 1/1;
+        object-fit: cover;
     }
-
+    .wrap {
+        display: flex;
+    }
     .title {
         font-family: Noto Sans KR;
         font-size: 16px;
@@ -26,6 +27,7 @@
         text-align: left;
         padding: 0 0 0 3%;
         margin: 0 0 5px 0;
+        float: left;
     }
     .content {
         width: 100%;
@@ -40,6 +42,14 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow-y: auto;
+    }
+    .department {
+        font-family: Noto Sans KR;
+        font-size: 10px;
+        font-weight: 300;
+        text-align: right;
+        margin-top: 6px;
+        margin-left: 4px;
     }
 }
 
@@ -58,7 +68,7 @@
         border-radius: 10px 10px 0px 0px;
         background: #ffffff;
         aspect-ratio: 1/1;
-        object-fit: contain;
+        object-fit: cover;
     }
 
     .title {
@@ -80,5 +90,11 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow-y: auto;
+    }
+    .department {
+        font-family: Noto Sans KR;
+        font-size: 10px;
+        font-weight: 300;
+        text-align: right;
     }
 }
