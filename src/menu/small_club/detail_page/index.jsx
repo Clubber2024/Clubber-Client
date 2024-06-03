@@ -19,7 +19,7 @@ export default function DetailPage({}) {
     const getDetailData = async () => {
         try {
             console.log(intClubId);
-            const res = await axios.get(`http://13.125.141.171/v1/clubs/${intClubId}`);
+            const res = await axios.get(`http://13.125.141.171:8080/v1/clubs/${intClubId}`);
             if (res.data.success) {
                 setDetailData(res.data.data);
                 console.log(res.data.data);
