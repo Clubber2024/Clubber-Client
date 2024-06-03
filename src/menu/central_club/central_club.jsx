@@ -41,11 +41,9 @@ function CentralClub() {
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
                         <img src="/central/megaphone.png" alt="megaphone" className={styles.rectangle_img} />
-                        <LinkItem to="/menu/central_club/branch">
-                            <h3 className={styles.title} onClick={() => onClicked('연행예술분과')}>
-                                연행예술분과
-                            </h3>
-                        </LinkItem>
+                        <h3 className={styles.title} onClick={() => onClicked('연행예술분과')}>
+                            연행예술분과
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -54,41 +52,33 @@ function CentralClub() {
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
                         <img src="/central/athletic.png" alt="athletic" className={styles.rectangle_img} />
-                        <LinkItem to="/menu/central_club/branch">
-                            <h3 className={styles.title} onClick={() => onClicked('종교분과')}>
-                                종교분과
-                            </h3>
-                        </LinkItem>
+                        <h3 className={styles.title} onClick={() => onClicked('종교분과')}>
+                            종교분과
+                        </h3>
                     </div>
                 </div>
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
                         <img src="/central/art.png" alt="art" className={styles.rectangle_img} />
-                        <LinkItem to="/menu/central_club/branch">
-                            <h3 className={styles.title} onClick={() => onClicked('창작전시분과')}>
-                                창작전시분과
-                            </h3>
-                        </LinkItem>
+                        <h3 className={styles.title} onClick={() => onClicked('창작전시분과')}>
+                            창작전시분과
+                        </h3>
                     </div>
                 </div>
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
                         <img src="/central/athletic.png" alt="athletic" className={styles.rectangle_img} />
-                        <LinkItem to="/menu/central_club/branch">
-                            <h3 className={styles.title} onClick={() => onClicked('체육분과')}>
-                                체육분과
-                            </h3>
-                        </LinkItem>
+                        <h3 className={styles.title} onClick={() => onClicked('체육분과')}>
+                            체육분과
+                        </h3>
                     </div>
                 </div>
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
                         <img src="/central/academic.png" alt="academic" className={styles.rectangle_img} />
-                        <LinkItem to="/menu/central_club/branch">
-                            <h3 className={styles.title} onClick={() => onClicked('학술분과')}>
-                                학술분과
-                            </h3>
-                        </LinkItem>
+                        <h3 className={styles.title} onClick={() => onClicked('학술분과')}>
+                            학술분과
+                        </h3>
                     </div>
                 </div>
             </div>
