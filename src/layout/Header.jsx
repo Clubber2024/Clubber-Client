@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import TagScroll from '../components/TagScroll';
 import './header.css';
 import axios from 'axios';
@@ -7,13 +7,16 @@ import axios from 'axios';
 export default function Header() {
     // 모든 페이지에서 공통적으로 나타날 헤더
     const location = useLocation();
+    const navigate = useNavigate();
+
     const [menubarActive, setMenuBarActive] = useState('');
-    //로그인 상태 관리
-    const [isLogin, setIsLogin] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+
     //로그인박스 표시 상태 관리
     const [showLoginBox, setShowLoginBox] = useState(false);
 
-    const login = localStorage.getItem('accessToken');
+    const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
         const path = location.pathname;
@@ -26,9 +29,56 @@ export default function Header() {
         }
     }, [location]);
 
+    useEffect(() => {
+        if (accessToken) {
+            axios
+                .get(`http://13.125.141.171:8080/v1/users/me`, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                })
+                .then((res) => {
+                    console.log(res.data.data.email);
+                    setUserEmail(res.data.data.email);
+                })
+                .catch((error) => {
+                    console.error('Error fetching user data:', error);
+                });
+        }
+    }, [accessToken]);
+
+    const handleUserContainerClick = () => {
+        if (!accessToken) {
+            navigate('/menu/login');
+        } else {
+            setShowLoginBox(!showLoginBox);
+        }
+    };
     const handleTabClick = (menu) => {
         return setMenuBarActive(menu);
     };
+
+    const handleLogout = async () => {
+        try {
+            const res = await axios.post(
+                'http://13.125.141.171:8080/v1/auths/logout',
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                }
+            );
+            console.log(res);
+            setShowLoginBox(false);
+            localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
+            // 로그아웃 이후 메인페이지 ? 로그인 페이지 ?
+            navigate('/');
+        } catch (error) {
+            console.error('로그아웃 실패:', error);
+        }
+    };
+
     //동아리 검색 기능 관련
     const handleInputChange = (event) => {
         const query = event.target.value;
@@ -49,23 +99,6 @@ export default function Header() {
         setSearchTerm('');
     };
 
-    /*
-
-    //로그인박스 구현 부분
-    /* const handleLogin = () => {
-        setIsLogin(true);
-    };
-    const handleLogout = () => {
-        setIsLogin(false);
-        setShowLoginBox(false);
-    };
-        */
-    const handleClick = () => {
-        if (isLogin) {
-            setShowLoginBox((prev) => !prev);
-        } //else{로그아웃 상태일 때}
-    };
-
     return (
         <>
             <div className="header_top">
@@ -84,12 +117,7 @@ export default function Header() {
                     />
                 </div>
                 <div className="user_container" onClick={handleUserContainerClick}>
-                    <img
-                        src="/buttons/user_login_icon.png"
-                        alt="user icon"
-                        width={39}
-                        height={39}
-                    />
+                    <img src="/buttons/user_login_icon.png" alt="user icon" width={39} height={39} />
                     <p className="login_text">{accessToken ? '내정보' : '로그인'}</p>
 
                     {accessToken && showLoginBox && (
@@ -98,7 +126,9 @@ export default function Header() {
                                 <img className="img" src="/buttons/user_login_icon.png" alt="user icon" />
 
                                 <p className="emailText">{userEmail}</p>
-                                <button className="logoutBtn" onClick={handleLogout}>로그아웃</button>
+                                <button className="logoutBtn" onClick={handleLogout}>
+                                    로그아웃
+                                </button>
                             </div>
                             <div className="line">
                                 <img className="icon_star" src="/main/starYellow.png" alt="star" />
