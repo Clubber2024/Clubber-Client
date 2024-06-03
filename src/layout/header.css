@@ -44,8 +44,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-
         padding-left: 37px;
+        cursor: pointer;
     }
 
     .login_text {
@@ -154,6 +154,7 @@
         line-height: 20px;
         margin-top: 32px;
         margin-left: 110px;
+        color: #000000;
     }
 
     .rectangle .logoutBtn {
@@ -280,6 +281,7 @@
         padding-left: 10px;
         padding-right: 10px;
         position: relative;
+        cursor: pointer;
     }
 
     .login_text {
@@ -395,6 +397,7 @@
         line-height: 20px;
         margin-top: 32px;
         margin-left: 110px;
+        color: #000000;
     }
 
     .rectangle .logoutBtn {
@@ -405,12 +408,13 @@
         border-radius: 14px;
         border: 0.5px;
         opacity: 0px;
-        font-size: 12px;
+        font-size: 11px;
         background: #ffffff;
         border: 0.5px solid #9c9c9c80;
         box-shadow: 2px #00000033;
         margin-top: 60px;
         margin-left: 95px;
+        padding-left: 9px;
     }
 
     .rectangle .line {

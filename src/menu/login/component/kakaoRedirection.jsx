@@ -13,7 +13,7 @@ export default function KakaoRedirection() {
             axios
                 .get(`http://13.125.141.171:8080/v1/auths/oauth/kakao?code=${code}`)
                 .then((res) => {
-                    const accessToken = res.data.accessToken;
+                    const accessToken = res.data.data.accessToken;
                     localStorage.setItem('accessToken', accessToken);
                     // 메인 페이지 이동
                     navigate(`/`);
@@ -23,7 +23,6 @@ export default function KakaoRedirection() {
                     console.error(error);
                 });
         }
-
     }, [location.search, navigate]);
 
     return <>loading...</>;
