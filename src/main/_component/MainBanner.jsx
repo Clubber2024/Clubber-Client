@@ -21,19 +21,19 @@ export default function MainBanner() {
         <>
             <Slider {...settings}>
                 <div className="banner_container">
-                    <img src="/main/banner_img.png" alt="main banner" />
+                    <img src="/main/banner1.png" alt="main banner" />
                 </div>
                 <div className="banner_container">
-                    <img src="/main/banner_img.png" alt="main banner" />
+                    <img src="/main/banner2.png" alt="main banner" />
                 </div>
                 <div className="banner_container">
-                    <img src="/main/banner_img.png" alt="main banner" />
+                    <img src="/main/banner3.png" alt="main banner" />
                 </div>
                 <div className="banner_container">
-                    <img src="/main/banner_img.png" alt="main banner" />
+                    <img src="/main/banner1.png" alt="main banner" />
                 </div>
-                <div className="banner_container">
-                    <img src="/main/banner_img.png" alt="main banner" />
+                <div className="banner_cotainer">
+                    <img src="/main/banner2.png" alt="main banner" />
                 </div>
             </Slider>
         </>

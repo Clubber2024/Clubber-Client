@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './hashtag.css';
-import { LinkItem } from '../../menu/central_club/central_club';
 
 const hashtag = [
     { band: '밴드' },

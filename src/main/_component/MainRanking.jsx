@@ -7,7 +7,7 @@ export default function MainRanking() {
 
     const getRankingData = async () => {
         try {
-            const res = await axios.get(`http://15.164.211.56:8080/v1/clubs/popular`);
+            const res = await axios.get(`http://13.125.141.171:8080/v1/clubs/popular`);
             if (res.data.success) {
                 setRankingData(res.data.data);
                 console.log(res.data.data);

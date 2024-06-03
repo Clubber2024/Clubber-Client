@@ -5,7 +5,14 @@
 
 .banner_container {
     width: 100%;
-    height: 295px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.banner_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .slick-dots li button {

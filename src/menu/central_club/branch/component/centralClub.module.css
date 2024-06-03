@@ -13,6 +13,8 @@
         width: 100%;
         border-radius: 10px 10px 0px 0px;
         background: #ffffff;
+        aspect-ratio: 1/1;
+        object-fit: cover;
     }
 
     .title {
@@ -42,7 +44,7 @@
 
 @media screen and (max-width: 769px) {
     .rectangle {
-        width: 25%;
+        width: 20%;
         height: 21.6%;
         border-radius: 10px;
         background: #ffffff;
@@ -54,6 +56,8 @@
         width: 100%;
         border-radius: 10px 10px 0px 0px;
         background: #ffffff;
+        aspect-ratio: 1/1;
+        object-fit: cover;
     }
 
     .title {

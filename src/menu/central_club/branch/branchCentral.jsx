@@ -14,7 +14,7 @@ function BranchCentral() {
 
     const getCentralClubs = async () => {
         try {
-            const response = await axios.get(`http://15.164.211.56:8080/v1/clubs?division=${division}`);
+            const response = await axios.get(`http://13.125.141.171:8080/v1/clubs?division=${division}`);
             setClubs(response.data.data.clubs);
         } catch (error) {
             setError(error);
@@ -48,6 +48,7 @@ function BranchCentral() {
                 </div>
             );
         }
+        return rows;
     };
 
     return (
