@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import TagScroll from '../components/TagScroll';
 import './header.css';
-import { LinkItem } from '../menu/central_club/central_club';
+import axios from 'axios';
 
 export default function Header() {
     // 모든 페이지에서 공통적으로 나타날 헤더
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const [userEmail, setUserEmail] = useState('');
     const [menubarActive, setMenuBarActive] = useState('');
-    //로그인 상태 관리
-    const [isLogin, setIsLogin] = useState(true);
+
+    const accessToken = localStorage.getItem('accessToken');
+
+    //로그인 상태 관리 -> 엑세스 토큰으로 관리 가능 !
+    // const [isLogin, setIsLogin] = useState(false);
     //로그인박스 표시 상태 관리
     const [showLoginBox, setShowLoginBox] = useState(false);
 
@@ -24,24 +30,52 @@ export default function Header() {
         }
     }, [location]);
 
+    useEffect(() => {
+        if (accessToken) {
+            axios.get(`http://13.125.141.171:8080/v1/users/me`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            })
+                .then(res => {
+                    console.log(res.data.data.email);
+                    setUserEmail(res.data.data.email);
+                })
+                .catch(error => {
+                    console.error('Error fetching user data:', error);
+                });
+        }
+    }, [accessToken]);
+
     const handleTabClick = (menu) => {
         return setMenuBarActive(menu);
     };
 
-    //로그인박스 구현 부분
-    /* const handleLogin = () => {
-        setIsLogin(true);
+    const handleUserContainerClick = () => {
+        if (!accessToken) {
+            navigate('/menu/login');
+        } else {
+            setShowLoginBox(!showLoginBox);
+        }
     };
-    const handleLogout = () => {
-        setIsLogin(false);
-        setShowLoginBox(false);
+
+    const handleLogout = async () => {
+        try {
+            const res = await axios.post('http://13.125.141.171:8080/v1/auths/logout', {}, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+            console.log(res);
+            setShowLoginBox(false);
+            localStorage.removeItem('accessToken');  // 로컬 스토리지에서 액세스 토큰 삭제
+            // 로그아웃 이후 메인페이지 ? 로그인 페이지 ?
+            navigate('/');
+        } catch (error) {
+            console.error('로그아웃 실패:', error);
+        }
     };
-        */
-    const handleClick = () => {
-        if (isLogin) {
-            setShowLoginBox((prev) => !prev);
-        } //else{로그아웃 상태일 때}
-    };
+
 
     return (
         <>
@@ -59,36 +93,33 @@ export default function Header() {
                     // onChange={onChange}
                     />
                 </div>
-                <LinkItem to="/menu/login">
-                    <div className="user_container">
-                        <img
-                            src="/buttons/user_login_icon.png"
-                            alt="user icon"
-                            width={39}
-                            height={39}
-                            onClick={handleClick}
-                        />
-                        <p className="login_text">로그인</p>
+                <div className="user_container" onClick={handleUserContainerClick}>
+                    <img
+                        src="/buttons/user_login_icon.png"
+                        alt="user icon"
+                        width={39}
+                        height={39}
+                    />
+                    <p className="login_text">{accessToken ? '내정보' : '로그인'}</p>
 
-                        {isLogin && showLoginBox && (
-                            <div className="rectangle">
-                                <div>
-                                    <img className="img" src="/buttons/user_login_icon.png" alt="user icon" />
+                    {accessToken && showLoginBox && (
+                        <div className="rectangle">
+                            <div>
+                                <img className="img" src="/buttons/user_login_icon.png" alt="user icon" />
 
-                                    <p className="emailText">clubber@naver.com</p>
-                                    <button className="logoutBtn">로그아웃</button>
-                                </div>
-                                <div className="line">
-                                    <img className="icon_star" src="/main/starYellow.png" alt="star" />
-                                    <p className="bookmarkBtn">나의 즐겨찾기</p>
-                                </div>
-                                <div className="verticalLine"></div>
-                                <img className="icon_message" src="/main/message-text.png" alt="message" />
-                                <p className="reviewBtn">내가 쓴 리뷰</p>
+                                <p className="emailText">{userEmail}</p>
+                                <button className="logoutBtn" onClick={handleLogout}>로그아웃</button>
                             </div>
-                        )}
-                    </div>
-                </LinkItem>
+                            <div className="line">
+                                <img className="icon_star" src="/main/starYellow.png" alt="star" />
+                                <p className="bookmarkBtn">나의 즐겨찾기</p>
+                            </div>
+                            <div className="verticalLine"></div>
+                            <img className="icon_message" src="/main/message-text.png" alt="message" />
+                            <p className="reviewBtn">내가 쓴 리뷰</p>
+                        </div>
+                    )}
+                </div>
             </div>
             <TagScroll />
             <div className="menu_container">

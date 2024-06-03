@@ -41,10 +41,8 @@ function Login() {
                                 {activeForm === 'sign-in-form-active' && (
                                     <form className="sign-in-form-active" onSubmit={handleFormSubmit}>
                                         <button type="button" className="button-style" onClick={kakaoLoginHandler}>
-                                            <div className="kakao">
-                                                <img className="kakaologo" alt="kakaologo" src="/login/kakaologo.png" />
-                                                <p className="text">카카오 로그인</p>
-                                            </div>
+                                            <img className="kakaologo" alt="kakaologo" src="/login/kakaologo.png" />
+                                            <p className="text">카카오 로그인</p>
                                         </button>
                                     </form>
                                 )}
