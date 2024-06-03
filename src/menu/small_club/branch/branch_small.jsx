@@ -14,7 +14,7 @@ function BranchSmall() {
 
     const getSmallClubs = async () => {
         try {
-            const response = await axios.get(`http://15.164.211.56:8080/v1/clubs?department=${department}`);
+            const response = await axios.get(`http://13.125.141.171:8080/v1/clubs?department=${department}`);
             setClubs(response.data.data.clubs);
         } catch (error) {
             setError(error);
@@ -39,8 +39,8 @@ function BranchSmall() {
                     {rowItems.map((club) => (
                         <SmallClub
                             key={club.clubId}
-                            imageUrl={club.imageUrl}
                             clubId={club.clubId}
+                            imageUrl={club.imageUrl}
                             clubName={club.clubName}
                             introduction={club.introduction}
                         />

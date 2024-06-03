@@ -15,7 +15,7 @@ function BranchHashTag() {
     const getHashTagClubs = async () => {
         try {
             setLoading(true);
-            const response = await axios.get(`http://15.164.211.56:8080/v1/clubs?hashtag=${hashtag}`);
+            const response = await axios.get(`http://13.125.141.171:8080/v1/clubs?hashtag=${hashtag}`);
             setClubs(response.data.data.clubs);
             setError(null);
         } catch (error) {
