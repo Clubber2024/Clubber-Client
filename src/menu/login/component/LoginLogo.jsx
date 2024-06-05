@@ -5,7 +5,7 @@ function LoginLogo() {
     return (
         <>
             <div>
-                <img src="/clubber.png" className="logo" alt="mainLogo" />
+                <img src="/CluBBer.png" className="logo" alt="mainLogo" />
                 <h6 className="mini_logo">be a clubber</h6>
             </div>
         </>

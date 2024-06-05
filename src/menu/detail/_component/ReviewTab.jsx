@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ReviewStatics from "./ReviewStatics";
 import "./reviewTab.css";
 import ReviewBox from "./ReviewBox";
@@ -7,7 +7,7 @@ export default function ReviewTab({ clubId, clubName }) {
     const navigate = useNavigate();
 
     const onClickReviewWrite = () => {
-        navigate('/menu/small_club/detail_page/review_write', { state: { clubId, clubName } });
+        navigate('/menu/detail/review_write', { state: { clubId, clubName } });
     }
 
     return (
