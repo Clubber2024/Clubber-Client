@@ -38,7 +38,7 @@ function App() {
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
-                        <Route path="/components/hashtag/component/branchHashtag" element={<BranchHashTag />} />
+                        <Route path="/components/hashtag/branchHashtag" element={<BranchHashTag />} />
                         <Route path="/menu/search" element={<Search />} />
                     </Routes>
                     <Footer />
