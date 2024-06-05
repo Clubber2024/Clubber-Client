@@ -24,6 +24,8 @@ export default function Header() {
             setMenuBarActive('tab_text_central_active');
         } else if (path.startsWith('/menu/small_club')) {
             setMenuBarActive('tab_text_small_active');
+        } else if (path.endsWith('/detail_page', 28)) {
+            setMenuBarActive('');
         } else {
             setMenuBarActive('');
         }

@@ -19,7 +19,7 @@ const hashtag = [
 export default function HashTag() {
     const navigate = useNavigate();
     const onClicked = (hashTagValue) => {
-        navigate(`/components/hashtag/component/branchHashtag`, { state: { hashtag: hashTagValue } });
+        navigate(`/components/hashtag/branchHashtag`, { state: { hashtag: hashTagValue } });
     };
     return (
         <>
@@ -27,11 +27,9 @@ export default function HashTag() {
                 const tagName = Object.keys(item)[0];
                 const tagVal = item[tagName];
                 return (
-                    <div className="tag_container" key={index}>
+                    <div className="tag_container" key={index} onClick={() => onClicked(tagVal)}>
                         <img src={`/main/hashtag/${tagName}_icon.png`} alt={`${tagName} icon`} width={48} height={45} />
-                        <p className="tag_text" onClick={() => onClicked(tagVal)}>
-                            # {tagVal}
-                        </p>
+                        <p className="tag_text"># {tagVal}</p>
                     </div>
                 );
             })}

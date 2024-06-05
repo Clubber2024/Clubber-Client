@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './clubDetail.module.css';
-import HashTag from '../../../../components/hashtag/HashTag';
+import HashTag from '../../../components/hashtag/HashTag';
 
 function ClubDetail({ clubId, clubName, introduction, imageUrl }) {
     return (
@@ -23,7 +23,6 @@ ClubDetail.propTypes = {
     //college :
     department: PropTypes.number.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    //clubinfo :
 };
 
 export default ClubDetail;

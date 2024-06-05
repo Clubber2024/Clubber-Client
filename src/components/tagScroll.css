@@ -6,10 +6,13 @@
     }
 
     .tags_wrapper {
+        padding-left: 5%;
+        padding-right: 3%;
         display: flex;
         flex-direction: row;
         overflow: auto;
         white-space: no-wrap;
+        justify-content: space-around;
     }
 
     .tags_wrapper::-webkit-scrollbar {
