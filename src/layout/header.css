@@ -158,8 +158,8 @@
 
     .rectangle .logoutBtn {
         float: left;
-        width: 64px;
-        height: 23px;
+        width: 70px;
+        height: 26px;
         gap: 0px;
         border-radius: 14px;
         border: 0.5px;
@@ -168,6 +168,7 @@
         background: #ffffff;
         border: 0.5px solid #9c9c9c80;
         box-shadow: 2px #00000033;
+        padding: 3px 0px 0px 12px;
         margin-top: 60px;
         margin-left: 95px;
     }
@@ -175,7 +176,7 @@
     .rectangle .line {
         width: 274px;
         height: 0px;
-        border: 3px solid #9c9c9c80;
+        border: 0.7px solid #9c9c9c80;
         margin-top: 100px;
     }
 
@@ -183,7 +184,7 @@
         width: 37px;
         height: 0px;
         transform: rotate(90deg);
-        border: 0.5px solid #9c9c9c80;
+        border: 0.7px solid #9c9c9c80;
         margin-top: 17px;
         margin-left: 125px;
         margin-right: 0;

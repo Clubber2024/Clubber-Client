@@ -7,13 +7,16 @@
 .statics_header {
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 39px 0px 15px 0px;
 }
 
 .review_write_btn {
     display: flex;
     flex-direction: row;
-    padding-left: 150px;
+    align-items: center;
+    margin-left: 30px;
+    cursor: pointer;
 }
 
 .statics_header p {
@@ -33,4 +36,3 @@
     height: 21px;
     margin: 0px 0px 3px;
 }
-

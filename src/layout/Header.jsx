@@ -9,14 +9,15 @@ export default function Header() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const [menubarActive, setMenuBarActive] = useState('');
-    const [searchTerm, setSearchTerm] = useState('');
     const [userEmail, setUserEmail] = useState('');
-
-    //로그인박스 표시 상태 관리
-    const [showLoginBox, setShowLoginBox] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [menubarActive, setMenuBarActive] = useState('');
 
     const accessToken = localStorage.getItem('accessToken');
+    console.log(localStorage.getItem('accessToken'));
+    // const accessToken = null;
+    //로그인박스 표시 상태 관리
+    const [showLoginBox, setShowLoginBox] = useState(false);
 
     useEffect(() => {
         const path = location.pathname;
@@ -31,21 +32,25 @@ export default function Header() {
 
     useEffect(() => {
         if (accessToken) {
-            axios
-                .get(`http://13.125.141.171:8080/v1/users/me`, {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                })
-                .then((res) => {
+            axios.get(`http://13.125.141.171:8080/v1/users/me`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            })
+                .then(res => {
                     console.log(res.data.data.email);
                     setUserEmail(res.data.data.email);
                 })
-                .catch((error) => {
+                .catch(error => {
                     console.error('Error fetching user data:', error);
                 });
         }
     }, [accessToken]);
+
+
+    const handleTabClick = (menu) => {
+        return setMenuBarActive(menu);
+    };
 
     const handleUserContainerClick = () => {
         if (!accessToken) {
@@ -54,24 +59,17 @@ export default function Header() {
             setShowLoginBox(!showLoginBox);
         }
     };
-    const handleTabClick = (menu) => {
-        return setMenuBarActive(menu);
-    };
 
     const handleLogout = async () => {
         try {
-            const res = await axios.post(
-                'http://13.125.141.171:8080/v1/auths/logout',
-                {},
-                {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                }
-            );
+            const res = await axios.post('http://13.125.141.171:8080/v1/auths/logout', {}, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
             console.log(res);
             setShowLoginBox(false);
-            localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
+            localStorage.removeItem('accessToken');  // 로컬 스토리지에서 액세스 토큰 삭제
             // 로그아웃 이후 메인페이지 ? 로그인 페이지 ?
             navigate('/');
         } catch (error) {
@@ -117,7 +115,12 @@ export default function Header() {
                     />
                 </div>
                 <div className="user_container" onClick={handleUserContainerClick}>
-                    <img src="/buttons/user_login_icon.png" alt="user icon" width={39} height={39} />
+                    <img
+                        src="/buttons/user_login_icon.png"
+                        alt="user icon"
+                        width={39}
+                        height={39}
+                    />
                     <p className="login_text">{accessToken ? '내정보' : '로그인'}</p>
 
                     {accessToken && showLoginBox && (
@@ -126,9 +129,7 @@ export default function Header() {
                                 <img className="img" src="/buttons/user_login_icon.png" alt="user icon" />
 
                                 <p className="emailText">{userEmail}</p>
-                                <button className="logoutBtn" onClick={handleLogout}>
-                                    로그아웃
-                                </button>
+                                <button className="logoutBtn" onClick={handleLogout}>로그아웃</button>
                             </div>
                             <div className="line">
                                 <img className="icon_star" src="/main/starYellow.png" alt="star" />

@@ -1,23 +1,36 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ReviewStatics from "./ReviewStatics";
 import "./reviewTab.css";
 import ReviewBox from "./ReviewBox";
 
-export default function ReviewTab() {
+export default function ReviewTab({ clubId, clubName }) {
+    const navigate = useNavigate();
+
+    const onClickReviewWrite = () => {
+        navigate('/menu/small_club/detail_page/review_write', { state: { clubId, clubName } });
+    }
+
     return (
         <div className="review_body">
             <div className="statics_container">
                 <div className="statics_header">
                     <h3>이런 점이 좋았어요!</h3>
-                    <Link className="review_write_btn" to="/menu/small_club/detail_page/review_write" style={{textDecoration: "none"}}>
-                        <img src="/buttons/write_review_icon.png" alt="write review"/>
+                    <div className="review_write_btn" onClick={onClickReviewWrite}>
+                        <img src="/buttons/write_review_icon.png" alt="write review" />
                         <p>리뷰쓰기</p>
-                    </Link>
+                    </div>
+                    {/* <Link className="review_write_btn" to={{
+                        pathname: "/menu/small_club/detail_page/review_write",
+                        state: { clubId: clubId }
+                    }} style={{ textDecoration: "none" }}>
+                        <img src="/buttons/write_review_icon.png" alt="write review" />
+                        <p>리뷰쓰기</p>
+                    </Link> */}
                 </div>
                 <ReviewStatics />
             </div>
             <div className="divider"></div>
-            <ReviewBox />
+            <ReviewBox clubId={clubId} />
         </div>
     )
 }

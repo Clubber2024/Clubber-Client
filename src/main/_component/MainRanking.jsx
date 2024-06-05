@@ -26,16 +26,12 @@ export default function MainRanking() {
         <div className={styles.container}>
             <div className={styles.ranking_index}>조회수</div>
             <div className={styles.ranking_container}>
-                {rankingData.map((item, index) => {
-                    return (
-                        <>
-                            <div key={index} className={styles.div_ranking}>
-                                <p>{index + 1}. </p>
-                                <p>{item.clubName}</p>
-                            </div>
-                        </>
-                    );
-                })}
+                {rankingData.map((item, index) => (
+                    <div key={item.clubName} className={styles.div_ranking}>
+                        <p>{index + 1}. </p>
+                        <p>{item.clubName}</p>
+                    </div>
+                ))}
             </div>
         </div>
     );

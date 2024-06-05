@@ -5,7 +5,7 @@ import IntroductionTab from './_component/IntroductionTab';
 import ReviewTab from './_component/ReviewTab';
 import './detailPage.css';
 
-export default function DetailPage({}) {
+export default function DetailPage({ }) {
     const url = window.location.href; // 현재 URL 가져오기
     const urlParts = url.split('/'); // URL을 '/' 기준으로 분할
     const clubId = urlParts[urlParts.length - 1]; // 마지막 부분이 clubId
@@ -81,7 +81,7 @@ export default function DetailPage({}) {
                     imgUrl={detailData.imageUrl}
                 />
             )}
-            {whichTab === 'Review' && <ReviewTab />}
+            {whichTab === 'Review' && <ReviewTab clubId={clubId} clubName={detailData.clubName} />}
         </div>
     );
 }
