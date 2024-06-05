@@ -1,57 +1,58 @@
-import "./reviewBox.css";
-
-// const keywordData = [
-//     {
-//         id: 1,
-//         contents: [
-//             { text: '😃 "분위기가 좋아요"'},
-//             { text: '💵 "회비가 적당해요"'},
-//             { text: '🕺🏻 "활동 참여가 자유로워요"'},
-//         ]
-//     },
-//     {
-//         id: 2,
-//         contents: [
-//             { text: '😃 "분위기가 좋아요"'},
-//             { text: '💵 "회비가 적당해요"'},
-//             { text: '🕺🏻 "활동 참여가 자유로워요"'},
-//             { text: '🏆 "대외활동에 좋아요"'},
-//             { text: '👍🏻 "운영진이 일을 잘해요"'}
-//         ]
-//     }
-// ];
+import './reviewBox.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const KeywordBar = ({ text }) => {
-    return (
-      <div className="keyword_container">
-        {text}
-      </div>  
-    );
-}
+    if (text === 'CULTURE') {
+        text = '😃 "분위기가 좋아요"';
+    } else if (text === 'FEE') {
+        text = '💵 "회비가 적당해요"';
+    } else if (text === 'ACTIVITY') {
+        text = '🕺🏻 "활동 참여가 자유로워요"';
+    } else if (text === 'CAREER') {
+        text = '🏆 "대외활동에 좋아요"';
+    } else if (text === 'MANAGE') {
+        text = '👍🏻 "운영진이 일을 잘해요"';
+    }
+    return <div className="keyword_container">{text}</div>;
+};
 
-export default function ReviewBox({ keywordData }) {
+export default function ReviewBox({ clubId }) {
+    const [reviewData, setReviewData] = useState([]);
+
+    useEffect(() => {
+        const fetchKeywordData = async () => {
+            try {
+                const res = await axios.get(`http://13.125.141.171:8080/v1/clubs/${clubId}/reviews`);
+                if (res.data.success) {
+                    setReviewData(res.data.data.clubReviews);
+                    console.log(reviewData);
+                }
+            } catch (error) {
+                console.error('Error fetching reviews:', error);
+            }
+        };
+
+        fetchKeywordData();
+    }, [clubId]);
+
     return (
         <>
-            <div className="review_box_container">
-                <div className="review_box_header">
-                    <p>익명 1</p>
-                    <span>2024.04.01</span>
+            {reviewData.map((review) => (
+                <div className="review_box_container">
+                    <div key={review.reviewId} className="review_box">
+                        <div className="review_box_header">
+                            <p>익명 {review.reviewId}</p>
+                            <span>{review.dateTime}</span>
+                        </div>
+                        <div className="review_box_contents">
+                            {review.keywords.map((item, index) => (
+                                <KeywordBar key={index} text={item} />
+                            ))}
+                        </div>
+                    </div>
                 </div>
-                {/* map을 2번 써야될듯 : box_contents, keywordBar */}
-                <div className="review_box_contents">
-                    <KeywordBar text='😃 "분위기가 좋아요"' />
-                    <KeywordBar text='😃 "분위기가 좋아요"' />
-                    <KeywordBar text='😃 "분위기가 좋아요"' />
-                    <KeywordBar text='😃 "분위기가 좋아요"' />
-                    {/* {keywordData.map((item) => (
-                        <KeywordBar 
-                            // key -> 각 리뷰 식별할 수 있는 변수
-                            id={item.id}
-                            text={item.contents.text} 
-                        />
-                    ))} */}
-                </div>
-            </div>
+            ))}
         </>
     );
 }

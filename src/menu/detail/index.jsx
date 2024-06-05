@@ -188,7 +188,7 @@ export default function DetailPage() {
                     room={clubInfoData.room}
                 />
             )}
-            {whichTab === 'Review' && <ReviewTab />}
+            {whichTab === 'Review' && <ReviewTab clubId={clubId} clubName={detailData.clubName} />}
         </div>
     );
 }

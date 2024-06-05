@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-//하위 페이지
+
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import MainPage from './main';
@@ -22,10 +22,6 @@ function App() {
     const isMobile = useMediaQuery({
         query: '(max-width:769px)',
     });
-
-    //로그인 처리
-    //const { isLogIn, setIsLogIn } = useState(false);
-
     return (
         <>
             {isPc && (
@@ -37,12 +33,12 @@ function App() {
                         {/* <Route path="/menu/central_club/detail_page/review_write" element={<ReviewWrite />} /> */}
                         <Route path="/menu/small_club/small_club" element={<SmallClub />} />
                         <Route path="/menu/detail/:clubId" element={<DetailPage />} />
-                        <Route path="/menu/small_club/detail_page/review_write" element={<ReviewWrite />} />
+                        <Route path="/menu/detail/review_write" element={<ReviewWrite />} />
                         <Route path="/menu/central_club/branch/branchCentral" element={<BranchCentral />} />
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
-                        <Route path="/components/hashtag/branchHashtag" element={<BranchHashTag />} />
+                        <Route path="/components/hashtag/component/branchHashtag" element={<BranchHashTag />} />
                         <Route path="/menu/search" element={<Search />} />
                     </Routes>
                     <Footer />
@@ -57,7 +53,7 @@ function App() {
                         <Route path="/menu/central_club/central_club" element={<CentralClub />} />
                         <Route path="/menu/small_club/small_club" element={<SmallClub />} />
                         <Route path="/menu/detail/:clubId" element={<DetailPage />} />
-                        <Route path="/menu/small_club/detail_page/review_write" element={<ReviewWrite />} />
+                        <Route path="/menu/detail/review_write" element={<ReviewWrite />} />
                         <Route path="/menu/central_club/branch/branchCentral" element={<BranchCentral />} />
                         <Route path="/menu/login" element={<LoginPage />} />
                         <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
@@ -71,5 +67,4 @@ function App() {
         </>
     );
 }
-
 export default App;
