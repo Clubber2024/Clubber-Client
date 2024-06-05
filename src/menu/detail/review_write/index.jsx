@@ -71,7 +71,7 @@ function ReviewWrite() {
                 }
             );
             console.log('리뷰 작성 성공:', response.data);
-            navigate(`/menu/small_club/detail_page/${clubId}`); // 해당 동아리 상세 페이지로 이동 -> 폴더구조 정리해서 리뷰페이지로 이동하게
+            navigate(`/menu/detail/${clubId}`); // 해당 동아리 상세 페이지로 이동 -> 폴더구조 정리해서 리뷰페이지로 이동하게
             setBtnActive({}); // 제출 후 버튼 상태를 초기화
         } catch (error) {
             console.error('리뷰 작성 실패:', error);
