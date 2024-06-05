@@ -171,21 +171,22 @@
         box-shadow: 2px #00000033;
         margin-top: 60px;
         margin-left: 95px;
+        padding-left: 7px;
     }
 
     .rectangle .line {
         width: 274px;
         height: 0px;
-        border: 3px solid #9c9c9c80;
+        border: 1px solid #9c9c9c80;
         margin-top: 100px;
     }
 
     .rectangle .verticalLine {
-        width: 37px;
+        width: 36px;
         height: 0px;
         transform: rotate(90deg);
         border: 0.5px solid #9c9c9c80;
-        margin-top: 17px;
+        margin-top: 16px;
         margin-left: 125px;
         margin-right: 0;
     }

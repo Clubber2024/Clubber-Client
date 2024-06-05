@@ -10,7 +10,7 @@ function Login() {
     //  rest api key와 redirect uri 값 받아서 해당 링크로 연결, window.location.href 이용하여 주소 변경
     const kakaoLoginHandler = () => {
         window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
-    }
+    };
     const handleTabClick = (form) => {
         setActiveForm(form);
     };
@@ -40,10 +40,18 @@ function Login() {
                             <div className="sign-in-up">
                                 {activeForm === 'sign-in-form-active' && (
                                     <form className="sign-in-form-active" onSubmit={handleFormSubmit}>
-                                        <button type="button" className="button-style" onClick={kakaoLoginHandler}>
-                                            <img className="kakaologo" alt="kakaologo" src="/login/kakaologo.png" />
-                                            <p className="text">카카오 로그인</p>
-                                        </button>
+                                        <div>
+                                            <button type="button" className="button-style" onClick={kakaoLoginHandler}>
+                                                <div className="center">
+                                                    <img
+                                                        className="kakaologo"
+                                                        alt="kakaologo"
+                                                        src="/login/kakaologo.png"
+                                                    />
+                                                    <p className="text">카카오 로그인</p>
+                                                </div>
+                                            </button>
+                                        </div>
                                     </form>
                                 )}
 

@@ -13,32 +13,13 @@ export default function DetailPage() {
     const [detailData, setDetailData] = useState([]);
     const [clubInfoData, setClubInfoData] = useState([]);
     //즐겨찾기 기능
-    const [favoriteId, setFavoriteId] = useState([]);
+    const [favoriteId, setFavoriteId] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
 
     //회원정보 조회
     const accessToken = localStorage.getItem('accessToken');
-    /*
-		const [userId, setUserId] = useState('');
+    console.log(accessToken);
 
-    useEffect(() => {
-        if (accessToken) {
-            axios
-                .get(`http://13.125.141.171:8080/v1/users/me`, {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                })
-                .then((res) => {
-                    console.log('UserId: ', res.data.data.id);
-                    setUserId(res.data.data.id);
-                })
-                .catch((error) => {
-                    console.error('Error fetching user data:', error);
-                });
-        }
-    }, [accessToken]);
-*/
     ///////////////////////////////////////
     const getDetailData = async () => {
         try {
@@ -78,65 +59,78 @@ export default function DetailPage() {
 		*/
 
     const getBookmarkData = async () => {
-        if (accessToken) {
-            try {
-                const response = await axios.get('http://13.125.141.171:8080/v1/users/favorite', {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                });
-                if (response.status == 200) {
-                    //setFavoriteId(response.data.data.userFavorites.favoriteClub['clubId']);
-                    console.log('success : ', response.data.data.userFavorites);
+        try {
+            const response = await axios.get('http://13.125.141.171:8080/v1/users/favorite', {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+            if (response.data.success) {
+                const data = response.data.data.userFavorites;
+                console.log('Data: ', data);
+                const clubIds = data.map((item) => item.favoriteClub['clubId']);
+                //console.log(clubIds);
+                const isFavoriteClub = clubIds.some((id) => id === intClubId);
+                const favorite = data.find((item) => item.favoriteClub['clubId'] === intClubId);
+                console.log('isfavoriteClub: ', isFavoriteClub);
+                setIsFavorite(isFavoriteClub);
+                if (favorite) {
+                    setFavoriteId(favorite.favoriteId);
                 } else {
-                    console.error('Failed to fetch bookmark data');
+                    setFavoriteId(null);
                 }
-            } catch (error) {
-                console.error('Error fetching bookmark data : ', error);
+            } else {
+                console.error('Failed to fetch bookmark data');
             }
+        } catch (error) {
+            console.error('Error fetching bookmark data : ', error);
         }
     };
 
-    useEffect(() => {
-        if (clubId) {
-            setIsFavorite(favoriteId.includes(intClubId));
-        }
-    }, [favoriteId, clubId]);
-
     const handleFavorite = async () => {
-        const baseUrl = 'http://13.125.141.171:8080/v1/clubs';
         const favoriteData = {
             clubId: intClubId,
-            //userId: userId,
-            favoriteId: intClubId,
         };
 
         //if (!userId) return; //로그아웃 시 기능x
         try {
             if (isFavorite) {
-                const res = await axios.delete(`${baseUrl}/${intClubId}/favorites/${intClubId}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                    data: {
-                        favoriteData,
-                    },
-                });
+                const res = await axios.delete(
+                    `http://13.125.141.171:8080/v1/clubs/${intClubId}/favorites/${favoriteId}`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    }
+                );
                 if (res.status == 200) {
                     console.log('delete res:', res);
-                    //setIsFavorite(false);
+                    setIsFavorite(false);
+                    setFavoriteId(null);
+                } else {
+                    console.error('Failed to delete favorite:', res);
+                    return; // 실패 시 추가 요청을 하지 않음
                 }
-            } else {
-                const res = await axios.post(`${baseUrl}/${intClubId}/favorites`, favoriteData, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                });
-                if (res.status === 200) {
-                    console.log('add res : ', res);
-                    //setIsFavorite(true);
+            }
+
+            if (!isFavorite) {
+                const addres = await axios.post(
+                    `http://13.125.141.171:8080/v1/clubs/${intClubId}/favorites`,
+                    favoriteData,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    }
+                );
+                if (addres.data.success) {
+                    console.log('add res : ', addres);
+                    setIsFavorite(true);
+                    setFavoriteId(addres.data.data.favoriteId);
+                } else {
+                    console.error('Failed to add favorite:', addres);
                 }
             }
             getBookmarkData(); // 각 요청 후 즐겨찾기 리스트 업데이트
@@ -152,7 +146,7 @@ export default function DetailPage() {
                 <div className="detail_header">
                     <div className="detail_header_name">
                         <h3>{detailData.clubName}</h3>
-                        <img className="insta_icon" src="/buttons/instagram_icon.png" alt="instagram" />
+
                         <img
                             className="star_icon"
                             src={isFavorite ? '/bookmark/starYellow.png' : '/bookmark/star.png'}
@@ -161,7 +155,11 @@ export default function DetailPage() {
                         />
                     </div>
                     <div className="association_btn">
-                        <span>{detailData.college == null ? '중앙동아리' : detailData.college}</span>
+                        <span>
+                            {detailData.college === null || detailData.college === ''
+                                ? '중앙동아리'
+                                : detailData.college}
+                        </span>
                         <span>|</span>
                         <span>{detailData.department || detailData.division}</span>
                     </div>
@@ -180,9 +178,10 @@ export default function DetailPage() {
                     clubName={detailData.clubName}
                     college={detailData.college}
                     department={detailData.department}
+                    division={detailData.division}
                     introduction={detailData.introduction}
-                    instagram={detailData.instagram}
                     imgUrl={detailData.imageUrl}
+                    instagram={clubInfoData.instagram}
                     activity={clubInfoData.activity}
                     leader={clubInfoData.leader}
                     room={clubInfoData.room}
