@@ -6,7 +6,7 @@ import { LinkItem } from '../../central_club';
 function CentralClub({ clubId, imageUrl, clubName, introduction }) {
     return (
         <div className={styles.rectangle}>
-            <LinkItem to={`/menu/small_club/detail_page/${clubId}`}>
+            <LinkItem to={`/menu/detail/${clubId}`}>
                 <img className={styles.image} alt={clubName} src={imageUrl} />
                 <h3 className={styles.title}>{clubName}</h3>
                 <p className={styles.content}>{introduction}</p>
