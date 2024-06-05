@@ -27,7 +27,7 @@ export default function ReviewTab({ clubId, clubName }) {
                         <p>리뷰쓰기</p>
                     </Link> */}
                 </div>
-                <ReviewStatics />
+                <ReviewStatics clubId={clubId} />
             </div>
             <div className="divider"></div>
             <ReviewBox clubId={clubId} />
