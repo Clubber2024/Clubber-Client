@@ -4,6 +4,7 @@
         height: 177px;
         margin: 0px;
         background: #7bc8e0;
+        margin-bottom: 5%;
     }
     .header_title {
         font-family: Noto Sans KR;
@@ -19,8 +20,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 5%;
     }
 }
 
@@ -30,6 +30,7 @@
         height: 150px;
         margin: 0px;
         background: #7bc8e0;
+        margin-bottom: 5%;
     }
     .header_title {
         font-family: Noto Sans KR;
@@ -44,7 +45,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 5%;
     }
 }

@@ -24,7 +24,7 @@ export default function IntroductionTab({
     };
 
     // 줄바꿈이 적용된 텍스트를 렌더링하는 컴포넌트 예시
-    const newLines = ({ text }) => {
+    const NewLines = ({ text }) => {
         return <div>{handleNewLines(text)}</div>;
     };
 
@@ -48,7 +48,7 @@ export default function IntroductionTab({
                 <br></br>
                 <strong>📌 소모임 활동</strong>
                 <p>
-                    <newLines text={activity} />
+                    <NewLines text={activity} />
                 </p>
                 <br></br>
                 <strong>📌 소모임장</strong>
