@@ -14,6 +14,7 @@ import BranchSmall from './menu/small_club/branch/branch_small';
 import BranchHashTag from './components/hashtag/branchHashtag';
 import ReviewWrite from './menu/detail/review_write';
 import Search from './menu/search/search';
+import SummaryPage from './menu/summary';
 
 function App() {
     const isPc = useMediaQuery({
@@ -40,6 +41,7 @@ function App() {
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
                         <Route path="/components/hashtag/branchHashtag" element={<BranchHashTag />} />
                         <Route path="/menu/search" element={<Search />} />
+                        <Route path="/menu/summary" element={<SummaryPage />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -60,6 +62,7 @@ function App() {
                         <Route path="/menu/small_club/branch/branch_small" element={<BranchSmall />} />
                         <Route path="/components/hashtag/branchHashtag" element={<BranchHashTag />} />
                         <Route path="/menu/search" element={<Search />} />
+                        <Route path="/menu/summary" element={<SummaryPage />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
