@@ -68,6 +68,7 @@
         font-size: 18px;
         font-weight: 500;
         padding-right: 31px;
+        color: #52555b;
     }
 
     .tab_text_highlight_active {
@@ -77,6 +78,7 @@
         border: 0;
         background-color: transparent;
         cursor: pointer;
+        color: #52555b;
     }
 
     .tab_text_central {
@@ -313,15 +315,18 @@
         background-color: transparent;
         cursor: pointer;
         text-align: left;
+        color: #52555b;
     }
 
     .tab_text_highlight_active {
+        width: 90px;
         font-size: 14px;
         font-weight: 700;
-        padding-right: 0;
+        padding-right: 1%;
         border: 0;
         background-color: transparent;
         cursor: pointer;
+        color: #52555b;
     }
 
     .tab_text_central {

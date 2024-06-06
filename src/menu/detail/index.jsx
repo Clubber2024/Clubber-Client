@@ -15,10 +15,10 @@ export default function DetailPage() {
     //즐겨찾기 기능
     const [favoriteId, setFavoriteId] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     //회원정보 조회
     const accessToken = localStorage.getItem('accessToken');
-    console.log(accessToken);
 
     ///////////////////////////////////////
     const getDetailData = async () => {
@@ -59,6 +59,7 @@ export default function DetailPage() {
 		*/
 
     const getBookmarkData = async () => {
+        setIsLoading(true);
         try {
             const response = await axios.get('http://13.125.141.171:8080/v1/users/favorite', {
                 headers: {
@@ -66,6 +67,7 @@ export default function DetailPage() {
                 },
             });
             if (response.data.success) {
+                setIsLoading(false);
                 const data = response.data.data.userFavorites;
                 console.log('Data: ', data);
                 const clubIds = data.map((item) => item.favoriteClub['clubId']);
@@ -89,7 +91,7 @@ export default function DetailPage() {
 
     const handleFavorite = async () => {
         const favoriteData = {
-            clubId: intClubId,
+            clubId: clubId,
         };
 
         //if (!userId) return; //로그아웃 시 기능x
@@ -107,7 +109,7 @@ export default function DetailPage() {
                 if (res.status == 200) {
                     console.log('delete res:', res);
                     setIsFavorite(false);
-                    setFavoriteId(null);
+                    setFavoriteId(null); //즐겨찾기 ID 초기화
                 } else {
                     console.error('Failed to delete favorite:', res);
                     return; // 실패 시 추가 요청을 하지 않음
@@ -135,7 +137,8 @@ export default function DetailPage() {
             }
             getBookmarkData(); // 각 요청 후 즐겨찾기 리스트 업데이트
         } catch (error) {
-            console.log('favorite err: ', error);
+            console.error('Favorite error:', error); // 에러 로그
+            getBookmarkData(); //에러 발생해도 업데이트
         }
     };
 

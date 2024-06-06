@@ -24,8 +24,8 @@ export default function Header() {
             setMenuBarActive('tab_text_central_active');
         } else if (path.startsWith('/menu/small_club')) {
             setMenuBarActive('tab_text_small_active');
-        } else if (path.endsWith('/detail_page', 28)) {
-            setMenuBarActive('');
+        } else if (path.startsWith('/menu/summary')) {
+            setMenuBarActive('tab_text_highlight_active');
         } else {
             setMenuBarActive('');
         }
@@ -145,15 +145,20 @@ export default function Header() {
             </div>
             <TagScroll />
             <div className="menu_container">
-                <p
-                    className={
-                        menubarActive === 'tab_text_highlight_active'
-                            ? 'tab_text_highlight_active'
-                            : 'tab_text_highlight'
-                    }
-                >
-                    한눈에 보기
-                </p>
+                <Link to="/menu/summary" style={{ textDecoration: 'none' }}>
+                    <p
+                        className={
+                            menubarActive === 'tab_text_highlight_active'
+                                ? 'tab_text_highlight_active'
+                                : 'tab_text_highlight'
+                        }
+                        onClick={() => {
+                            handleTabClick('tab_text_higlight_active');
+                        }}
+                    >
+                        한눈에 보기
+                    </p>
+                </Link>
                 <div className="vertical_line"></div>
                 <Link to="/menu/central_club/central_club" style={{ textDecoration: 'none' }}>
                     <p
