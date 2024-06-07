@@ -4,8 +4,9 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        width: 90%;
-        padding-left: 16%;
+        /*width: 80%;*/
+        margin-left: 20%;
+        margin-right: 20%;
         margin-top: 32px;
         margin-bottom: 347px;
     }
@@ -18,9 +19,8 @@
 @media screen and (max-width: 768px) {
     .notice_ranking_container {
         display: block;
-
-        align-items: left;
-        padding-left: 16%;
+        /*align-items: center;*/
+        padding-left: 25%;
         width: 90%;
         margin-top: 32px;
         margin-bottom: 347px;

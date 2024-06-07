@@ -2,13 +2,15 @@
     .container {
         position: relative;
         width: 30%;
+        margin-left: -10%;
+        margin-right: 5%;
     }
 
     .ranking_index {
         position: absolute;
         z-index: 1;
         top: 3px;
-        left: 38px;
+        left: 25px;
         color: black;
         background-color: #9c9c9c1a;
         border: 0.7px solid #0000001a;
@@ -25,8 +27,8 @@
         position: absolute;
         z-index: 2;
         top: 35px;
-        left: 0px;
-        width: 70%;
+        left: -10px;
+        width: 90%;
         /* height: 215px; */
         background-color: white;
         border-radius: 13px;
@@ -65,7 +67,7 @@
         position: relative;
         width: 100px;
         z-index: 1;
-        top: 150px;
+        top: 240px;
         left: 15px;
         color: black;
         background-color: #9c9c9c1a;
@@ -82,7 +84,7 @@
     .ranking_container {
         position: relative;
         z-index: 2;
-        top: 140px;
+        top: 230px;
         left: -20px;
         width: 80%;
         /* height: 215px; */

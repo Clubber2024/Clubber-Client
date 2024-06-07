@@ -6,9 +6,9 @@ import { useEffect } from 'react';
 // 데이터 예시
 // 각 bar마다 color 다르게
 const labels = {
-    ACTIVITY: '😃 "분위기가 좋아요"',
+    ACTIVITY: '🕺🏻 "활동 참여가 자유로워요"',
     CAREER: '🏆 "대외활동에 좋아요"',
-    CULTURE: '🕺🏻 "활동 참여가 자유로워요"',
+    CULTURE: '😃 "분위기가 좋아요"',
     FEE: '💵 "회비가 적당해요"',
     MANAGE: '👍🏻 "운영진이 일을 잘해요"',
 };

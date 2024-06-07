@@ -1,33 +1,71 @@
-.review-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+@media screen and (min-width: 768px) {
+    .review-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .bar-container {
+        /* width: 120%; */
+        height: 35px;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        overflow: hidden;
+        /* position: relative; */
+    }
+
+    .bar {
+        height: 100%;
+        background-color: #9fd8ea;
+        display: flex;
+        align-items: center;
+        padding: 0 8px;
+        border-radius: 12px;
+    }
+
+    .text {
+        color: #000;
+        font-size: 15px;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: visible;
+        padding-left: 7px;
+        /* text-overflow: ellipsis; */
+    }
 }
 
-.bar-container {
-  /* width: 120%; */
-  height: 35px;
-  background-color: #F2F2F2;
-  border-radius: 10px;
-  overflow: hidden;
-  /* position: relative; */
-}
+@media screen and (max-width: 768px) {
+    .review-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
 
-.bar {
-  height: 100%;
-  background-color: #9fd8ea;
-  display: flex;
-  align-items: center;
-  padding: 0 8px;
-  border-radius: 12px;
-}
+    .bar-container {
+        /* width: 120%; */
+        height: 35px;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        overflow: hidden;
+        /* position: relative; */
+    }
 
-.text {
-  color: #000;
-  font-size: 15px;
-  font-weight: 700;
-  white-space: nowrap;
-  overflow: visible;
-  padding-left: 7px;
-  /* text-overflow: ellipsis; */
+    .bar {
+        height: 100%;
+        background-color: #9fd8ea;
+        display: flex;
+        align-items: center;
+        padding: 0 8px;
+        border-radius: 12px;
+    }
+
+    .text {
+        color: #000;
+        font-size: 14px;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: visible;
+        padding-left: 7px;
+        /* text-overflow: ellipsis; */
+    }
 }
