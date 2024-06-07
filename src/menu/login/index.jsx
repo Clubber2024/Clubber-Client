@@ -1,6 +1,5 @@
 import React from 'react';
 import LoginLogo from './component/LoginLogo';
-import Footer from '../../layout/Footer';
 import styles from './index.module.css';
 import Login from './component/login';
 
