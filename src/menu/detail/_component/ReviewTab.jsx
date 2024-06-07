@@ -19,13 +19,6 @@ export default function ReviewTab({ clubId, clubName }) {
                         <img src="/buttons/write_review_icon.png" alt="write review" />
                         <p>리뷰쓰기</p>
                     </div>
-                    {/* <Link className="review_write_btn" to={{
-                        pathname: "/menu/small_club/detail_page/review_write",
-                        state: { clubId: clubId }
-                    }} style={{ textDecoration: "none" }}>
-                        <img src="/buttons/write_review_icon.png" alt="write review" />
-                        <p>리뷰쓰기</p>
-                    </Link> */}
                 </div>
                 <ReviewStatics clubId={clubId} />
             </div>
