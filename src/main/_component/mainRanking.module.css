@@ -67,7 +67,7 @@
         position: relative;
         width: 100px;
         z-index: 1;
-        top: 260px;
+        top: 240px;
         left: 15px;
         color: black;
         background-color: #9c9c9c1a;
@@ -84,7 +84,7 @@
     .ranking_container {
         position: relative;
         z-index: 2;
-        top: 250px;
+        top: 230px;
         left: -20px;
         width: 80%;
         /* height: 215px; */

@@ -1,40 +1,96 @@
-.statics_container {
-    width: 90%;
+@media screen and (min-width: 780px) {
+    .review_body {
+        width: 30%;
+    }
+
+    .statics_container {
+        width: 120%;
+    }
+
+    .divider {
+        width: 140%;
+        border: 0.2px solid #9c9c9c4d;
+        margin: 40px 0px 40px 0px;
+    }
+
+    .statics_header {
+        display: flex;
+        flex-direction: row;
+        padding: 39px 0px 15px 0px;
+        justify-content: space-between;
+    }
+
+    .review_write_btn {
+        display: flex;
+        flex-direction: row;
+        padding-left: 10%;
+        justify-items: space-between;
+    }
+
+    .statics_header p {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: #1954b2;
+        font-size: 14px;
+        font-weight: 400;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .statics_container img {
+        width: 21px;
+        height: 21px;
+        margin: 0px 0px 3px;
+    }
 }
 
-.divider {
-    width: 140%;
-    border: 0.2px solid #9C9C9C4D;
-    margin: 40px 0px 40px 0px;
-}
+@media screen and (max-width: 780px) {
+    .review_body {
+        width: 40%;
+    }
 
-.statics_header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 39px 0px 15px 0px;
-}
+    .statics_container {
+        width: 120%;
+    }
 
-.review_write_btn {
-    display: flex;
-    flex-direction: row;
-    padding-left: 150px;
-}
+    .divider {
+        width: 140%;
+        border: 0.2px solid #9c9c9c4d;
+        margin: 40px 0px 40px 0px;
+    }
 
-.statics_header p {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: #1954B2;
-    font-size: 14px;
-    font-weight: 400;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+    .statics_header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 39px 0px 15px 0px;
+        font-size: 14px;
+    }
 
-.statics_container img {
-    width: 21px;
-    height: 21px;
-    margin: 0px 0px 3px;
+    .review_write_btn {
+        display: flex;
+        align-items: right;
+        flex-direction: row;
+        padding-left: 2%;
+    }
+
+    .statics_header p {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: #1954b2;
+        font-size: 12px;
+        font-weight: 400;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .statics_container img {
+        width: 21px;
+        height: 21px;
+        margin: 0px 0px 3px;
+    }
 }
