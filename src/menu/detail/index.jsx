@@ -20,7 +20,6 @@ export default function DetailPage() {
     //회원정보 조회
     const accessToken = localStorage.getItem('accessToken');
 
-    ///////////////////////////////////////
     const getDetailData = async () => {
         try {
             console.log(intClubId);
@@ -53,10 +52,10 @@ export default function DetailPage() {
 
     //즐겨찾기 기능
     /*
-		const onClickFavorite = () => {
+        const onClickFavorite = () => {
         setIsFavorite((prev) => !prev);
     };
-		*/
+        */
 
     const getBookmarkData = async () => {
         setIsLoading(true);

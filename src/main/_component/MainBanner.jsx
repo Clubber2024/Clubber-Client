@@ -3,8 +3,11 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function MainBanner() {
+    const navigate = useNavigate();
+
     // 메인페이지에 보여줄 배너 (슬라이더 최대 5개)
     const settings = {
         dots: true,
@@ -17,13 +20,21 @@ export default function MainBanner() {
         autoplaySpeed: 3000,
     };
 
+    const onClickBan1 = () => {
+        navigate("/");
+    }
+
+    const onClickBan2 = () => {
+        navigate("/menu/summary");
+    }
+
     return (
         <>
             <Slider {...settings}>
-                <div className="banner_container">
+                <div className="banner_container" onClick={onClickBan1}>
                     <img src="/main/banner1.png" alt="main banner" />
                 </div>
-                <div className="banner_container">
+                <div className="banner_container" onClick={onClickBan2}>
                     <img src="/main/banner2.png" alt="main banner" />
                 </div>
                 <div className="banner_container">
