@@ -3,13 +3,18 @@ import axios from 'axios';
 import IntroductionTab from './_component/IntroductionTab';
 import ReviewTab from './_component/ReviewTab';
 import './detailPage.css';
+import { useLocation } from 'react-router-dom';
 
 export default function DetailPage() {
     const url = window.location.href; // 현재 URL 가져오기
     const urlParts = url.split('/'); // URL을 '/' 기준으로 분할
     const clubId = urlParts[urlParts.length - 1]; // 마지막 부분이 clubId
     const intClubId = parseInt(clubId, 10);
-    const [whichTab, setWhichTab] = useState('Introduction');
+
+    const location = useLocation();
+    const tab = location.state || 'Introduction';
+    console.log(tab);
+    const [whichTab, setWhichTab] = useState(tab);
     const [detailData, setDetailData] = useState([]);
     const [clubInfoData, setClubInfoData] = useState([]);
     //즐겨찾기 기능
@@ -20,7 +25,6 @@ export default function DetailPage() {
     //회원정보 조회
     const accessToken = localStorage.getItem('accessToken');
 
-    ///////////////////////////////////////
     const getDetailData = async () => {
         try {
             console.log(intClubId);
@@ -53,10 +57,10 @@ export default function DetailPage() {
 
     //즐겨찾기 기능
     /*
-		const onClickFavorite = () => {
+        const onClickFavorite = () => {
         setIsFavorite((prev) => !prev);
     };
-		*/
+        */
 
     const getBookmarkData = async () => {
         setIsLoading(true);

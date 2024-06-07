@@ -1,3 +1,7 @@
+.statics_container {
+    width: 90%;
+}
+
 .divider {
     width: 140%;
     border: 0.2px solid #9C9C9C4D;
@@ -7,6 +11,7 @@
 .statics_header {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     padding: 39px 0px 15px 0px;
 }
 
@@ -33,4 +38,3 @@
     height: 21px;
     margin: 0px 0px 3px;
 }
-
