@@ -10,6 +10,7 @@
     margin-bottom: 30px;
     margin-top: 39px;
 }
+
 button {
     width: 433px;
     height: 50px;
@@ -26,14 +27,16 @@ button {
 }
 
 .button-active {
-    background-color: #60c1c31a;
-    border: 1.5px solid #60c1c3;
-    color: #60c1c3;
+    background-color: #7BC8E01A;
+    border: 1.5px solid #7BC8E0;
+    color: #7BC8E0;
 }
+
 .button_text {
     display: inline-block;
     vertical-align: middle;
 }
+
 .img {
     width: 20px;
     height: 20spx;
@@ -42,19 +45,21 @@ button {
     margin-left: 21px;
     vertical-align: middle;
 }
+
 .submit-active {
     width: 90px;
     height: 40px;
     border-radius: 5px;
-    background: #60c1c3;
+    background: #7BC8E0;
     font-family: Noto Sans KR;
     font-size: 16px;
     font-weight: 700;
     text-align: center;
     color: #ffffff;
-    border-color: #60c1c3;
+    border-color: #7BC8E0;
     margin-top: 30px;
 }
+
 .submit {
     width: 90px;
     height: 40px;
