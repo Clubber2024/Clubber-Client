@@ -16,6 +16,7 @@ export default function Header() {
     //로그인박스 표시 상태 관리
     const [showLoginBox, setShowLoginBox] = useState(false);
 
+    // const accessToken = localStorage.getItem(null);
     const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
