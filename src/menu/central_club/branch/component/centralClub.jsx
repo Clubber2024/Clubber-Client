@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './centralClub.module.css';
-import { LinkItem } from '../../central_club';
+import { LinkItem } from '../../../../component/centralClub/CentralClub';
 
 function CentralClub({ clubId, imageUrl, clubName, introduction }) {
     return (

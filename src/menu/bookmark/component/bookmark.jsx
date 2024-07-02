@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './bookmark.module.css';
-import Header from '../../../layout/Header';
-import Footer from '../../../layout/Footer';
+import axios from 'axios';
 import StarButton from './starButton';
 import ClubImage from '../bookmark_image/club.png';
 import styled from 'styled-components';
+import FavoriteClubs from './favoriteClubs';
 
 const Club = styled.img`
     width: 100px;
@@ -13,22 +13,42 @@ const Club = styled.img`
     float: left;
 `;
 function BookMark() {
+    const [loading, setLoading] = useState(true);
+    const [clubs, setClubs] = useState([]);
+    const [error, setError] = useState(null);
+
+    const getFavorites = async () => {
+        try {
+            const res = await axios.get(`http://13.125.141.171:8080/v1/users/favorite`);
+            setClubs(res.data.data.favorties);
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        getFavorites();
+    }, []);
+
+    const favoriteClub = ({ data }) => {
+        {
+            data.map((club) => (
+                <div className={styles.rectangle}>
+                    <Club src={ClubImage} />
+                    <FavoriteClubs key={club.id} name={club.name} type={club.type} />
+                    <StarButton />
+                </div>
+            ));
+        }
+    };
+
     return (
         <>
             <div>
                 <div className={styles.title}> 나의 즐겨찾기 </div>
-                <div className={styles.rectangle}>
-                    <Club src={ClubImage} />
-                    <p className={styles.club_name}>summit</p>
-                    <p className={styles.club_branch}>IT대</p>
-                    <StarButton />
-                </div>
-                <div className={styles.rectangle}>
-                    <Club src={ClubImage} />
-                    <p className={styles.club_name}>유어슈</p>
-                    <p className={styles.club_branch}>중앙동아리</p>
-                    <StarButton />
-                </div>
+                {favoriteClub(clubs)}
             </div>
         </>
     );

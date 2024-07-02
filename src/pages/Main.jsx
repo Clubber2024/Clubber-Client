@@ -1,6 +1,6 @@
-import MainBanner from './_component/MainBanner';
-import MainRanking from './_component/MainRanking';
-import MainNotice from './_component/MainNotice';
+import MainBanner from '../component/main/MainBanner';
+import MainRanking from '../component/main/MainRanking';
+import MainNotice from '../component/main/MainNotice';
 import './mainPage.css';
 
 export default function MainPage() {

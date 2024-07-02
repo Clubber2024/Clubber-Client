@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import TagScroll from '../components/TagScroll';
-import './header.css';
+import TagScroll from '../../components/TagScroll';
 import axios from 'axios';
+import BookMark from '../../menu/bookmark/component/bookmark';
+import { LinkItem } from '../centralClub/CentralClub';
+import './header.css';
 
 export default function Header() {
     // 모든 페이지에서 공통적으로 나타날 헤더
@@ -132,10 +134,14 @@ export default function Header() {
                                     로그아웃
                                 </button>
                             </div>
+
                             <div className="line">
-                                <img className="icon_star" src="/main/starYellow.png" alt="star" />
-                                <p className="bookmarkBtn">나의 즐겨찾기</p>
+                                <Link to="/menu/bookmark">
+                                    <img className="icon_star" src="/main/starYellow.png" alt="star" />
+                                    <p className="bookmarkBtn">나의 즐겨찾기</p>
+                                </Link>
                             </div>
+
                             <div className="verticalLine"></div>
                             <img className="icon_message" src="/main/message-text.png" alt="message" />
                             <p className="reviewBtn">내가 쓴 리뷰</p>
@@ -160,7 +166,7 @@ export default function Header() {
                     </p>
                 </Link>
                 <div className="vertical_line"></div>
-                <Link to="/menu/central_club/central_club" style={{ textDecoration: 'none' }}>
+                <Link to="/centralClub" style={{ textDecoration: 'none' }}>
                     <p
                         className={
                             menubarActive === 'tab_text_central_active' ? 'tab_text_central_active' : 'tab_text_central'
@@ -171,7 +177,7 @@ export default function Header() {
                     </p>
                 </Link>
                 <div className="small_club_container">
-                    <Link to="/menu/small_club/small_club" style={{ textDecoration: 'none' }}>
+                    <Link to="/smallClub" style={{ textDecoration: 'none' }}>
                         <p
                             className={
                                 menubarActive === 'tab_text_small_active' ? 'tab_text_small_active' : 'tab_text_small'

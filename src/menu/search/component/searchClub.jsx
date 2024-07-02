@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './searchClub.module.css';
-import { LinkItem } from '../../central_club/central_club';
+import { LinkItem } from '../../../component/centralClub/CentralClub';
 
 //clubid페이지로 이동할 수 있게 수정 완료
 function SearchClub({ clubId, clubName, introduction, imageUrl, division, department }) {

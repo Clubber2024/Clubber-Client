@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './central_club.module.css';
+import styles from './centralClub.module.css';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';

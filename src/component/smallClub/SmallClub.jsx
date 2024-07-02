@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './small_club.module.css';
+import styles from './smallClub.module.css';
 import { useNavigate } from 'react-router-dom';
 
 function SmallClub() {

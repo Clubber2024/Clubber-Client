@@ -10,7 +10,8 @@ export default function Auth() {
             {
                 grant_type: 'authorization_code',
                 client_id: `6a5dafa758e469d18292acc6fbca333b`,
-                redirect_uri: `http://13.125.141.171/v1/auths/oauth/kakao`,
+                redirect_uri: `http://localhost:3000/v1/auths/oauth/kakao`,
+                //`http://13.125.141.171/v1/auths/oauth/kakao`,
                 code: token,
             },
             {
