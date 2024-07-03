@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './smallClub.module.css';
-import { LinkItem } from '../../../../component/centralClub/CentralClub';
+import { LinkItem } from '../../../../component/branch/BranchCentral';
 
 //clubid페이지로 이동할 수 있게 수정 완료
 function SmallClub({ clubId, clubName, introduction, imageUrl }) {

@@ -1,5 +1,5 @@
 import './tagScroll.css';
-import HashTag from './hashtag/HashTag';
+import HashTag from './HashTag';
 
 export default function TagScroll() {
     return (

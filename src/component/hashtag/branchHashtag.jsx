@@ -2,8 +2,8 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import HashTagClub from './hashTagClub';
-import styles from '../../menu/central_club/branch/branchCentral.module.css';
+import HashTagClub from './HashTagClub';
+import styles from '../centralClub/centralClub.module.css';
 
 function BranchHashTag() {
     const [loading, setLoading] = useState(true);

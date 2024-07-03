@@ -1,4 +1,4 @@
-import CentralClub from '../component/centralClub/CentralClub';
+import CentralClub from '../component/branch/BranchCentral';
 
 export default function CentralClubPage() {
     return (

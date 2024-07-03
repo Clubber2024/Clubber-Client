@@ -19,7 +19,7 @@ const hashtag = [
 export default function HashTag() {
     const navigate = useNavigate();
     const onClicked = (hashTagValue) => {
-        navigate(`/components/hashtag/branchHashtag`, { state: { hashtag: hashTagValue } });
+        navigate(`/hashtag`, { state: { hashtag: hashTagValue } });
     };
     return (
         <>
