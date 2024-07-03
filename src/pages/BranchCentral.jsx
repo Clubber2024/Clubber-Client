@@ -1,9 +1,9 @@
-import CentralClub from '../component/centralClub/CentralClub';
+import BranchCentral from '../component/centralClub/BranchCentral';
 
 export default function BranchCentralPage() {
     return (
         <>
-            <CentralClub />
+            <BranchCentral />
         </>
     );
 }

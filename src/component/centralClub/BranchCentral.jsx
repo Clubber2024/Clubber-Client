@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import styles from './branchCentral.module.css';
+import styles from './brnachCentral.module.css';
 import axios from 'axios';
-import CentralClub from './component/centralClub';
+import CentralClub from './CentralClub';
 import { useLocation } from 'react-router-dom';
 
 function BranchCentral() {
