@@ -1,4 +1,4 @@
-import Summary from '../menu/summary/component/summary';
+import Summary from '../component/summary/summary';
 
 export default function SummaryPage() {
     return (

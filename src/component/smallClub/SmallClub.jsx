@@ -6,7 +6,7 @@ function SmallClub() {
     const navigate = useNavigate();
 
     const onClicked = (departmentValue) => {
-        navigate('/menu/small_club/branch/branch_small', { state: { department: departmentValue } });
+        navigate('/small/colleges', { state: { department: departmentValue } });
     };
 
     return (

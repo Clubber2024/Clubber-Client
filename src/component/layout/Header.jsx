@@ -90,7 +90,7 @@ export default function Header() {
     };
 
     const handleSearch = () => {
-        navigate(`/menu/search?clubName=${searchTerm}`, { state: { clubName: searchTerm } });
+        navigate(`/search?clubName=${searchTerm}`, { state: { clubName: searchTerm } });
     };
 
     const enterKeyDown = (event) => {
