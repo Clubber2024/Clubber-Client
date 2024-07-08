@@ -6,7 +6,7 @@ import './loginPage.css';
 function LoginPage() {
     return (
         <>
-            <div className="wrapper">
+            <div className="login_wrapper">
                 <div>
                     <LoginLogo />
                 </div>

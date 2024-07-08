@@ -123,18 +123,23 @@
         border-radius: 5px;
         border: 1.3px solid #9c9c9c80;
         margin: auto;
-        margin-top: 15px;
         padding: 20px;
     }
 
-    input.button-color {
+    .email-input {
+        margin: 20px 0px 8px 0px;
+    }
+
+    .button-color {
+        width: 100%;
+        text-align: center;
         background: #7bc8e0;
         border-color: #7bc8e0;
         color: #ffffff;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 700;
-        align-items: center;
         padding: 0;
+        margin-top: 20px;
     }
 }
 
@@ -262,18 +267,22 @@
         height: 45px;
         border-radius: 5px;
         border: 1.3px solid #9c9c9c80;
-        margin: auto;
-        margin-top: 15px;
         padding: 20px;
     }
 
-    input.button-color {
+    .email-input {
+        margin: 20px 0px 8px 0px;
+    }
+
+    .button-color {
+        width: 100%;
+        text-align: center;
         background: #7bc8e0;
         border-color: #7bc8e0;
         color: #ffffff;
         font-size: 16px;
         font-weight: 700;
-        align-items: center;
         padding: 0;
+        margin-top: 20px;
     }
 }

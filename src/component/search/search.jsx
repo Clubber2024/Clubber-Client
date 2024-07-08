@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './search.module.css';
 import axios from 'axios';
-import SearchClub from './component/searchClub';
+import SearchClub from './searchClub';
 
 function Search() {
     const [loading, setLoading] = useState(true);
