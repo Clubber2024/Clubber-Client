@@ -7,7 +7,6 @@ import { LinkItem } from '../branch/BranchCentral';
 import './header.css';
 
 export default function Header() {
-    // 모든 페이지에서 공통적으로 나타날 헤더
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -15,10 +14,24 @@ export default function Header() {
     const [searchTerm, setSearchTerm] = useState('');
     const [userEmail, setUserEmail] = useState('');
 
-    //로그인박스 표시 상태 관리
-    const [showLoginBox, setShowLoginBox] = useState(false);
 
+    // 로그인박스 표시 상태 관리
+    const [showLoginBox, setShowLoginBox] = useState(false);
+    // 관리자 여부 관리
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    const adminId = localStorage.getItem('adminId');
     const accessToken = localStorage.getItem('accessToken');
+    const refreshToken = localStorage.getItem('refreshToken');
+    console.log(accessToken);
+    console.log(refreshToken);
+
+    // 관리자 로그인 시 저장한 관리자 아이디 불러오기 -> 있으면 관리자 여부 true
+    useEffect(() => {
+        if (adminId) {
+            setIsAdmin(true);
+        }
+    }, []);
 
     useEffect(() => {
         const path = location.pathname;
@@ -34,22 +47,48 @@ export default function Header() {
     }, [location]);
 
     useEffect(() => {
-        if (accessToken) {
-            axios
-                .get(`http://13.125.141.171:8080/v1/users/me`, {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                })
-                .then((res) => {
-                    console.log(res.data.data.email);
-                    setUserEmail(res.data.data.email);
-                })
-                .catch((error) => {
-                    console.error('Error fetching user data:', error);
-                });
+        if (accessToken && !isAdmin) {
+            fetchUserData();
         }
     }, [accessToken]);
+
+    const fetchUserData = async () => {
+        try {
+            const res = await axios.get(`http://13.125.141.171:8080/v1/users/me`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+            console.log(res.data.data.email);
+            setUserEmail(res.data.data.email);
+        } catch (error) {
+            console.log(error.response);
+            if (error.response && error.response.status === 401) {
+                console.log("token was expired");
+                getNewToken();
+            } else {
+                console.error('Error fetching user data : ', error);
+            }
+        }
+    };
+
+    const getNewToken = async () => {
+        try {
+            const res = await axios.post(`http://13.125.141.171:8080/v1/auths/refresh`, {},
+                {
+                    token: refreshToken,
+                });
+            const newAccessToken = res.data.data.accessToken;
+            localStorage.setItem('accessToken', newAccessToken);
+            // 새 토큰으로 다시 요청
+            fetchUserData();
+        } catch (error) {
+            console.error('토큰 재발급 실패 : ', error);
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
+            navigate('/login');
+        }
+    }
 
     const handleUserContainerClick = () => {
         if (!accessToken) {
@@ -64,16 +103,29 @@ export default function Header() {
 
     const handleLogout = async () => {
         try {
-            const res = await axios.post(
-                'http://13.125.141.171:8080/v1/auths/logout',
-                {},
-                {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                }
-            );
-            console.log(res);
+            if (isAdmin) {
+                const res = await axios.post(
+                    'http://13.125.141.171:8080/v1/admins/logout',
+                    {},
+                    {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    }
+                );
+                console.log(res);
+            } else {
+                const res = await axios.post(
+                    'http://13.125.141.171:8080/v1/auths/logout',
+                    {},
+                    {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    }
+                );
+                console.log(res);
+            }
             setShowLoginBox(false);
             localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
             // 로그아웃 이후 메인페이지 ? 로그인 페이지 ?
@@ -136,15 +188,35 @@ export default function Header() {
                             </div>
 
                             <div className="line">
-                                <Link to="/menu/bookmark">
+                                <Link to="/menu/bookmark" style={{ textDecoration: "none" }}>
                                     <img className="icon_star" src="/main/starYellow.png" alt="star" />
                                     <p className="bookmarkBtn">나의 즐겨찾기</p>
                                 </Link>
                             </div>
-
                             <div className="verticalLine"></div>
-                            <img className="icon_message" src="/main/message-text.png" alt="message" />
-                            <p className="reviewBtn">내가 쓴 리뷰</p>
+                            <Link to="/menu/bookmark">
+                                <img className="icon_message" src="/main/message-text.png" alt="message" />
+                                <p className="reviewBtn">내가 쓴 리뷰</p>
+                            </Link>
+                        </div>
+                    )}
+                    {accessToken && showLoginBox && isAdmin && (
+                        <div className="rectangle">
+                            <div>
+                                <img className="img" src="/buttons/user_login_icon.png" alt="user icon" />
+                                <p className="emailText">{adminId}</p>
+                                <button className="logoutBtn" onClick={handleLogout}>
+                                    로그아웃
+                                </button>
+                            </div>
+
+                            <div className="line" />
+                            <Link to="/menu/bookmark" style={{ textDecoration: "none" }}>
+                                <div className="mypage-container">
+                                    <img className="icon_mypage" src="/admin/mypage.png" alt="admin page" />
+                                    <p className="mypageBtn">마이페이지</p>
+                                </div>
+                            </Link>
                         </div>
                     )}
                 </div>

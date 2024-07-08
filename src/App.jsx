@@ -8,7 +8,7 @@ import CentralClubPage from './pages/CentralClub';
 import SmallClubPage from './pages/SmallClub';
 import DetailPage from './menu/detail';
 import LoginPage from './pages/LoginPage';
-import KakaoRedirection from './menu/login/component/kakaoRedirection';
+import KakaoRedirection from './component/login/kakaoRedirection';
 import BranchSmall from './menu/small_club/branch/branch_small';
 import HashTagPage from './pages/HashTag';
 import ReviewWrite from './menu/detail/review_write';
