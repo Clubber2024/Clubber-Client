@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import styles from './branch_small.module.css';
+import styles from './branchSmall.module.css';
 import axios from 'axios';
-import SmallClub from './component/smallClub';
+import SmallClubProps from './SmallClubProps';
 import { useLocation } from 'react-router-dom';
 
 function BranchSmall() {
@@ -37,7 +37,7 @@ function BranchSmall() {
             rows.push(
                 <div className={styles.container} key={i}>
                     {rowItems.map((club) => (
-                        <SmallClub
+                        <SmallClubProps
                             key={club.clubId}
                             clubId={club.clubId}
                             imageUrl={club.imageUrl}

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import IntroductionPage from '../../components/clubs/introduction/IntroductionPage';
-import ReviewPage from '../../components/clubs/review/ReviewPage';
-import './clubsPage.css';
+import IntroductionPage from '../component/detail/introduction/IntroductionPage';
+import ReviewPage from '../component/detail/review/ReviewPage';
+import './detailPage.css';
 import { useLocation } from 'react-router-dom';
 
 export default function ClubsPage() {

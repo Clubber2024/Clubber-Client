@@ -1,5 +1,5 @@
 @media screen and (min-width: 769px) {
-    .wrapper {
+    .tagScroll_wrapper {
         padding: 0% 16%;
         padding-bottom: 3px;
         width: 100%;
@@ -31,7 +31,7 @@
 }
 
 @media screen and (max-width: 769px) {
-    .wrapper {
+    .tagScroll_wrapper {
         padding: 0% 10%;
         padding-bottom: 3px;
         width: 100%;
