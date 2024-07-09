@@ -7,7 +7,7 @@ export default function ReviewPage({ clubId, clubName }) {
     const navigate = useNavigate();
 
     const onClickReviewWrite = () => {
-        navigate(`/components/clubs/review/ReviewWrite`, { state: { clubId, clubName } });
+        navigate(`/clubs/${clubId}/review`, { state: { clubId, clubName } });
     };
 
     return (

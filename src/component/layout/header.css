@@ -207,6 +207,7 @@
 
     .rectangle .reviewBtn {
         background-color: #ffffff;
+        color: #000000;
         border: 0;
         font-family: Noto Sans;
         font-size: 12px;
@@ -482,6 +483,7 @@
 
     .rectangle .reviewBtn {
         background-color: #ffffff;
+        color: #000000;
         border: 0;
         font-family: Noto Sans;
         font-size: 12px;

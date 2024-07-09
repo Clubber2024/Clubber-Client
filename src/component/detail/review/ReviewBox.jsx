@@ -23,9 +23,9 @@ export default function ReviewBox({ clubId }) {
     useEffect(() => {
         const fetchKeywordData = async () => {
             try {
-                const res = await axios.get(`http://13.125.141.171:8080/v1/clubs/${clubId}/reviews`);
+                const res = await axios.get(`http://13.125.141.171:8080/v1/clubs/${clubId}/reviews/v2`);
                 if (res.data.success) {
-                    setReviewData(res.data.data.clubReviews);
+                    setReviewData(res.data.data.reviews);
                     console.log(reviewData);
                 }
             } catch (error) {
@@ -50,6 +50,7 @@ export default function ReviewBox({ clubId }) {
                                 <KeywordBar key={index} text={item} />
                             ))}
                         </div>
+                        <p>{review.content}</p>
                     </div>
                 </div>
             ))}
