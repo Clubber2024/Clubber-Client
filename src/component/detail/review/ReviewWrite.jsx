@@ -53,36 +53,16 @@ function ReviewWrite() {
     };
     //이전 버튼상태(prevActive)를 가져와 반전시켜 type값에 저장 후 리턴.
 
-    const handleSubmit = async () => {
-        const tab = 'Review';
+    const onClickNext = async () => {
         const selectedKeywords = Object.keys(btnActive).filter((key) => btnActive[key]);
         console.log(selectedKeywords);
-
-        try {
-            const accessToken = localStorage.getItem('accessToken');
-            const response = await axios.post(
-                `http://13.125.141.171:8080/v1/clubs/${clubId}/reviews`,
-                {
-                    keywords: selectedKeywords,
-                },
-                {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                }
-            );
-            console.log('리뷰 작성 성공:', response.data);
-            navigate(`/menu/detail/${clubId}`, { state: tab }); // 해당 동아리 상세 페이지로 이동 -> 폴더구조 정리해서 리뷰페이지로 이동하게
-            setBtnActive({}); // 제출 후 버튼 상태를 초기화
-        } catch (error) {
-            console.error('리뷰 작성 실패:', error);
-        }
+        navigate(`/clubs/${clubId}/review/comment`, { state: { clubId, selectedKeywords } });
     };
 
     const submitButtonClass = Object.values(btnActive).includes(true) ? 'submit-active' : 'submit';
 
     return (
-        <div>
+        <div className="write-container">
             <h2 className="title">{clubName}에 대한 키워드를 골라주세요!</h2>
 
             {btns.map((item) => (
@@ -97,8 +77,8 @@ function ReviewWrite() {
                     <p className="button_text">{item.title}</p>
                 </button>
             ))}
-            <button type="button" onClick={handleSubmit} className={submitButtonClass}>
-                작성하기
+            <button onClick={onClickNext} className={submitButtonClass}>
+                다음
             </button>
         </div>
     );

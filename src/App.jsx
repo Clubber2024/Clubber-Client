@@ -6,6 +6,7 @@ import MainPage from './pages/Main';
 import CentralClubPage from './pages/CentralClub';
 import SmallClubPage from './pages/SmallClub';
 import DetailPage from './pages/DetailPage';
+import ReviewWrite from './component/detail/review/ReviewWrite';
 import LoginPage from './pages/LoginPage';
 import KakaoRedirection from './component/login/kakaoRedirection';
 import HashTagPage from './pages/HashTag';
@@ -14,6 +15,8 @@ import SummaryPage from './pages/Summary';
 import BookMarkPage from './menu/bookmark';
 import BranchCentralPage from './pages/BranchCentral';
 import BranchSmallPage from './pages/BranchSmall';
+import ReviewComment from './component/detail/review/ReviewComment';
+import MyReview from './component/mypage/MyReview';
 
 function App() {
     const isPc = useMediaQuery({
@@ -33,6 +36,8 @@ function App() {
                         {/* <Route path="/menu/central_club/detail_page/review_write" element={<ReviewWrite />} /> */}
                         <Route path="/small" element={<SmallClubPage />} />
                         <Route path="/clubs/:clubId" element={<DetailPage />} />
+                        <Route path="/clubs/:clubId/review" element={<ReviewWrite />} />
+                        <Route path="/clubs/:clubId/review/comment" element={<ReviewComment />} />
                         <Route path="/central/divisions" element={<BranchCentralPage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
@@ -41,6 +46,7 @@ function App() {
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/summary" element={<SummaryPage />} />
                         <Route path="/menu/bookmark" element={<BookMarkPage />} />
+                        <Route path="/user/reviews" element={<MyReview />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -54,6 +60,8 @@ function App() {
                         <Route path="/central" element={<CentralClubPage />} />
                         <Route path="/small" element={<SmallClubPage />} />
                         <Route path="/clubs/:clubId" element={<DetailPage />} />
+                        <Route path="/clubs/:clubId/review" element={<ReviewWrite />} />
+                        <Route path="/clubs/:clubId/review/comment" element={<ReviewComment />} />
                         <Route path="/central/divisions" element={<BranchCentralPage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
@@ -62,6 +70,7 @@ function App() {
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/summary" element={<SummaryPage />} />
                         <Route path="/menu/bookmark" element={<BookMarkPage />} />
+                        <Route path="/user/reviews" element={<MyReview />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>

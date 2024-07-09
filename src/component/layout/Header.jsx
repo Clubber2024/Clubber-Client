@@ -25,6 +25,8 @@ export default function Header() {
     const refreshToken = localStorage.getItem('refreshToken');
     console.log(accessToken);
     console.log(refreshToken);
+    console.log(adminId);
+
 
     // 관리자 로그인 시 저장한 관리자 아이디 불러오기 -> 있으면 관리자 여부 true
     useEffect(() => {
@@ -105,8 +107,7 @@ export default function Header() {
         try {
             if (isAdmin) {
                 const res = await axios.post(
-                    'http://13.125.141.171:8080/v1/admins/logout',
-                    {},
+                    'http://13.125.141.171:8080/v1/admins/logout', {},
                     {
                         headers: {
                             Authorization: `Bearer ${accessToken}`,
@@ -114,10 +115,12 @@ export default function Header() {
                     }
                 );
                 console.log(res);
+                localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
+                localStorage.removeItem('refreshToken');
+                localStorage.removeItem('adminId');
             } else {
                 const res = await axios.post(
-                    'http://13.125.141.171:8080/v1/auths/logout',
-                    {},
+                    'http://13.125.141.171:8080/v1/auths/logout', {},
                     {
                         headers: {
                             Authorization: `Bearer ${accessToken}`,
@@ -125,9 +128,10 @@ export default function Header() {
                     }
                 );
                 console.log(res);
+                localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
+                localStorage.removeItem('refreshToken');
             }
             setShowLoginBox(false);
-            localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
             // 로그아웃 이후 메인페이지 ? 로그인 페이지 ?
             navigate('/');
         } catch (error) {
@@ -194,7 +198,7 @@ export default function Header() {
                                 </Link>
                             </div>
                             <div className="verticalLine"></div>
-                            <Link to="/menu/bookmark">
+                            <Link to="/user/reviews">
                                 <img className="icon_message" src="/main/message-text.png" alt="message" />
                                 <p className="reviewBtn">내가 쓴 리뷰</p>
                             </Link>
