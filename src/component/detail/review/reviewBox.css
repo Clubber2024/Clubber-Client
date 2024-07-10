@@ -1,11 +1,11 @@
 @media screen and (min-width: 768px) {
     .review_box_container {
-        width: 125%;
+        width: 470px;
         background-color: white;
         box-shadow: 0px 0px 4px 0px #0000004d;
         border-radius: 15px;
         margin-bottom: 15px;
-        /* padding: 16px 18px; */
+        padding: 16px 18px;
     }
 
     .review_box_header {
@@ -44,7 +44,7 @@
         font-size: 12px;
         font-weight: 400;
         margin-bottom: 2px;
-        max-width: calc(33.33%);
+        max-width: calc(35%);
     }
 }
 
