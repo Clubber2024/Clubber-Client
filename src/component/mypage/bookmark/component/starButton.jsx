@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import StarImg from '../bookmark_image/starYellow.png';
-import EmptyStarImg from '../bookmark_image/star.png';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import StarImg from "../bookmark_image/starYellow.png";
+import EmptyStarImg from "../bookmark_image/star.png";
 
 const Star = styled.img`
-    width: 18px;
-    height: 18px;
+  width: 18px;
+  height: 18px;
 `;
 
 const StarButton = ({ Like, onClick }) => {
-    return <Star src={Like ? StarImg : EmptyStarImg} onCick={onClick} />;
+  return <Star src={Like ? StarImg : EmptyStarImg} onCick={onClick} />;
 };
 
 export default StarButton;
