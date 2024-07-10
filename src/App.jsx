@@ -17,6 +17,7 @@ import BranchCentralPage from "./pages/BranchCentral";
 import BranchSmallPage from "./pages/BranchSmall";
 import ReviewComment from "./component/detail/review/ReviewComment";
 import MyReview from "./component/mypage/MyReview";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   const isPc = useMediaQuery({
@@ -53,6 +54,7 @@ function App() {
             <Route path="/summary" element={<SummaryPage />} />
             <Route path="/bookmark" element={<BookMarkPage />} />
             <Route path="/user/reviews" element={<MyReview />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Routes>
           <Footer />
         </BrowserRouter>
@@ -83,6 +85,7 @@ function App() {
             <Route path="/summary" element={<SummaryPage />} />
             <Route path="/bookmark" element={<BookMarkPage />} />
             <Route path="/user/reviews" element={<MyReview />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Routes>
           <Footer />
         </BrowserRouter>
