@@ -16,7 +16,7 @@ import BookMarkPage from "./pages/BookMarkPage";
 import BranchCentralPage from "./pages/BranchCentral";
 import BranchSmallPage from "./pages/BranchSmall";
 import ReviewComment from "./component/detail/review/ReviewComment";
-import MyReview from "./component/mypage/MyReview";
+import MyReview from "./component/mypage/review/MyReview";
 
 function App() {
   const isPc = useMediaQuery({
