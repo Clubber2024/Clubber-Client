@@ -1,6 +1,6 @@
 import './myReview.css';
-import '../detail/review/reviewBox.css';
-import KeywordBar from '../detail/review/KeywordBar';
+import '../../detail/review/reviewBox.css';
+import KeywordBar from '../../detail/review/KeywordBar';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
