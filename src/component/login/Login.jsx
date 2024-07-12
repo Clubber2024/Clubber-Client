@@ -8,8 +8,8 @@ function Login() {
     const REDIRECT_URI = 'http://localhost:3000/v1/auths/oauth/kakao';
     const [activeForm, setActiveForm] = useState('sign-in-form-active');
 
-    const [adminId, setAdminId] = useState("");
-    const [adminPw, setAdminPw] = useState("");
+    const [adminId, setAdminId] = useState('');
+    const [adminPw, setAdminPw] = useState('');
     const navigate = useNavigate();
 
     // 1. 카카오 버튼 클릭 시, 로그인 창 띄우기 (링크는 노션에서 가져옴)
@@ -21,12 +21,12 @@ function Login() {
         // console.log(adminId);
         // console.log(adminPw);
         try {
-            const res = await axios.post(`http://13.125.141.171:8080/v1/admins/login`,
-                {
-                    "username": adminId,
-                    "password": adminPw
-                });
+            const res = await axios.post(`http://13.125.141.171:8080/v1/admins/login`, {
+                username: adminId,
+                password: adminPw,
+            });
             console.log(res);
+            console.log(res.data.data);
             const accessToken = res.data.data.accessToken;
             const refreshToken = res.data.data.refreshToken;
 
@@ -43,12 +43,12 @@ function Login() {
     const saveAdminId = (event) => {
         setAdminId(event.target.value);
         console.log(event.target.value);
-    }
+    };
 
     const saveAdminPw = (event) => {
         setAdminPw(event.target.value);
         console.log(event.target.value);
-    }
+    };
 
     const handleTabClick = (form) => {
         setActiveForm(form);
@@ -111,7 +111,9 @@ function Login() {
                                             value={adminPw}
                                             onChange={saveAdminPw}
                                         />
-                                        <button className="button-color" onClick={adminLoginHandler}>로그인</button>
+                                        <button className="button-color" onClick={adminLoginHandler}>
+                                            로그인
+                                        </button>
                                     </form>
                                 )}
                             </div>

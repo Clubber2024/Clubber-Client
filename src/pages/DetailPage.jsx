@@ -33,7 +33,7 @@ export default function ClubsPage() {
                 setDetailData(res.data.data);
                 setClubInfoData(res.data.data.clubInfo);
                 console.log(res.data.data);
-                console.log(res.data.data.clubInfo);
+                console.log(res.data.dacota.clubInfo);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);

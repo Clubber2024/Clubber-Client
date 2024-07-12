@@ -14,7 +14,6 @@ export default function Header() {
     const [searchTerm, setSearchTerm] = useState('');
     const [userEmail, setUserEmail] = useState('');
 
-
     // 로그인박스 표시 상태 관리
     const [showLoginBox, setShowLoginBox] = useState(false);
     // 관리자 여부 관리
@@ -64,7 +63,7 @@ export default function Header() {
         } catch (error) {
             console.log(error.response);
             if (error.response && error.response.status === 401) {
-                console.log("token was expired");
+                console.log('token was expired');
                 getNewToken();
             } else {
                 console.error('Error fetching user data : ', error);
@@ -74,10 +73,13 @@ export default function Header() {
 
     const getNewToken = async () => {
         try {
-            const res = await axios.post(`http://13.125.141.171:8080/v1/auths/refresh`, {},
+            const res = await axios.post(
+                `http://13.125.141.171:8080/v1/auths/refresh`,
+                {},
                 {
                     token: refreshToken,
-                });
+                }
+            );
             const newAccessToken = res.data.data.accessToken;
             localStorage.setItem('accessToken', newAccessToken);
             // 새 토큰으로 다시 요청
@@ -88,7 +90,7 @@ export default function Header() {
             localStorage.removeItem('refreshToken');
             navigate('/login');
         }
-    }
+    };
 
     const handleUserContainerClick = () => {
         if (!accessToken) {
@@ -188,7 +190,7 @@ export default function Header() {
                             </div>
 
                             <div className="line">
-                                <Link to="/menu/bookmark" style={{ textDecoration: "none" }}>
+                                <Link to="/menu/bookmark" style={{ textDecoration: 'none' }}>
                                     <img className="icon_star" src="/main/starYellow.png" alt="star" />
                                     <p className="bookmarkBtn">나의 즐겨찾기</p>
                                 </Link>
@@ -211,7 +213,7 @@ export default function Header() {
                             </div>
 
                             <div className="line" />
-                            <Link to="/menu/bookmark" style={{ textDecoration: "none" }}>
+                            <Link to="/manage" style={{ textDecoration: 'none' }}>
                                 <div className="mypage-container">
                                     <img className="icon_mypage" src="/admin/mypage.png" alt="admin page" />
                                     <p className="mypageBtn">마이페이지</p>

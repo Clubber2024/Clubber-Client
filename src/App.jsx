@@ -14,6 +14,7 @@ import SummaryPage from './pages/Summary';
 import BookMarkPage from './menu/bookmark';
 import BranchCentralPage from './pages/BranchCentral';
 import BranchSmallPage from './pages/BranchSmall';
+import MangerPage from './pages/Manager';
 
 function App() {
     const isPc = useMediaQuery({
@@ -41,6 +42,7 @@ function App() {
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/summary" element={<SummaryPage />} />
                         <Route path="/menu/bookmark" element={<BookMarkPage />} />
+                        <Route path="/manage" element={<MangerPage />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -50,7 +52,7 @@ function App() {
                 <BrowserRouter>
                     <Header />
                     <Routes>
-                        <Route path="/" element={<MainPage />} />
+                        <Route path="/" element={<MainPage />} />;
                         <Route path="/central" element={<CentralClubPage />} />
                         <Route path="/small" element={<SmallClubPage />} />
                         <Route path="/clubs/:clubId" element={<DetailPage />} />
@@ -62,6 +64,7 @@ function App() {
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/summary" element={<SummaryPage />} />
                         <Route path="/menu/bookmark" element={<BookMarkPage />} />
+                        <Route path="/manage" element={<MangerPage />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
