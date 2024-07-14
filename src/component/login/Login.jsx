@@ -29,10 +29,12 @@ function Login() {
       console.log(res);
       const accessToken = res.data.data.accessToken;
       const refreshToken = res.data.data.refreshToken;
+      const isAdmin = true;
 
       localStorage.setItem("adminId", adminId);
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
+      localStorage.setItem("isAdmin", isAdmin);
 
       navigate("/");
     } catch (error) {
