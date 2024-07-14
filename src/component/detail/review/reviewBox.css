@@ -46,6 +46,11 @@
         margin-bottom: 2px;
         max-width: calc(35%);
     }
+
+    .review_box p {
+        margin-top: 5px;
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -94,5 +99,10 @@
         font-weight: 400;
         /* width: 30%;
 	flex: 1; */
+    }
+
+    .review_box p {
+        margin-top: 5px;
+        font-size: 14px;
     }
 }

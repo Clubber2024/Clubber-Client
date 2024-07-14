@@ -251,7 +251,7 @@ export default function Header() {
               </div>
 
               <div className="line" />
-              <Link to="/menu/bookmark" style={{ textDecoration: "none" }}>
+              <Link to="/admin/mypage/pending" style={{ textDecoration: "none" }}>
                 <div className="mypage-container">
                   <img
                     className="icon_mypage"
