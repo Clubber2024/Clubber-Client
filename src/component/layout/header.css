@@ -166,7 +166,6 @@
         gap: 0px;
         border-radius: 14px;
         border: 0.5px;
-        opacity: 0px;
         font-size: 12px;
         background: #ffffff;
         border: 0.5px solid #9c9c9c80;
@@ -259,7 +258,6 @@
         height: 18px;
         /* float: left; */
         margin-top: 7px;
-
     }
 }
 
@@ -441,7 +439,6 @@
         gap: 0px;
         border-radius: 14px;
         border: 0.5px;
-        opacity: 0px;
         font-size: 11px;
         background: #ffffff;
         border: 0.5px solid #9c9c9c80;
@@ -530,6 +527,7 @@
         top: 111px;
     }
 
+
     .rectangle .icon_mypage {
         width: 18px;
         height: 18px;
@@ -538,3 +536,4 @@
 
     }
 }
+
