@@ -7,7 +7,7 @@ import { LinkItem } from '../branch/BranchCentral';
 function SearchClub({ clubId, clubName, introduction, imageUrl, division, department }) {
     return (
         <div className={styles.rectangle}>
-            <LinkItem to={`/menu/detail/${clubId}`}>
+            <LinkItem to={`/clubs/${clubId}`}>
                 <img src={imageUrl} alt={clubName} className={styles.image} />
                 <div className={styles.wrap}>
                     <h3 className={styles.title}>{clubName}</h3>
