@@ -22,6 +22,7 @@
         position: relative;
         top: 45%;
     }
+
     .container {
         display: flex;
         justify-content: center;
@@ -49,6 +50,7 @@
         justify-content: center;
         align-items: center;
     }
+
     .rectangle_img {
         width: 25%;
         vertical-align: middle;
@@ -66,12 +68,14 @@
         transform: translate(-50%, -50%);
         z-index: 1;
         cursor: pointer;
+
         &:hover {
             color: #7bc8e0;
             font-size: 700;
         }
     }
 }
+
 @media screen and (max-width: 769px) {
     .wrap {
         position: relative;
@@ -90,6 +94,7 @@
         margin: 10px;
         box-shadow: 0px 0px 5px 0px #00000033;
     }
+
     .container {
         display: flex;
         justify-content: center;
@@ -124,6 +129,7 @@
         justify-content: center;
         align-items: center;
     }
+
     .rectangle_img {
         width: 40%;
         vertical-align: middle;
@@ -140,6 +146,7 @@
         transform: translate(-50%, -50%);
         z-index: 1;
         cursor: pointer;
+
         &:hover {
             color: #7bc8e0;
             font-size: 700;

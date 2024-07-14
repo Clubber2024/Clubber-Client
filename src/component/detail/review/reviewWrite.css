@@ -1,5 +1,8 @@
 .write-container {
     margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title {
@@ -15,14 +18,14 @@
     margin-top: 39px;
 }
 
-button {
+.button-original {
     width: 433px;
     height: 50px;
     border: 2px;
     border-radius: 10px;
     background: #ffffff;
     box-shadow: 0px 0px 4px 0px #0000004d;
-    margin: 12px auto;
+    margin: 6px auto;
     font-weight: 600;
     font-family: Noto Sans KR;
     display: block;
@@ -34,6 +37,16 @@ button {
     background-color: #7bc8e01a;
     border: 1.5px solid #7bc8e0;
     color: #7bc8e0;
+    width: 433px;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px 0px #0000004d;
+    margin: 7px auto;
+    font-weight: 600;
+    font-family: Noto Sans KR;
+    display: block;
+    text-align: left;
+    padding: 0;
 }
 
 .button_text {
@@ -50,7 +63,7 @@ button {
     vertical-align: middle;
 }
 
-.submit-active {
+.next-active {
     width: 90px;
     height: 40px;
     border-radius: 5px;
@@ -62,9 +75,10 @@ button {
     color: #ffffff;
     border-color: #7bc8e0;
     margin-top: 30px;
+    border: none;
 }
 
-.submit {
+.next {
     width: 90px;
     height: 40px;
     border-radius: 5px;
@@ -76,6 +90,7 @@ button {
     background: #9c9c9c4d;
     color: #52555b;
     border-color: #9c9c9c4d;
+    border: none;
 }
 
 .div_style {

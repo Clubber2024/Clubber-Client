@@ -126,11 +126,12 @@ function Login() {
                       type="password"
                       placeholder="비밀번호"
                       autoComplete="current-password"
+                      className="password-input"
                       value={adminPw}
                       onChange={saveAdminPw}
                     />
                     <button
-                      className="button-color"
+                      className="login-button"
                       onClick={adminLoginHandler}
                     >
                       로그인

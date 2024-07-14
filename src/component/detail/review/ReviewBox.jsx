@@ -9,7 +9,7 @@ export default function ReviewBox({ clubId }) {
     useEffect(() => {
         const fetchKeywordData = async () => {
             try {
-                const res = await axios.get(`http://13.125.141.171:8080/v1/clubs/${clubId}/reviews/v2`);
+                const res = await axios.get(`http://13.125.141.171:8080/v1/clubs/${clubId}/reviews`);
                 if (res.data.success) {
                     setReviewData(res.data.data.reviews);
                     console.log(reviewData);

@@ -40,12 +40,12 @@ export default function EditPage() {
             <div className="sideDiv">
                 <SideBar />
             </div>
-            <div className="detail_container">
-                <div className="detail_header_container">
-                    <img className="detail_logo" src={club.imageUrl} alt={`${club.clubName} logo`} />
+            <div className="admin_detail_container">
+                <div className="admin_detail_header">
+                    <img className="admin_detail_logo" src={club.imageUrl} alt={`${club.clubName} logo`} />
 
-                    <div className="detail_header">
-                        <div className="detail_header_name">
+                    <div className="admin_detail_header">
+                        <div className="admin_detail_header_name">
                             <h3>{club.clubName}</h3>
                         </div>
 

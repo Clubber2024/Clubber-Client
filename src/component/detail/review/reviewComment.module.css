@@ -19,18 +19,18 @@
     margin-top: 39px;
 }
 
-input {
+.container input {
     width: 50%;
     height: 50px;
     border: 1px solid #00000033;
-    border-radius: 10px;
-
+    border-radius: 13px;
     font-family: Noto Sans KR;
     font-weight: 400;
     margin-bottom: 30px;
+    padding-left: 14px;
 }
 
-input::placeholder {
+.container input::placeholder {
     color: #9C9C9CB2;
 }
 
@@ -42,11 +42,13 @@ input::placeholder {
 }
 
 .buttonContainer button {
-    height: 40px;
+    height: 35px;
     margin: 20px 5px;
+    padding: 5px 10px;
     background-color: #7BC8E0;
     color: white;
     text-align: center;
     font-weight: 600;
     border-radius: 5px;
+    border: none;
 }
