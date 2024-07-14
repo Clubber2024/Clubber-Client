@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./mainRanking.module.css";
 import { customAxios } from "../../config/axios-config";
+import { Link } from "react-router-dom";
 
 export default function MainRanking() {
   const [rankingData, setRankingData] = useState([]);
@@ -32,7 +33,9 @@ export default function MainRanking() {
             <>
               <div key={index} className={styles.div_ranking}>
                 <p>{index + 1}. </p>
-                <p>{item.clubName}</p>
+                <Link to={`/clubs/${item.clubId}`} className={styles.clubName} style={{ textDecoration: "none" }}>
+                  {item.clubName}
+                </Link>
               </div>
             </>
           );
@@ -41,4 +44,3 @@ export default function MainRanking() {
     </div>
   );
 }
-//http://13.125.141.171:8080

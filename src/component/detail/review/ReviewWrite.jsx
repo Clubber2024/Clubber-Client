@@ -59,7 +59,7 @@ function ReviewWrite() {
         navigate(`/clubs/${clubId}/review/comment`, { state: { clubId, selectedKeywords } });
     };
 
-    const submitButtonClass = Object.values(btnActive).includes(true) ? 'submit-active' : 'submit';
+    const submitButtonClass = Object.values(btnActive).includes(true) ? 'next-active' : 'next';
 
     return (
         <div className="write-container">
@@ -69,7 +69,7 @@ function ReviewWrite() {
                 <button
                     key={item.type}
                     onClick={() => handleClick(item.type)}
-                    className={btnActive[item.type] ? 'button-active' : 'button'}
+                    className={btnActive[item.type] ? 'button-active' : 'button-original'}
                 >
                     <div className="div_style">
                         <img className="img" src={item.image} alt={item.title} />

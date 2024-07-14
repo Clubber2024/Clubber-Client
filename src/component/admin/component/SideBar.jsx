@@ -1,6 +1,7 @@
 import styles from './sideBar.module.css';
 import MouseImg from '../mouse.png';
 import styled from 'styled-components';
+import { LinkItem } from '../../branch/BranchCentral';
 
 const Img = styled.img`
     width: 120px;
@@ -25,7 +26,9 @@ export default function SideBar() {
                     <div className={styles.sideLine}></div>
                     <menu className={styles.sideTitle}>리뷰</menu>
                     <menu className={styles.sideText}>리뷰목록</menu>
-                    <menu className={styles.sideText}>리뷰승인대기</menu>
+                    <LinkItem to={`/admin/mypage/pending`}>
+                        <menu className={styles.sideText}>리뷰승인대기</menu>
+                    </LinkItem>
                 </div>
             </div>
         </>
