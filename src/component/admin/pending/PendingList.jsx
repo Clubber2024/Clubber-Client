@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SideBar from "../component/SideBar";
 import "./pendingList.css";
 import axios from "axios";
 
@@ -84,38 +85,43 @@ export default function PendingList() {
     }
 
     return (
-        <div className="pending_container">
-            <h3>리뷰 승인 대기</h3>
-            <div className="pending_divider" />
-            <div className="checkbox_container">
-                <div className="check_all">
-                    <input
-                        type="checkbox"
-                        onChange={(e) => handleAllCheck(e.target.checked)}
-                        checked={isAllChecked}
-                        className="checkbox_input"
-                    />
-                    <label>전체 선택</label>
-                </div>
-                {pendingData.map((pending) => (
-                    <div key={pending.reviewId} className="single_checkbox">
+        <div className="pending_wrapper">
+            <div className="pending_sidebar">
+                <SideBar />
+            </div>
+            <div className="pending_container">
+                <h3>리뷰 승인 대기</h3>
+                <div className="pending_divider" />
+                <div className="checkbox_container">
+                    <div className="check_all">
                         <input
                             type="checkbox"
-                            onChange={(e) => handleSingleCheck(e.target.checked, pending.reviewId)}
-                            checked={checkedList.includes(pending.reviewId)}
+                            onChange={(e) => handleAllCheck(e.target.checked)}
+                            checked={isAllChecked}
                             className="checkbox_input"
                         />
-                        <div className="text_align">
-                            <p className="pending_comment">{pending.content}</p>
-                            <p className="vertical_divider">|</p>
-                            <p className="pending_date">{pending.writtenDate}</p>
-                        </div>
+                        <label>전체 선택</label>
                     </div>
-                ))}
-            </div>
-            <div className="button_container">
-                <button className="approve_button" onClick={onClickApprove}>승인</button>
-                <button className="reject_button" onClick={onClickReject}>승인거절</button>
+                    {pendingData.map((pending) => (
+                        <div key={pending.reviewId} className="single_checkbox">
+                            <input
+                                type="checkbox"
+                                onChange={(e) => handleSingleCheck(e.target.checked, pending.reviewId)}
+                                checked={checkedList.includes(pending.reviewId)}
+                                className="checkbox_input"
+                            />
+                            <div className="text_align">
+                                <p className="pending_comment">{pending.content}</p>
+                                <p className="vertical_divider">|</p>
+                                <p className="pending_date">{pending.writtenDate}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className="button_container">
+                    <button className="approve_button" onClick={onClickApprove}>승인</button>
+                    <button className="reject_button" onClick={onClickReject}>승인거절</button>
+                </div>
             </div>
         </div>
     );

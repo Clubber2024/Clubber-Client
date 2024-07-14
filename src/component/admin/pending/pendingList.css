@@ -1,6 +1,21 @@
+.pending_wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 0% 15%;
+}
+
+.pending_sidebar {
+    display: flex;
+    flex: 1;
+    margin-top: 2%;
+    margin-left: 7%;
+}
+
 .pending_container {
-    margin: 0% 20%;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+    padding: 30px;
 }
 
 .pending_divider {
