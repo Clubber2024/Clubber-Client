@@ -18,7 +18,7 @@ export default function Header() {
   // 로그인박스 표시 상태 관리
   const [showLoginBox, setShowLoginBox] = useState(false);
   // 관리자 여부 관리
-  const [isAdmin, setIsAdmin] = useState(false);
+  const isAdmin = localStorage.getItem('isAdmin');
 
   const adminId = localStorage.getItem('adminId');
   const accessToken = localStorage.getItem('accessToken');
@@ -26,13 +26,6 @@ export default function Header() {
   console.log(accessToken);
   console.log(refreshToken);
   console.log(adminId);
-
-  // 관리자 로그인 시 저장한 관리자 아이디 불러오기 -> 있으면 관리자 여부 true
-  useEffect(() => {
-    if (adminId) {
-      setIsAdmin(true);
-    }
-  }, []);
 
   useEffect(() => {
     const path = location.pathname;
@@ -48,10 +41,11 @@ export default function Header() {
   }, [location]);
 
   useEffect(() => {
+    console.log(isAdmin);
     if (accessToken && !isAdmin) {
       fetchUserData();
     }
-  }, [accessToken]);
+  }, [accessToken, isAdmin]);
 
   const fetchUserData = async () => {
     try {
@@ -107,6 +101,7 @@ export default function Header() {
 
   const handleLogout = async () => {
     try {
+      console.log(isAdmin);
       if (isAdmin) {
         const res = await customAxios.post(
           '/v1/admins/logout',
@@ -121,6 +116,7 @@ export default function Header() {
         localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
         localStorage.removeItem('refreshToken');
         localStorage.removeItem('adminId');
+        localStorage.removeItem('isAdmin');
       } else {
         const res = await customAxios.post(
           '/v1/auths/logout',
@@ -134,6 +130,8 @@ export default function Header() {
         console.log(res);
         localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
         localStorage.removeItem('refreshToken');
+        localStorage.removeItem('adminId');
+        localStorage.removeItem('isAdmin');
       }
       setShowLoginBox(false);
       // 로그아웃 이후 메인페이지 ? 로그인 페이지 ?
