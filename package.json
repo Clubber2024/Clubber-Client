@@ -1,52 +1,58 @@
 {
-  "name": "clubber-fe",
-  "version": "0.1.0",
-  
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.6.8",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.10.2",
-    "react-dom": "^18.2.0",
-    "react-redux": "^9.1.0",
-    "react-responsive": "^10.0.0",
-    "react-router-dom": "^6.22.3",
-    "react-scripts": "^5.0.1",
-    "react-slick": "^0.30.2",
-    "styled-components": "^6.1.8",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "serve": "serve -s build",
-    "build-and-serve": "npm run build && npm run serve"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "slick-carousel": "^1.8.1"
-  }
+    "name": "clubber-fe",
+    "version": "0.1.0",
+    "proxy": "http://13.125.141.171:8080",
+    "private": true,
+    "dependencies": {
+        "@emotion/react": "^11.11.4",
+        "@emotion/styled": "^11.11.5",
+        "@mui/icons-material": "^5.16.1",
+        "@mui/material": "^5.16.1",
+        "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+        "@testing-library/jest-dom": "^5.17.0",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
+        "axios": "^1.6.8",
+        "eslint-plugin-jsx-a11y": "^6.8.0",
+        "react": "^18.2.0",
+        "react-bootstrap": "^2.10.2",
+        "react-dom": "^18.2.0",
+        "react-minimal-side-navigation": "^1.9.2",
+        "react-redux": "^9.1.0",
+        "react-responsive": "^10.0.0",
+        "react-router-dom": "^6.22.3",
+        "react-scripts": "^5.0.1",
+        "react-slick": "^0.30.2",
+        "styled-components": "^6.1.11",
+        "web-vitals": "^2.1.4"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "serve": "serve -s build",
+        "build-and-serve": "npm run build && npm run serve"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "slick-carousel": "^1.8.1"
+    }
 }
