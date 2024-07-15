@@ -48,7 +48,7 @@ export default function ReviewComment() {
     try {
       const accessToken = localStorage.getItem("accessToken");
       const res = await customAxios.post(
-        `/v1/clubs/${clubId}/reviews/v2?clubId=${clubId}`,
+        `/v1/clubs/${clubId}/reviews`,
         {
           content: comment,
           keywords: selectedKeywords,

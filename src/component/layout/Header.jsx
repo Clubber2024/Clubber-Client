@@ -137,7 +137,11 @@ export default function Header() {
       // 로그아웃 이후 메인페이지 ? 로그인 페이지 ?
       navigate('/');
     } catch (error) {
-      console.error('로그아웃 실패:', error);
+      if (error.response && error.response.status === 401) {
+        getNewToken();
+      } else {
+        console.error('로그아웃 실패:', error);
+      }
     }
   };
 
