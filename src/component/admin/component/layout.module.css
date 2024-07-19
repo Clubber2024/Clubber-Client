@@ -1,0 +1,8 @@
+.layoutContainer {
+  display: flex;
+  margin-left: 15%;
+}
+
+.mainContent {
+  flex: 1;
+}
