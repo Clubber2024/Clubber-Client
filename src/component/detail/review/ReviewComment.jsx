@@ -1,8 +1,8 @@
-import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./reviewComment.module.css";
 import { useState } from "react";
 import { customAxios } from "../../../config/axios-config";
+import ErrorModal from "../../modal/ErrorModal";
 
 export default function ReviewComment() {
   const navigate = useNavigate();
@@ -15,6 +15,16 @@ export default function ReviewComment() {
   const selectedKeywords = location.state.selectedKeywords;
   console.log(clubId);
   console.log(selectedKeywords);
+
+  // 에러 모달창
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalMessage("");
+    navigate(`/clubs/${clubId}?tab=${tab}`);
+  };
 
   const saveComment = (event) => {
     setComment(event.target.value);
@@ -45,9 +55,10 @@ export default function ReviewComment() {
 
   const onClickSubmit = async () => {
     console.log(comment);
+    let res = {};
     try {
       const accessToken = localStorage.getItem("accessToken");
-      const res = await customAxios.post(
+      res = await customAxios.post(
         `/v1/clubs/${clubId}/reviews`,
         {
           content: comment,
@@ -63,7 +74,16 @@ export default function ReviewComment() {
       navigate(`/clubs/${clubId}`, { state: tab }); // 해당 동아리 상세 페이지로 이동 -> 폴더구조 정리해서 리뷰페이지로 이동하게
       // setBtnActive({}); // 제출 후 버튼 상태를 초기화
     } catch (error) {
-      console.error("리뷰 작성 실패:", error);
+      console.log(res);
+      console.log("에러");
+      if (error.response) {
+        console.log("에러 모달창");
+        setModalMessage(error.response.data.reason);
+        setIsModalOpen(true);
+      } else {
+        console.error("리뷰 작성 실패:", error);
+        console.log("냥냥");
+      }
     }
   };
 
@@ -75,6 +95,7 @@ export default function ReviewComment() {
         <button onClick={onClickPass}>넘어가기</button>
         <button onClick={onClickSubmit}>작성하기</button>
       </div>
+      <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
     </div>
   );
 }

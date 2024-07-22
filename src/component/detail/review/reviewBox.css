@@ -25,6 +25,7 @@
         font-size: 12px;
         font-weight: 400;
         color: gray;
+        margin-top: 4px;
     }
 
     .review_box_contents {
@@ -43,13 +44,13 @@
         padding: 7px 9px;
         font-size: 12px;
         font-weight: 400;
-        margin-bottom: 2px;
+        margin-bottom: 1px;
         max-width: calc(35%);
     }
 
     .review_box p {
-        margin-top: 5px;
-        font-size: 14px;
+        margin-top: 8px;
+        font-size: 13px;
     }
 }
 
