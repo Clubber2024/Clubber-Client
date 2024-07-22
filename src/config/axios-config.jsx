@@ -5,7 +5,7 @@ export const URL = "http://13.125.141.171:8080";
 // axios.defaults.withCredentials = true;
 
 export const customAxios = axios.create({
-  baseURL: URL,
+  //baseURL: URL,
   withCredentials: true, // withCredentials를 true로 설정하여 CORS 요청 시 쿠키를 포함합니다
 });
 

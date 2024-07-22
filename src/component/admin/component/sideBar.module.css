@@ -1,58 +1,71 @@
 .sideBarDiv {
-    display: flex;
+  display: flex;
 }
 
 .rectangleSide {
-    width: 191px;
-    height: 212px;
-    border-radius: 2px;
-    border: 2px solid var(--Main-Color, #7bc8e0);
-    flex: 1;
-    display: block;
+  width: 191px;
+  height: 212px;
+  border-radius: 2px;
+  border: 2px solid var(--Main-Color, #7bc8e0);
+  flex: 1;
+  display: block;
+  margin-top: 10%;
 }
 
 .rectangleList {
-    width: 191px;
-    height: 823px;
-    background: #d9d9d933;
-    border-radius: 2px;
-    flex: 1;
+  width: 191px;
+  height: 823px;
+  background: #d9d9d933;
+  border-radius: 2px;
+  flex: 1;
 }
 
 .adminText {
-    font-family: Noto Sans KR;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 26.06px;
-    text-align: center;
-    background: var(--, #52555b);
-    margin-top: 3%;
+  font-family: Noto Sans KR;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26.06px;
+  text-align: center;
+  background: var(--, #52555b);
+  margin-top: 3%;
 }
 
 .sideTitle {
-    font-family: Noto Sans;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 21.79px;
-    padding-top: 10%;
-    padding-left: 30px;
+  font-family: Noto Sans;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21.79px;
+  padding-top: 10%;
+  padding-left: 30px;
+  padding-bottom: 5%;
 }
 
 .sideText {
-    font-family: Noto Sans;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 19.07px;
-    text-align: left;
-    margin-top: 5%;
-    padding-left: 30px;
+  font-family: Noto Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.07px;
+  text-align: left;
+  margin-top: 5%;
+  padding-left: 30px;
+  padding-bottom: 3%;
+  color: #000;
+  text-decoration: none;
 }
 
 .sideLine {
-    width: 191px;
-    height: 0px;
-    display: block;
-    rotate: 0;
-    border: 0.5px solid #9c9c9c4d;
-    margin-top: 20px;
+  width: 191px;
+  height: 0px;
+  display: block;
+  rotate: 0;
+  border: 0.5px solid #9c9c9c4d;
+  margin-top: 20px;
+}
+
+.activeMenu {
+  margin-top: 10px;
+  padding-left: 30px;
+  color: #7bc8e0;
+  text-decoration: none;
+  font-size: 14px;
 }
