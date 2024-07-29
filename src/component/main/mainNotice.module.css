@@ -50,22 +50,30 @@
 	vertical-align: middle;
 } */
     .div_notice {
-        /* margin-top: 9px;
-	align-items: center; */
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         color: #52555b;
         font-size: 11px;
         font-weight: 350;
+        padding-right: 25px;
     }
 
     .div_notice div {
         text-align: start;
-        width: 70%;
+        width: 65%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+
+    .notice_line {
+        padding: 0px 2px;
+    }
+
+    .notice_date {
+        width: 15%;
+        margin-left: 5px;
     }
 }
 
@@ -109,6 +117,7 @@
         box-shadow: 0px 0px 3px 1px #00000033;
         padding: 15px 25px;
     }
+
     /* .img_notice {
 		width: 5px;
 		height: 5px;
@@ -132,6 +141,19 @@
 
     .div_notice div {
         text-align: start;
-        width: 70%;
+        width: 65%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .notice_line {
+        padding: 0px 2px;
+    }
+
+    .notice_date {
+        width: 15%;
+        margin-left: 5px;
+        margin-right: 25px;
     }
 }

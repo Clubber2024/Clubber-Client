@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./reviewStatics.css";
-import axios from "axios";
 import { useEffect } from "react";
 import { customAxios } from "../../../config/axios-config";
 
@@ -56,7 +55,8 @@ export default function ReviewStatics({ clubId }) {
     return (
       <div className="bar-container">
         <div className="bar" style={{ width: `${percentage}%` }}>
-          <span className="text">{text}</span>
+          <span className="bar_text">{text}</span>
+          <p className="bar_count">{count}</p>
         </div>
       </div>
     );

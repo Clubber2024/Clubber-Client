@@ -1,7 +1,7 @@
 import './reviewBox.css';
 import KeywordBar from './KeywordBar';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { customAxios } from '../../../config/axios-config';
 
 export default function ReviewBox({ clubId }) {
     const [reviewData, setReviewData] = useState([]);
@@ -9,7 +9,7 @@ export default function ReviewBox({ clubId }) {
     useEffect(() => {
         const fetchKeywordData = async () => {
             try {
-                const res = await axios.get(`http://13.125.141.171:8080/v1/clubs/${clubId}/reviews`);
+                const res = await customAxios.get(`/v1/clubs/${clubId}/reviews`);
                 if (res.data.success) {
                     setReviewData(res.data.data.reviews);
                     console.log(reviewData);
@@ -20,10 +20,10 @@ export default function ReviewBox({ clubId }) {
         };
 
         fetchKeywordData();
-    }, [clubId]);
+    }, [clubId, reviewData]);
 
     return (
-        <>
+        <div className="review_box_wrapper">
             {reviewData.map((review) => (
                 <div className="review_box_container">
                     <div key={review.reviewId} className="review_box">
@@ -40,6 +40,6 @@ export default function ReviewBox({ clubId }) {
                     </div>
                 </div>
             ))}
-        </>
+        </div>
     );
 }

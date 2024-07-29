@@ -67,14 +67,14 @@
     .tab_text_highlight {
         font-size: 18px;
         font-weight: 500;
-        padding-right: 31px;
+        padding-right: 45px;
         color: #52555b;
     }
 
     .tab_text_highlight_active {
         font-size: 18px;
         font-weight: 700;
-        padding-right: 31px;
+        padding-right: 45px;
         border: 0;
         background-color: transparent;
         cursor: pointer;
@@ -85,14 +85,14 @@
         font-size: 16px;
         font-weight: 500;
         color: #52555b;
-        padding-right: 76px;
+        padding-right: 50px;
     }
 
     .tab_text_central_active {
         font-size: 16px;
         font-weight: 700;
         color: #52555b;
-        padding-right: 76px;
+        padding-right: 50px;
     }
 
     .tab_text_small {
@@ -122,7 +122,7 @@
         width: 1.3px;
         height: 21px;
         background-color: #52555b80;
-        margin-right: 20px;
+        margin-right: 50px;
     }
 
     .rectangle {
@@ -240,7 +240,7 @@
         width: 18px;
         height: 18px;
         float: left;
-        margin-top: 10px;
+        margin-top: 8px;
         margin-left: 18px;
     }
 
@@ -335,7 +335,7 @@
         width: 80px;
         font-size: 13px;
         font-weight: 600;
-        padding-right: 0;
+
         border: 0;
         background-color: transparent;
         cursor: pointer;
@@ -347,7 +347,7 @@
         width: 90px;
         font-size: 14px;
         font-weight: 700;
-        padding-right: 1%;
+
         border: 0;
         background-color: transparent;
         cursor: pointer;
@@ -514,7 +514,7 @@
         width: 18px;
         height: 18px;
         float: left;
-        margin-top: 10px;
+        margin-top: 8px;
         margin-left: 18px;
     }
 

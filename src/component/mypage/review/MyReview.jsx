@@ -26,7 +26,7 @@ export default function MyReview() {
             }
         };
         getMyReviews();
-    }, []);
+    }, [accessToken, myReviewData]);
 
     return (
         <div className="my_review_container">

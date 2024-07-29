@@ -1,19 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import TagScroll from '../hashtag/TagScroll';
-import axios from 'axios';
-import BookMarkPage from '../../pages/BookMarkPage';
-import { LinkItem } from '../branch/BranchCentral';
+import ErrorModal from "../modal/ErrorModal";
+// import BookMarkPage from '../../pages/BookMarkPage';
+// import { LinkItem } from '../branch/BranchCentral';
 import './header.css';
 import { customAxios } from '../../config/axios-config';
 
 export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
+  const userConRef = useRef(null);
 
   const [menubarActive, setMenuBarActive] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [userEmail, setUserEmail] = useState('');
+
+  // 에러 모달창
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalMessage("");
+    navigate(`/login`);
+  };
 
   // 로그인박스 표시 상태 관리
   const [showLoginBox, setShowLoginBox] = useState(false);
@@ -40,13 +51,6 @@ export default function Header() {
     }
   }, [location]);
 
-  useEffect(() => {
-    console.log(isAdmin);
-    if (accessToken && !isAdmin) {
-      fetchUserData();
-    }
-  }, [accessToken, isAdmin]);
-
   const fetchUserData = async () => {
     try {
       const res = await customAxios.get(`/v1/users/me`, {
@@ -59,13 +63,19 @@ export default function Header() {
     } catch (error) {
       console.log(error.response);
       if (error.response && error.response.status === 401) {
-        console.log('token was expired');
+        console.log(error.response.data.reason);
         getNewToken();
       } else {
         console.error('Error fetching user data : ', error);
       }
     }
   };
+
+  useEffect(() => {
+    if (accessToken && !isAdmin) {
+      fetchUserData();
+    }
+  }, [accessToken, isAdmin]);
 
   const getNewToken = async () => {
     try {
@@ -82,6 +92,8 @@ export default function Header() {
       fetchUserData();
     } catch (error) {
       console.error('토큰 재발급 실패 : ', error);
+      setModalMessage(error.response.data.reason);
+      setIsModalOpen(true);
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
       navigate('/login');
@@ -95,6 +107,21 @@ export default function Header() {
       setShowLoginBox(!showLoginBox);
     }
   };
+
+  // 외부 영역 클릭 시, user container 닫힘
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      // useRef current에 담긴 엘리먼트 바깥을 클릭 시 닫힘
+      if (showLoginBox && userConRef.current && !userConRef.current.contains(event.target)) {
+        setShowLoginBox(false);
+      }
+    };
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => document.removeEventListener('click', handleOutsideClick);
+  }, [showLoginBox]);
+
+
   const handleTabClick = (menu) => {
     return setMenuBarActive(menu);
   };
@@ -165,6 +192,7 @@ export default function Header() {
 
   const onClickMain = () => {
     setSearchTerm('');
+    setShowLoginBox(false);
   };
 
   return (
@@ -281,6 +309,7 @@ export default function Header() {
           </Link>
         </div>
       </div>
+      <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
     </>
   );
 }

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import IntroductionPage from "../component/detail/introduction/IntroductionPage";
 import ReviewPage from "../component/detail/review/ReviewPage";
 import "./detailPage.css";
