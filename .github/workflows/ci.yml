@@ -17,14 +17,18 @@ jobs:
 
         steps:
             - uses: actions/checkout@v4
+
             - name: Setup node.js
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
 
+            - run: npm ci
+
             - name: Build project
               run: |
+                  npm install
                   CI=false npm run build
 
             - run: npm test
