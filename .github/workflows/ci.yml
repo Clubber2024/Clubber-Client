@@ -35,7 +35,5 @@ jobs:
               uses: appleboy/scp-action@master
               with:
                   host: ${{ secrets.SSH_HOST }}
-                  username: ${{ secrets.SSH_USERNAME }}
-                  password: ${{ secrets.SSH_PASSWORD }}
                   source: 'build/*'
                   target: '/root/web'
