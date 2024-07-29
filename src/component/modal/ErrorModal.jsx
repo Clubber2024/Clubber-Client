@@ -1,4 +1,5 @@
-import Modal from "react-modal";
+import ReactModal from "react-modal";
+import "./errorModal.css";
 
 export default function ErrorModal({ isOpen, message, onClose }) {
     const customStyles = {
@@ -7,22 +8,25 @@ export default function ErrorModal({ isOpen, message, onClose }) {
         },
         content: {
             width: "410px",
-            height: "170px",
+            height: "150px",
             margin: "auto",
-            borderRadius: "5px",
+            borderRadius: "10px",
             boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
-            padding: "20px"
+            padding: "20px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center"
         }
     }
 
     return (
         <div>
-            <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
+            <ReactModal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
                 <p>{message}</p>
-                <div>
-                    <button onClick={onClose}>확인</button>
-                </div>
-            </Modal>
+                <button onClick={onClose} className="ok_button">확인</button>
+            </ReactModal>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 .pending_wrapper {
   display: flex;
   flex-direction: row;
-  margin: 0% 10%;
+  margin: 0% 18%;
   margin-left: 0;
 }
 
@@ -92,11 +92,12 @@
 }
 
 .pending_date {
-  margin-right: 15px;
+  width: 18%;
+  margin-right: 10px;
 }
 
 .vertical_divider {
-  margin: 0px 5px;
+  margin: 3px 12px 0px 12px;
   color: #9c9c9c80;
   font-size: 24px;
   font-weight: 100;

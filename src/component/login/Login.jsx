@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { customAxios } from "../../config/axios-config";
 
 function Login() {
   const REST_API_KEY = "6a5dafa758e469d18292acc6fbca333b";
-  const REDIRECT_URI = "http://13.125.141.171/v1/auths/oauth/kakao";
-  // const REDIRECT_URI = "http://localhost:3000/v1/auths/oauth/kakao";
+  // const REDIRECT_URI = "http://13.125.141.171/v1/auths/oauth/kakao";
+  const REDIRECT_URI = "http://localhost:3000/v1/auths/oauth/kakao";
   const [activeForm, setActiveForm] = useState("sign-in-form-active");
 
   const [adminId, setAdminId] = useState("");

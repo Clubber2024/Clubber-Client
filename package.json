@@ -1,7 +1,6 @@
 {
     "name": "clubber-fe",
     "version": "0.1.0",
-    "proxy": "http://13.125.141.171:8080",
     "private": true,
     "dependencies": {
         "@emotion/react": "^11.11.4",

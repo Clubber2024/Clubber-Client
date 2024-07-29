@@ -1,4 +1,8 @@
 @media screen and (min-width: 768px) {
+    .review_box_wrapper {
+        margin-bottom: 150px;
+    }
+
     .review_box_container {
         width: 470px;
         background-color: white;
@@ -55,6 +59,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .review_box_wrapper {
+        margin-bottom: 150px;
+    }
+
     .review_box_container {
         width: 125%;
         background-color: white;
