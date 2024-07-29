@@ -12,8 +12,7 @@ jobs:
 
         strategy:
             matrix:
-                node-version: [14.x, 16.x, 18.x]
-                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+                node-version: [20.x]
 
         steps:
             - uses: actions/checkout@v4
@@ -24,11 +23,12 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
 
-            - run: npm install
+            - name: Install dependencies
+              run: npm install
 
             - name: Build project
               run: |
-                  npm install
                   CI=false npm run build
 
-            - run: npm test
+            - name: Run tests
+              run: npm test
