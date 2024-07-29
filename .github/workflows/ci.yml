@@ -36,6 +36,6 @@ jobs:
               with:
                   host: ${{ secrets.SSH_HOST }}
                   username: ${{ secrets.SSH_USERNAME }} # 예: 'ubuntu'
-                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  key: ${{ secrets.SSH_KEY }}
                   source: 'build/*'
                   target: '/var/www/html'
