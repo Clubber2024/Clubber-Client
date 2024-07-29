@@ -30,10 +30,15 @@ jobs:
               run: |
                   CI=false npm run build
 
+            - name: Run tests
+              run: npm test
+
             - name: Deploy to Remote Server
               if: success()
               uses: appleboy/scp-action@master
               with:
                   host: ${{ secrets.SSH_HOST }}
+                  username: ${{ secrets.SSH_USERNAME }} # 예: 'ubuntu'
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
                   source: 'build/*'
-                  target: '/root/web'
+                  target: '/var/www/html'
