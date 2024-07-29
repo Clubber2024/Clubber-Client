@@ -15,8 +15,14 @@
     font-weight: 600;
     line-height: 34.75px;
     margin: auto;
-    margin-bottom: 20px;
     margin-top: 39px;
+}
+
+.warning {
+    color: #ff7474;
+    font-weight: 310;
+    font-size: 9px;
+    margin-bottom: 20px;
 }
 
 .container input {

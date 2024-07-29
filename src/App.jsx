@@ -29,6 +29,7 @@ function App() {
   const isMobile = useMediaQuery({
     query: "(max-width:769px)",
   });
+
   return (
     <>
       {isPc && (

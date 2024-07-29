@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import styles from "./mainNotice.module.css";
 import { customAxios } from "../../config/axios-config";
 
@@ -38,8 +37,8 @@ export default function MainNotice() {
         {noticeData.map((item) => (
           <div key={item.noticeId} className={styles.div_notice}>
             <div>{item.content}</div>
-            <p>|</p>
-            <p>{formatDate(item.createdAt)}</p>
+            <p className={styles.notice_line}>|</p>
+            <p className={styles.notice_date}>{formatDate(item.createdAt)}</p>
           </div>
         ))}
       </div>
