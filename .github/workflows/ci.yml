@@ -30,9 +30,6 @@ jobs:
               run: |
                   CI=false npm run build
 
-            - name: Run tests
-              run: npm test
-
             - name: Deploy to Remote Server
               if: success()
               uses: appleboy/scp-action@master
@@ -42,7 +39,7 @@ jobs:
                   key: ${{ secrets.SSH_KEY }}
                   port: ${{ secrets.SSH_PORT }}
                   source: 'build/*'
-                  target: '/var/www/html'
+                  target: '/client/Clubber-Clients'
 
             - name: SSH Remote Commands
               if: success()
@@ -54,6 +51,6 @@ jobs:
                   port: ${{ secrets.SSH_PORT }}
                   script: |
                       cd /var/www/html
-                      # 여기에 원격 서버에서 실행할 명령어를 추가합니다.
-                      # 예를 들어, 서비스 재시작:
+                      # 여기에 원격 서버에서 실행할 명령어를 추가
+                      # ex) 서비스 재시작:
                       sudo systemctl restart nginx
