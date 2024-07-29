@@ -39,7 +39,7 @@ jobs:
                   key: ${{ secrets.SSH_KEY }}
                   port: ${{ secrets.SSH_PORT }}
                   source: 'build/*'
-                  target: '/home/ubuntu/client/Clubber-Clients'
+                  target: '/home/ubuntu/client/Clubber-Client'
 
             - name: SSH Remote Commands
               if: success()
