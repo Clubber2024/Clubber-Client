@@ -114,33 +114,33 @@
     width: 110px;
     height: 40px;
     border-radius: 5px;
-    border-color: #7bc8e0;
     background: #7bc8e0;
     color: white;
     display: flex;
     align-items: center;
     font-family: Noto Sans KR;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
     margin-left: 35%;
-    padding-left: 35px;
+    padding-left: 39px;
     margin-right: 5%;
+    border: none;
 }
 .CancelButton {
     width: 110px;
     height: 40px;
     border-radius: 5px;
-    border-color: #7bc8e0;
     background: #7bc8e0;
     color: white;
     display: flex;
     align-items: center;
     font-family: Noto Sans KR;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
     margin-left: 0;
-    padding-left: 35px;
+    padding-left: 39px;
     margin-right: 5%;
+    border: none;
 }
 
 .ButtonDiv {
