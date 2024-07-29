@@ -9,7 +9,6 @@ jobs:
     build:
         runs-on: ubuntu-latest
 
-        #빌드
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v2
@@ -20,12 +19,8 @@ jobs:
                   # npm test
                   npm run build
 
-            #폴더이동
             - name: Deploy to Remote Server
               uses: appleboy/scp-action@master
               with:
-                  host: ${{ secrets.SSH_HOST }}
-                  username: ${{ secrets.SSH_USERNAME }}
-                  password: ${{secrets.SSH_PASSWORD}}
                   source: 'build/*'
                   target: '/root/web'
