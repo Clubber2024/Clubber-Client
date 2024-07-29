@@ -11,7 +11,7 @@
         background-color: #f2f2f2;
         border-radius: 10px;
         overflow: hidden;
-        /* position: relative; */
+        position: relative;
     }
 
     .bar {
@@ -21,9 +21,10 @@
         align-items: center;
         padding: 0 8px;
         border-radius: 12px;
+        /* position: relative; */
     }
 
-    .text {
+    .bar_text {
         color: #000;
         font-size: 15px;
         font-weight: 700;
@@ -31,6 +32,14 @@
         overflow: visible;
         padding-left: 7px;
         /* text-overflow: ellipsis; */
+    }
+
+    .bar_count {
+        color: #7BC8E0;
+        font-size: 14px;
+        font-weight: 700;
+        position: absolute;
+        right: 15px;
     }
 }
 
@@ -47,7 +56,7 @@
         background-color: #f2f2f2;
         border-radius: 10px;
         overflow: hidden;
-        /* position: relative; */
+        position: relative;
     }
 
     .bar {
@@ -55,11 +64,12 @@
         background-color: #9fd8ea;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         padding: 0 8px;
         border-radius: 12px;
     }
 
-    .text {
+    .bar_text {
         color: #000;
         font-size: 14px;
         font-weight: 700;
@@ -67,5 +77,13 @@
         overflow: visible;
         padding-left: 7px;
         /* text-overflow: ellipsis; */
+    }
+
+    .bar_count {
+        color: #7BC8E0;
+        font-size: 13px;
+        font-weight: 700;
+        position: absolute;
+        right: 14px;
     }
 }
