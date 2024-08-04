@@ -20,8 +20,7 @@ export default function EditIntroduction({
     const [cActivity, setcActivity] = useState(initialActivity);
     const [cRoom, setcRoom] = useState(initialRoom);
 
-    const navigate = useNavigate(); // React Router의 useNavigate 훅 사용
-
+    const navigate = useNavigate();
     const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
@@ -53,7 +52,7 @@ export default function EditIntroduction({
             const response = await customAxios.patch(
                 `/v1/admins/change-page`,
                 {
-                    imageUrl: imgUrl,
+                    //imageUrl: imgUrl || "",
                     introduction: cIntroduction ? cIntroduction : initialIntroduction,
                     instagram: insta ? insta : initialInsta,
                     activity: cActivity ? cActivity : initialActivity,
@@ -142,6 +141,7 @@ export default function EditIntroduction({
                     placeholder="동아리실을 입력하세요..."
                     style={{ paddingBottom: '10px' }}
                 />
+
                 <div className={styles.ButtonDiv}>
                     <button className={styles.CompleteButton} onClick={handleSave}>
                         완료

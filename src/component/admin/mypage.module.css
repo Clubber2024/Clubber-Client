@@ -36,7 +36,7 @@
 
     .detail_logo {
         width: 20%;
-        height: 70%;
+        height: 80%;
         margin: 12px 24px 20px 22px;
     }
 
@@ -83,7 +83,7 @@
         align-items: center;
         justify-content: space-evenly;
         width: 70%;
-        height: 36px;
+        height: 50px;
         background-color: #7bc8e04d;
     }
 
@@ -192,13 +192,6 @@
         margin: 12px 24px 20px 22px;
     }
 
-    .insta_icon {
-        margin-top: 1%;
-        margin-left: 5%;
-        width: 20px;
-        height: 20px;
-    }
-
     .star_icon {
         width: 23px;
         height: 23px;
@@ -237,7 +230,7 @@
         align-items: center;
         justify-content: space-evenly;
         width: 70%;
-        height: 36px;
+        height: 20px;
         background-color: #7bc8e04d;
     }
 
@@ -246,7 +239,7 @@
         flex-direction: column;
         align-items: left;
         width: 70%;
-        margin: 2.5% 0 15% 0;
+        margin: 2.5 0 15% 0;
     }
 
     .detail_body h3 {
@@ -284,6 +277,30 @@
     .review_body {
         display: flex;
         flex-direction: column;
+        align-items: left;
+    }
+    .divButton {
+        display: flex;
+        justify-content: center;
         align-items: center;
+        margin-bottom: 10%;
+    }
+
+    .EditButton {
+        width: 80px;
+        height: 30px;
+        border-radius: 5px;
+        background: #7bc8e0;
+        color: white;
+        display: flex;
+        align-items: center;
+        font-family: Noto Sans KR;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        padding-left: 15px;
+        padding-top: 2px;
+        justify-content: space-between;
+        border: none;
     }
 }
