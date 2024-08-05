@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { customAxios } from '../../config/axios-config';
 import EditIntroduction from './EditIntroduction';
 import styles from './editPage.module.css';
+import axios from 'axios';
 
 export default function EditPage() {
     const accessToken = localStorage.getItem('accessToken');
@@ -85,11 +86,13 @@ export default function EditPage() {
                 }
             );
 
-            console.log(data.data);
+            console.log(imageFile.type);
 
             // 이미지 파일을 presigned URL로 업로드
-            await customAxios.put(data.data.presignedUrl, imageFile, {
-                'Content-Type': imageFile.type,
+            await axios.put(data.data.presignedUrl, imageFile, {
+                headers: {
+                    'Content-Type': imageFile.type,
+                },
             });
 
             setImageUrl(data.data.imageUrl.split('?')[0]);
