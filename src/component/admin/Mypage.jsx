@@ -3,7 +3,6 @@ import { customAxios } from "../../config/axios-config";
 import { LinkItem } from "../branch/BranchCentral";
 import AdminIntroductionPage from "./AdminIntroductionpage";
 import styles from "./mypage.module.css";
-import SideBar from "./component/SideBar";
 
 export default function MyPage() {
   const accessToken = localStorage.getItem("accessToken");

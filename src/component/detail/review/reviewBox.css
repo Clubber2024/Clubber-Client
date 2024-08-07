@@ -38,7 +38,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 7px;
-        margin-top: 7px;
+        margin-top: 10px;
     }
 
     .keyword_container {

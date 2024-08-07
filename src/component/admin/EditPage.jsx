@@ -31,7 +31,8 @@ export default function EditPage() {
     };
     useEffect(() => {
         getAdminClub();
-    }, [getAdminClub]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className={styles.DivMyPage}>

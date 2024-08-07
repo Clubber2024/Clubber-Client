@@ -75,9 +75,10 @@ export default function Header() {
     if (accessToken && !isAdmin) {
       fetchUserData();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accessToken, isAdmin]);
 
-  const getNewToken = async () => {
+  const getNewToken = async (isLogout = false) => {
     try {
       const res = await customAxios.post(
         `/v1/auths/refresh`,
@@ -92,8 +93,10 @@ export default function Header() {
       fetchUserData();
     } catch (error) {
       console.error('토큰 재발급 실패 : ', error);
-      setModalMessage(error.response.data.reason);
-      setIsModalOpen(true);
+      if (!isLogout) {
+        setModalMessage(error.response.data.reason);
+        setIsModalOpen(true);
+      }
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
       navigate('/login');
@@ -165,7 +168,7 @@ export default function Header() {
       navigate('/');
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        getNewToken();
+        getNewToken(true);
       } else {
         console.error('로그아웃 실패:', error);
       }

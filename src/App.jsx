@@ -21,6 +21,7 @@ import AdminPage from "./pages/AdminPage";
 import EditPage from "./component/admin/EditPage";
 import PendingList from "./component/admin/pending/PendingList";
 import Layout from "./component/admin/component/Layout";
+import ClubReviews from "./component/admin/ClubReviews";
 
 function App() {
   const isPc = useMediaQuery({
@@ -62,6 +63,7 @@ function App() {
             <Route path="/admin" element={<Layout />}>
               <Route index element={<AdminPage />} />
               <Route path="/admin/edit/:clubId" element={<EditPage />} />
+              <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
               <Route path="/admin/mypage/pending" element={<PendingList />} />
             </Route>
           </Routes>
@@ -96,6 +98,7 @@ function App() {
             <Route path="/user/reviews" element={<MyReview />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/admin/edit/:clubId" element={<EditPage />} />
+            <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
             <Route path="/admin/mypage/pending" element={<PendingList />} />
           </Routes>
           <Footer />

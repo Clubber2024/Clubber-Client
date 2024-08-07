@@ -1,14 +1,36 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import ReviewBox from './ReviewBox';
 import ReviewStatics from './ReviewStatics';
+import ErrorModal from '../../modal/ErrorModal';
 import './reviewPage.css';
 
 export default function ReviewPage({ clubId, clubName }) {
     const navigate = useNavigate();
+    const isAdmin = localStorage.getItem('isAdmin');
+    const token = localStorage.getItem('accessToken');
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+
+    
     const onClickReviewWrite = () => {
-        navigate(`/clubs/${clubId}/review`, { state: { clubId, clubName } });
+        if (!isAdmin && token) {
+            navigate(`/clubs/${clubId}/review`, { state: { clubId, clubName } });
+        } else if (isAdmin && token){
+            setModalMessage('관리자는 리뷰를 작성할 수 없습니다.');
+            setIsModalOpen(true);
+        } else {
+            setModalMessage('리뷰 작성은 로그인 이후 가능합니다.');
+            setIsModalOpen(true);
+        }
     };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setModalMessage("");
+        navigate(`/clubs/${clubId}`, { state: "Review" });
+      };
 
     return (
         <div className="review_body">
@@ -24,6 +46,7 @@ export default function ReviewPage({ clubId, clubName }) {
             </div>
             <div className="divider"></div>
             <ReviewBox clubId={clubId} />
+            <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
         </div>
     );
 }

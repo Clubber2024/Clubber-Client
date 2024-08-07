@@ -1,0 +1,32 @@
+.button_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.ok_button {
+    width: 101px;
+    height: 35px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #7BC8E0;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.cancel_button {
+    width: 101px;
+    height: 35px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #9C9C9C;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+}

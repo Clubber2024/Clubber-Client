@@ -20,7 +20,9 @@ export default function ReviewBox({ clubId }) {
         };
 
         fetchKeywordData();
-    }, [clubId, reviewData]);
+        // useCallback 사용 . .
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className="review_box_wrapper">
