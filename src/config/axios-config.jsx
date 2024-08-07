@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-//export const URL = 'http://localhost:8080';
+// export const URL = 'http://localhost:3000';
 export const URL = 'http://13.125.141.171:8080';
 //axios.defaults.withCredentials = true;
 

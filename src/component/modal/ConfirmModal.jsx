@@ -1,7 +1,7 @@
 import ReactModal from "react-modal";
 import "./modal.css";
 
-export default function ErrorModal({ isOpen, message, onClose }) {
+export default function ConfirmModal({ isOpen, message, onClickOk, onClose }) {
     const customStyles = {
         overlay: {
             backgroundColor: "rgba(0, 0, 0, 0.5)"
@@ -25,7 +25,10 @@ export default function ErrorModal({ isOpen, message, onClose }) {
         <div>
             <ReactModal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
                 <p>{message}</p>
-                <button onClick={onClose} className="ok_button">확인</button>
+                <div className="button_wrapper">
+                <button onClick={onClickOk} className="ok_button">확인</button>
+                <button onClick={onClose} className="cancel_button">취소</button>
+                </div>
             </ReactModal>
         </div>
     );

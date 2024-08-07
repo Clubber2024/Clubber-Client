@@ -30,8 +30,12 @@ export default function SideBar() {
                     </NavLink>
                     <div className={styles.sideLine}></div>
                     <menu className={styles.sideTitle}>리뷰</menu>
-                    <menu className={styles.sideText}>리뷰목록</menu>
-
+                    <NavLink
+                        to={`/admin/mypage/reviews`}
+                        className={({ isActive }) => (isActive ? styles.activeMenu : styles.sideText)}
+                    >
+                        리뷰목록
+                    </NavLink>
                     <NavLink
                         to={`/admin/mypage/pending`}
                         className={({ isActive }) => (isActive ? styles.activeMenu : styles.sideText)}
