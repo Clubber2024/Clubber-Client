@@ -22,6 +22,7 @@ import EditPage from "./component/admin/EditPage";
 import PendingList from "./component/admin/pending/PendingList";
 import Layout from "./component/admin/component/Layout";
 import ClubReviews from "./component/admin/ClubReviews";
+import NoticePage from "./component/main/NoticePage";
 
 function App() {
     const isPc = useMediaQuery({
@@ -38,6 +39,7 @@ function App() {
                     <Header />
                     <Routes>
                         <Route path="/" element={<MainPage />} />
+                        <Route path="/notice" element={<NoticePage />}></Route>
                         <Route path="/central" element={<CentralClubPage />} />
                         {/* <Route path="/menu/central_club/detail_page/review_write" element={<ReviewWrite />} /> */}
                         <Route path="/small" element={<SmallClubPage />} />
@@ -70,6 +72,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<MainPage />} />
+            <Route path="/notice" element={<NoticePage />}></Route>
             <Route path="/central" element={<CentralClubPage />} />
             <Route path="/small" element={<SmallClubPage />} />
             <Route path="/clubs/:clubId" element={<DetailPage />} />
