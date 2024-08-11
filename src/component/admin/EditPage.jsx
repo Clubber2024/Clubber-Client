@@ -11,6 +11,7 @@ export default function EditPage() {
     const [clubInfo, setClubInfo] = useState([]);
     const [imageFile, setImageFile] = useState(null);
     const [imageUrl, setImageUrl] = useState('');
+    const [imagePreview, setImagePreview] = useState('');
 
     const getAdminClub = async () => {
         try {
@@ -40,7 +41,9 @@ export default function EditPage() {
     //console.log(imageUrl);
 
     const handleFileChange = (event) => {
-        setImageFile(event.target.files[0]);
+        const file = event.target.files[0];
+        setImageFile(file);
+        setImagePreview(URL.createObjectURL(file));
     };
 
     const uploadImage = async () => {
@@ -72,10 +75,12 @@ export default function EditPage() {
 
             // presigned URL을 가져오는 API 호출
             const { data } = await customAxios.post(
-                '/v1/clubs/images',
+                '/v1/images/club/logo',
+
                 {
                     imageFileExtension: extension,
                 },
+
                 {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
@@ -86,15 +91,15 @@ export default function EditPage() {
                 }
             );
 
-            console.log(imageFile.type);
+            console.log(data.data);
 
             // 이미지 파일을 presigned URL로 업로드
+
             await axios.put(data.data.presignedUrl, imageFile, {
                 headers: {
                     'Content-Type': imageFile.type,
                 },
             });
-
             setImageUrl(data.data.imageUrl.split('?')[0]);
             alert('이미지 업로드가 완료되었습니다.');
         } catch (error) {
@@ -108,7 +113,7 @@ export default function EditPage() {
 
         try {
             // presigned URL을 가져오는 API 호출
-            const { data } = await customAxios.get('/v1/clubs/images', {
+            const { data } = await customAxios.get('/v1/images/club/logo', {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                 },
@@ -129,6 +134,32 @@ export default function EditPage() {
         }
     };
 
+    const handleImageSave = async () => {
+        try {
+            const uploadedImageUrl = await uploadImage();
+
+            if (uploadedImageUrl) {
+                // 이미지 URL을 포함한 동아리 수정 API 호출
+                await axios.put(
+                    `/v1/clubs/${clubId}`,
+                    {
+                        imageUrl: uploadedImageUrl,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    }
+                );
+
+                alert('동아리 이미지 수정이 완료되었습니다.');
+            }
+        } catch (error) {
+            console.error('동아리 이미지 수정 실패:', error);
+            alert('동아리 이미지 수정에 실패했습니다.');
+        }
+    };
+
     return (
         <div className={styles.DivMyPage}>
             <div className={styles.admin_detail_container}>
@@ -137,7 +168,11 @@ export default function EditPage() {
                     {imageUrl && (
                         <>
                             <div className={styles.logoDiv}>
-                                <img src={club.imageUrl} alt="Uploaded" className={styles.admin_detail_logo} />
+                                <img
+                                    src={imagePreview ? imagePreview : club.imageUrl}
+                                    alt="Uploaded"
+                                    className={styles.admin_detail_logo}
+                                />
                                 <div className={styles.logoButtonDiv}>
                                     <button className={styles.logoButton} onClick={deleteImage}>
                                         로고 삭제
