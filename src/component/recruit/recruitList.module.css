@@ -1,0 +1,124 @@
+@media screen and (min-width: 768px) {
+    .title {
+        font-family: Noto Sans;
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 35.41px;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 47px;
+    }
+
+    .recruit_container {
+        margin-left: 10%;
+        align-items: center;
+    }
+
+    .recruit_box {
+        display: flex;
+        width: 70%;
+        height: 206px;
+        border-radius: 12px;
+        box-shadow: 0px 0px 2px 2px #0000000d;
+        margin-left: 10%;
+        margin-bottom: 20px;
+    }
+    .recruit_logo {
+        width: 200px;
+        height: 170px;
+        margin-top: 19px;
+        margin-left: 20px;
+    }
+
+    .recruit_div {
+        margin-left: 23px;
+        width: 60%;
+    }
+
+    .recruit_title {
+        font-family: Noto Sans KR;
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 24.62px;
+        text-align: left;
+        width: 482px;
+        height: 23px;
+        color: #52555b;
+        margin-top: 29px;
+    }
+
+    .recruit_box .recruit_text {
+        font-family: Noto Sans KR;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: left;
+        height: 67px;
+        color: #9c9c9c;
+        margin-top: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .title {
+        font-family: Noto Sans;
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 35.41px;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 47px;
+    }
+
+    .recruit_container {
+        margin-left: 10%;
+        align-items: center;
+    }
+
+    .recruit_box {
+        display: flex;
+        width: 70%;
+        height: 206px;
+        border-radius: 12px;
+        box-shadow: 0px 0px 2px 2px #0000000d;
+        margin-left: 10%;
+        margin-bottom: 20px;
+    }
+    .recruit_logo {
+        width: 150px;
+        height: 150px;
+        margin-top: 28px;
+        margin-left: 20px;
+    }
+
+    .recruit_div {
+        margin-left: 23px;
+        width: 50%;
+    }
+
+    .recruit_title {
+        font-family: Noto Sans KR;
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 24.62px;
+        text-align: left;
+        height: 23px;
+        color: #52555b;
+        margin-top: 29px;
+        margin-bottom: 25px;
+    }
+
+    .recruit_text {
+        font-family: Noto Sans KR;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: left;
+        /*width: 50%;*/
+        height: 67px;
+        color: #9c9c9c;
+        margin-top: 10px;
+        padding-right: 10px;
+    }
+}
