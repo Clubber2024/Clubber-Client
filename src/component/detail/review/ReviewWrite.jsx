@@ -59,7 +59,7 @@ function ReviewWrite() {
         navigate(`/clubs/${clubId}/review/comment`, { state: { clubId, selectedKeywords } });
     };
 
-    const submitButtonClass = Object.values(btnActive).includes(true) ? 'next-active' : 'next';
+    const submitButtonClass = Object.values(btnActive).includes(true) ? 'next-active' : 'next-button';
 
     return (
         <div className="write-container">

@@ -40,16 +40,16 @@ export default function NoticePage() {
       <div className="notice_list">
         <div className="notice_header">
           <span>번호</span>
-          <span>제목</span>
+          <span className="notice_title">제목</span>
           <span>날짜</span>
           <span>작성자</span>
           <span>조회수</span>
         </div>
         {noticeData.length > 0 ? (
-          noticeData.map((item, index) => (
+          noticeData.map((item) => (
             <div key={item.noticeId} className="notice_item">
-              <span>{currentPage * itemsPerPage + index + 1}</span>
-              <span>{item.title}</span>
+              <span>{item.noticeId}</span>
+              <span className="notice_title">{item.title}</span>
               <span>{new Date(item.createdAt).toLocaleDateString()}</span>
               <span>관리자</span>
               {item.totalView ? <span>{item.totalView}</span> : <span>0</span>}
