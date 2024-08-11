@@ -13,7 +13,7 @@ export default function ClubsPage() {
 
     const location = useLocation();
     const tab = location.state || 'Introduction';
-    console.log(tab);
+    //console.log(tab);
     const [whichTab, setWhichTab] = useState(tab);
     const [detailData, setDetailData] = useState([]);
     const [clubInfoData, setClubInfoData] = useState([]);
@@ -24,16 +24,17 @@ export default function ClubsPage() {
 
     //회원정보 조회
     const accessToken = localStorage.getItem('accessToken');
+    const Admin = localStorage.getItem('isAdmin');
 
     const getDetailData = async () => {
         try {
-            console.log(intClubId);
+            //console.log(intClubId);
             const res = await customAxios.get(`/v1/clubs/${intClubId}`);
             if (res.data.success) {
                 setDetailData(res.data.data);
                 setClubInfoData(res.data.data.clubInfo);
-                console.log(res.data.data);
-                console.log(res.data.data.clubInfo);
+                //console.log(res.data.data);
+                //console.log(res.data.data.clubInfo);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
@@ -47,16 +48,17 @@ export default function ClubsPage() {
 
     const onClickIntroTab = () => {
         setWhichTab('Introduction');
-        console.log('동아리 상세 소개 탭뷰');
+        //console.log('동아리 상세 소개 탭뷰');
     };
 
     const onClickReviewTab = () => {
         setWhichTab('Review');
-        console.log('동아리 상세 리뷰 탭뷰');
+        //console.log('동아리 상세 리뷰 탭뷰');
     };
 
     const getBookmarkData = async () => {
         setIsLoading(true);
+        if (Admin) return;
         try {
             const response = await customAxios.get('/v1/users/favorite', {
                 headers: {
@@ -66,12 +68,12 @@ export default function ClubsPage() {
             if (response.data.success) {
                 setIsLoading(false);
                 const data = response.data.data.userFavorites;
-                console.log('Data: ', data);
+                //console.log('Data: ', data);
                 const clubIds = data.map((item) => item.favoriteClub['clubId']);
                 //console.log(clubIds);
                 const isFavoriteClub = clubIds.some((id) => id === intClubId);
                 const favorite = data.find((item) => item.favoriteClub['clubId'] === intClubId);
-                console.log('isfavoriteClub: ', isFavoriteClub);
+                //console.log('isfavoriteClub: ', isFavoriteClub);
                 setIsFavorite(isFavoriteClub);
                 if (favorite) {
                     setFavoriteId(favorite.favoriteId);
@@ -79,10 +81,10 @@ export default function ClubsPage() {
                     setFavoriteId(null);
                 }
             } else {
-                console.error('Failed to fetch bookmark data');
+                //console.error('Failed to fetch bookmark data');
             }
         } catch (error) {
-            console.error('Error fetching bookmark data : ', error);
+            //console.error('Error fetching bookmark data : ', error);
         }
     };
 
@@ -91,7 +93,8 @@ export default function ClubsPage() {
             clubId: clubId,
         };
 
-        //if (!userId) return; //로그아웃 시 기능x
+        //if (!userId) return;
+        if (Admin) return;
         try {
             if (isFavorite) {
                 const res = await customAxios.delete(`/v1/clubs/${intClubId}/favorites/${favoriteId}`, {
@@ -101,11 +104,11 @@ export default function ClubsPage() {
                     },
                 });
                 if (res.status == 200) {
-                    console.log('delete res:', res);
+                    //console.log('delete res:', res);
                     setIsFavorite(false);
                     setFavoriteId(null); //즐겨찾기 ID 초기화
                 } else {
-                    console.error('Failed to delete favorite:', res);
+                    //console.error('Failed to delete favorite:', res);
                     return; // 실패 시 추가 요청을 하지 않음
                 }
             }
@@ -118,16 +121,16 @@ export default function ClubsPage() {
                     },
                 });
                 if (addres.data.success) {
-                    console.log('add res : ', addres);
+                    //console.log('add res : ', addres);
                     setIsFavorite(true);
                     setFavoriteId(addres.data.data.favoriteId);
                 } else {
-                    console.error('Failed to add favorite:', addres);
+                    //console.error('Failed to add favorite:', addres);
                 }
             }
             getBookmarkData(); // 각 요청 후 즐겨찾기 리스트 업데이트
         } catch (error) {
-            console.error('Favorite error:', error); // 에러 로그
+            //console.error('Favorite error:', error); // 에러 로그
             getBookmarkData(); //에러 발생해도 업데이트
         }
     };
@@ -140,12 +143,16 @@ export default function ClubsPage() {
                     <div className="detail_header_name">
                         <h3>{detailData.clubName}</h3>
                         <div className="imgDiv">
-                            <img
-                                className="star_icon"
-                                src={isFavorite ? '/bookmark/starYellow.png' : '/bookmark/star.png'}
-                                alt="star"
-                                onClick={handleFavorite}
-                            />
+                            {Admin ? (
+                                ''
+                            ) : (
+                                <img
+                                    className="star_icon"
+                                    src={isFavorite ? '/bookmark/starYellow.png' : '/bookmark/star.png'}
+                                    alt="star"
+                                    onClick={handleFavorite}
+                                />
+                            )}
                         </div>
                     </div>
                     <div className="association_btn">

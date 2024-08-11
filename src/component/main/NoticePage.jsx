@@ -1,38 +1,38 @@
-import React, { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
-import { customAxios } from "../../config/axios-config";
-import './noticePage.css';  
+import React, { useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate';
+import { customAxios } from '../../config/axios-config';
+import './noticePage.css';
 
 export default function NoticePage() {
-  const [noticeData, setNoticeData] = useState([]);
-  const [pageCount, setPageCount] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 10;
+    const [noticeData, setNoticeData] = useState([]);
+    const [pageCount, setPageCount] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 10;
 
-  const getNoticeData = async (page = 0) => {
-    try {
-      const res = await customAxios.get(`/v1/notices`, {
-        params: { page, size: itemsPerPage }
-      });
-      if (res.data.success && res.data.data.content) {
-        setNoticeData(res.data.data.content);
-        setPageCount(res.data.data.totalPages);
-      } else {
-        setNoticeData([]);
-      }
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-      setNoticeData([]);
-    }
-  };
+    const getNoticeData = async (page = 0) => {
+        try {
+            const res = await customAxios.get(`/v1/notices`, {
+                params: { page, size: itemsPerPage },
+            });
+            if (res.data.success && res.data.data.content) {
+                setNoticeData(res.data.data.content);
+                setPageCount(res.data.data.totalPages);
+            } else {
+                setNoticeData([]);
+            }
+        } catch (error) {
+            //console.error("Error fetching data: ", error);
+            setNoticeData([]);
+        }
+    };
 
-  useEffect(() => {
-    getNoticeData(currentPage);
-  }, [currentPage]);
+    useEffect(() => {
+        getNoticeData(currentPage);
+    }, [currentPage]);
 
-  const handlePageClick = ({ selected }) => {
-    setCurrentPage(selected);
-  };
+    const handlePageClick = ({ selected }) => {
+        setCurrentPage(selected);
+    };
 
   return (
     <div className="notice_container">

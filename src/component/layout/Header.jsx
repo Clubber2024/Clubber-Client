@@ -34,9 +34,9 @@ export default function Header() {
     const adminId = localStorage.getItem('adminId');
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
-    console.log(accessToken);
-    console.log(refreshToken);
-    console.log(adminId);
+    //console.log(accessToken);
+    //console.log(refreshToken);
+    //console.log(adminId);
 
     useEffect(() => {
         const path = location.pathname;
@@ -58,12 +58,12 @@ export default function Header() {
                     Authorization: `Bearer ${accessToken}`,
                 },
             });
-            console.log(res.data.data.email);
+            //console.log(res.data.data.email);
             setUserEmail(res.data.data.email);
         } catch (error) {
-            console.log(error.response);
+            //console.log(error.response);
             if (error.response && error.response.status === 401) {
-                console.log(error.response.data.reason);
+                //console.log(error.response.data.reason);
                 getNewToken();
             } else {
                 console.error('Error fetching user data : ', error);
@@ -77,30 +77,30 @@ export default function Header() {
         }
     }, [accessToken, isAdmin]);
 
-  const getNewToken = async (isLogout = false) => {
-    try {
-      const res = await customAxios.post(
-        `/v1/auths/refresh`,
-        {},
-        {
-          token: refreshToken,
+    const getNewToken = async (isLogout = false) => {
+        try {
+            const res = await customAxios.post(
+                `/v1/auths/refresh`,
+                {},
+                {
+                    token: refreshToken,
+                }
+            );
+            const newAccessToken = res.data.data.accessToken;
+            localStorage.setItem('accessToken', newAccessToken);
+            // 새 토큰으로 다시 요청
+            fetchUserData();
+        } catch (error) {
+            console.error('토큰 재발급 실패 : ', error);
+            if (!isLogout) {
+                setModalMessage(error.response.data.reason);
+                setIsModalOpen(true);
+            }
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
+            navigate('/login');
         }
-      );
-      const newAccessToken = res.data.data.accessToken;
-      localStorage.setItem('accessToken', newAccessToken);
-      // 새 토큰으로 다시 요청
-      fetchUserData();
-    } catch (error) {
-      console.error('토큰 재발급 실패 : ', error);
-      if (!isLogout) {
-        setModalMessage(error.response.data.reason);
-        setIsModalOpen(true);
-      }
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      navigate('/login');
-    }
-  };
+    };
 
     const handleUserContainerClick = () => {
         if (!accessToken) {
@@ -127,51 +127,51 @@ export default function Header() {
         return setMenuBarActive(menu);
     };
 
-  const handleLogout = async () => {
-    try {
-      console.log(isAdmin);
-      if (isAdmin) {
-        const res = await customAxios.post(
-          '/v1/admins/logout',
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-        console.log(res);
-        localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
-        localStorage.removeItem('refreshToken');
-        localStorage.removeItem('adminId');
-        localStorage.removeItem('isAdmin');
-      } else {
-        const res = await customAxios.post(
-          '/v1/auths/logout',
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-        console.log(res);
-        localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
-        localStorage.removeItem('refreshToken');
-        localStorage.removeItem('adminId');
-        localStorage.removeItem('isAdmin');
-      }
-      setShowLoginBox(false);
-      // 로그아웃 이후 메인페이지 ? 로그인 페이지 ?
-      navigate('/');
-    } catch (error) {
-      if (error.response && error.response.status === 401) {
-        getNewToken();
-      } else {
-        console.error('로그아웃 실패:', error);
-      }
-    }
-  };
+    const handleLogout = async () => {
+        try {
+            //console.log(isAdmin);
+            if (isAdmin) {
+                const res = await customAxios.post(
+                    '/v1/admins/logout',
+                    {},
+                    {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    }
+                );
+                //console.log(res);
+                localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
+                localStorage.removeItem('refreshToken');
+                localStorage.removeItem('adminId');
+                localStorage.removeItem('isAdmin');
+            } else {
+                const res = await customAxios.post(
+                    '/v1/auths/logout',
+                    {},
+                    {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    }
+                );
+                //console.log(res);
+                localStorage.removeItem('accessToken'); // 로컬 스토리지에서 액세스 토큰 삭제
+                localStorage.removeItem('refreshToken');
+                localStorage.removeItem('adminId');
+                localStorage.removeItem('isAdmin');
+            }
+            setShowLoginBox(false);
+            // 로그아웃 이후 메인페이지 ? 로그인 페이지 ?
+            navigate('/');
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                getNewToken();
+            } else {
+                console.error('로그아웃 실패:', error);
+            }
+        }
+    };
 
     //동아리 검색 기능 관련
     const handleInputChange = (event) => {

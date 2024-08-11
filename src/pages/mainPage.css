@@ -4,7 +4,14 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        margin-bottom: 250px;
         /*width: 80%;*/
+    }
+    .main_promote_container {
+        display: flex;
+        flex-direction: column;
+    }
+    .main_container {
         margin-left: 20%;
         margin-right: 20%;
         margin-top: 32px;
@@ -23,6 +30,7 @@
         padding-left: 25%;
         width: 90%;
         margin-top: 32px;
-        margin-bottom: 347px;
+        margin-bottom: 300px;
+        /*margin-bottom: 347px;*/
     }
 }
