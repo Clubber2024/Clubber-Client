@@ -42,18 +42,16 @@
 }
 
 .admin_detail_logo {
-    width: 80%;
-    height: 80%;
-    margin: 12px 24px 20px 22px;
+    width: 150px;
+    margin: 12px 0px 20px 22px;
 }
 
 .logoDiv {
     display: flex;
     flex-direction: column;
-    width: min-content;
 }
 .logoButtonDiv {
-    width: 200px;
+    width: 160px;
     margin-left: 22px;
 }
 .logoButton {
@@ -68,7 +66,6 @@
 }
 .fileUpload input[type='file']::file-selector-button {
     border-color: #7bc8e0;
-
     margin-top: 5px;
     border-radius: 5px;
     width: 70px;
