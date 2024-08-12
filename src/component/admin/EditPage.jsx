@@ -70,9 +70,9 @@ export default function EditPage() {
 
             // 이미지 파일을 presigned URL로 업로드
 
-            await axios.put(data.data.presignedUrl, imageFile, {
+            await axios.put(data.data.presignedUrl, file, {
                 headers: {
-                    'Content-Type': imageFile.type,
+                    'Content-Type': file.type,
                 },
             });
             setImageUrl(data.data.imageUrl.split('?')[0]);
