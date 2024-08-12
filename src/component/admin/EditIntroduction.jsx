@@ -55,7 +55,7 @@ export default function EditIntroduction({
             const response = await customAxios.patch(
                 `/v1/admins/change-page`,
                 {
-                    imageUrl: img || '',
+                    imageUrl: initialImgUrl || '',
                     introduction: cIntroduction ? cIntroduction : initialIntroduction,
                     instagram: insta ? insta : initialInsta,
                     activity: cActivity ? cActivity : initialActivity,
