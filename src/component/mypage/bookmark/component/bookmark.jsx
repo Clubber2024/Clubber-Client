@@ -105,7 +105,7 @@ function BookMark() {
                     />
                     <div className={styles.divRow}>
                         <Star src={StarImg} onClick={() => handleFavorite(club.favoriteClub.clubId, club.favoriteId)} />
-                        <LinkItem to={`/clubs/${club.clubId}`}>
+                        <LinkItem to={`/clubs/${club.favoriteClub.clubId}`}>
                             <Icon src={BookMarkIcon} />
                         </LinkItem>
                     </div>

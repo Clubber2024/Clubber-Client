@@ -23,7 +23,7 @@ export default function SideBar() {
                 <div className={styles.rectangleList}>
                     <menu className={styles.sideTitle}>내 정보</menu>
                     <NavLink
-                        to={`/admin/edit`}
+                        to={`/admin`}
                         className={({ isActive }) => (isActive ? styles.activeMenu : styles.sideTextWrite)}
                     >
                         동아리글 작성하기
