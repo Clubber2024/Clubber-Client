@@ -42,18 +42,16 @@
 }
 
 .admin_detail_logo {
-    width: 80%;
-    height: 80%;
-    margin: 12px 24px 20px 22px;
+    width: 150px;
+    margin: 12px 0px 20px 22px;
 }
 
 .logoDiv {
     display: flex;
     flex-direction: column;
-    width: min-content;
 }
 .logoButtonDiv {
-    width: 200px;
+    width: 160px;
     margin-left: 22px;
 }
 .logoButton {
@@ -68,13 +66,13 @@
 }
 .fileUpload input[type='file']::file-selector-button {
     border-color: #7bc8e0;
-
     margin-top: 5px;
     border-radius: 5px;
     width: 70px;
     height: 25px;
     margin-right: 5px;
     font-size: 12px;
+    margin-bottom: 10px;
 }
 
 .insta_icon {
@@ -119,8 +117,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    width: 70%;
-    height: 36px;
+    width: 80%;
+    height: 30px;
     background-color: #7bc8e04d;
 }
 
@@ -128,7 +126,7 @@
     display: flex;
     flex-direction: column;
     align-items: left;
-    width: 70%;
+    width: 80%;
     margin: 2.5% 0 5% 0;
 }
 

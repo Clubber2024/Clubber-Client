@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function EditIntroduction({
     introduction: initialIntroduction,
     instagram: initialInsta,
-    imgUrl,
+    imgUrl: initialImgUrl,
     leader: initialLeader,
     activity: initialActivity,
     room: initialRoom,
@@ -19,6 +19,7 @@ export default function EditIntroduction({
     const [cLeader, setcLeader] = useState(initialLeader);
     const [cActivity, setcActivity] = useState(initialActivity);
     const [cRoom, setcRoom] = useState(initialRoom);
+    const [img, setimg] = useState(initialImgUrl);
 
     const navigate = useNavigate();
     const accessToken = localStorage.getItem('accessToken');
@@ -30,6 +31,7 @@ export default function EditIntroduction({
         setcActivity(initialActivity);
         setcRoom(initialRoom);
     }, [accessToken]);
+    console.log('II', initialImgUrl);
 
     const handleIntroductionChange = (e) => setcIntroduction(e.target.value ? e.target.value : initialIntroduction);
     const handleInstagramChange = (e) => setInsta(e.target.value ? e.target.value : initialInsta);
@@ -49,10 +51,11 @@ export default function EditIntroduction({
 
     const patchEditClub = async () => {
         try {
+            console.log('img', img);
             const response = await customAxios.patch(
                 `/v1/admins/change-page`,
                 {
-                    //imageUrl: imgUrl || "",
+                    imageUrl: initialImgUrl || '',
                     introduction: cIntroduction ? cIntroduction : initialIntroduction,
                     instagram: insta ? insta : initialInsta,
                     activity: cActivity ? cActivity : initialActivity,

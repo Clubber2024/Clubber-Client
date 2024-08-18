@@ -40,18 +40,57 @@ export default function EditPage() {
     }, []);
     //console.log(imageUrl);
 
-    const handleFileChange = (event) => {
+    const handleFileChange = async (event) => {
         const file = event.target.files[0];
         setImageFile(file);
         setImagePreview(URL.createObjectURL(file));
+
+        const extension = file.name.split('.').pop().toUpperCase(); // 확장자 추출
+
+        try {
+            // presigned URL을 가져오는 API 호출
+            const { data } = await customAxios.post(
+                '/v1/images/club/logo',
+
+                {
+                    imageFileExtension: extension,
+                },
+
+                {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                    params: {
+                        imageFileExtension: extension,
+                    },
+                }
+            );
+
+            console.log(data.data);
+
+            // 이미지 파일을 presigned URL로 업로드
+
+            await axios.put(data.data.presignedUrl, file, {
+                headers: {
+                    'Content-Type': file.type,
+                },
+            });
+            setImageUrl(data.data.imageUrl.split('?')[0]);
+            alert('이미지 업로드가 완료되었습니다.');
+        } catch (error) {
+            console.error('이미지 업로드 실패:', error);
+            alert('이미지 업로드에 실패했습니다.');
+        }
     };
+
+    /*
 
     const uploadImage = async () => {
         if (!imageFile) return;
 
         try {
             // 이전 이미지가 있으면 삭제
-            /*
+            
             if (imageUrl) {
                 const { data: deleteData } = await customAxios.get('/v1/clubs/images', {
                     headers: {
@@ -69,7 +108,7 @@ export default function EditPage() {
                 console.log('deleteData:', deleteData);
                 //await customAxios.delete(deleteData.url);
             }
-								*/
+								
             console.log(typeof imageFile.name);
             const extension = imageFile.name.split('.').pop().toUpperCase(); // 확장자 추출
 
@@ -108,6 +147,7 @@ export default function EditPage() {
         }
     };
 
+		*/
     const deleteImage = async () => {
         if (!imageUrl) return;
 
@@ -134,38 +174,39 @@ export default function EditPage() {
         }
     };
 
-    const handleImageSave = async () => {
-        try {
-            const uploadedImageUrl = await uploadImage();
+    // const handleImageSave = async () => {
+    //     try {
+    //         const uploadedImageUrl = await uploadImage();
 
-            if (uploadedImageUrl) {
-                // 이미지 URL을 포함한 동아리 수정 API 호출
-                await axios.put(
-                    `/v1/clubs/${clubId}`,
-                    {
-                        imageUrl: uploadedImageUrl,
-                    },
-                    {
-                        headers: {
-                            Authorization: `Bearer ${accessToken}`,
-                        },
-                    }
-                );
+    //         if (uploadedImageUrl) {
+    //             // 이미지 URL을 포함한 동아리 수정 API 호출
+    //             await customAxios.put(
+    //                 `/v1/clubs/${clubId}`,
+    //                 {
+    //                     imageUrl: uploadedImageUrl,
+    //                 },
+    //                 {
+    //                     headers: {
+    //                         Authorization: `Bearer ${accessToken}`,
+    //                     },
+    //                 }
+    //             );
 
-                alert('동아리 이미지 수정이 완료되었습니다.');
-            }
-        } catch (error) {
-            console.error('동아리 이미지 수정 실패:', error);
-            alert('동아리 이미지 수정에 실패했습니다.');
-        }
-    };
+    //             alert('동아리 이미지 수정이 완료되었습니다.');
+    //         }
+    //     } catch (error) {
+    //         console.error('동아리 이미지 수정 실패:', error);
+    //         alert('동아리 이미지 수정에 실패했습니다.');
+    //     }
+    // };
+    console.log('url', imageUrl);
 
     return (
         <div className={styles.DivMyPage}>
             <div className={styles.admin_detail_container}>
                 <div className={styles.admin_detail_header}>
                     <br />
-                    {imageUrl && (
+                    {
                         <>
                             <div className={styles.logoDiv}>
                                 <img
@@ -177,16 +218,14 @@ export default function EditPage() {
                                     <button className={styles.logoButton} onClick={deleteImage}>
                                         로고 삭제
                                     </button>
-                                    <button className={styles.logoButton} onClick={uploadImage}>
-                                        로고 업로드
-                                    </button>
+
                                     <label className={styles.fileUpload}>
                                         <input type="file" accept=".jpg, .jpeg" onChange={handleFileChange} />
                                     </label>
                                 </div>
                             </div>
                         </>
-                    )}
+                    }
 
                     <div className={styles.admin_detail_header_container}>
                         <div className={styles.admin_detail_header_name}>
@@ -211,7 +250,7 @@ export default function EditPage() {
                     department={club.department}
                     division={club.division}
                     introduction={club.introduction}
-                    imgUrl={club.imageUrl}
+                    imgUrl={imageUrl ? imageUrl : club.imageUrl}
                     instagram={club.instagram}
                     activity={clubInfo.activity}
                     leader={clubInfo.leader}
@@ -220,4 +259,10 @@ export default function EditPage() {
             </div>
         </div>
     );
+}
+
+{
+    /* <button className={styles.logoButton} onClick={uploadImage}>
+로고 업로드
+</button> */
 }
