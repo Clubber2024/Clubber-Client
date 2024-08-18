@@ -29,8 +29,8 @@ export default function ClubReviews() {
     }, [accessToken]);
 
     return (
-        <div className="club_review_container">
-            <h2>동아리 리뷰 목록</h2>
+        <div className="my_review_container">
+            <h3>동아리 리뷰 목록</h3>
             {clubReviewData.map((cReview) => (
                 <div key={cReview.reviewId} className="my_review_box">
                     <div className="review_box_header">

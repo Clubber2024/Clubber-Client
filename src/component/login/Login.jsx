@@ -6,7 +6,7 @@ import { customAxios } from '../../config/axios-config';
 function Login() {
     const REST_API_KEY = '6a5dafa758e469d18292acc6fbca333b';
     const REDIRECT_URI = 'http://13.125.141.171/v1/auths/oauth/kakao';
-    //const REDIRECT_URI = 'http://localhost:3000/v1/auths/oauth/kakao';
+    // const REDIRECT_URI = 'http://localhost:3000/v1/auths/oauth/kakao';
     const [activeForm, setActiveForm] = useState('sign-in-form-active');
 
     const [adminId, setAdminId] = useState('');
@@ -19,8 +19,6 @@ function Login() {
         window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
     };
     const adminLoginHandler = async () => {
-        // console.log(adminId);
-        // console.log(adminPw);
         try {
             const res = await customAxios.post(`/v1/admins/login`, {
                 username: adminId,

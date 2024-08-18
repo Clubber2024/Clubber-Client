@@ -64,7 +64,7 @@ export default function Header() {
             //console.log(error.response);
             if (error.response && error.response.status === 401) {
                 //console.log(error.response.data.reason);
-                getNewToken();
+                getNewToken(false);
             } else {
                 console.error('Error fetching user data : ', error);
             }
@@ -77,7 +77,7 @@ export default function Header() {
         }
     }, [accessToken, isAdmin]);
 
-    const getNewToken = async (isLogout = false) => {
+    const getNewToken = async (isLogout) => {
         try {
             const res = await customAxios.post(
                 `/v1/auths/refresh`,
@@ -96,8 +96,11 @@ export default function Header() {
                 setModalMessage(error.response.data.reason);
                 setIsModalOpen(true);
             }
+            setIsModalOpen(false);
             localStorage.removeItem('accessToken');
             localStorage.removeItem('refreshToken');
+            localStorage.removeItem('adminId');
+            localStorage.removeItem('isAdmin');
             navigate('/login');
         }
     };
@@ -166,7 +169,7 @@ export default function Header() {
             navigate('/');
         } catch (error) {
             if (error.response && error.response.status === 401) {
-                getNewToken();
+                getNewToken(true);
             } else {
                 console.error('로그아웃 실패:', error);
             }

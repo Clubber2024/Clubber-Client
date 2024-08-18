@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import { customAxios } from '../../config/axios-config';
-import './noticePage.css';
+import './noticeList.css';
+import { useNavigate } from 'react-router-dom';
 
-export default function NoticePage() {
+export default function NoticeList() {
+    const navigate = useNavigate();
+    // const [noticeId, setNoticeId] = useState(0);
     const [noticeData, setNoticeData] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
@@ -15,6 +18,7 @@ export default function NoticePage() {
                 params: { page, size: itemsPerPage },
             });
             if (res.data.success && res.data.data.content) {
+                // setNoticeId(res.data.data.content.noticeId);
                 setNoticeData(res.data.data.content);
                 setPageCount(res.data.data.totalPages);
             } else {
@@ -34,6 +38,10 @@ export default function NoticePage() {
         setCurrentPage(selected);
     };
 
+    const onClickNotice = ( noticeId ) => {
+      navigate(`/notices/${noticeId}`);
+    }
+
   return (
     <div className="notice_container">
       <h2>공지사항</h2>
@@ -49,7 +57,7 @@ export default function NoticePage() {
           noticeData.map((item) => (
             <div key={item.noticeId} className="notice_item">
               <span>{item.noticeId}</span>
-              <span className="notice_title">{item.title}</span>
+              <span className="notice_title" onClick={() => {onClickNotice(item.noticeId)}}>{item.title}</span>
               <span>{new Date(item.createdAt).toLocaleDateString()}</span>
               <span>관리자</span>
               {item.totalView ? <span>{item.totalView}</span> : <span>0</span>}
