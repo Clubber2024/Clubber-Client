@@ -107,7 +107,7 @@ export default function PendingList() {
   };
 
   return (
-    <div className="pending_wrapper">
+
       <div className="pending_container">
         <h3>리뷰 승인 대기</h3>
         <div className="pending_divider" />
@@ -131,11 +131,9 @@ export default function PendingList() {
                 checked={checkedList.includes(pending.reviewId)}
                 className="checkbox_input"
               />
-              <div className="text_align">
-                <p className="pending_comment">{pending.content}</p>
-                <p className="vertical_divider">|</p>
-                <p className="pending_date">{pending.writtenDate}</p>
-              </div>
+              <p className="pending_comment">{pending.content}</p>
+              <p className="vertical_divider">|</p>
+              <p className="pending_date">{pending.writtenDate}</p>
             </div>
           ))}
         </div>
@@ -147,8 +145,8 @@ export default function PendingList() {
             승인거절
           </button>
         </div>
+        <ConfirmModal isOpen={isModalOpen} message={modalMessage} onClickOk={onClickOk} onClose={closeModal} />
       </div>
-      <ConfirmModal isOpen={isModalOpen} message={modalMessage} onClickOk={onClickOk} onClose={closeModal} />
-    </div>
+
   );
 }

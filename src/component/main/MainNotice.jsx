@@ -11,7 +11,6 @@ export default function MainNotice() {
             const res = await customAxios.get(`/v1/notices/main-page`);
             if (res.data.success) {
                 setNoticeData(res.data.data);
-                //console.log(res.data.data);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
@@ -33,7 +32,7 @@ export default function MainNotice() {
     // 메인 페이지에 보여줄 공지사항
     return (
         <div className={styles.container}>
-            <LinkItem to={'/notice'}>
+            <LinkItem to={'/notices'}>
                 <div className={styles.notice_index}>공지사항</div>
             </LinkItem>
             <div className={styles.notice_container}>
