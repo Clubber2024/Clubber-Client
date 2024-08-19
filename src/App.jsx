@@ -27,6 +27,7 @@ import RecruitPage from './pages/RecruitPage';
 import QnAPage from './pages/QnAPage';
 import NoticeList from './component/main/NoticeList';
 import NoticePage from './pages/NoticePage';
+import AdminPage from './pages/AdminPage';
 
 function App() {
     const isPc = useMediaQuery({
@@ -64,8 +65,8 @@ function App() {
 
                         <Route path="/qna" element={<QnAPage />} />
 
-
                         <Route path="/admin" element={<AdminMenu />} />
+                        <Route path="/admin/mypage" element={<AdminPage />} />
                         <Route path="/admin/edit/:clubId" element={<EditPage />} />
                         <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                         <Route path="/admin/mypage/pending" element={<PendingList />} />
@@ -103,6 +104,7 @@ function App() {
                         <Route path="/bookmark" element={<BookMarkPage />} />
                         <Route path="/user/reviews" element={<MyReview />} />
                         <Route path="/admin" element={<AdminMenu />} />
+                        <Route path="/admin/mypage" element={<AdminPage />} />
                         <Route path="/admin/edit/:clubId" element={<EditPage />} />
                         <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                         <Route path="/admin/mypage/pending" element={<PendingList />} />
