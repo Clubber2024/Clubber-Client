@@ -1,4 +1,20 @@
 @media screen and (min-width: 769px) {
+    .font_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 13px;
+        margin-bottom: 13px;
+        border-top: 4px solid var(--Main-Color, #7bc8e0);
+    }
+    .font {
+        font-family: Noto Sans;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19.07px;
+        text-align: left;
+        color: #646464;
+    }
     .footer {
         background-color: #9c9c9c26;
         position: relative;
@@ -8,6 +24,20 @@
         border-top: 1px solid #9c9c9c26;
         text-align: center;
         padding: 10px;
+    }
+
+    .circle_insta {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background: #ffffff;
+        margin: auto;
+    }
+
+    .footer_insta {
+        width: 23.28px;
+        height: 23.28px;
+        margin-top: 8px;
     }
 
     .p {
@@ -27,6 +57,22 @@
     }
 }
 @media screen and (max-width: 769px) {
+    .font_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 13px;
+        margin-bottom: 13px;
+        border-top: 4px solid var(--Main-Color, #7bc8e0);
+    }
+    .font {
+        font-family: Noto Sans;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19.07px;
+        text-align: left;
+        color: #646464;
+    }
     .footer {
         background-color: #9c9c9c26;
         position: relative;

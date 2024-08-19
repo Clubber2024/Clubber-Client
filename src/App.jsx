@@ -24,6 +24,7 @@ import Layout from './component/admin/component/Layout';
 import ClubReviews from './component/admin/ClubReviews';
 import NoticePage from './component/main/NoticePage';
 import RecruitPage from './pages/RecruitPage';
+import QnAPage from './pages/QnAPage';
 
 function App() {
     const isPc = useMediaQuery({
@@ -64,6 +65,7 @@ function App() {
                             <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                             <Route path="/admin/mypage/pending" element={<PendingList />} />
                         </Route>
+                        <Route path="/qna" element={<QnAPage />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -95,6 +97,7 @@ function App() {
                         <Route path="/admin/mypage/pending" element={<PendingList />} />
                         <Route path="/recruit" element={<RecruitPage />} />
                     </Routes>
+                    <Route path="/qna" element={<QnAPage />} />
                     <Footer />
                 </BrowserRouter>
             )}

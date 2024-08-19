@@ -12,6 +12,9 @@ export default function EditPage() {
     const [imageFile, setImageFile] = useState(null);
     const [imageUrl, setImageUrl] = useState('');
     const [imagePreview, setImagePreview] = useState('');
+    const baseLogoUrl = process.env.REACT_APP_BASE_LOGO_URL;
+
+    console.log('bb', baseLogoUrl);
 
     const getAdminClub = async () => {
         try {
@@ -152,21 +155,7 @@ export default function EditPage() {
         if (!imageUrl) return;
 
         try {
-            // presigned URL을 가져오는 API 호출
-            const { data } = await customAxios.get('/v1/images/club/logo', {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-                params: {
-                    key: `${imageUrl.split('/').pop()}`,
-                    //action: 'deleteObject',
-                },
-            });
-
-            // 이미지 파일을 presigned URL로 삭제
-            await customAxios.delete(data.url);
-
-            setImageUrl(null);
+            setImageUrl(baseLogoUrl);
             alert('이미지 삭제가 완료되었습니다.');
         } catch (error) {
             console.error('이미지 삭제 실패:', error);
