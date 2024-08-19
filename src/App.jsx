@@ -17,14 +17,16 @@ import BranchCentralPage from './pages/BranchCentral';
 import BranchSmallPage from './pages/BranchSmall';
 import ReviewComment from './component/detail/review/ReviewComment';
 import MyReview from './component/mypage/review/MyReview';
-import AdminPage from './pages/AdminPage';
+// import AdminPage from './pages/AdminPage';
+import AdminMenu from './component/admin/AdminMenu';
 import EditPage from './component/admin/EditPage';
 import PendingList from './component/admin/pending/PendingList';
 import Layout from './component/admin/component/Layout';
 import ClubReviews from './component/admin/ClubReviews';
-import NoticePage from './component/main/NoticePage';
 import RecruitPage from './pages/RecruitPage';
 import QnAPage from './pages/QnAPage';
+import NoticeList from './component/main/NoticeList';
+import NoticePage from './pages/NoticePage';
 
 function App() {
     const isPc = useMediaQuery({
@@ -41,7 +43,8 @@ function App() {
                     <Header />
                     <Routes>
                         <Route path="/" element={<MainPage />} />
-                        <Route path="/notice" element={<NoticePage />}></Route>
+                        <Route path="/notices" element={<NoticeList />} />
+                        <Route path="/notices/:noticeId" element={<NoticePage />} />
                         <Route path="/central" element={<CentralClubPage />} />
                         {/* <Route path="/menu/central_club/detail_page/review_write" element={<ReviewWrite />} /> */}
                         <Route path="/small" element={<SmallClubPage />} />
@@ -58,13 +61,21 @@ function App() {
                         <Route path="/bookmark" element={<BookMarkPage />} />
                         <Route path="/user/reviews" element={<MyReview />} />
                         <Route path="/recruit" element={<RecruitPage />} />
+
                         <Route path="/qna" element={<QnAPage />} />
-                        <Route path="/admin" element={<Layout />}>
-                            <Route index element={<AdminPage />} />
+
+
+                        <Route path="/admin" element={<AdminMenu />} />
+                        <Route path="/admin/edit/:clubId" element={<EditPage />} />
+                        <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
+                        <Route path="/admin/mypage/pending" element={<PendingList />} />
+                        {/* <Route path="/admin" element={<Layout />}>
+                            <Route index element={<AdminMenu />} />
+
                             <Route path="/admin/edit/:clubId" element={<EditPage />} />
                             <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                             <Route path="/admin/mypage/pending" element={<PendingList />} />
-                        </Route>
+                        </Route> */}
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -75,7 +86,8 @@ function App() {
                     <Header />
                     <Routes>
                         <Route path="/" element={<MainPage />} />
-                        <Route path="/notice" element={<NoticePage />}></Route>
+                        <Route path="/notices" element={<NoticeList />} />
+                        <Route path="/notices/:noticeId" element={<NoticePage />} />
                         <Route path="/central" element={<CentralClubPage />} />
                         <Route path="/small" element={<SmallClubPage />} />
                         <Route path="/clubs/:clubId" element={<DetailPage />} />
@@ -90,7 +102,7 @@ function App() {
                         <Route path="/summary" element={<SummaryPage />} />
                         <Route path="/bookmark" element={<BookMarkPage />} />
                         <Route path="/user/reviews" element={<MyReview />} />
-                        <Route path="/admin" element={<AdminPage />} />
+                        <Route path="/admin" element={<AdminMenu />} />
                         <Route path="/admin/edit/:clubId" element={<EditPage />} />
                         <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                         <Route path="/admin/mypage/pending" element={<PendingList />} />

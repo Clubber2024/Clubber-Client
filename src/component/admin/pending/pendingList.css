@@ -1,29 +1,14 @@
-.pending_wrapper {
-    display: flex;
-    flex-direction: row;
-    margin: 0% 18%;
-    margin-left: 0;
-}
-
-.pending_sidebar {
-    display: flex;
-    flex: 1;
-    margin-top: 2%;
-    margin-left: 7%;
-}
-
 .pending_container {
     display: flex;
     flex-direction: column;
-    flex: 5;
-    padding: 30px;
+    margin-top: 50px;
+    padding: 0% 20%;
 }
 
 .pending_divider {
     width: 100%;
-    border: 1px solid #9c9c9c80;
-    margin-top: 15px;
-    margin-bottom: 25px;
+    border: 0.5px solid #9c9c9c80;
+    margin-bottom: 45px;
 }
 
 .checkbox_container {
@@ -55,8 +40,8 @@
 .checkbox_input:checked {
     background: #7bc8e0;
     background-image: url('./Vector.png');
-    background-position: center;
-    background-size: auto;
+    background-position: -2px 16px;
+    background-size: cover;
     border: none;
 }
 
@@ -64,7 +49,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     width: 100%;
     height: 45px;
     border: 2px solid #0000000d;
@@ -73,17 +58,8 @@
     margin: 5px auto;
     padding: 5px auto;
     font-weight: 400;
-    font-family: Noto Sans KR;
-}
-
-.text_align {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     font-size: 14px;
-    font-weight: 400;
+    font-family: Noto Sans KR;
     color: #202123;
 }
 
@@ -92,14 +68,17 @@
 }
 
 .pending_date {
+    width: 80px;
+    text-align: right;
     margin-right: 15px;
 }
 
 .vertical_divider {
-    margin: 3px 10px 0px 10px;
+    /* margin: 3px 0px 0px 10px; */
     color: #9c9c9c80;
     font-size: 24px;
     font-weight: 100;
+    padding: 0px 10px;
 }
 
 .approve_button {
@@ -136,6 +115,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 40px;
     margin-bottom: 300px;
 }
