@@ -24,6 +24,7 @@ import PendingList from './component/admin/pending/PendingList';
 import Layout from './component/admin/component/Layout';
 import ClubReviews from './component/admin/ClubReviews';
 import RecruitPage from './pages/RecruitPage';
+import QnAPage from './pages/QnAPage';
 import NoticeList from './component/main/NoticeList';
 import NoticePage from './pages/NoticePage';
 
@@ -60,12 +61,17 @@ function App() {
                         <Route path="/bookmark" element={<BookMarkPage />} />
                         <Route path="/user/reviews" element={<MyReview />} />
                         <Route path="/recruit" element={<RecruitPage />} />
+
+                        <Route path="/qna" element={<QnAPage />} />
+
+
                         <Route path="/admin" element={<AdminMenu />} />
                         <Route path="/admin/edit/:clubId" element={<EditPage />} />
                         <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                         <Route path="/admin/mypage/pending" element={<PendingList />} />
                         {/* <Route path="/admin" element={<Layout />}>
                             <Route index element={<AdminMenu />} />
+
                             <Route path="/admin/edit/:clubId" element={<EditPage />} />
                             <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                             <Route path="/admin/mypage/pending" element={<PendingList />} />
@@ -101,7 +107,9 @@ function App() {
                         <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                         <Route path="/admin/mypage/pending" element={<PendingList />} />
                         <Route path="/recruit" element={<RecruitPage />} />
+                        <Route path="/qna" element={<QnAPage />} />
                     </Routes>
+
                     <Footer />
                 </BrowserRouter>
             )}
