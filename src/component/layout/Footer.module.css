@@ -84,6 +84,21 @@
         padding: 0px;
     }
 
+    .circle_insta {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background: #ffffff;
+        margin: auto;
+        margin-top: 10px;
+    }
+
+    .footer_insta {
+        width: 23.28px;
+        height: 23.28px;
+        margin-top: 8px;
+    }
+
     .p {
         font-family: Noto Sans KR;
         font-size: 11px;

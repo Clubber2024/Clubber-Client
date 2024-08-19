@@ -58,14 +58,13 @@ function App() {
                         <Route path="/bookmark" element={<BookMarkPage />} />
                         <Route path="/user/reviews" element={<MyReview />} />
                         <Route path="/recruit" element={<RecruitPage />} />
-
+                        <Route path="/qna" element={<QnAPage />} />
                         <Route path="/admin" element={<Layout />}>
                             <Route index element={<AdminPage />} />
                             <Route path="/admin/edit/:clubId" element={<EditPage />} />
                             <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                             <Route path="/admin/mypage/pending" element={<PendingList />} />
                         </Route>
-                        <Route path="/qna" element={<QnAPage />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -96,8 +95,9 @@ function App() {
                         <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                         <Route path="/admin/mypage/pending" element={<PendingList />} />
                         <Route path="/recruit" element={<RecruitPage />} />
+                        <Route path="/qna" element={<QnAPage />} />
                     </Routes>
-                    <Route path="/qna" element={<QnAPage />} />
+
                     <Footer />
                 </BrowserRouter>
             )}
