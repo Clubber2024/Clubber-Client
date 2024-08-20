@@ -209,7 +209,12 @@ export default function EditPage() {
                                     </button>
 
                                     <label className={styles.fileUpload}>
-                                        <input type="file" accept=".jpg, .jpeg" onChange={handleFileChange} />
+                                        <input
+                                            type="file"
+                                            accept=".jpg, .jpeg"
+                                            onChange={handleFileChange}
+                                            className={styles.edit_input}
+                                        />
                                     </label>
                                 </div>
                             </div>

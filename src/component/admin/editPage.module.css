@@ -256,6 +256,10 @@
         font-size: 12px;
         margin-bottom: 10px;
     }
+    .edit_input {
+        border: 0;
+        padding: 0;
+    }
 
     .insta_icon {
         margin-top: 1%;
