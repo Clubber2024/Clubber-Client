@@ -1,5 +1,8 @@
 @media screen and (min-width: 768px) {
     .review_box_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         margin-bottom: 150px;
     }
 
@@ -60,6 +63,9 @@
 
 @media screen and (max-width: 768px) {
     .review_box_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         margin-bottom: 150px;
     }
 

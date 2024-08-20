@@ -44,9 +44,9 @@
     flex-direction: row;
     align-items: center;
     font-weight: 400;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     margin: 10px 0px;
-    padding-left: 8px;
+    padding: 0px 8px 0px 8px;
 }
 
 .prev_next_title {

@@ -104,6 +104,7 @@
         line-height: 27px;
         width: 150px;
         height: 27px;
+        color: black;
     }
 
     .inner_cont .sign-in-form input[type='submit'],
@@ -116,15 +117,6 @@
         cursor: pointer;
         transition: 0.3s;
     }
-
-    /* input {
-        width: 100%;
-        height: 55px;
-        border-radius: 5px;
-        border: 1.3px solid #9c9c9c80;
-        margin: auto;
-        padding: 20px;
-    } */
 
     .email-input {
         width: 100%;
@@ -238,11 +230,6 @@
         box-shadow: 0;
     }
 
-    /* .inner_cont .sign-in-form-active .kakao {
-			margin: auto;
-			width: fit-content;
-	} */
-
     .center {
         display: block;
         margin: auto;
@@ -265,6 +252,7 @@
         line-height: 27px;
         width: 120px;
         margin-left: 5px;
+        color: black;
     }
 
     .inner_cont .sign-in-form input[type='submit'],

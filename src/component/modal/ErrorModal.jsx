@@ -7,8 +7,9 @@ export default function ErrorModal({ isOpen, message, onClose }) {
             backgroundColor: "rgba(0, 0, 0, 0.5)"
         },
         content: {
-            width: "410px",
-            height: "150px",
+            width: "80%",
+            maxWidth: "410px",
+            height: "140px",
             margin: "auto",
             borderRadius: "10px",
             boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
@@ -17,7 +18,11 @@ export default function ErrorModal({ isOpen, message, onClose }) {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            textAlign: "center"
+            textAlign: "center",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -80%)"
         }
     }
 

@@ -5,7 +5,7 @@
         justify-content: center;
         padding-top: 13px;
         margin-bottom: 13px;
-        border-top: 4px solid var(--Main-Color, #7bc8e0);
+        border-top: 2px solid var(--Main-Color, #7bc8e0);
     }
     .font {
         font-family: Noto Sans;
@@ -63,7 +63,7 @@
         justify-content: center;
         padding-top: 13px;
         margin-bottom: 13px;
-        border-top: 4px solid var(--Main-Color, #7bc8e0);
+        border-top: 2px solid var(--Main-Color, #7bc8e0);
     }
     .font {
         font-family: Noto Sans;
