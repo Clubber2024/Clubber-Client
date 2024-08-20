@@ -7,7 +7,7 @@
         width: 120%;
     }
 
-    .divider {
+    .review_divider {
         width: 140%;
         border: 0.2px solid #9c9c9c4d;
         margin: 40px 0px 40px 0px;
@@ -18,6 +18,11 @@
         flex-direction: row;
         padding: 39px 0px 15px 0px;
         justify-content: space-between;
+    }
+
+    .statics_header h3 {
+        font-size: 18px;
+        margin: 0px;
     }
 
     .review_write_btn {
@@ -55,7 +60,7 @@
         width: 120%;
     }
 
-    .divider {
+    .review_divider {
         width: 140%;
         border: 0.2px solid #9c9c9c4d;
         margin: 40px 0px 40px 0px;
@@ -64,9 +69,10 @@
     .statics_header {
         display: flex;
         flex-direction: row;
+        align-items: center;
         justify-content: space-between;
         padding: 39px 0px 15px 0px;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .review_write_btn {

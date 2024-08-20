@@ -2,7 +2,7 @@ import React from 'react';
 import './reviewWrite.css';
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
+import ErrorModal from '../../modal/ErrorModal';
 
 function ReviewWrite() {
     const btns = [
@@ -43,6 +43,10 @@ function ReviewWrite() {
 
     const [btnActive, setBtnActive] = useState({});
 
+    // 모달창
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+
     const handleClick = (type) => {
         setBtnActive((prevActive) => {
             return {
@@ -56,7 +60,17 @@ function ReviewWrite() {
     const onClickNext = async () => {
         const selectedKeywords = Object.keys(btnActive).filter((key) => btnActive[key]);
         console.log(selectedKeywords);
-        navigate(`/clubs/${clubId}/review/comment`, { state: { clubId, selectedKeywords } });
+        if (selectedKeywords.length === 0) {
+            setModalMessage('최소 1개 이상의 키워드를 선택 해주세요!');
+            setIsModalOpen(true);
+        } else {
+            navigate(`/clubs/${clubId}/review/comment`, { state: { clubId, selectedKeywords } });
+        }
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setModalMessage("");
     };
 
     const submitButtonClass = Object.values(btnActive).includes(true) ? 'next-active' : 'next-button';
@@ -80,6 +94,7 @@ function ReviewWrite() {
             <button onClick={onClickNext} className={submitButtonClass}>
                 다음
             </button>
+            <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
         </div>
     );
 }

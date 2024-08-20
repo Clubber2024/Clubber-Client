@@ -10,7 +10,7 @@
     height: 40px;
     text-align: center;
     font-family: Noto Sans KR;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     line-height: 34.75px;
     margin: auto;
@@ -19,7 +19,8 @@
 }
 
 .button-original {
-    width: 433px;
+    width: 70%;
+    max-width: 433px;
     height: 50px;
     border: 2px;
     border-radius: 10px;
@@ -37,7 +38,8 @@
     background-color: #7bc8e01a;
     border: 1.5px solid #7bc8e0;
     color: #7bc8e0;
-    width: 433px;
+    width: 70%;
+    max-width: 433px;
     height: 50px;
     border-radius: 10px;
     box-shadow: 0px 0px 4px 0px #0000004d;
@@ -52,6 +54,7 @@
 .button_text {
     display: inline-block;
     vertical-align: middle;
+    color: black;
 }
 
 .img {

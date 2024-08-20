@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import IntroductionPage from '../component/detail/introduction/IntroductionPage';
 import ReviewPage from '../component/detail/review/ReviewPage';
 import './detailPage.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { customAxios } from '../config/axios-config';
+import ErrorModal from '../component/modal/ErrorModal';
 
 export default function ClubsPage() {
     const url = window.location.href; // 현재 URL 가져오기
@@ -11,6 +12,7 @@ export default function ClubsPage() {
     const clubId = urlParts[urlParts.length - 1]; // 마지막 부분이 clubId
     const intClubId = parseInt(clubId, 10);
 
+    const navigate = useNavigate();
     const location = useLocation();
     const tab = location.state || 'Introduction';
     //console.log(tab);
@@ -21,6 +23,13 @@ export default function ClubsPage() {
     const [favoriteId, setFavoriteId] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+
+    // 모달창
+    const isAdmin = localStorage.getItem('isAdmin');
+    const token = localStorage.getItem('accessToken');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+
 
     //회원정보 조회
     const accessToken = localStorage.getItem('accessToken');
@@ -96,37 +105,45 @@ export default function ClubsPage() {
         //if (!userId) return;
         if (Admin) return;
         try {
-            if (isFavorite) {
-                const res = await customAxios.delete(`/v1/clubs/${intClubId}/favorites/${favoriteId}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                });
-                if (res.status == 200) {
-                    //console.log('delete res:', res);
-                    setIsFavorite(false);
-                    setFavoriteId(null); //즐겨찾기 ID 초기화
-                } else {
-                    //console.error('Failed to delete favorite:', res);
-                    return; // 실패 시 추가 요청을 하지 않음
+            if (!isAdmin && token) {
+                if (isFavorite) {
+                    const res = await customAxios.delete(`/v1/clubs/${intClubId}/favorites/${favoriteId}`, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    });
+                    if (res.status == 200) {
+                        //console.log('delete res:', res);
+                        setIsFavorite(false);
+                        setFavoriteId(null); //즐겨찾기 ID 초기화
+                    } else {
+                        //console.error('Failed to delete favorite:', res);
+                        return; // 실패 시 추가 요청을 하지 않음
+                    }
                 }
-            }
-
-            if (!isFavorite) {
-                const addres = await customAxios.post(`/v1/clubs/${intClubId}/favorites`, favoriteData, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                });
-                if (addres.data.success) {
-                    //console.log('add res : ', addres);
-                    setIsFavorite(true);
-                    setFavoriteId(addres.data.data.favoriteId);
-                } else {
-                    //console.error('Failed to add favorite:', addres);
+    
+                if (!isFavorite) {
+                    const address = await customAxios.post(`/v1/clubs/${intClubId}/favorites`, favoriteData, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    });
+                    if (address.data.success) {
+                        //console.log('add res : ', addres);
+                        setIsFavorite(true);
+                        setFavoriteId(address.data.data.favoriteId);
+                    } else {
+                        //console.error('Failed to add favorite:', addres);
+                    }
                 }
+            } else if (isAdmin && token){
+                setModalMessage('관리자는 즐겨찾기를 이용할 수 없습니다.');
+                setIsModalOpen(true);
+            } else {
+                setModalMessage('즐겨찾기 추가는 로그인 이후 가능합니다.');
+                setIsModalOpen(true);
             }
             getBookmarkData(); // 각 요청 후 즐겨찾기 리스트 업데이트
         } catch (error) {
@@ -134,6 +151,12 @@ export default function ClubsPage() {
             getBookmarkData(); //에러 발생해도 업데이트
         }
     };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setModalMessage("");
+        navigate(`/clubs/${clubId}`, { state: "Introduction" });
+      };
 
     return (
         <div className="detail_container">
@@ -189,6 +212,7 @@ export default function ClubsPage() {
                 />
             )}
             {whichTab === 'Review' && <ReviewPage clubId={clubId} clubName={detailData.clubName} />}
+            <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
         </div>
     );
 }

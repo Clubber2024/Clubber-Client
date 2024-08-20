@@ -91,6 +91,7 @@ export default function Header() {
             // 새 토큰으로 다시 요청
             fetchUserData();
         } catch (error) {
+            console.log(isLogout);
             console.error('토큰 재발급 실패 : ', error);
             if (!isLogout) {
                 setModalMessage(error.response.data.reason);

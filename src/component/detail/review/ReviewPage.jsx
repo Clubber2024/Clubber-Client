@@ -44,7 +44,7 @@ export default function ReviewPage({ clubId, clubName }) {
                 </div>
                 <ReviewStatics clubId={clubId} />
             </div>
-            <div className="divider"></div>
+            <div className="review_divider"></div>
             <ReviewBox clubId={clubId} />
             <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
         </div>

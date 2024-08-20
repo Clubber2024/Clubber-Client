@@ -19,6 +19,10 @@
         margin-bottom: 10px;
     }
 
+    .club_name {
+        font-size: 18px;
+    }
+
     .detail_header_name h3 {
         display: flex;
         flex-direction: row;
@@ -89,6 +93,7 @@
         width: 70%;
         height: 36px;
         background-color: #7bc8e04d;
+        color: black;
     }
 
     .detail_body {
@@ -122,6 +127,7 @@
         height: 105%;
         font-weight: 500;
         text-align: center;
+        color: black;
     }
 
     .detail_tab button.active {
@@ -155,6 +161,7 @@
     .detail_header_name {
         display: flex;
         flex-direction: row;
+        align-items: center;
         margin-bottom: 10px;
     }
 
@@ -167,7 +174,7 @@
     .detail_logo {
         width: 30%;
         height: 60%;
-        margin: 12px 24px 20px 22px;
+        margin: 18px 18px 20px 20px;
     }
 
     .insta_icon {
@@ -182,6 +189,9 @@
         height: 23px;
         margin-left: 2px;
         padding: 2px;
+    }
+    .imgDiv:hover .star_icon {
+        filter: drop-shadow(0 0 1px #ffe600) drop-shadow(0 0 1px #ffe600);
     }
 
     .association_btn {
@@ -247,10 +257,10 @@
         background-color: transparent;
         box-shadow: none;
         cursor: pointer;
-        width: 10%;
         height: 105%;
         font-weight: 500;
         text-align: center;
+        color: black;
     }
 
     .detail_tab button.active {

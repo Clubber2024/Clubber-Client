@@ -10,10 +10,9 @@ export default function AdminMenu() {
             </div>
             <div className="admin_body">
                 <NavLink to={`/admin/mypage`} className="menu_tab">
-                    소개글 수정
+                    동아리 정보수정
                 </NavLink>
-
-                <div className="menu_tab">모집글 작성</div>
+                <div className="menu_tab">나의 모집글</div>
                 <div className="divider" />
                 <NavLink to={`/admin/mypage/reviews`} className="menu_tab">
                     리뷰 목록
@@ -21,6 +20,8 @@ export default function AdminMenu() {
                 <NavLink to={`/admin/mypage/pending`} className="menu_tab">
                     리뷰 승인
                 </NavLink>
+                <div className="divider" />
+                <div className='menu_tab'>비밀번호 변경</div>
             </div>
         </div>
     );
