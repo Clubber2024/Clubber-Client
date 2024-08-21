@@ -10,7 +10,6 @@ import { customAxios } from '../../config/axios-config';
 export default function Header() {
     const location = useLocation();
     const navigate = useNavigate();
-    const userConRef = useRef(null);
 
     const [menubarActive, setMenuBarActive] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
@@ -26,12 +25,10 @@ export default function Header() {
         navigate(`/login`);
     };
 
-    // 로그인박스 표시 상태 관리
-    const [showLoginBox, setShowLoginBox] = useState(false);
     // 관리자 여부 관리
     const isAdmin = localStorage.getItem('isAdmin');
 
-    const adminId = localStorage.getItem('adminId');
+    // const adminId = localStorage.getItem('adminId');
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
     //console.log(accessToken);
@@ -106,26 +103,17 @@ export default function Header() {
         }
     };
 
-    const handleUserContainerClick = () => {
+    const onClickMy = () => {
         if (!accessToken) {
             navigate('/login');
         } else {
-            setShowLoginBox(!showLoginBox);
+            if (isAdmin) {
+                navigate('/admin');
+            } else {
+                navigate('/user/reviews');
+            }
         }
     };
-
-    // 외부 영역 클릭 시, user container 닫힘
-    useEffect(() => {
-        const handleOutsideClick = (event) => {
-            // useRef current에 담긴 엘리먼트 바깥을 클릭 시 닫힘
-            if (showLoginBox && userConRef.current && !userConRef.current.contains(event.target)) {
-                setShowLoginBox(false);
-            }
-        };
-        document.addEventListener('click', handleOutsideClick);
-
-        return () => document.removeEventListener('click', handleOutsideClick);
-    }, [showLoginBox]);
 
     const handleTabClick = (menu) => {
         return setMenuBarActive(menu);
@@ -165,7 +153,6 @@ export default function Header() {
                 localStorage.removeItem('adminId');
                 localStorage.removeItem('isAdmin');
             }
-            setShowLoginBox(false);
             // 로그아웃 이후 메인페이지 ? 로그인 페이지 ?
             navigate('/');
         } catch (error) {
@@ -197,7 +184,6 @@ export default function Header() {
 
     const onClickMain = () => {
         setSearchTerm('');
-        setShowLoginBox(false);
     };
 
     return (
@@ -217,53 +203,9 @@ export default function Header() {
                         onKeyDown={enterKeyDown}
                     />
                 </div>
-                <div className="user_container" onClick={handleUserContainerClick}>
+                <div className="user_container" onClick={onClickMy}>
                     <img src="/buttons/user_login_icon.png" alt="user icon" width={39} height={39} />
-                    <p className="login_text">{accessToken ? '내정보' : '로그인'}</p>
-
-                    {accessToken && showLoginBox && (
-                        <div className="rectangle">
-                            <div>
-                                <img className="img" src="/buttons/user_login_icon.png" alt="user icon" />
-
-                                <p className="emailText">{userEmail}</p>
-                                <button className="logoutBtn" onClick={handleLogout}>
-                                    로그아웃
-                                </button>
-                            </div>
-
-                            <div className="line">
-                                <Link to="/bookmark" style={{ textDecoration: 'none' }}>
-                                    <img className="icon_star" src="/main/starYellow.png" alt="star" />
-                                    <p className="bookmarkBtn">나의 즐겨찾기</p>
-                                </Link>
-                            </div>
-                            <div className="verticalLine"></div>
-                            <Link to="/user/reviews">
-                                <img className="icon_message" src="/main/message-text.png" alt="message" />
-                                <p className="reviewBtn">내가 쓴 리뷰</p>
-                            </Link>
-                        </div>
-                    )}
-                    {accessToken && showLoginBox && isAdmin && (
-                        <div className="rectangle">
-                            <div>
-                                <img className="img" src="/buttons/user_login_icon.png" alt="user icon" />
-                                <p className="emailText">{adminId}</p>
-                                <button className="logoutBtn" onClick={handleLogout}>
-                                    로그아웃
-                                </button>
-                            </div>
-
-                            <div className="line" />
-                            <Link to="/admin" style={{ textDecoration: 'none' }}>
-                                <div className="mypage-container">
-                                    <img className="icon_mypage" src="/admin/mypage.png" alt="admin page" />
-                                    <p className="mypageBtn">마이페이지</p>
-                                </div>
-                            </Link>
-                        </div>
-                    )}
+                    <p className="login_text">{accessToken ? 'MY' : '로그인'}</p>
                 </div>
             </div>
             <TagScroll />
