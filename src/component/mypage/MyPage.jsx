@@ -1,8 +1,8 @@
 import { customAxios } from '../../config/axios-config';
-import '../admin/adminMenu.css';
+import './myPage.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-export default function UserMenu() {
+export default function MyPage() {
     const navigate = useNavigate();
 
     const isAdmin = localStorage.getItem('isAdmin');
@@ -73,19 +73,40 @@ export default function UserMenu() {
     };
 
     return (
-        <div className="admin_container">
-            <div className="admin_header">
+        <div className="my_container">
+            <div className="my_header">
                 <h3>마이페이지</h3>
             </div>
-            <div className="admin_body">
-                <NavLink to={`/user/bookmark`} className="menu_tab">
-                    나의 즐겨찾기
-                </NavLink>
-                <NavLink to={`/user/reviews`} className="menu_tab">
-                    내가 쓴 리뷰
-                </NavLink>
-                <div className="divider" />
-                <div className='menu_tab' onClick={handleLogout}>로그아웃</div>
+            <div className="my_body">
+            {isAdmin ? (
+                    <>
+                        <NavLink to={`/admin/mypage`} className="menu_tab">
+                            동아리 정보수정
+                        </NavLink>
+                        <div className="menu_tab">나의 모집글</div>
+                        <div className="my_divider" />
+                        <NavLink to={`/admin/mypage/reviews`} className="menu_tab">
+                            리뷰 목록
+                        </NavLink>
+                        <NavLink to={`/admin/mypage/pending`} className="menu_tab">
+                            리뷰 승인
+                        </NavLink>
+                        <div className="my_divider" />
+                        <div className='menu_tab'>비밀번호 변경</div>
+                        <div className='menu_tab' onClick={handleLogout}>로그아웃</div>
+                    </>
+                ) : (
+                    <>
+                        <NavLink to={`/user/bookmark`} className="menu_tab">
+                            나의 즐겨찾기
+                        </NavLink>
+                        <NavLink to={`/user/reviews`} className="menu_tab">
+                            내가 쓴 리뷰
+                        </NavLink>
+                        <div className="my_divider" />
+                        <div className='menu_tab' onClick={handleLogout}>로그아웃</div>
+                    </>
+                )}
             </div>
         </div>
     );

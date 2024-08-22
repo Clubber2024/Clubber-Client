@@ -92,7 +92,7 @@ export default function Header() {
 
             setModalMessage(error.response.data.reason);
             setIsModalOpen(true);
-            
+
             localStorage.removeItem('accessToken');
             localStorage.removeItem('refreshToken');
             localStorage.removeItem('adminId');
