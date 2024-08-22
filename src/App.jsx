@@ -28,6 +28,7 @@ import QnAPage from './pages/QnAPage';
 import NoticeList from './component/main/NoticeList';
 import NoticePage from './pages/NoticePage';
 import AdminPage from './pages/AdminPage';
+import UserMenu from './component/mypage/UserMenu';
 
 function App() {
     const isPc = useMediaQuery({
@@ -59,7 +60,8 @@ function App() {
                         <Route path="/hashtag" element={<HashTagPage />} />
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/summary" element={<SummaryPage />} />
-                        <Route path="/bookmark" element={<BookMarkPage />} />
+                        <Route path="/user" element={<UserMenu />} />
+                        <Route path="/user/bookmark" element={<BookMarkPage />} />
                         <Route path="/user/reviews" element={<MyReview />} />
                         <Route path="/recruit" element={<RecruitPage />} />
 
@@ -101,7 +103,8 @@ function App() {
                         <Route path="/hashtag" element={<HashTagPage />} />
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/summary" element={<SummaryPage />} />
-                        <Route path="/bookmark" element={<BookMarkPage />} />
+                        <Route path="/user" element={<UserMenu />} />
+                        <Route path="/user/bookmark" element={<BookMarkPage />} />
                         <Route path="/user/reviews" element={<MyReview />} />
                         <Route path="/admin" element={<AdminMenu />} />
                         <Route path="/admin/mypage" element={<AdminPage />} />
