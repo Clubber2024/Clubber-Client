@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './search.module.css';
-import axios from 'axios';
 import SearchClub from './searchClub';
 import { customAxios } from '../../config/axios-config';
 
@@ -39,8 +38,17 @@ function Search() {
         }
     }, [clubName]);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>해당하는 동아리가 없습니다</div>;
+    if (loading) return (
+        <div className={styles.warning_container}>
+            <p className={styles.warning_text}>loading</p>
+        </div>
+    );
+    if (error) return (
+        <div className={styles.warning_container}>
+            <img src="/warning.png" alt="search_warning" width={50}/>
+            <p className={styles.warning_text}>검색 결과가 없습니다.</p>
+        </div>
+    );
 
     const renderData = (data) => {
         const rows = [];
