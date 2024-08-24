@@ -22,34 +22,61 @@ export default function QnA() {
 
     useEffect(() => {
         getFaQData();
-    });
+    }, []);
+
+    const renderDataInRows = (data) => {
+        const rows = [];
+        for (let i = 0; i < data.length; i += 4) {
+            const rowItems = data.slice(i, i + 4);
+            rows.push(
+                <div key={`row-${i}`} className={styles.faq_container}>
+                    {rowItems.map((item, index) => {
+                        const globalIndex = i + index; // 전역 인덱스를 계산합니다.
+                        const isRightBox = activeIndex === 2 || activeIndex === 3; // 오른쪽에 위치한 박스 여부 확인
+
+                        return (
+                            <div
+                                key={item.id} // 고유한 key 사용
+                                className={styles.faq_rectangle}
+                                onClick={() => toggleAnswer(globalIndex)} // 각 아이템에 고유한 인덱스를 주기 위해 globalIndex 사용
+                            >
+                                <div className={styles.faq_container}>
+                                    <p className={styles.faq_Q}>Q</p>
+                                    <p className={styles.faq_question}>{item.question}</p>
+                                </div>
+
+                                {activeIndex === globalIndex && ( // 현재 활성화된 질문에 대한 답변만 표시
+                                    <div className={styles.faq_answer_div}>
+                                        <div className={styles.faq_answer_triangle}></div>
+
+                                        <div
+                                            className={
+                                                isRightBox
+                                                    ? styles.faq_right_answer_rectangle
+                                                    : styles.faq_answer_rectangle
+                                            }
+                                        >
+                                            <div className={styles.faq_answer}>
+                                                <p className={styles.faq_answer_content}>{item.answer}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })}
+                </div>
+            );
+        }
+
+        return rows;
+    };
 
     return (
         <div className={styles.qna_div}>
             <p className={styles.qna_title}>문의사항</p>
             <p className={styles.faq_title}>자주 묻는 질문</p>
-            <div className={styles.faq_container}>
-                {faqData?.map((item, index) => (
-                    <div key={index} className={styles.faq_rectangle} onClick={() => toggleAnswer(index)}>
-                        <div className={styles.faq_container}>
-                            <p className={styles.faq_Q}>Q</p>
-                            <p className={styles.faq_question}>{item.question}</p>
-                        </div>
-
-                        {activeIndex === index && ( // 현재 활성화된 질문에 대한 답변만 표시
-                            <div className={styles.faq_answer_div}>
-                                <div className={styles.faq_answer_rectangle}>
-                                    <div className={styles.faq_answer}>
-                                        <div className={styles.faq_container}>
-                                            <p className={styles.faq_answer_content}>{item.answer}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
+            {renderDataInRows(faqData)}
         </div>
     );
 }

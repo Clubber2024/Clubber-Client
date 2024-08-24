@@ -38,48 +38,55 @@ export default function NoticeList() {
         setCurrentPage(selected);
     };
 
-    const onClickNotice = ( noticeId ) => {
-      navigate(`/notices/${noticeId}`);
-    }
+    const onClickNotice = (noticeId) => {
+        navigate(`/notices/${noticeId}`);
+    };
 
-  return (
-    <div className="notice_container">
-      <h2>공지사항</h2>
-      <div className="notice_list">
-        <div className="notice_header">
-          <span>번호</span>
-          <span style={{textAlign: "start"}}>제목</span>
-          <span>날짜</span>
-          <span>작성자</span>
-          <span>조회수</span>
-        </div>
-        {noticeData.length > 0 ? (
-          noticeData.map((item) => (
-            <div key={item.noticeId} className="notice_item">
-              <span>{item.noticeId}</span>
-              <span className="notice_title" onClick={() => {onClickNotice(item.noticeId)}}>{item.title}</span>
-              <span>{new Date(item.createdAt).toLocaleDateString()}</span>
-              <span>관리자</span>
-              {item.totalView ? <span>{item.totalView}</span> : <span>0</span>}
+    return (
+        <div className="notice_container">
+            <h2>공지사항</h2>
+            <div className="notice_list">
+                <div className="notice_header">
+                    <span>번호</span>
+                    <span style={{ textAlign: 'start' }}>제목</span>
+                    <span>날짜</span>
+                    <span>작성자</span>
+                    <span>조회수</span>
+                </div>
+                {noticeData.length > 0 ? (
+                    noticeData.map((item) => (
+                        <div key={item.noticeId} className="notice_item">
+                            <span>{item.noticeId}</span>
+                            <span
+                                className="notice_title"
+                                onClick={() => {
+                                    onClickNotice(item.noticeId);
+                                }}
+                            >
+                                {item.title}
+                            </span>
+                            <span>{new Date(item.createdAt).toLocaleDateString()}</span>
+                            <span>관리자</span>
+                            {item.totalView ? <span>{item.totalView}</span> : <span>0</span>}
+                        </div>
+                    ))
+                ) : (
+                    <div className="notice_item">
+                        <span>공지사항이 없습니다.</span>
+                    </div>
+                )}
             </div>
-          ))
-        ) : (
-          <div className="notice_item">
-            <span>공지사항이 없습니다.</span>
-          </div>
-        )}
-      </div>
-      <ReactPaginate
-        previousLabel={'<'}
-        nextLabel={'>'}
-        pageCount={pageCount}
-        onPageChange={handlePageClick}
-        containerClassName={'pagination'}
-        previousLinkClassName={'pagination_link'}
-        nextLinkClassName={'pagination_link'}
-        disabledClassName={'pagination_link_disabled'}
-        activeClassName={'pagination_link_active'}
-      />
-    </div>
-  );
+            <ReactPaginate
+                previousLabel={'<'}
+                nextLabel={'>'}
+                pageCount={pageCount}
+                onPageChange={handlePageClick}
+                containerClassName={'pagination'}
+                previousLinkClassName={'pagination_link'}
+                nextLinkClassName={'pagination_link'}
+                disabledClassName={'pagination_link_disabled'}
+                activeClassName={'active'}
+            />
+        </div>
+    );
 }
