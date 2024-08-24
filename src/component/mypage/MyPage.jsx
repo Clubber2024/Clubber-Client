@@ -78,12 +78,14 @@ export default function MyPage() {
                 <h3>마이페이지</h3>
             </div>
             <div className="my_body">
-            {isAdmin ? (
+                {isAdmin ? (
                     <>
                         <NavLink to={`/admin/mypage`} className="menu_tab">
                             동아리 정보수정
                         </NavLink>
-                        <div className="menu_tab">나의 모집글</div>
+                        <NavLink to={`/admin/recruit`} className="menu_tab">
+                            나의 모집글
+                        </NavLink>
                         <div className="my_divider" />
                         <NavLink to={`/admin/mypage/reviews`} className="menu_tab">
                             리뷰 목록
@@ -92,8 +94,10 @@ export default function MyPage() {
                             리뷰 승인
                         </NavLink>
                         <div className="my_divider" />
-                        <div className='menu_tab'>비밀번호 변경</div>
-                        <div className='menu_tab' onClick={handleLogout}>로그아웃</div>
+                        <div className="menu_tab">비밀번호 변경</div>
+                        <div className="menu_tab" onClick={handleLogout}>
+                            로그아웃
+                        </div>
                     </>
                 ) : (
                     <>
@@ -104,7 +108,9 @@ export default function MyPage() {
                             내가 쓴 리뷰
                         </NavLink>
                         <div className="my_divider" />
-                        <div className='menu_tab' onClick={handleLogout}>로그아웃</div>
+                        <div className="menu_tab" onClick={handleLogout}>
+                            로그아웃
+                        </div>
                     </>
                 )}
             </div>

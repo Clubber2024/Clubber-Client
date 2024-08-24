@@ -70,21 +70,24 @@
         /* display: contents; */
     }
     .faq_answer_div {
+        display: flex;
         position: absolute;
+        background: #a7a7a780;
+        width: 80%;
     }
 
-    .faq_answer_rectangle {
-        /* width: 443px; */
-        width: 350px;
+    /* .faq_answer_rectangle {
+   
+        width: 285px;
         height: 110px;
-        background: #ffffff;
+        background: #a7a7a780;
         position: relative;
         margin-top: 10px;
         border-radius: 20px;
         border: 1px solid #a7a7a780;
         box-shadow: 0px 0px 2px 1px #0000000d;
-    }
-
+    } */
+    /* 
     .faq_answer_rectangle::after {
         content: '';
         position: absolute;
@@ -99,6 +102,35 @@
         transform: rotate(45deg);
         z-index: 0;
     }
+
+    .faq_right_answer_rectangle {
+      
+        width: 285px;
+        height: 110px;
+        background: #ffffff;
+        position: relative;
+        margin-top: 10px;
+        border-radius: 20px;
+        border: 1px solid #a7a7a780;
+        box-shadow: 0px 0px 2px 1px #0000000d;
+        display: block;
+    }
+
+    .faq_right_answer_rectangle::after {
+        content: '';
+        position: absolute;
+        top: -16px;
+        left: 220px;
+        width: 30px;
+        height: 30px;
+        background: #ffffff;
+        border-left: 1px solid #a7a7a780;
+        border-top: 1px solid #a7a7a780;
+        box-shadow: 0px 0px 2px 1px #0000000d;
+        transform: rotate(45deg);
+        z-index: 0;
+    } 
+				*/
 
     .faq_answer {
         display: flex;
@@ -214,6 +246,33 @@
         position: absolute;
         top: -16px;
         left: 30px;
+        width: 30px;
+        height: 30px;
+        background: #ffffff;
+        border-left: 1px solid #a7a7a780;
+        border-top: 1px solid #a7a7a780;
+        box-shadow: 0px 0px 2px 1px #0000000d;
+        transform: rotate(45deg);
+        z-index: 0;
+    }
+
+    .faq_right_answer_rectangle {
+        /* width: 443px; */
+        width: 220px;
+        height: 110px;
+        background: #ffffff;
+        position: relative;
+        margin-top: 130px;
+        border-radius: 20px;
+        border: 1px solid #a7a7a780;
+        box-shadow: 0px 0px 2px 1px #0000000d;
+    }
+
+    .faq_right_answer_rectangle::after {
+        content: '';
+        position: absolute;
+        top: -16px;
+        left: 50px;
         width: 30px;
         height: 30px;
         background: #ffffff;

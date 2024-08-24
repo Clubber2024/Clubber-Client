@@ -10,6 +10,8 @@ export default function MyPage() {
     const [clubId, setClubId] = useState();
     const [clubInfo, setClubInfo] = useState([]);
 
+    console.log(accessToken);
+
     const getAdminClub = async () => {
         try {
             const response = await customAxios.get(`/v1/admins/mypage`, {
