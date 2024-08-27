@@ -21,6 +21,7 @@ export default function NoticeList() {
                 // setNoticeId(res.data.data.content.noticeId);
                 setNoticeData(res.data.data.content);
                 setPageCount(res.data.data.totalPages);
+                console.log(res.data.data);
             } else {
                 setNoticeData([]);
             }
