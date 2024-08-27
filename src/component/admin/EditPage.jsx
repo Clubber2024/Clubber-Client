@@ -14,7 +14,7 @@ export default function EditPage() {
     const [imagePreview, setImagePreview] = useState('');
     const baseLogoUrl = process.env.REACT_APP_BASE_LOGO_URL;
 
-    console.log('bb', baseLogoUrl);
+    // console.log('bb', baseLogoUrl);
 
     const getAdminClub = async () => {
         try {
@@ -34,7 +34,7 @@ export default function EditPage() {
             setClubId(clubID);
             return intClubID;
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             return null;
         }
     };
@@ -69,7 +69,7 @@ export default function EditPage() {
                 }
             );
 
-            console.log(data.data);
+            // console.log(data.data);
 
             // 이미지 파일을 presigned URL로 업로드
 
@@ -188,7 +188,7 @@ export default function EditPage() {
     //         alert('동아리 이미지 수정에 실패했습니다.');
     //     }
     // };
-    console.log('url', imageUrl);
+    // console.log('url', imageUrl);
 
     return (
         <div className={styles.DivMyPage}>
