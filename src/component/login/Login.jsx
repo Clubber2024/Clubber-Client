@@ -24,7 +24,7 @@ function Login() {
                 username: adminId,
                 password: adminPw,
             });
-            console.log(res);
+            // console.log(res);
             const accessToken = res.data.data.accessToken;
             const refreshToken = res.data.data.refreshToken;
             const isAdmin = true;
@@ -36,18 +36,18 @@ function Login() {
 
             navigate('/');
         } catch (error) {
-            console.error('Admin Login Error : ', error);
+            // console.error('Admin Login Error : ', error);
         }
     };
 
     const saveAdminId = (event) => {
         setAdminId(event.target.value);
-        console.log(event.target.value);
+        // console.log(event.target.value);
     };
 
     const saveAdminPw = (event) => {
         setAdminPw(event.target.value);
-        console.log(event.target.value);
+        // console.log(event.target.value);
     };
 
     const handleTabClick = (form) => {

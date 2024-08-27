@@ -75,12 +75,12 @@ function Search() {
 
     const renderDataDivision = () => {
         const result = renderData(division);
-        console.log(`devision: ${result}`);
+        // console.log(`devision: ${result}`);
         return result;
     };
     const renderDataDepartment = (data) => {
         const result = renderData(department);
-        console.log(`department: ${result}`);
+        // console.log(`department: ${result}`);
         return result;
     };
 
@@ -91,7 +91,7 @@ function Search() {
                     <div className={styles.header}>
                         <h2 className={styles.header_title}>중앙동아리</h2>
                     </div>
-                    {renderDataDepartment(clubs)}
+                    {renderDataDivision(clubs)}
                 </div>
             )}
 
@@ -100,7 +100,7 @@ function Search() {
                     <div className={styles.header}>
                         <h2 className={styles.header_title}>단과대</h2>
                     </div>
-                    {renderDataDivision(clubs)}
+                    {renderDataDepartment(clubs)}
                 </div>
             )}
         </div>

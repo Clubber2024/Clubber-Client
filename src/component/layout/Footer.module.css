@@ -14,6 +14,7 @@
         line-height: 19.07px;
         text-align: left;
         color: #646464;
+        cursor: pointer;
     }
     .footer {
         background-color: #9c9c9c26;
@@ -72,6 +73,7 @@
         line-height: 19.07px;
         text-align: left;
         color: #646464;
+        cursor: pointer;
     }
     .footer {
         background-color: #9c9c9c26;

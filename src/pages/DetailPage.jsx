@@ -28,12 +28,7 @@ export default function ClubsPage() {
     const isAdmin = localStorage.getItem('isAdmin');
     const token = localStorage.getItem('accessToken');
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalMessage, setModalMessage] = useState("");
-
-
-    //회원정보 조회
-    const accessToken = localStorage.getItem('accessToken');
-    const Admin = localStorage.getItem('isAdmin');
+    const [modalMessage, setModalMessage] = useState('');
 
     const getDetailData = async () => {
         try {
@@ -67,11 +62,12 @@ export default function ClubsPage() {
 
     const getBookmarkData = async () => {
         setIsLoading(true);
-        if (Admin) return;
+        if (isAdmin) return;
+        if (!token) return;
         try {
             const response = await customAxios.get('/v1/users/favorite', {
                 headers: {
-                    Authorization: `Bearer ${accessToken}`,
+                    Authorization: `Bearer ${token}`,
                 },
             });
             if (response.data.success) {
@@ -102,15 +98,15 @@ export default function ClubsPage() {
             clubId: clubId,
         };
 
-        //if (!userId) return;
-        if (Admin) return;
+        if (!token) return;
+        if (isAdmin) return;
         try {
             if (!isAdmin && token) {
                 if (isFavorite) {
                     const res = await customAxios.delete(`/v1/clubs/${intClubId}/favorites/${favoriteId}`, {
                         headers: {
                             'Content-Type': 'application/json',
-                            Authorization: `Bearer ${accessToken}`,
+                            Authorization: `Bearer ${token}`,
                         },
                     });
                     if (res.status == 200) {
@@ -122,12 +118,12 @@ export default function ClubsPage() {
                         return; // 실패 시 추가 요청을 하지 않음
                     }
                 }
-    
+
                 if (!isFavorite) {
                     const address = await customAxios.post(`/v1/clubs/${intClubId}/favorites`, favoriteData, {
                         headers: {
                             'Content-Type': 'application/json',
-                            Authorization: `Bearer ${accessToken}`,
+                            Authorization: `Bearer ${token}`,
                         },
                     });
                     if (address.data.success) {
@@ -138,7 +134,7 @@ export default function ClubsPage() {
                         //console.error('Failed to add favorite:', addres);
                     }
                 }
-            } else if (isAdmin && token){
+            } else if (isAdmin && token) {
                 setModalMessage('관리자는 즐겨찾기를 이용할 수 없습니다.');
                 setIsModalOpen(true);
             } else {
@@ -154,9 +150,9 @@ export default function ClubsPage() {
 
     const closeModal = () => {
         setIsModalOpen(false);
-        setModalMessage("");
-        navigate(`/clubs/${clubId}`, { state: "Introduction" });
-      };
+        setModalMessage('');
+        navigate(`/clubs/${clubId}`, { state: 'Introduction' });
+    };
 
     return (
         <div className="detail_container">
@@ -166,7 +162,7 @@ export default function ClubsPage() {
                     <div className="detail_header_name">
                         <h3 className="club_name">{detailData.clubName}</h3>
                         <div className="imgDiv">
-                            {Admin ? (
+                            {isAdmin ? (
                                 ''
                             ) : (
                                 <img

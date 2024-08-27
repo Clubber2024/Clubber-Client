@@ -10,6 +10,8 @@ export default function MyPage() {
     const [clubId, setClubId] = useState();
     const [clubInfo, setClubInfo] = useState([]);
 
+    // console.log(accessToken);
+
     const getAdminClub = async () => {
         try {
             const response = await customAxios.get(`/v1/admins/mypage`, {
@@ -17,16 +19,16 @@ export default function MyPage() {
                     Authorization: `Bearer ${accessToken}`,
                 },
             });
-            console.log(response.data.data);
+            // console.log(response.data.data);
             setClub(response.data.data);
-            console.log(response.data.data.clubInfo);
+            // console.log(response.data.data.clubInfo);
             setClubInfo(response.data.data.clubInfo);
             const clubID = response.data.data.clubId;
-            console.log(clubID);
+            // console.log(clubID);
             const intClubID = parseInt(clubID);
             return intClubID;
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             return null;
         }
     };
@@ -35,11 +37,11 @@ export default function MyPage() {
             const clubId = await getAdminClub();
             if (clubId !== null) {
                 // clubId를 사용하여 원하는 작업 수행
-                console.log(`Retrieved club ID: ${clubId}`);
+                // console.log(`Retrieved club ID: ${clubId}`);
                 // 예시: 상태(state)에 저장
                 setClubId(clubId);
             } else {
-                console.log('Failed to retrieve club ID');
+                // console.log('Failed to retrieve club ID');
             }
         };
 

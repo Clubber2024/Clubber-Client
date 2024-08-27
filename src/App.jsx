@@ -26,6 +26,8 @@ import NoticeList from './component/main/NoticeList';
 import NoticePage from './pages/NoticePage';
 import AdminPage from './pages/AdminPage';
 import MyPage from './component/mypage/MyPage';
+import AdminRecruitList from './component/admin/recruit/AdminRecruitList';
+import RecruitContent from './component/recruit/RecruitContent';
 
 function App() {
     const isPc = useMediaQuery({
@@ -61,6 +63,7 @@ function App() {
                         <Route path="/user/bookmark" element={<BookMarkPage />} />
                         <Route path="/user/reviews" element={<MyReview />} />
                         <Route path="/recruit" element={<RecruitPage />} />
+                        <Route path="/recruit/:recruitId" element={<RecruitContent />} />
 
                         <Route path="/qna" element={<QnAPage />} />
 
@@ -69,6 +72,7 @@ function App() {
                         <Route path="/admin/edit/:clubId" element={<EditPage />} />
                         <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                         <Route path="/admin/mypage/pending" element={<PendingList />} />
+                        <Route path="/admin/recruit" element={<AdminRecruitList />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
@@ -96,13 +100,17 @@ function App() {
                         <Route path="/user" element={<MyPage />} />
                         <Route path="/user/bookmark" element={<BookMarkPage />} />
                         <Route path="/user/reviews" element={<MyReview />} />
+                        <Route path="/qna" element={<QnAPage />} />
+                        <Route path="/recruit" element={<RecruitPage />} />
+                        <Route path="/recruit/:recruitId" element={<RecruitContent />} />
+
                         <Route path="/admin" element={<MyPage />} />
                         <Route path="/admin/mypage" element={<AdminPage />} />
                         <Route path="/admin/edit/:clubId" element={<EditPage />} />
                         <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
                         <Route path="/admin/mypage/pending" element={<PendingList />} />
-                        <Route path="/recruit" element={<RecruitPage />} />
-                        <Route path="/qna" element={<QnAPage />} />
+
+                        <Route path="/admin/recruit" element={<AdminRecruitList />} />
                     </Routes>
 
                     <Footer />

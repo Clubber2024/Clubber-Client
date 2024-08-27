@@ -31,14 +31,14 @@ export default function EditIntroduction({
         setcActivity(initialActivity);
         setcRoom(initialRoom);
     }, [accessToken]);
-    console.log('II', initialImgUrl);
+    // console.log('II', initialImgUrl);
 
-    const handleIntroductionChange = (e) => setcIntroduction(e.target.value ? e.target.value : initialIntroduction);
-    const handleInstagramChange = (e) => setInsta(e.target.value ? e.target.value : initialInsta);
-    const handleLeaderChange = (e) => setcLeader(e.target.value ? e.target.value : initialLeader);
-    const handleActivityChange = (e) => setcActivity(e.target.value ? e.target.value : initialActivity);
+    const handleIntroductionChange = (e) => setcIntroduction(e.target.value);
+    const handleInstagramChange = (e) => setInsta(e.target.value);
+    const handleLeaderChange = (e) => setcLeader(e.target.value);
+    const handleActivityChange = (e) => setcActivity(e.target.value);
     const handleRoomChange = (e) => {
-        setcRoom(e.target.value ? e.target.value : initialRoom);
+        setcRoom(e.target.value);
     };
     const handleKeyPress = (event) => {
         // 숫자만 입력 가능하도록 키 이벤트 필터링
@@ -56,11 +56,11 @@ export default function EditIntroduction({
                 `/v1/admins/change-page`,
                 {
                     imageUrl: initialImgUrl || '',
-                    introduction: cIntroduction ? cIntroduction : initialIntroduction,
-                    instagram: insta ? insta : initialInsta,
-                    activity: cActivity ? cActivity : initialActivity,
-                    leader: cLeader ? cLeader : initialLeader,
-                    room: cRoom ? cRoom : initialRoom,
+                    introduction: cIntroduction,
+                    instagram: insta,
+                    activity: cActivity,
+                    leader: cLeader,
+                    room: cRoom,
                 },
                 {
                     headers: {
@@ -78,9 +78,9 @@ export default function EditIntroduction({
 
     // 저장 버튼 클릭 시 동작할 함수
     const handleSave = () => {
-        console.log('Updated introduction:', cIntroduction);
-        console.log('Updated leader:', cLeader);
-        console.log('Updated activity:', cActivity);
+        // console.log('Updated introduction:', cIntroduction);
+        // console.log('Updated leader:', cLeader);
+        // console.log('Updated activity:', cActivity);
         patchEditClub();
     };
 
