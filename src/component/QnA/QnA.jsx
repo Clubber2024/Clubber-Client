@@ -44,27 +44,19 @@ export default function QnA() {
                                     <p className={styles.faq_Q}>Q</p>
                                     <p className={styles.faq_question}>{item.question}</p>
                                 </div>
-
-                                {activeIndex === globalIndex && ( // 현재 활성화된 질문에 대한 답변만 표시
-                                    <div className={styles.faq_answer_div}>
-                                        <div className={styles.faq_answer_triangle}></div>
-
-                                        <div
-                                            className={
-                                                isRightBox
-                                                    ? styles.faq_right_answer_rectangle
-                                                    : styles.faq_answer_rectangle
-                                            }
-                                        >
-                                            <div className={styles.faq_answer}>
-                                                <p className={styles.faq_answer_content}>{item.answer}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
                             </div>
                         );
                     })}
+
+                    {activeIndex !== null &&
+                        activeIndex >= i &&
+                        activeIndex < i + 4 && ( // 현재 활성화된 질문에 대한 답변만 표시
+                            <div className={styles.faq_answer_div}>
+                                <div className={styles.faq_answer}>
+                                    <p className={styles.faq_answer_content}> {faqData[activeIndex].answer}</p>
+                                </div>
+                            </div>
+                        )}
                 </div>
             );
         }

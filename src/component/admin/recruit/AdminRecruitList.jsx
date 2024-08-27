@@ -3,6 +3,7 @@ import { customAxios } from '../../../config/axios-config';
 import { useEffect, useState } from 'react';
 
 export default function AdminRecruitList() {
+    const accessToken = localStorage.getItem('accessToken');
     const [PromoteData, setPromoteData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -16,10 +17,13 @@ export default function AdminRecruitList() {
     const getPromoteData = async (page) => {
         try {
             const res = await customAxios.get(`/v1/admins/recruits`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+
                 params: {
                     page: page,
                     size: pageSize,
-                    //sort: sort,
                 },
             });
             if (res.data.success) {

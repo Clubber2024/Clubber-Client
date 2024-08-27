@@ -5,8 +5,8 @@ import { customAxios } from '../../config/axios-config';
 
 function Login() {
     const REST_API_KEY = '6a5dafa758e469d18292acc6fbca333b';
-    const REDIRECT_URI = 'http://13.125.141.171/v1/auths/oauth/kakao';
-    // const REDIRECT_URI = 'http://localhost:3000/v1/auths/oauth/kakao';
+    // const REDIRECT_URI = 'http://13.125.141.171/v1/auths/oauth/kakao';
+    const REDIRECT_URI = 'http://localhost:3000/v1/auths/oauth/kakao';
     const [activeForm, setActiveForm] = useState('sign-in-form-active');
 
     const [adminId, setAdminId] = useState('');
@@ -24,7 +24,7 @@ function Login() {
                 username: adminId,
                 password: adminPw,
             });
-            console.log(res);
+            // console.log(res);
             const accessToken = res.data.data.accessToken;
             const refreshToken = res.data.data.refreshToken;
             const isAdmin = true;
@@ -36,18 +36,18 @@ function Login() {
 
             navigate('/');
         } catch (error) {
-            console.error('Admin Login Error : ', error);
+            // console.error('Admin Login Error : ', error);
         }
     };
 
     const saveAdminId = (event) => {
         setAdminId(event.target.value);
-        console.log(event.target.value);
+        // console.log(event.target.value);
     };
 
     const saveAdminPw = (event) => {
         setAdminPw(event.target.value);
-        console.log(event.target.value);
+        // console.log(event.target.value);
     };
 
     const handleTabClick = (form) => {

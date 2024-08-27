@@ -2,25 +2,33 @@ import { useState, useEffect } from 'react';
 import styles from './mainPromote.module.css';
 import { customAxios } from '../../config/axios-config';
 import { LinkItem } from '../branch/BranchCentral';
+import { useNavigate } from 'react-router-dom';
 
 export default function MainPromote() {
     const [PromoteData, setPromoteData] = useState([]);
+    const navigate = useNavigate();
 
     const getPromoteData = async () => {
         try {
             const res = await customAxios.get(`/v1/recruits/main-page`);
             if (res.data.success) {
                 setPromoteData(res.data.data.recruits);
-                console.log(res.data.datae);
+                // console.log(res.data.datae);
             }
         } catch (error) {
-            console.error('Error fetching data : ', error);
+            // console.error('Error fetching data : ', error);
         }
     };
 
     useEffect(() => {
         getPromoteData();
     }, []);
+
+    const onClickRecruit = (recruitId) => {
+        navigate(`/recruit/${recruitId}`, {
+            state: { recruitId: recruitId },
+        });
+    };
 
     function formatDate(dateString) {
         const date = new Date(dateString);
@@ -38,10 +46,16 @@ export default function MainPromote() {
             </LinkItem>
             <div className={styles.promote_container}>
                 {PromoteData?.map((item) => (
-                    <div key={item.recruitId} className={styles.div_promote}>
-                        <div>{item.title}</div>
-                        <p className={styles.promote_line}>|</p>
-                        <p className={styles.promote_date}>{formatDate(item.createdAt)}</p>
+                    <div
+                        key={item.recruitId}
+                        className={styles.div_promote}
+                        onClick={() => onClickRecruit(item.recruitId)}
+                    >
+                        <div className={styles.div_promote_content}>
+                            <div>{item.title}</div>
+                            <p className={styles.promote_line}>|</p>
+                            <p className={styles.promote_date}>{formatDate(item.createdAt)}</p>
+                        </div>
                     </div>
                 ))}
             </div>
