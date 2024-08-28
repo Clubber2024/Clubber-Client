@@ -30,7 +30,7 @@ export default function ClubReviews() {
 
     return (
         <div className="my_review_container">
-            <h3>동아리 리뷰 목록</h3>
+            <h3 className='my_review_title'>동아리 리뷰 목록</h3>
             {clubReviewData.map((cReview) => (
                 <div key={cReview.reviewId} className="my_review_box">
                     <div className="review_box_header">

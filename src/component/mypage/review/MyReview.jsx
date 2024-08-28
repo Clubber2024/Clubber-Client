@@ -30,7 +30,7 @@ export default function MyReview() {
 
     return (
         <div className="my_review_container">
-            <h2>내가 쓴 리뷰</h2>
+            <h2 className='my_review_title'>내가 쓴 리뷰</h2>
             {myReviewData.map((myReview) => (
                 <div key={myReview.reviewId} className="my_review_box">
                     <div className="review_box_header">

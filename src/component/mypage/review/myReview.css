@@ -7,7 +7,7 @@
         margin-bottom: 200px;
     }
 
-    .my_review_container h2, h3 {
+    .my_review_title {
         font-size: 22px;
         font-weight: 500px;
         margin-bottom: 30px;
@@ -85,7 +85,7 @@
         margin: 50px 0px 200px 30px;
     }
 
-    .my_review_container h2 {
+    .my_review_title {
         font-size: 24px;
         font-weight: 500px;
         margin-bottom: 30px;

@@ -1,3 +1,4 @@
+
 import { customAxios } from '../../config/axios-config';
 import './myPage.css';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -38,6 +39,11 @@ export default function MyPage() {
             navigate('/login');
         }
     };
+
+    // 비밀번호 변경
+    const handleModifyPW = async () => {
+        navigate('/admin/password', { state: { accessToken } });    
+    }
 
     // 로그아웃 함수
     const handleLogout = async () => {
@@ -94,7 +100,7 @@ export default function MyPage() {
                             리뷰 승인
                         </NavLink>
                         <div className="my_divider" />
-                        <div className="menu_tab">비밀번호 변경</div>
+                        <div className="menu_tab" onClick={handleModifyPW}>비밀번호 변경</div>
                         <div className="menu_tab" onClick={handleLogout}>
                             로그아웃
                         </div>

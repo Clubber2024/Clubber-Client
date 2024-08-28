@@ -5,13 +5,20 @@ import { customAxios } from '../../../config/axios-config';
 
 export default function ReviewBox({ clubId }) {
     const [reviewData, setReviewData] = useState([]);
+    const [page, setPage] = useState(0);
+    const [hasNextPage, setHasNextPage] = useState(true);
 
     useEffect(() => {
-        const fetchKeywordData = async () => {
+        const fetchKeywordData = async (page) => {
             try {
-                const res = await customAxios.get(`/v1/clubs/${clubId}/reviews`);
+                const res = await customAxios.get(`/v1/clubs/${clubId}/reviews`, {
+                    params: { page },
+                });
                 if (res.data.success) {
-                    setReviewData(res.data.data.reviews);
+                    const newReviews = res.data.data.reviews;
+                    setReviewData((prevReviews) => [...prevReviews, ...newReviews]);
+                    setHasNextPage(res.data.data.reviews.hasNextPage);
+                    // setReviewData(res.data.data.reviews);
                     console.log(reviewData);
                 }
             } catch (error) {
@@ -19,10 +26,16 @@ export default function ReviewBox({ clubId }) {
             }
         };
 
-        fetchKeywordData();
+        fetchKeywordData(page);
         // useCallback 사용 . .
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [page]);
+
+    const loadMoreReviews = () => {
+        if (hasNextPage) {
+            setPage((prevPage) => prevPage + 1);
+        }
+    };
 
     return (
         <div className="review_box_wrapper">
@@ -42,6 +55,11 @@ export default function ReviewBox({ clubId }) {
                     </div>
                 </div>
             ))}
+            {hasNextPage && (
+                <button onClick={loadMoreReviews} className="load_more_button">
+                    더 불러오기
+                </button>
+            )}
         </div>
     );
 }
