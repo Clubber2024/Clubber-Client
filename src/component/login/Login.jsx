@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
 import { customAxios } from '../../config/axios-config';
+import ErrorModal from '../modal/ErrorModal';
 
 function Login() {
     const REST_API_KEY = '6a5dafa758e469d18292acc6fbca333b';
@@ -12,6 +13,14 @@ function Login() {
     const [adminId, setAdminId] = useState('');
     const [adminPw, setAdminPw] = useState('');
     const navigate = useNavigate();
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setModalMessage("");
+    };
 
     // 1. 카카오 버튼 클릭 시, 로그인 창 띄우기 (링크는 노션에서 가져옴)
     //  rest api key와 redirect uri 값 받아서 해당 링크로 연결, window.location.href 이용하여 주소 변경
@@ -36,7 +45,11 @@ function Login() {
 
             navigate('/');
         } catch (error) {
-            // console.error('Admin Login Error : ', error);
+            if (error.response.data.status === 401) {
+                setModalMessage(error.response.data.reason);
+                setIsModalOpen(true);
+            }
+            console.log(error);
         }
     };
 
@@ -122,6 +135,7 @@ function Login() {
                     </div>
                 </div>
             </div>
+            <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
         </>
     );
 }

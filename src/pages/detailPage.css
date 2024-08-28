@@ -16,18 +16,15 @@
     .detail_header_name {
         display: flex;
         flex-direction: row;
-        margin-bottom: 10px;
+        align-items: center;
+        margin-bottom: 15px;
     }
 
-    .club_name {
-        font-size: 18px;
-    }
-
-    .detail_header_name h3 {
+    .detail_club_name {
         display: flex;
         flex-direction: row;
         align-items: center;
-        font-size: 20px;
+        font-size: 22px;
         font-weight: 500;
         /* line-height: 20px; */
         margin-top: 1px;
@@ -165,7 +162,7 @@
         margin-bottom: 10px;
     }
 
-    .detail_header_name h3 {
+    .detail_club_name {
         font-size: 20px;
         font-weight: 500;
         line-height: 20px;

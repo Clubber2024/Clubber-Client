@@ -22,7 +22,7 @@ export default function ErrorModal({ isOpen, message, onClose }) {
             position: "absolute",
             top: "50%",
             left: "50%",
-            transform: "translate(-50%, -80%)"
+            transform: "translate(-60%, -80%)"
         }
     }
 

@@ -49,3 +49,38 @@
     border: 0.2px solid #9c9c9c4d;
     margin: 20px 0px;
 }
+
+.password_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 200px;
+}
+
+.password_container label {
+    font-size: 14px;
+}
+
+.password_input {
+    width: 30%;
+    height: 35px;
+    border-radius: 5px;
+    border: 1.3px solid #9c9c9c80;
+    margin: 5px 0px 15px 0px;
+    padding: 20px;
+}
+
+.modify_button {
+    width: 30%;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    background: #7bc8e0;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0;
+    margin-top: 20px;
+}

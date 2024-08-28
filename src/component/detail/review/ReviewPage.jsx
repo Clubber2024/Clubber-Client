@@ -30,7 +30,7 @@ export default function ReviewPage({ clubId, clubName }) {
         setIsModalOpen(false);
         setModalMessage("");
         navigate(`/clubs/${clubId}`, { state: "Review" });
-      };
+    };
 
     return (
         <div className="review_body">
