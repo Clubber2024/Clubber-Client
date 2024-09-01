@@ -212,7 +212,7 @@ export default function EditPage() {
                                         <input
                                             type="file"
                                             accept=".jpg, .jpeg, .png"
-                                            onChange={handleFileChange}
+                                            onClick={handleFileChange}
                                             className={styles.edit_input}
                                         />
                                     </label>

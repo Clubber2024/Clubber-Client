@@ -52,7 +52,7 @@ export default function MainPromote() {
                         onClick={() => onClickRecruit(item.recruitId)}
                     >
                         <div className={styles.div_promote_content}>
-                            <div>{item.title}</div>
+                            <div className={styles.promote_title}>{item.title}</div>
                             <p className={styles.promote_line}>|</p>
                             <p className={styles.promote_date}>{formatDate(item.createdAt)}</p>
                         </div>

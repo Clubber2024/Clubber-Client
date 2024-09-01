@@ -115,16 +115,6 @@
         padding: 15px 25px;
     }
 
-    /* .img_notice {
-	width: 5px;
-	height: 5px;
-	color: black;
-	margin-right: 10px;
-	margin-left: 10px;
-	margin-top: 12px;
-	margin-bottom: 12px;
-	vertical-align: middle;
-} */
     .div_promote {
         /* margin-top: 9px;
 	align-items: center; */
@@ -147,10 +137,14 @@
 
     .div_promote div {
         text-align: start;
-        width: 65%;
+        width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+
+    .promote_title {
+        width: 280px;
     }
 
     .promote_line {
@@ -160,6 +154,6 @@
     .promote_date {
         width: 15%;
         margin-left: 5px;
-        margin-right: 25px;
+        margin-right: 20px;
     }
 }
