@@ -38,7 +38,7 @@ export default function MainNotice() {
             <div className={styles.notice_container}>
                 {noticeData.map((item) => (
                     <div key={item.noticeId} className={styles.div_notice}>
-                        <div>{item.title}</div>
+                        <LinkItem to={`/notices/${item.noticeId}`} className={styles.notice_title} style={{ textDecoration: 'none' }}>{item.title}</LinkItem>
                         <p className={styles.notice_line}>|</p>
                         <p className={styles.notice_date}>{formatDate(item.createdAt)}</p>
                     </div>

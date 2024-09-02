@@ -39,16 +39,6 @@
         padding: 15px 25px;
     }
 
-    /* .img_notice {
-	width: 5px;
-	height: 5px;
-	color: black;
-	margin-right: 10px;
-	margin-left: 10px;
-	margin-top: 12px;
-	margin-bottom: 12px;
-	vertical-align: middle;
-} */
     .div_notice {
         display: flex;
         flex-direction: row;
@@ -59,12 +49,13 @@
         padding-right: 25px;
     }
 
-    .div_notice div {
+    .notice_title {
         text-align: start;
         width: 65%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        color: black;
     }
 
     .notice_line {
@@ -139,7 +130,7 @@
         font-weight: 350;
     }
 
-    .div_notice div {
+    .notice_title {
         text-align: start;
         width: 65%;
         overflow: hidden;

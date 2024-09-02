@@ -9,10 +9,10 @@ export default function NoticeList() {
     // const [noticeId, setNoticeId] = useState(0);
     const [noticeData, setNoticeData] = useState([]);
     const [pageCount, setPageCount] = useState(0);
-    const [currentPage, setCurrentPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
 
-    const getNoticeData = async (page = 0) => {
+    const getNoticeData = async (page) => {
         try {
             const res = await customAxios.get(`/v1/notices`, {
                 params: { page, size: itemsPerPage },
@@ -36,7 +36,7 @@ export default function NoticeList() {
     }, [currentPage]);
 
     const handlePageClick = ({ selected }) => {
-        setCurrentPage(selected);
+        setCurrentPage(selected + 1);
     };
 
     const onClickNotice = (noticeId) => {
@@ -45,7 +45,7 @@ export default function NoticeList() {
 
     return (
         <div className="notice_container">
-            <h2>공지사항</h2>
+            <h2 className="notice_h2">공지사항</h2>
             <div className="notice_list">
                 <div className="notice_header">
                     <span>번호</span>

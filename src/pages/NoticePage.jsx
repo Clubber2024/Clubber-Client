@@ -33,9 +33,12 @@ export default function NoticePage() {
             const res = await customAxios.get(`/v1/notices/${prevNoticeId}`);
             if (res.data.success) {
                 setPrevData(res.data.data);
+            } else {
+                setPrevData(null); // 이전 글이 없으면 null로 설정
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
+            setPrevData(null); // 이전 글이 없으면 null로 설정
         }
     }
 
@@ -44,9 +47,12 @@ export default function NoticePage() {
             const res = await customAxios.get(`/v1/notices/${nextNoticeId}`);
             if (res.data.success) {
                 setNextData(res.data.data);
+            } else {
+                setNextData(null); // 이전 글이 없으면 null로 설정
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
+            setNextData(null); // 이전 글이 없으면 null로 설정
         }
     }
 
@@ -80,15 +86,23 @@ export default function NoticePage() {
                 <div className="detail_content">{noticeData.content}</div>
                 <div className="detail_divider" />
                 <div className="prev_next">
-                    <p style={{color: "#9C9C9C", fontSize: "13px"}}>이전</p>
-                    <p className="prev_next_title" onClick={onClickPrev}>{prevData.title}</p>
-                    <p style={{color: "#9C9C9C", fontSize: "13px"}}>{prevData.createdAt}</p>
+                <p style={{color: "#9C9C9C", fontSize: "13px"}}>이전</p>
+                    {prevData ? (
+                        <p className="prev_next_title" onClick={onClickPrev} style={{ cursor: "pointer" }}>{prevData.title}</p>
+                    ) : (
+                        <p className="prev_next_title" style={{ color: "#9C9C9C" }}>이전 글이 없습니다.</p>
+                    )}
+                    <p style={{color: "#9C9C9C", fontSize: "13px"}}>{prevData ? prevData.createdAt : ""}</p>
                 </div>
                 <div className="detail_divider" />
                 <div className="prev_next">
                     <p style={{color: "#9C9C9C", fontSize: "13px"}}>다음</p>
-                    <p className="prev_next_title" onClick={onClickNext}>{nextData.title}</p>
-                    <p style={{color: "#9C9C9C", fontSize: "13px"}}>{nextData.createdAt}</p>
+                    {nextData ? (
+                        <p className="prev_next_title" onClick={onClickNext} style={{ cursor: "pointer" }}>{nextData.title}</p>
+                    ) : (
+                        <p className="prev_next_title" style={{ color: "#9C9C9C" }}>다음 글이 없습니다.</p>
+                    )}
+                    <p style={{color: "#9C9C9C", fontSize: "13px"}}>{nextData ? nextData.createdAt : ""}</p>
                 </div>
                 <div className="detail_divider" />
             </div>

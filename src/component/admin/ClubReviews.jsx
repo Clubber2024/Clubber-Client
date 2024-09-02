@@ -6,27 +6,41 @@ import { customAxios } from '../../config/axios-config';
 
 export default function ClubReviews() {
     const [clubReviewData, setClubReviewData] = useState([]);
+    const [page, setPage] = useState(1);
+    const [hasNextPage, setHasNextPage] = useState(true);
     const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
-        const getMyReviews = async () => {
+        const getMyReviews = async (page) => {
             try {
                 const res = await customAxios.get(`/v1/admins/reviews`, {
+                    params: { page, size: 2 },
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },
                 });
                 console.log(res);
                 if (res.data.success) {
-                    setClubReviewData(res.data.data.clubReviews);
+                    // setClubReviewData(res.data.data.clubReviews.content);
+                    setClubReviewData((prevData) => [
+                        ...prevData,
+                        ...res.data.data.clubReviews.content, // 기존 데이터와 새 데이터 병합
+                    ]);
+                    setHasNextPage(res.data.data.clubReviews.hasNextPage);
                     console.log(clubReviewData);
                 }
             } catch (error) {
                 console.error('Error fetching my reviews : ', error);
             }
         };
-        getMyReviews();
-    }, [accessToken]);
+        getMyReviews(page);
+    }, [accessToken, page]);
+
+    const loadMoreReviews = () => {
+        if (hasNextPage) {
+            setPage((prevPage) => prevPage + 1);
+        }
+    };
 
     return (
         <div className="my_review_container">
@@ -52,6 +66,9 @@ export default function ClubReviews() {
                     <p className="review_comment">{cReview.content}</p>
                 </div>
             ))}
+            {hasNextPage && (
+                <button onClick={loadMoreReviews} className="more_button">⌵</button>
+            )}
         </div>
     );
 }
