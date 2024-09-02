@@ -59,6 +59,22 @@
         margin-top: 8px;
         font-size: 13px;
     }
+
+    .more_button {
+        margin-top: 20px;
+        padding-bottom: 5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: white;
+        border: 1.5px solid #7BC8E0;
+        color: #7BC8E0;
+        font-weight: 700;
+    }
+
+    .more_button:hover {
+        background-color: #d3f2fbb7;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -119,5 +135,21 @@
     .review_box p {
         margin-top: 5px;
         font-size: 14px;
+    }
+
+    .more_button {
+        margin-top: 15px;
+        padding-bottom: 3px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: white;
+        border: 1.5px solid #7BC8E0;
+        color: #7BC8E0;
+        font-weight: 700;
+    }
+
+    .more_button:hover {
+        background-color: #d3f2fbb7;
     }
 }

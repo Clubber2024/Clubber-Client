@@ -160,7 +160,7 @@ export default function ClubsPage() {
                 <img className="detail_logo" src={detailData.imageUrl} alt={`${detailData.clubName} logo`} />
                 <div className="detail_header">
                     <div className="detail_header_name">
-                        <h3>{detailData.clubName}</h3>
+                        <h3 className='detail_club_name'>{detailData.clubName}</h3>
                         <div className="imgDiv">
                             {isAdmin ? (
                                 ''

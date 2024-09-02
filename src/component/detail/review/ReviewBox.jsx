@@ -5,20 +5,22 @@ import { customAxios } from '../../../config/axios-config';
 
 export default function ReviewBox({ clubId }) {
     const [reviewData, setReviewData] = useState([]);
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [hasNextPage, setHasNextPage] = useState(true);
 
     useEffect(() => {
         const fetchKeywordData = async (page) => {
             try {
                 const res = await customAxios.get(`/v1/clubs/${clubId}/reviews`, {
-                    params: { page },
+                    params: { page, size: 2 },
                 });
                 if (res.data.success) {
-                    const newReviews = res.data.data.reviews;
-                    setReviewData((prevReviews) => [...prevReviews, ...newReviews]);
+                    // setReviewData(res.data.data.reviews.content);
+                    setReviewData((prevData) => [
+                        ...prevData,
+                        ...res.data.data.reviews.content, // 기존 데이터와 새 데이터 병합
+                    ]);
                     setHasNextPage(res.data.data.reviews.hasNextPage);
-                    // setReviewData(res.data.data.reviews);
                     console.log(reviewData);
                 }
             } catch (error) {
@@ -56,9 +58,7 @@ export default function ReviewBox({ clubId }) {
                 </div>
             ))}
             {hasNextPage && (
-                <button onClick={loadMoreReviews} className="load_more_button">
-                    더 불러오기
-                </button>
+                <button onClick={loadMoreReviews} className="more_button">⌵</button>
             )}
         </div>
     );

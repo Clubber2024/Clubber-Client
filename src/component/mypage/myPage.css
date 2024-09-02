@@ -12,6 +12,8 @@
     background: #7bc8e0;
     text-align: center;
     margin-bottom: 30px;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
 }
 
 .my_header h3 {

@@ -3,7 +3,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function MainBanner() {
     const navigate = useNavigate();
@@ -43,7 +43,7 @@ export default function MainBanner() {
                 <div className="banner_container">
                     <img src="/main/banner1.png" alt="main banner" />
                 </div>
-                <div className="banner_cotainer">
+                <div className="banner_container">
                     <img src="/main/banner2.png" alt="main banner" />
                 </div>
             </Slider>
