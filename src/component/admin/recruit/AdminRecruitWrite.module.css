@@ -1,0 +1,356 @@
+@media screen and (min-width: 768px) {
+    .write_header {
+        background: #7bc8e08c;
+        height: 86px;
+        width: 100%;
+        border: none;
+        font-family: Noto Sans;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 29.96px;
+        text-align: left;
+        color: var(--Black, #202123);
+        padding-top: 27px;
+        padding-left: 20%;
+    }
+
+    .write_rectangle {
+        background: #ffffff;
+        width: 60%;
+        height: 1000px;
+        border: 1.6px solid #bababa80;
+        border-radius: 8px;
+        align-items: center;
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 5%;
+        margin-bottom: 10%;
+        padding-left: 5%;
+        /* padding-right: 5%; */
+    }
+
+    .write_title {
+        font-family: Noto Sans;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 24.52px;
+        text-align: left;
+        color: var(--Black, #202123);
+        display: flex;
+        flex-direction: row;
+        /* margin-left: 30px; */
+        margin-top: 32px;
+    }
+
+    .write_title_sub {
+        color: #bababa;
+    }
+    /* 
+    .write_title_rectangle {
+        width: 90%;
+        height: 58px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1.6px solid var(--Main-Color, #7bc8e0);
+        margin-left: 30px;
+        margin-top: 13px;
+    } */
+
+    .write_title_input {
+        width: 90%;
+        height: 58px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1.6px solid var(--Main-Color, #7bc8e0);
+        /* margin-left: 30px; */
+        margin-top: 13px;
+        font-family: Noto Sans;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 21.79px;
+        text-align: left;
+        padding-left: 11px;
+    }
+
+    .write_title_input:hover {
+        border: 2px solid var(--Main-Color, #7bc8e0);
+    }
+    .write_title_input:focus {
+        outline: none;
+        border: 2px solid var(--Main-Color, #7bc8e0);
+    }
+
+    .write_title_font {
+        font-family: Noto Sans;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16.34px;
+        text-align: left;
+        color: #7bc8e0;
+        margin-left: 11px;
+        margin-top: 2px;
+    }
+
+    /* .write_content_rectangle {
+        width: 90%;
+        height: 437px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1.6px solid var(--Main-Color, #7bc8e0);
+        margin-left: 30px;
+        margin-top: 13px;
+    } */
+
+    .write_content_input {
+        width: 90%;
+        height: 437px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1.6px solid var(--Main-Color, #7bc8e0);
+        /* margin-left: 30px; */
+        margin-top: 13px;
+        font-family: Noto Sans;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 21.79px;
+        text-align: left;
+        padding-left: 11px;
+        padding-top: 23px;
+        resize: none;
+    }
+
+    .write_content_input:hover {
+        border: 2px solid var(--Main-Color, #7bc8e0);
+    }
+    .write_content_input:focus {
+        outline: none;
+        border: 2px solid var(--Main-Color, #7bc8e0);
+    }
+
+    .photo_div {
+        display: flex;
+    }
+
+    .write_photo_button {
+        width: 107px;
+        height: 107px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1.6px solid var(--Main-Color, #7bc8e0);
+        /* margin-left: 30px; */
+        margin-top: 13px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .write_photo {
+        width: 32px;
+        height: 32px;
+    }
+
+    .hidden_input {
+        display: none; /* input 요소 숨기기 */
+    }
+
+    .image_preview_container {
+        display: flex; /* 이미지들을 가로로 나열 */
+        flex-wrap: wrap; /* 여러 줄로 나열될 경우 줄 바꿈 */
+        margin-top: 10px; /* 버튼과의 간격 */
+    }
+
+    .image_preview {
+        width: 107px;
+        height: 107px;
+        object-fit: cover;
+        margin-right: 10px;
+        border-radius: 12px;
+        border: 1.6px solid var(--Main-Color, #7bc8e0);
+    }
+
+    .write_upload_button {
+        width: 90%;
+        height: 52px;
+        border-radius: 10px;
+        background: #7bc8e0;
+        border: none;
+        color: #ffffff;
+        /* margin-left: 30px; */
+        margin-top: 38px;
+
+        font-family: Noto Sans;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 10px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .write_header {
+        background: #7bc8e08c;
+        height: 86px;
+        width: 100%;
+        border: none;
+        font-family: Noto Sans;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 29.96px;
+        text-align: left;
+        color: var(--Black, #202123);
+        padding-top: 27px;
+        padding-left: 10%;
+    }
+
+    .write_rectangle {
+        background: #ffffff;
+        width: 80%;
+        height: 850px;
+        border: 1.6px solid #bababa80;
+        border-radius: 8px;
+        align-items: center;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 5%;
+        margin-bottom: 10%;
+        padding-left: 5%;
+        /* padding-right: 5%; */
+    }
+
+    .write_title {
+        font-family: Noto Sans;
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 24.52px;
+        text-align: left;
+        color: var(--Black, #202123);
+        display: flex;
+        flex-direction: row;
+        /* margin-left: 30px; */
+        margin-top: 32px;
+    }
+
+    .write_title_sub {
+        font-family: Noto Sans;
+        color: #bababa;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24.52px;
+    }
+
+    .write_title_input {
+        width: 90%;
+        height: 48px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1.6px solid var(--Main-Color, #7bc8e0);
+        /* margin-left: 30px; */
+        margin-top: 13px;
+        font-family: Noto Sans;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21.79px;
+        text-align: left;
+        padding-left: 11px;
+    }
+
+    .write_title_input:hover {
+        border: 2px solid var(--Main-Color, #7bc8e0);
+    }
+    .write_title_input:focus {
+        outline: none;
+        border: 2px solid var(--Main-Color, #7bc8e0);
+    }
+
+    .write_title_font {
+        font-family: Noto Sans;
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 16.34px;
+        text-align: left;
+        color: #7bc8e0;
+        margin-left: 11px;
+        margin-top: 2px;
+    }
+
+    .write_content_input {
+        width: 90%;
+        height: 300px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1.6px solid #7bc8e0;
+        margin-top: 13px;
+        font-family: Noto Sans;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21.79px;
+        text-align: left;
+        padding-left: 11px;
+        padding-top: 23px;
+        resize: none;
+    }
+
+    .write_content_input:hover {
+        border: 2px solid var(--Main-Color, #7bc8e0);
+    }
+    .write_content_input:focus {
+        outline: none;
+        border: 2px solid var(--Main-Color, #7bc8e0);
+    }
+
+    .photo_div {
+        display: flex;
+    }
+
+    .write_photo_button {
+        width: 107px;
+        height: 107px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1.6px solid var(--Main-Color, #7bc8e0);
+        /* margin-left: 30px; */
+        margin-top: 13px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .write_photo {
+        width: 32px;
+        height: 32px;
+    }
+
+    .hidden_input {
+        display: none; /* input 요소 숨기기 */
+    }
+
+    .image_preview_container {
+        display: flex; /* 이미지들을 가로로 나열 */
+        flex-wrap: wrap; /* 여러 줄로 나열될 경우 줄 바꿈 */
+        margin-top: 10px; /* 버튼과의 간격 */
+    }
+
+    .image_preview {
+        width: 107px;
+        height: 107px;
+        object-fit: cover;
+        margin-right: 10px;
+        border-radius: 12px;
+        border: 1.6px solid var(--Main-Color, #7bc8e0);
+    }
+
+    .write_upload_button {
+        width: 90%;
+        height: 52px;
+        border-radius: 10px;
+        background: #7bc8e0;
+        border: none;
+        color: #ffffff;
+        /* margin-left: 30px; */
+        margin-top: 38px;
+
+        font-family: Noto Sans;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 10px;
+        text-align: center;
+    }
+}

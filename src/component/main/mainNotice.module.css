@@ -27,7 +27,7 @@
         left: 0px;
         width: 75%;
         /* height: 215px; */
-        background-color: white;
+
         border-radius: 13px;
         margin-right: 9px;
         text-align: center;
@@ -37,6 +37,8 @@
         line-height: 26px;
         box-shadow: 0px 0px 3px 1px #00000033;
         padding: 15px 25px;
+        background-color: #ffffff;
+        border: #ffffff;
     }
 
     .div_notice {
@@ -47,6 +49,8 @@
         font-size: 11px;
         font-weight: 350;
         padding-right: 25px;
+        background-color: #ffffff;
+        border: #ffffff;
     }
 
     .notice_title {
@@ -56,15 +60,21 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         color: black;
+        background-color: #ffffff;
+        border: #ffffff;
     }
 
     .notice_line {
         padding: 0px 2px;
+        background-color: #ffffff;
+        border: #ffffff;
     }
 
     .notice_date {
         width: 15%;
         margin-left: 5px;
+        background-color: #ffffff;
+        border: #ffffff;
     }
 }
 
@@ -97,7 +107,8 @@
         left: 0px;
         width: 80%;
         /* height: 215px; */
-        background-color: white;
+        background-color: #ffffff;
+        border: #ffffff;
         border-radius: 13px;
         margin-right: 9px;
         text-align: center;
@@ -128,6 +139,8 @@
         color: #52555b;
         font-size: 11px;
         font-weight: 350;
+        background-color: #ffffff;
+        border: #ffffff;
     }
 
     .notice_title {
@@ -136,15 +149,21 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        background-color: #ffffff;
+        border: #ffffff;
     }
 
     .notice_line {
         padding: 0px 2px;
+        background-color: #ffffff;
+        border: #ffffff;
     }
 
     .notice_date {
         width: 15%;
         margin-left: 5px;
         margin-right: 25px;
+        background-color: #ffffff;
+        border: #ffffff;
     }
 }

@@ -1,19 +1,43 @@
-.ClubName {
-  font-family: Noto Sans KR;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 26.06px;
-  justify-content: start;
-  padding-top: 5%;
-  padding-left: 2%;
+@media screen and (min-width: 768px) {
+    .ClubName {
+        justify-content: start;
+        padding-top: 5%;
+        padding-left: 2%;
+        font-family: Noto Sans KR;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 26.06px;
+    }
+    .ClubType {
+        font-family: Noto Sans KR;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 26.06px;
+        justify-content: start;
+        padding-right: 5px;
+        display: flex;
+        float: left;
+    }
 }
-.ClubType {
-  font-family: Noto Sans KR;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 26.06px;
-  justify-content: start;
-  padding-right: 5px;
-  display: flex;
-  float: left;
+
+@media screen and (max-width: 768px) {
+    .ClubName {
+        font-family: Noto Sans KR;
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 26.06px;
+        justify-content: start;
+        padding-top: 5%;
+        padding-left: 2%;
+    }
+    .ClubType {
+        font-family: Noto Sans KR;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 26.06px;
+        justify-content: start;
+        padding-right: 5px;
+        display: flex;
+        float: left;
+    }
 }

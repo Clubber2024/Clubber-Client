@@ -17,14 +17,18 @@
         cursor: pointer;
     }
     .footer {
-        background-color: #9c9c9c26;
+        background-color: #f1f1f1;
         position: relative;
         transform: translateY(0%);
         height: 110px;
         width: 100%;
-        border-top: 1px solid #9c9c9c26;
+        border-top: 1px solid #f1f1f1;
         text-align: center;
         padding: 10px;
+    }
+
+    .footer_content {
+        background: #f1f1f1;
     }
 
     .circle_insta {
@@ -47,6 +51,7 @@
         font-weight: 300;
         line-height: 20.27px;
         text-align: center;
+        background: #f1f1f1;
     }
     .text_ContactUs {
         font-family: Noto Sans KR;

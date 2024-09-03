@@ -2,8 +2,8 @@
     * {
         box-sizing: border-box;
         margin: 0;
+        background-color: #f9f9f9;
     }
-
 
     /* .banner_container {
         width: 100%;
@@ -32,5 +32,4 @@
         max-height: 200px;
         object-fit: fill;
     }
-
 }
