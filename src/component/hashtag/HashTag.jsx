@@ -28,7 +28,8 @@ export default function HashTag() {
                 const tagVal = item[tagName];
                 return (
                     <div className="tag_container" key={index} onClick={() => onClicked(tagVal)}>
-                        <img src={`/main/hashtag/${tagName}_icon.png`} alt={`${tagName} icon`} width={48} height={45} />
+                        <div className="tag_circle"></div>
+                        {/* <img src={`/main/hashtag/${tagName}_icon.png`} alt={`${tagName} icon`} width={48} height={45} /> */}
                         <p className="tag_text"># {tagVal}</p>
                     </div>
                 );
