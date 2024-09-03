@@ -19,6 +19,10 @@
 .my_header h3 {
     position: relative;
     top: 45%;
+    background: #7bc8e0;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .my_body {

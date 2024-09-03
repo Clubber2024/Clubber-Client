@@ -1,6 +1,7 @@
 import styles from './adminRecruitList.module.css';
 import { customAxios } from '../../../config/axios-config';
 import { useEffect, useState } from 'react';
+import { LinkItem } from '../../branch/BranchCentral';
 
 export default function AdminRecruitList() {
     const accessToken = localStorage.getItem('accessToken');
@@ -42,8 +43,14 @@ export default function AdminRecruitList() {
 
     return (
         <>
-            <div className={styles.title}>모집글</div>
+            <div className={styles.title}>나의 모집글</div>
+
             <div className={styles.recruit_container} key={PromoteData.recruitId}>
+                <div className={styles.recruit_button_div}>
+                    <LinkItem to={`/admin/recruit/edit`}>
+                        <button className={styles.recruit_button}>모집글 작성</button>
+                    </LinkItem>
+                </div>
                 {PromoteData?.map((item) => (
                     <div className={styles.recruit_box}>
                         <img src={item.images} alt="club_logo" className={styles.recruit_logo} />

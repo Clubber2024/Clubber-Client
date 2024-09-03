@@ -27,6 +27,7 @@ const Icon = styled.img`
     height: 32px;
     margin-right: 10px;
     margin-bottom: 15px;
+    margin-top: -5px;
 `;
 
 function BookMark() {
@@ -92,12 +93,12 @@ function BookMark() {
     };
 
     return (
-        <div>
+        <div className={styles.bookmark_div}>
             <div className={styles.title}> 나의 즐겨찾기 </div>
 
             {clubs.map((club) => (
                 <div key={club.favoriteClub.clubId} className={styles.rectangle}>
-                    <Club src={club.favoriteClub.imageUrl} />
+                    <Club src={club.favoriteClub.imageUrl} className={styles.bookmark_ClubLogo} />
                     <FavoriteClubs
                         id={club.favoriteClub.clubId}
                         name={club.favoriteClub.clubName}
@@ -106,7 +107,7 @@ function BookMark() {
                     <div className={styles.divRow}>
                         <Star src={StarImg} onClick={() => handleFavorite(club.favoriteClub.clubId, club.favoriteId)} />
                         <LinkItem to={`/clubs/${club.favoriteClub.clubId}`}>
-                            <Icon src={BookMarkIcon} />
+                            <Icon src={BookMarkIcon} className={styles.bookmark_icon} />
                         </LinkItem>
                     </div>
                 </div>
