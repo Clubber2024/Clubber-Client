@@ -104,7 +104,7 @@ export default function AdminRecruitWrite() {
 
     const postRecruitData = async () => {
         try {
-            const res = await axios.post(
+            const res = await customAxios.post(
                 `/v1/admins/recruits`,
                 {
                     title: title,

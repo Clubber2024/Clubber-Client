@@ -2,6 +2,7 @@ import styles from './adminRecruitList.module.css';
 import { customAxios } from '../../../config/axios-config';
 import { useEffect, useState } from 'react';
 import { LinkItem } from '../../branch/BranchCentral';
+import ReactPaginate from 'react-paginate';
 
 export default function AdminRecruitList() {
     const accessToken = localStorage.getItem('accessToken');
@@ -54,7 +55,7 @@ export default function AdminRecruitList() {
                 </div>
                 {PromoteData?.map((item) => (
                     <div className={styles.recruit_box} key={item.recruitId}>
-                        <img src={item.images} alt="club_logo" className={styles.recruit_logo} />
+                        <img src={item.images ? item.imges : ''} className={styles.recruit_logo} />
                         <div className={styles.recruit_div}>
                             <p className={styles.recruit_title}>{item.title}</p>
                             <p className={styles.recruit_text}>{item.content}</p>
@@ -62,6 +63,18 @@ export default function AdminRecruitList() {
                     </div>
                 ))}
             </div>
+
+            <ReactPaginate
+                previousLabel={'<'}
+                nextLabel={'>'}
+                pageCount={totalPages}
+                onPageChange={handlePageChange}
+                containerClassName={'pagination'}
+                previousLinkClassName={'pagination_link'}
+                nextLinkClassName={'pagination_link'}
+                disabledClassName={'pagination_link_disabled'}
+                activeClassName={'active'}
+            />
         </>
     );
 }
