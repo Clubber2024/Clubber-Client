@@ -8,7 +8,7 @@ export default function AdminRecruitList() {
     const [PromoteData, setPromoteData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [pageSize, setPageSize] = useState(1); // 한 페이지에 표시할 항목 수
+    const [pageSize, setPageSize] = useState(5); // 한 페이지에 표시할 항목 수
     const [sort, setSort] = useState(['string']); // 정렬 기준
 
     useEffect(() => {
@@ -28,9 +28,10 @@ export default function AdminRecruitList() {
                 },
             });
             if (res.data.success) {
+                // console.log(res.data);
                 setPromoteData(res.data.data.content);
-                setTotalPages(res.data.pagination.totalPages);
-                console.log(res.data.data);
+                setTotalPages(res.data.data.totalPages);
+                console.log(res.data.data.content);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
@@ -52,7 +53,7 @@ export default function AdminRecruitList() {
                     </LinkItem>
                 </div>
                 {PromoteData?.map((item) => (
-                    <div className={styles.recruit_box}>
+                    <div className={styles.recruit_box} key={item.recruitId}>
                         <img src={item.images} alt="club_logo" className={styles.recruit_logo} />
                         <div className={styles.recruit_div}>
                             <p className={styles.recruit_title}>{item.title}</p>
