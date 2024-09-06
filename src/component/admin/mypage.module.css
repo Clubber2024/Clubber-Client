@@ -61,6 +61,10 @@
         padding: 0px 6px 0px 6px;
     }
 
+    .association_text {
+        background-color: #7bc8e0;
+    }
+
     .detail_image {
         width: 30%;
         aspect-ratio: 1/1;
@@ -178,6 +182,10 @@
         align-items: center;
         justify-content: space-evenly;
         padding: 0px 6px 0px 6px;
+    }
+
+    .association_text {
+        background-color: #7bc8e0;
     }
 
     .detail_image {

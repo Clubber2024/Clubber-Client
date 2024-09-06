@@ -31,8 +31,9 @@
         padding: 1%;
     }
 
-    .detail_body textarea {
-        margin-top: 4%;
+    .detailBody textarea {
+        /* margin-top: 4%; */
+        resize: none;
     }
 
     .ButtonDiv {
@@ -145,8 +146,9 @@
         padding: 1%;
     }
 
-    .detail_body textarea {
-        margin-top: 4%;
+    .detailBody textarea {
+        /* margin-top: 4%; */
+        resize: none;
     }
 
     .CompleteButton {

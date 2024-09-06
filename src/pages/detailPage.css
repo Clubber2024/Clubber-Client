@@ -74,6 +74,10 @@
         padding: 0px 6px 0px 6px;
     }
 
+    .association_btn span {
+        background-color: #7bc8e0;
+    }
+
     .detail_image {
         width: 30%;
         aspect-ratio: 1/1;
