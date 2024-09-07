@@ -35,6 +35,7 @@ export default function ClubsPage() {
             //console.log(intClubId);
             const res = await customAxios.get(`/v1/clubs/${intClubId}`);
             if (res.data.success) {
+                console.log(res.data.data);
                 setDetailData(res.data.data);
                 setClubInfoData(res.data.data.clubInfo);
                 //console.log(res.data.data);
@@ -160,7 +161,7 @@ export default function ClubsPage() {
                 <img className="detail_logo" src={detailData.imageUrl} alt={`${detailData.clubName} logo`} />
                 <div className="detail_header">
                     <div className="detail_header_name">
-                        <h3 className='detail_club_name'>{detailData.clubName}</h3>
+                        <h3 className="detail_club_name">{detailData.clubName}</h3>
                         <div className="imgDiv">
                             {isAdmin ? (
                                 ''
@@ -175,13 +176,11 @@ export default function ClubsPage() {
                         </div>
                     </div>
                     <div className="association_btn">
-                        <span>
-                            {detailData.college === null || detailData.college === ''
-                                ? '중앙동아리'
-                                : detailData.college}
-                        </span>
+                        <span>{detailData.clubType}</span>
                         <span>|</span>
-                        <span>{detailData.department || detailData.division}</span>
+                        <span>
+                            {detailData.clubType === '중앙동아리' ? detailData.division : detailData.department}
+                        </span>
                     </div>
                 </div>
             </div>
