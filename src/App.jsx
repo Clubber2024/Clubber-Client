@@ -30,6 +30,7 @@ import AdminRecruitList from './component/admin/recruit/AdminRecruitList';
 import RecruitContent from './component/recruit/RecruitContent';
 import ModifyPassword from './component/mypage/ModifyPassword';
 import AdminRecruitWrite from './component/admin/recruit/AdminRecruitWrite';
+import DetailRecruitList from './component/recruit/DetailRecruitList';
 
 function App() {
     const isPc = useMediaQuery({
@@ -66,6 +67,7 @@ function App() {
                         <Route path="/user/reviews" element={<MyReview />} />
                         <Route path="/recruit" element={<RecruitPage />} />
                         <Route path="/recruit/:recruitId" element={<RecruitContent />} />
+                        <Route path="/recruit/club/:clubId" element={<DetailRecruitList />} />
 
                         <Route path="/qna" element={<QnAPage />} />
 
@@ -107,6 +109,7 @@ function App() {
                         <Route path="/qna" element={<QnAPage />} />
                         <Route path="/recruit" element={<RecruitPage />} />
                         <Route path="/recruit/:recruitId" element={<RecruitContent />} />
+                        <Route path="/recruit/club/:clubId" element={<DetailRecruitList />} />
 
                         <Route path="/admin" element={<MyPage />} />
                         <Route path="/admin/mypage" element={<AdminPage />} />

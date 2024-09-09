@@ -26,7 +26,7 @@
 
     .bar_text {
         color: #000;
-        background-color: #9fd8ea;
+        background-color: transparent;
         font-size: 15px;
         font-weight: 700;
         white-space: nowrap;
@@ -37,7 +37,7 @@
 
     .bar_count {
         color: #7bc8e0;
-        background-color: #9fd8ea;
+        background-color: transparent;
         font-size: 14px;
         font-weight: 700;
         position: absolute;

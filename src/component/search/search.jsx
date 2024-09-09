@@ -23,8 +23,15 @@ function Search() {
             const data = response.data.data.clubs;
             console.log(data);
             setClubs(data);
-            setCentral(data['중앙동아리']);
-            setDivision(data['소모임']);
+
+            if (data['중앙동아리']) {
+                setCentral(data['중앙동아리']);
+            }
+
+            if (data['소모임']) {
+                setDivision(data['소모임']);
+            }
+
             setError(null);
         } catch (error) {
             setError(error);
@@ -32,6 +39,8 @@ function Search() {
             setLoading(false);
         }
     };
+    console.log('CC', central);
+    console.log('dd', division);
 
     useEffect(() => {
         if (clubName) {
@@ -76,12 +85,12 @@ function Search() {
         return rows;
     };
 
-    const renderDataDivision = () => {
+    const renderDataDivision = (division) => {
         const result = renderData(division);
         // console.log(`devision: ${result}`);
         return result;
     };
-    const renderDataCentral = (data) => {
+    const renderDataCentral = (central) => {
         const result = renderData(central);
         // console.log(`department: ${result}`);
         return result;

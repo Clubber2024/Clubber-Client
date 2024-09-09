@@ -3,10 +3,12 @@ import './Pagination.css';
 import ReactPaginate from 'react-paginate';
 import { customAxios } from '../../config/axios-config';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-export default function RecruitList() {
+export default function DetailRecruitList() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const clubId = location.state?.clubId;
 
     const [PromoteData, setPromoteData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -16,7 +18,7 @@ export default function RecruitList() {
 
     const getPromoteData = async (page) => {
         try {
-            const res = await customAxios.get(`/v1/recruits`, {
+            const res = await customAxios.get(`/v1/clubs/${clubId}/recruit`, {
                 params: {
                     page: page,
                     size: pageSize,
