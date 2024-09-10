@@ -97,6 +97,7 @@
         justify-content: space-evenly;
         padding: 0px 6px 0px 6px;
         margin-left: 15px;
+        cursor: pointer;
     }
 
     .recruit_btn_border {
@@ -274,6 +275,7 @@
         justify-content: space-evenly;
         padding: 0px 6px 0px 6px;
         margin-left: 5px;
+        cursor: pointer;
     }
 
     .recruit_btn_border {

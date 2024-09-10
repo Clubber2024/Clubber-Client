@@ -24,10 +24,12 @@ export default function QnA() {
     useEffect(() => {
         // 화면 크기 변경 시마다 호출될 이벤트 핸들러
         const handleResize = () => {
-            if (window.innerWidth < 900) {
-                setItemRow(2); // 화면 너비가 600px보다 작으면 2개씩 표시
+            if (window.innerWidth <= 865) {
+                setItemRow(2); // 화면 너비가 900px보다 작으면 2개씩 표시
+            } else if (865 < window.innerWidth && window.innerWidth <= 1330) {
+                setItemRow(3); // 그 외에는 4개씩 표시
             } else {
-                setItemRow(4); // 그 외에는 4개씩 표시
+                setItemRow(4);
             }
         };
 
