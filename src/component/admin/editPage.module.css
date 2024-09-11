@@ -97,6 +97,11 @@
         align-items: center;
         justify-content: space-evenly;
         padding: 0px 6px 0px 6px;
+        margin-top: 8px;
+    }
+
+    .association_btn span {
+        background-color: #7bc8e0;
     }
 
     .detail_image {

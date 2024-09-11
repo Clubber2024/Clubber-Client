@@ -60,9 +60,11 @@ export default function MyPage() {
                         </div>
 
                         <div className={styles.association_btn}>
-                            <span>{club.college === null || club.college === '' ? '중앙동아리' : club.college}</span>
-                            <span>|</span>
-                            <span>{club.department || club.division}</span>
+                            <span className={styles.association_text}>
+                                {club.college === null || club.college === '' ? '중앙동아리' : club.college}
+                            </span>
+                            <span className={styles.association_text}>|</span>
+                            <span className={styles.association_text}>{club.department || club.division}</span>
                         </div>
                     </div>
                 </div>

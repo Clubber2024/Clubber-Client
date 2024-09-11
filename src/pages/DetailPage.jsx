@@ -5,6 +5,7 @@ import './detailPage.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { customAxios } from '../config/axios-config';
 import ErrorModal from '../component/modal/ErrorModal';
+import { LinkItem } from '../component/branch/BranchCentral';
 
 export default function ClubsPage() {
     const url = window.location.href; // 현재 URL 가져오기
@@ -19,6 +20,7 @@ export default function ClubsPage() {
     const [whichTab, setWhichTab] = useState(tab);
     const [detailData, setDetailData] = useState([]);
     const [clubInfoData, setClubInfoData] = useState([]);
+    const [clubInfoId, setClubInfoId] = useState('');
     //즐겨찾기 기능
     const [favoriteId, setFavoriteId] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
@@ -35,8 +37,10 @@ export default function ClubsPage() {
             //console.log(intClubId);
             const res = await customAxios.get(`/v1/clubs/${intClubId}`);
             if (res.data.success) {
+                console.log(res.data.data);
                 setDetailData(res.data.data);
                 setClubInfoData(res.data.data.clubInfo);
+                setClubInfoId(res.data.data.clubInfo);
                 //console.log(res.data.data);
                 //console.log(res.data.data.clubInfo);
             }
@@ -154,13 +158,17 @@ export default function ClubsPage() {
         navigate(`/clubs/${clubId}`, { state: 'Introduction' });
     };
 
+    const OnClickRecruitBtn = () => {
+        navigate(`/recruit/club/${clubId}`, { state: { clubId: clubId } });
+    };
+
     return (
         <div className="detail_container">
             <div className="detail_header_container">
                 <img className="detail_logo" src={detailData.imageUrl} alt={`${detailData.clubName} logo`} />
                 <div className="detail_header">
                     <div className="detail_header_name">
-                        <h3 className='detail_club_name'>{detailData.clubName}</h3>
+                        <h3 className="detail_club_name">{detailData.clubName}</h3>
                         <div className="imgDiv">
                             {isAdmin ? (
                                 ''
@@ -174,14 +182,18 @@ export default function ClubsPage() {
                             )}
                         </div>
                     </div>
-                    <div className="association_btn">
-                        <span>
-                            {detailData.college === null || detailData.college === ''
-                                ? '중앙동아리'
-                                : detailData.college}
-                        </span>
-                        <span>|</span>
-                        <span>{detailData.department || detailData.division}</span>
+                    <div className="association_container">
+                        <div className="association_btn">
+                            <span>{detailData.clubType}</span>
+                            <span>|</span>
+                            <span>
+                                {detailData.clubType === '중앙동아리' ? detailData.division : detailData.department}
+                            </span>
+                        </div>
+
+                        <div className="recruit_btn" onClick={OnClickRecruitBtn}>
+                            모집글 보러가기 <div className="recruit_btn_border"></div>
+                        </div>
                     </div>
                 </div>
             </div>

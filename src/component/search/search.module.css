@@ -13,6 +13,7 @@
         text-align: center;
         position: relative;
         top: 45%;
+        background: #7bc8e0;
     }
     .container {
         width: 100%;
@@ -34,7 +35,7 @@
     .warning_text {
         font-size: 17px;
         font-weight: 500;
-        color: #52555B;
+        color: #52555b;
         margin-top: 10px;
     }
 }
@@ -50,7 +51,7 @@
         font-family: Noto Sans KR;
         font-size: 18px;
         font-weight: 800;
-
+        background: #7bc8e0;
         text-align: center;
         position: relative;
         top: 45%;
@@ -75,7 +76,7 @@
     .warning_text {
         font-size: 14px;
         font-weight: 500;
-        color: #52555B;
+        color: #52555b;
         margin-top: 10px;
     }
 }

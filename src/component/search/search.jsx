@@ -7,23 +7,31 @@ import { customAxios } from '../../config/axios-config';
 function Search() {
     const [loading, setLoading] = useState(true);
     const [clubs, setClubs] = useState([]);
-    const [department, setDepartment] = useState([]);
+    const [central, setCentral] = useState([]);
     const [division, setDivision] = useState([]);
     const [error, setError] = useState(null);
     const location = useLocation();
     const clubName = location.state.clubName;
 
-    const filterByDivision = (club) => club.division != null;
-    const filterByDepartment = (club) => club.department != null;
+    // const filterByDivision = (club) => club.division != null;
+    // const filterByDepartment = (club) => club.department != null;
 
     const getSearchClubs = async () => {
         try {
             const response = await customAxios.get(`
 				v1/clubs?clubName=${clubName}`);
             const data = response.data.data.clubs;
+            console.log(data);
             setClubs(data);
-            setDepartment(data.filter(filterByDepartment));
-            setDivision(data.filter(filterByDivision));
+
+            if (data['중앙동아리']) {
+                setCentral(data['중앙동아리']);
+            }
+
+            if (data['소모임']) {
+                setDivision(data['소모임']);
+            }
+
             setError(null);
         } catch (error) {
             setError(error);
@@ -31,6 +39,8 @@ function Search() {
             setLoading(false);
         }
     };
+    console.log('CC', central);
+    console.log('dd', division);
 
     useEffect(() => {
         if (clubName) {
@@ -38,17 +48,19 @@ function Search() {
         }
     }, [clubName]);
 
-    if (loading) return (
-        <div className={styles.warning_container}>
-            <p className={styles.warning_text}>loading</p>
-        </div>
-    );
-    if (error) return (
-        <div className={styles.warning_container}>
-            <img src="/warning.png" alt="search_warning" width={50}/>
-            <p className={styles.warning_text}>검색 결과가 없습니다.</p>
-        </div>
-    );
+    if (loading)
+        return (
+            <div className={styles.warning_container}>
+                <p className={styles.warning_text}>loading</p>
+            </div>
+        );
+    if (error)
+        return (
+            <div className={styles.warning_container}>
+                <img src="/warning.png" alt="search_warning" width={50} />
+                <p className={styles.warning_text}>검색 결과가 없습니다.</p>
+            </div>
+        );
 
     const renderData = (data) => {
         const rows = [];
@@ -73,25 +85,25 @@ function Search() {
         return rows;
     };
 
-    const renderDataDivision = () => {
+    const renderDataDivision = (division) => {
         const result = renderData(division);
         // console.log(`devision: ${result}`);
         return result;
     };
-    const renderDataDepartment = (data) => {
-        const result = renderData(department);
+    const renderDataCentral = (central) => {
+        const result = renderData(central);
         // console.log(`department: ${result}`);
         return result;
     };
 
     return (
         <div>
-            {department.length > 0 && (
+            {central.length > 0 && (
                 <div className={styles.wrap}>
                     <div className={styles.header}>
                         <h2 className={styles.header_title}>중앙동아리</h2>
                     </div>
-                    {renderDataDivision(clubs)}
+                    {renderDataCentral(central)}
                 </div>
             )}
 
@@ -100,7 +112,7 @@ function Search() {
                     <div className={styles.header}>
                         <h2 className={styles.header_title}>단과대</h2>
                     </div>
-                    {renderDataDepartment(clubs)}
+                    {renderDataDivision(division)}
                 </div>
             )}
         </div>

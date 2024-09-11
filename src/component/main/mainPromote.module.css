@@ -19,6 +19,11 @@
         text-align: center;
         padding: 10px 20px;
     }
+    .promote_index:hover {
+        font-weight: 700;
+        font-size: 15px;
+        color: #7bc8e0;
+    }
 
     .promote_container {
         position: absolute;

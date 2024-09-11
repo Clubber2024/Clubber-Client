@@ -30,7 +30,7 @@ export default function MainRanking() {
             <div className={styles.ranking_container}>
                 {rankingData.map((item, index) => {
                     return (
-                        <div key={item.clubId}>
+                        <div key={item.clubId} className={styles.div_ranking_hover}>
                             <div key={index} className={styles.div_ranking}>
                                 <p>{index + 1}. </p>
                                 <Link
