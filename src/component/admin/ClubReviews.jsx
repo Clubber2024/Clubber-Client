@@ -11,10 +11,10 @@ export default function ClubReviews() {
     const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
-        const getMyReviews = async (page) => {
+        const getClubReviews = async (page) => {
             try {
                 const res = await customAxios.get(`/v1/admins/reviews`, {
-                    params: { page, size: 2 },
+                    params: { page, size: 5 },
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },
@@ -33,7 +33,7 @@ export default function ClubReviews() {
                 console.error('Error fetching my reviews : ', error);
             }
         };
-        getMyReviews(page);
+        getClubReviews(page);
     }, [accessToken, page]);
 
     const loadMoreReviews = () => {

@@ -1,17 +1,21 @@
 import './myReview.css';
 import '../../detail/review/reviewBox.css';
 import KeywordBar from '../../detail/review/KeywordBar';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { customAxios } from '../../../config/axios-config';
 
 export default function MyReview() {
     const [myReviewData, setMyReviewData] = useState([]);
     const accessToken = localStorage.getItem('accessToken');
 
+    // 페이징 처리 (더보기)
+    // const [page, setPage] = useState(1);
+    // const [hasNextPage, setHasNextPage] = useState(true);
+
     useEffect(() => {
         const getMyReviews = async () => {
             try {
-                const res = await axios.get(`http://13.125.141.171:8080/v1/users/review`, {
+                const res = await customAxios.get(`/v1/users/review`, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },
@@ -26,7 +30,14 @@ export default function MyReview() {
             }
         };
         getMyReviews();
-    }, []);
+    }, [accessToken]);  // 페이징 처리 완료 시, page 추가
+
+    // 더보기 함수
+    // const loadMoreReviews = () => {
+    //     if (hasNextPage) {
+    //         setPage((prevPage) => prevPage + 1);
+    //     }
+    // };
 
     return (
         <div className="my_review_container">
