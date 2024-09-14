@@ -7,7 +7,17 @@
         border: 1px solid rgba(217, 217, 217, 1);
         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
         margin: 10px;
+        position: relative;
     }
+
+    .rectangle h3 {
+        background: #ffffff;
+    }
+
+    .rectangle p {
+        background: #ffffff;
+    }
+
     .image {
         width: 100%;
         border-radius: 10px 10px 0px 0px;
@@ -39,10 +49,23 @@
         white-space: nowrap;
         overflow-y: auto;
     }
+
+    .cover {
+        position: absolute; /* 부모 요소를 기준으로 오버레이 포지셔닝 */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은색 오버레이 */
+        border-radius: 10px;
+        z-index: 0; /* 기존 콘텐츠 위에 표시되도록 z-index 설정 */
+        pointer-events: none; /* 오버레이로 인해 기존 요소와의 상호작용이 막히지 않도록 설정 */
+    }
 }
 
 @media screen and (max-width: 769px) {
     .rectangle {
+        position: relative;
         width: 20%;
         height: 21.6%;
         border-radius: 10px;
@@ -51,6 +74,15 @@
         box-shadow: 0px 0px 5px 0px #00000033;
         margin: 10px;
     }
+
+    .rectangle h3 {
+        background: #ffffff;
+    }
+
+    .rectangle p {
+        background: #ffffff;
+    }
+
     .image {
         width: 100%;
         border-radius: 10px 10px 0px 0px;
@@ -78,5 +110,17 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow-y: auto;
+    }
+
+    .cover {
+        position: absolute; /* 부모 요소를 기준으로 오버레이 포지셔닝 */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은색 오버레이 */
+        border-radius: 10px;
+        z-index: 0; /* 기존 콘텐츠 위에 표시되도록 z-index 설정 */
+        pointer-events: none; /* 오버레이로 인해 기존 요소와의 상호작용이 막히지 않도록 설정 */
     }
 }

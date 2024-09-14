@@ -8,6 +8,15 @@
         box-shadow: 0px 0px 5px 0px #00000033;
         margin: 10px;
     }
+
+    .rectangle h3 {
+        background: #ffffff;
+    }
+
+    .rectangle p {
+        background: #ffffff;
+    }
+
     .image {
         width: 100%;
         aspect-ratio: 1/1;
@@ -51,6 +60,14 @@
         box-shadow: 0px 0px 5px 0px #00000033;
         margin: 10px;
     }
+    .rectangle h3 {
+        background: #ffffff;
+    }
+
+    .rectangle p {
+        background: #ffffff;
+    }
+
     .image {
         width: 100%;
         border-radius: 10px 10px 0px 0px;
