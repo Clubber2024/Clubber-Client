@@ -54,6 +54,26 @@
         display: flex;
         justify-content: space-between;
     }
+
+    .bookmark_button_div {
+        text-align: center;
+    }
+
+    .more_button {
+        margin-top: 20px;
+        padding-bottom: 5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: white;
+        border: 1.5px solid #7bc8e0;
+        color: #7bc8e0;
+        font-weight: 700;
+    }
+
+    .more_button:hover {
+        background-color: #d3f2fbb7;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -83,8 +103,8 @@
     }
 
     .bookmark_ClubLogo {
-        width: 90px;
-        height: 80px;
+        width: 80px !important;
+        height: 80px !important;
         margin: 10px;
         margin-top: 10px;
         float: left;
@@ -125,5 +145,23 @@
     .divRow {
         display: flex;
         justify-content: space-between;
+    }
+    .bookmark_button_div {
+        text-align: center;
+    }
+    .more_button {
+        margin-top: 15px;
+        padding-bottom: 3px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: white;
+        border: 1.5px solid #7bc8e0;
+        color: #7bc8e0;
+        font-weight: 700;
+    }
+
+    .more_button:hover {
+        background-color: #d3f2fbb7;
     }
 }
