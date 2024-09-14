@@ -46,6 +46,7 @@ function BranchCentral() {
                             imageUrl={club.imageUrl}
                             clubName={club.clubName}
                             introduction={club.introduction}
+                            agreeToProvideInfo={club.agreeToProvideInfo}
                         />
                     ))}
                 </div>
