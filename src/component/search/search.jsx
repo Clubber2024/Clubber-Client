@@ -39,8 +39,6 @@ function Search() {
             setLoading(false);
         }
     };
-    console.log('CC', central);
-    console.log('dd', division);
 
     useEffect(() => {
         if (clubName) {
@@ -77,6 +75,7 @@ function Search() {
                             introduction={club.introduction}
                             division={club.division}
                             department={club.department}
+                            agreeToProvideInfo={club.agreeToProvideInfo}
                         />
                     ))}
                 </div>

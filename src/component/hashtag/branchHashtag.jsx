@@ -21,7 +21,12 @@ function BranchHashTag() {
             const response = await customAxios.get(`/v1/clubs?hashtag=${hashtag}`);
             // console.log(response.data);
             setClubs(response.data.data.clubs);
-            setHashTagData(response.data.data.hashtag);
+            if (response.data.data.hashtag == '해당 없음') {
+                setHashTagData('기타');
+            } else {
+                setHashTagData(response.data.data.hashtag);
+            }
+
             setError(null);
         } catch (error) {
             setError(error);
@@ -54,6 +59,7 @@ function BranchHashTag() {
                             imageUrl={club.imageUrl}
                             clubName={club.clubName}
                             introduction={club.introduction}
+                            agreeToProvideInfo={club.agreeToProvideInfo}
                         />
                     ))}
                 </div>
