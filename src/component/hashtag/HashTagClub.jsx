@@ -21,6 +21,7 @@ function HashTagClub({ clubId, imageUrl, clubName, introduction, agreeToProvideI
                 <img className={styles.image} alt={clubName} src={imageUrl} />
                 <h3 className={styles.title}>{clubName}</h3>
                 <p className={styles.content}>{introduction}</p>
+
                 <div className={agreeToProvideInfo === true ? '' : styles.cover}> </div>
             </div>
             {isModalOpen && (

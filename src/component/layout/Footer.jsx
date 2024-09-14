@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 //import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 import { LinkItem } from '../branch/BranchCentral';
 import { customAxios } from '../../config/axios-config';
 import { useNavigate } from 'react-router-dom';
+import ConfirmModal from '../modal/ConfirmModal';
 
 function Footer() {
     const userId = localStorage.getItem('userId');
     const accessToken = localStorage.getItem('accessToken');
     const Admin = localStorage.getItem('isAdmin');
     const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const userDelete = async () => {
         try {
@@ -41,11 +43,21 @@ function Footer() {
         }
     };
 
+    const onClickDelete = () => {
+        if (accessToken) {
+            setIsModalOpen(true);
+        }
+    };
+
     const onClickUserDelete = () => {
         if (Admin) {
             AdminDelete();
+            setIsModalOpen(false);
+            navigate(`/`);
         } else {
             userDelete();
+            setIsModalOpen(false);
+            navigate(`/`);
         }
     };
 
@@ -55,7 +67,7 @@ function Footer() {
                 <p className={styles.font}>이용약관ㅣ</p>
                 <p className={styles.font}>개인정보처리방침ㅣ</p>
                 <p className={styles.font}>운영정책ㅣ</p>
-                <p className={styles.font} onClick={onClickUserDelete}>
+                <p className={styles.font} onClick={onClickDelete}>
                     회원탈퇴ㅣ
                 </p>
                 <LinkItem to={'/qna'}>
@@ -73,6 +85,15 @@ function Footer() {
                     <br />
                 </div>
             </div>
+
+            {isModalOpen && (
+                <ConfirmModal
+                    isOpen={isModalOpen}
+                    message={'정말 회원 탈퇴하시겠습니까??'}
+                    onClickOk={() => onClickUserDelete()}
+                    onClose={() => setIsModalOpen(false)}
+                />
+            )}
         </>
     );
 }
