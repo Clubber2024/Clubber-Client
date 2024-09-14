@@ -85,25 +85,32 @@ export default function NoticePage() {
                 <div className="detail_divider" />
                 <div className="detail_content">{noticeData.content}</div>
                 <div className="detail_divider" />
-                <div className="prev_next">
-                <p style={{color: "#9C9C9C", fontSize: "13px"}}>이전</p>
-                    {prevData ? (
+                {prevData ? (
+                    <div className="prev_next">
+                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>이전</p>
                         <p className="prev_next_title" onClick={onClickPrev} style={{ cursor: "pointer" }}>{prevData.title}</p>
-                    ) : (
-                        <p className="prev_next_title" style={{ color: "#9C9C9C" }}>이전 글이 없습니다.</p>
-                    )}
-                    <p style={{color: "#9C9C9C", fontSize: "13px"}}>{prevData ? prevData.createdAt : ""}</p>
-                </div>
+                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>{prevData ? prevData.createdAt : ""}</p>
+                    </div>
+                ) : (
+                    <div className="prev_next_null">
+                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>이전</p>
+                        <p className="prev_next_title" style={{ color: "#9C9C9C", textAlign: "left", padding: "0" }}>이전 글이 없습니다.</p>
+                    </div>
+                )}
                 <div className="detail_divider" />
-                <div className="prev_next">
-                    <p style={{color: "#9C9C9C", fontSize: "13px"}}>다음</p>
-                    {nextData ? (
+                {nextData ? (
+                    <div className="prev_next">
+                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>다음</p>
                         <p className="prev_next_title" onClick={onClickNext} style={{ cursor: "pointer" }}>{nextData.title}</p>
-                    ) : (
-                        <p className="prev_next_title" style={{ color: "#9C9C9C" }}>다음 글이 없습니다.</p>
-                    )}
-                    <p style={{color: "#9C9C9C", fontSize: "13px"}}>{nextData ? nextData.createdAt : ""}</p>
-                </div>
+                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>{nextData ? nextData.createdAt : ""}</p>
+                    </div>
+                ) : (
+                    <div className="prev_next_null">
+                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>다음</p>
+                        <p className="prev_next_title" style={{ color: "#9C9C9C", textAlign: "left", padding: "0" }}>다음 글이 없습니다.</p>
+                    </div>
+                )}
+
                 <div className="detail_divider" />
             </div>
             <button className="list_button" onClick={onClickList}>목록</button>
