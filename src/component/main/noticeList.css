@@ -33,11 +33,20 @@
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
 }
 
+.notice_header span {
+    background-color: #f4f4f4;
+}
+
 .notice_item {
     color: #202123;
     background-color: #ffffff;
     font-size: 12px;
+    cursor: pointer;
     /* transition: background-color 0.3s; */
+}
+
+.notice_item span {
+    background-color: #ffffff;
 }
 
 .notice_title {
