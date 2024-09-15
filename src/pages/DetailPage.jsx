@@ -5,7 +5,6 @@ import './detailPage.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { customAxios } from '../config/axios-config';
 import ErrorModal from '../component/modal/ErrorModal';
-import { LinkItem } from '../component/branch/BranchCentral';
 
 export default function ClubsPage() {
     const url = window.location.href; // 현재 URL 가져오기
