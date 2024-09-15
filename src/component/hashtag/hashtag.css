@@ -14,10 +14,19 @@
     border-radius: 50%;
     background-color: white;
     box-shadow: 0px 0px 3px 2px #0000000D;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* 이미지가 원 밖으로 나가지 않도록 설정 */
 }
 
 .tag_circle:hover {
     background-color: #c4e7f1;
+}
+
+.tag_circle img {
+    object-fit: cover; /* 이미지가 원 안에서 잘리더라도 비율 유지하며 꽉 차게 */
 }
 
 .tag_text {

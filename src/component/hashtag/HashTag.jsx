@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { customAxios } from '../../config/axios-config';
 import './hashtag.css';
 
 const hashtag = [
@@ -20,6 +21,25 @@ const hashtag = [
 
 export default function HashTag() {
     const navigate = useNavigate();
+    const [imgUrls, setImgUrls] = useState([]);
+
+    const getHashtagImg = async () => {
+        try {
+            const res = await customAxios.get(`/v1/clubs/hashtags`);
+
+            if (res.data.success) {
+                const imageUrls = res.data.data.map(item => item.imageUrl);
+                setImgUrls(imageUrls);
+                console.log(imgUrls);
+            }
+        } catch (error) {
+            console.error('Error fetching data : ', error);
+        }
+    };
+
+    useEffect(() => {
+        getHashtagImg();
+    }, [])
 
     const onClicked = (hashTagValue) => {
         console.log(hashTagValue);
@@ -31,10 +51,16 @@ export default function HashTag() {
             {hashtag.map((item, index) => {
                 const tagName = Object.keys(item)[0];
                 const tagVal = item[tagName];
+                const imgUrl = imgUrls[index];
                 return (
                     <div className="tag_container" key={index} onClick={() => onClicked(tagName)}>
-                        <div className="tag_circle"></div>
-                        {/* <img src={`/main/hashtag/${tagName}_icon.png`} alt={`${tagName} icon`} width={48} height={45} /> */}
+                        <div className="tag_circle">
+                        {imgUrl ? (
+                            <img src={imgUrl} alt={`${tagName} icon`} width={42} height={42}/>
+                        ) : (
+                            <div className="placeholder_image" style={{ width: 48, height: 45 }}></div>
+                        )}
+                        </div>
                         <p className="tag_text"># {tagVal}</p>
                     </div>
                 );
