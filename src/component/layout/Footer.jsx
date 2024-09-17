@@ -89,7 +89,7 @@ function Footer() {
             {isModalOpen && (
                 <ConfirmModal
                     isOpen={isModalOpen}
-                    message={'정말 회원 탈퇴하시겠습니까??'}
+                    message={'정말 회원을 탈퇴하시겠습니까?'}
                     onClickOk={() => onClickUserDelete()}
                     onClose={() => setIsModalOpen(false)}
                 />

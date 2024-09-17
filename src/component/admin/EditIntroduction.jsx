@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './editIntroduction.module.css';
 import { customAxios } from '../../config/axios-config';
 import { useNavigate } from 'react-router-dom';
+import ErrorModal from '../modal/ErrorModal';
 
 export default function EditIntroduction({
     introduction: initialIntroduction,
@@ -20,9 +21,15 @@ export default function EditIntroduction({
     const [cActivity, setcActivity] = useState(initialActivity);
     const [cRoom, setcRoom] = useState(initialRoom);
     const [img, setimg] = useState(initialImgUrl);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const navigate = useNavigate();
     const accessToken = localStorage.getItem('accessToken');
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     useEffect(() => {
         setcIntroduction(initialIntroduction);
@@ -81,7 +88,12 @@ export default function EditIntroduction({
         // console.log('Updated introduction:', cIntroduction);
         // console.log('Updated leader:', cLeader);
         // console.log('Updated activity:', cActivity);
-        patchEditClub();
+        if (cActivity.length > 1500) {
+            setIsModalOpen(true);
+            setModalMessage('대표활동은 최대 1500자까지 작성 가능합니다.');
+        } else {
+            patchEditClub();
+        }
     };
 
     return (
@@ -100,7 +112,7 @@ export default function EditIntroduction({
                     onChange={handleIntroductionChange}
                     rows={5}
                     cols={50}
-                    placeholder="동아리 소개를 입력하세요..."
+                    placeholder=" 동아리 소개를 입력하세요."
                 />
                 <br />
                 <strong>📌 인스타</strong>
@@ -110,7 +122,7 @@ export default function EditIntroduction({
                     onChange={handleInstagramChange}
                     rows={5}
                     cols={50}
-                    placeholder="동아리 인스타 URL을 입력하세요..."
+                    placeholder=" 동아리 인스타 URL을 입력하세요."
                 />
                 <br />
                 <strong>📌 대표 활동</strong>
@@ -120,7 +132,8 @@ export default function EditIntroduction({
                     onChange={handleActivityChange}
                     rows={5}
                     cols={50}
-                    placeholder="대표 활동을 입력하세요..."
+                    placeholder=" 대표 활동을 입력하세요.
+										(최대 1500자)"
                 />
                 <br />
                 <strong>📌 동아리장</strong>
@@ -131,7 +144,7 @@ export default function EditIntroduction({
                     rows={5}
                     cols={50}
                     onChange={handleLeaderChange}
-                    placeholder="동아리장 이름을 입력하세요..."
+                    placeholder=" 동아리장 이름을 입력하세요."
                 />
                 <br />
                 <strong>📌 동아리실 </strong>
@@ -141,11 +154,12 @@ export default function EditIntroduction({
                     defaultValue={initialRoom}
                     onChange={handleRoomChange}
                     onKeyPress={handleKeyPress}
-                    placeholder="동아리실을 입력하세요..."
+                    placeholder=" 동아리실을 입력하세요."
                     style={{ paddingBottom: '10px' }}
                 />
 
                 <div className={styles.ButtonDiv}>
+                    <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
                     <button className={styles.CompleteButton} onClick={handleSave}>
                         완료
                     </button>

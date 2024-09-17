@@ -50,7 +50,10 @@ export default function AdminRecruitList() {
             <div className={styles.recruit_container} key={PromoteData.recruitId}>
                 <div className={styles.recruit_button_div}>
                     <LinkItem to={`/admin/recruit/edit`}>
-                        <button className={styles.recruit_button}>모집글 작성</button>
+                        <button className={styles.recruit_button}>
+                            <img src="/admin/edit.png" className={styles.recruit_edit_img} />
+                            글쓰기
+                        </button>
                     </LinkItem>
                 </div>
                 {PromoteData?.map((item) => (

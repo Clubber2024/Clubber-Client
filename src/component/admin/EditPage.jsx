@@ -45,6 +45,8 @@ export default function EditPage() {
 
     const handleFileChange = async (event) => {
         const file = event.target.files[0];
+        if (!file) return; // 파일이 없을 경우 처리 종료
+
         setImageFile(file);
         setImagePreview(URL.createObjectURL(file));
 
@@ -69,7 +71,7 @@ export default function EditPage() {
                 }
             );
 
-            // console.log(data.data);
+            console.log(data.data);
 
             // 이미지 파일을 presigned URL로 업로드
 
@@ -79,116 +81,22 @@ export default function EditPage() {
                 },
             });
             setImageUrl(data.data.imageUrl.split('?')[0]);
-            alert('이미지 업로드가 완료되었습니다.');
         } catch (error) {
             console.error('이미지 업로드 실패:', error);
             alert('이미지 업로드에 실패했습니다.');
         }
     };
 
-    /*
-
-    const uploadImage = async () => {
-        if (!imageFile) return;
-
-        try {
-            // 이전 이미지가 있으면 삭제
-            
-            if (imageUrl) {
-                const { data: deleteData } = await customAxios.get('/v1/clubs/images', {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                    
-                    params: {
-                        key: `${imageUrl.split('/').pop()}`,
-                        //action: 'deleteObject',
-                    },
-										
-                });
-								
-
-                console.log('deleteData:', deleteData);
-                //await customAxios.delete(deleteData.url);
-            }
-								
-            console.log(typeof imageFile.name);
-            const extension = imageFile.name.split('.').pop().toUpperCase(); // 확장자 추출
-
-            // presigned URL을 가져오는 API 호출
-            const { data } = await customAxios.post(
-                '/v1/images/club/logo',
-
-                {
-                    imageFileExtension: extension,
-                },
-
-                {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                    params: {
-                        imageFileExtension: extension,
-                    },
-                }
-            );
-
-            console.log(data.data);
-
-            // 이미지 파일을 presigned URL로 업로드
-
-            await axios.put(data.data.presignedUrl, imageFile, {
-                headers: {
-                    'Content-Type': imageFile.type,
-                },
-            });
-            setImageUrl(data.data.imageUrl.split('?')[0]);
-            alert('이미지 업로드가 완료되었습니다.');
-        } catch (error) {
-            console.error('이미지 업로드 실패:', error);
-            alert('이미지 업로드에 실패했습니다.');
-        }
-    };
-
-		*/
     const deleteImage = async () => {
         if (!imageUrl) return;
-
         try {
             setImageUrl(baseLogoUrl);
-            alert('이미지 삭제가 완료되었습니다.');
+            setImagePreview(baseLogoUrl);
         } catch (error) {
             console.error('이미지 삭제 실패:', error);
             alert('이미지 삭제에 실패했습니다.');
         }
     };
-
-    // const handleImageSave = async () => {
-    //     try {
-    //         const uploadedImageUrl = await uploadImage();
-
-    //         if (uploadedImageUrl) {
-    //             // 이미지 URL을 포함한 동아리 수정 API 호출
-    //             await customAxios.put(
-    //                 `/v1/clubs/${clubId}`,
-    //                 {
-    //                     imageUrl: uploadedImageUrl,
-    //                 },
-    //                 {
-    //                     headers: {
-    //                         Authorization: `Bearer ${accessToken}`,
-    //                     },
-    //                 }
-    //             );
-
-    //             alert('동아리 이미지 수정이 완료되었습니다.');
-    //         }
-    //     } catch (error) {
-    //         console.error('동아리 이미지 수정 실패:', error);
-    //         alert('동아리 이미지 수정에 실패했습니다.');
-    //     }
-    // };
-    // console.log('url', imageUrl);
 
     return (
         <div className={styles.DivMyPage}>
@@ -212,7 +120,7 @@ export default function EditPage() {
                                         <input
                                             type="file"
                                             accept=".jpg, .jpeg, .png"
-                                            onClick={handleFileChange}
+                                            onChange={handleFileChange}
                                             className={styles.edit_input}
                                         />
                                     </label>
