@@ -52,6 +52,7 @@
         width: 22px;
         height: 21px;
         margin-left: 7px;
+        background-color: transparent;
         /*transition: filter 0.3s ease;*/
     }
     .imgDiv:hover .star_icon {
@@ -237,6 +238,7 @@
         height: 23px;
         margin-left: 2px;
         padding: 2px;
+        background-color: transparent;
     }
     .imgDiv:hover .star_icon {
         filter: drop-shadow(0 0 1px #ffe600) drop-shadow(0 0 1px #ffe600);
