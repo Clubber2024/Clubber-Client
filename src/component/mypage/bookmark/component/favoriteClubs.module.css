@@ -1,4 +1,7 @@
 @media screen and (min-width: 768px) {
+    .favoriteClubs_div {
+        border-radius: 15px;
+    }
     .ClubName {
         justify-content: start;
         padding-top: 5%;
@@ -7,6 +10,8 @@
         font-size: 18px;
         font-weight: 600;
         line-height: 26.06px;
+        background-color: #ffffff;
+        border-radius: 15px;
     }
     .ClubType {
         font-family: Noto Sans KR;
@@ -17,10 +22,14 @@
         padding-right: 5px;
         display: flex;
         float: left;
+        background-color: #ffffff;
     }
 }
 
 @media screen and (max-width: 768px) {
+    .favoriteClubs_div {
+        border-radius: 15px;
+    }
     .ClubName {
         font-family: Noto Sans KR;
         font-size: 17px;
@@ -29,6 +38,8 @@
         justify-content: start;
         padding-top: 5%;
         padding-left: 2%;
+        background-color: #ffffff;
+        border-radius: 15px;
     }
     .ClubType {
         font-family: Noto Sans KR;
@@ -39,5 +50,6 @@
         padding-right: 5px;
         display: flex;
         float: left;
+        background-color: #ffffff;
     }
 }

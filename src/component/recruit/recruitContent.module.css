@@ -4,7 +4,7 @@
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 100px;
-    margin-bottom: 20%;
+    padding-bottom: 30px;
 }
 .content_title {
     font-family: Noto Sans KR;
@@ -12,6 +12,8 @@
     font-weight: 400;
     line-height: 40.54px;
     text-align: center;
+    background-color: #ffffff;
+    padding-top: 20px;
 }
 
 .content_date {
@@ -24,12 +26,14 @@
     margin-right: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
+    background-color: #ffffff;
 }
 
 .date_div {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    background-color: #ffffff;
 }
 
 .horizontal_line {
@@ -39,12 +43,20 @@
 .img_div {
     text-align: center;
     margin-top: 51px;
+    background-color: #ffffff;
+}
+
+.button_div {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20%;
 }
 
 .content_img {
     width: 50%;
     border: #d9d9d9;
     margin-bottom: 20px;
+    background-color: #ffffff;
 }
 
 .content_div {
@@ -62,6 +74,7 @@
     color: var(--Black, #202123);
     margin-top: 21px;
     margin-bottom: 100px;
+    background-color: #ffffff;
 }
 
 .content_list_button {

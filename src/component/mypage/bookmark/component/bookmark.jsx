@@ -14,12 +14,15 @@ const Club = styled.img`
     margin: 7px;
     margin-top: 9px;
     float: left;
+    background-color: #ffffff;
+    /* border-radius: 15px; */
 `;
 const Star = styled.img`
     width: 18px;
     height: 18px;
     margin-top: 3px;
     display: grid;
+    background-color: #ffffff;
 `;
 
 const Icon = styled.img`
@@ -28,6 +31,7 @@ const Icon = styled.img`
     margin-right: 10px;
     margin-bottom: 15px;
     margin-top: -5px;
+    background-color: #ffffff;
 `;
 
 function BookMark() {
