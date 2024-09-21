@@ -10,7 +10,6 @@ function Login() {
     // // const REDIRECT_URI = 'http://localhost:3000/v1/auths/oauth/kakao';
     const restApiKey = process.env.REACT_APP_REST_API_KEY;
     const redirectURL = process.env.REACT_APP_REDIRECT_URI;
-    console.log(restApiKey, '\n', redirectURL);
 
     const [activeForm, setActiveForm] = useState('sign-in-form-active');
 
