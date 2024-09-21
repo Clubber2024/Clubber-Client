@@ -12,6 +12,7 @@ function Footer() {
     const Admin = localStorage.getItem('isAdmin');
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
     const userDelete = async () => {
         try {
@@ -21,7 +22,8 @@ function Footer() {
                 },
             });
             window.localStorage.clear();
-            window.alert('회원탈퇴 되었습니다.');
+            setIsSuccessModalOpen(true);
+            // window.alert('회원탈퇴 되었습니다.');
             navigate('/');
         } catch (error) {
             console.error('error:', error);
@@ -36,7 +38,8 @@ function Footer() {
                 },
             });
             window.localStorage.clear();
-            window.alert('회원탈퇴 되었습니다.');
+            setIsSuccessModalOpen(true);
+            // window.alert('회원탈퇴 되었습니다.');
             navigate('/');
         } catch (error) {
             console.error('error:', error);
@@ -92,6 +95,14 @@ function Footer() {
                     message={'정말 회원을 탈퇴하시겠습니까?'}
                     onClickOk={() => onClickUserDelete()}
                     onClose={() => setIsModalOpen(false)}
+                />
+            )}
+
+            {isSuccessModalOpen && (
+                <ConfirmModal
+                    isOpen={isSuccessModalOpen}
+                    message={'회원탈퇴 되었습니다.'}
+                    onClickOk={() => setIsSuccessModalOpen(false)}
                 />
             )}
         </>
