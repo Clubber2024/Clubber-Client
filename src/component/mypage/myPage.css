@@ -44,6 +44,7 @@
     font-weight: 500;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
 }
 
 .menu_tab:hover {
@@ -89,4 +90,5 @@
     font-weight: 500;
     padding: 0;
     margin-top: 20px;
+    cursor: pointer;
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // export const URL = 'http://localhost:3000';
-export const URL = 'http://13.125.141.171:8080';
+export const URL = process.env.REACT_APP_BASE_URL;
 axios.defaults.withCredentials = true;
 
 export const customAxios = axios.create({

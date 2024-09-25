@@ -13,7 +13,7 @@
     border: none;
     border-radius: 50%;
     background-color: white;
-    box-shadow: 0px 0px 3px 2px #0000000D;
+    box-shadow: 0px 0px 3px 2px #0000000d;
 
     display: flex;
     align-items: center;
@@ -27,6 +27,7 @@
 
 .tag_circle img {
     object-fit: cover; /* 이미지가 원 안에서 잘리더라도 비율 유지하며 꽉 차게 */
+    background-color: transparent;
 }
 
 .tag_text {

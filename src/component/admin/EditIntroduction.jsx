@@ -163,7 +163,7 @@ export default function EditIntroduction({
                     <button className={styles.CompleteButton} onClick={handleSave}>
                         완료
                     </button>
-                    <button className={styles.CancelButton} onClick={() => navigate('/admin')}>
+                    <button className={styles.CancelButton} onClick={() => navigate('/admin/mypage')}>
                         취소
                     </button>
                 </div>

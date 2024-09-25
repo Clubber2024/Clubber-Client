@@ -12,6 +12,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        width: 80%;
     }
 
     .detail_header_container {
@@ -19,14 +20,14 @@
         flex-direction: row;
         align-items: center;
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         margin-left: 20px;
     }
 
     .detail_header_name {
         display: flex;
         flex-direction: row;
-        /* margin-bottom: 4px; */
+        margin-bottom: 10px;
     }
 
     .detail_header_name h3 {
@@ -81,7 +82,7 @@
         width: 100%;
         height: 20px;
         background-color: #7bc8e04d;
-        margin-top: 10px;
+        margin-top: 5px;
         margin-bottom: 10px;
     }
 
@@ -146,20 +147,20 @@
         width: 100%;
         /* height: 40%; */
         margin-top: 40px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .detail_header_name {
         display: flex;
         flex-direction: row;
-        margin-bottom: 10px;
+        /* margin-bottom: 10px; */
     }
 
     .detail_header_name h3 {
         font-size: 20px;
         font-weight: 500;
         line-height: 20px;
-        margin-bottom: 10px;
+        padding-bottom: 10px;
     }
 
     .detail_logo {
@@ -182,6 +183,7 @@
         align-items: center;
         justify-content: space-evenly;
         padding: 0px 6px 0px 6px;
+        /* margin-top: 10px; */
     }
 
     .association_text {
@@ -212,8 +214,9 @@
         background-color: transparent;
         box-shadow: none;
         cursor: pointer;
-        width: 10%;
+        width: 20%;
         height: 105%;
+        font-size: 11px;
         font-weight: 500;
         text-align: center;
     }

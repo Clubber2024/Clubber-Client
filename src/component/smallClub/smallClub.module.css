@@ -59,6 +59,7 @@
         margin-top: 13px;
         margin-left: 21px;
         margin-bottom: 13px;
+        background: #ffffff;
     }
     .text {
         text-align: left;
@@ -68,6 +69,7 @@
         margin-left: 21px;
         font-size: 16px;
         font-weight: 400;
+        background: #ffffff;
         cursor: pointer;
         &:hover {
             color: #7bc8e0;
@@ -79,6 +81,7 @@
         height: 165px;
         overflow-y: scroll;
         overflow: auto;
+        background: #ffffff;
     }
     .scrollBar::-webkit-scrollbar {
         width: 10px;
