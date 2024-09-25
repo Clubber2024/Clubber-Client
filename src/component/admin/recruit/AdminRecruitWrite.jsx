@@ -153,7 +153,7 @@ export default function AdminRecruitWrite() {
                 <p className={styles.write_title}>
                     제목 <p className={styles.write_title_sub}>(최대 100자)</p>
                 </p>
-                <div>
+                <div className={styles.write_backgroud}>
                     <input
                         type="text"
                         className={styles.write_title_input}
@@ -166,7 +166,7 @@ export default function AdminRecruitWrite() {
                 <p className={styles.write_title}>
                     내용 <p className={styles.write_title_sub}>(최대 2000자)</p>
                 </p>
-                <div className={styles.write_content_rectangle}>
+                <div className={styles.write_backgroud}>
                     <textarea
                         type="text"
                         className={styles.write_content_input}
