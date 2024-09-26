@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import FavoriteClubs from './favoriteClubs';
 import { customAxios } from '../../../../config/axios-config';
 import StarImg from '../bookmark_image/starYellow.png';
-import EmptyStarImg from '../bookmark_image/star.png';
 import BookMarkIcon from '../bookmark_image/bookmarkIcon.png';
 import { LinkItem } from '../../../branch/BranchCentral';
 
