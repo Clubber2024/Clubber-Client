@@ -55,13 +55,32 @@ export default function ClubsPage() {
 
     const onClickIntroTab = () => {
         setWhichTab('Introduction');
-        //console.log('동아리 상세 소개 탭뷰');
     };
 
-    const onClickReviewTab = () => {
-        setWhichTab('Review');
-        //console.log('동아리 상세 리뷰 탭뷰');
+    const onClickReviewTab = async () => {
+        try {
+            const res = await customAxios.get(`/v1/clubs/${intClubId}/reviews/agree`);
+            if (res.data.data.agreeToReview) {
+                setWhichTab('Review');
+            } else {
+                setModalMessage('리뷰 제공에 동의하지 않은 동아리 입니다.');
+                setIsModalOpen(true);
+            }
+        } catch (error) {
+            console.error();
+        }
     };
+
+    const handleReviewError = (error) => {
+        console.log(error.data);
+        if (error.response && error.response.status === 403) {
+            setModalMessage(error.response.reason);
+            setIsModalOpen(true);
+        } else {
+            setModalMessage('알 수 없는 오류가 발생했습니다.');
+            setIsModalOpen(true);
+        }
+    }
 
     const getBookmarkData = async () => {
         setIsLoading(true);
@@ -218,7 +237,7 @@ export default function ClubsPage() {
                     room={clubInfoData.room}
                 />
             )}
-            {whichTab === 'Review' && <ReviewPage clubId={clubId} clubName={detailData.clubName} />}
+            {whichTab === 'Review' && <ReviewPage clubId={clubId} clubName={detailData.clubName} onError={(error) => handleReviewError(error)}/>}
             <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
         </div>
     );

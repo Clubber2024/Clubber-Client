@@ -2,8 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import TagScroll from '../hashtag/TagScroll';
 import ErrorModal from '../modal/ErrorModal';
-// import BookMarkPage from '../../pages/BookMarkPage';
-// import { LinkItem } from '../branch/BranchCentral';
 import './header.css';
 import { customAxios } from '../../config/axios-config';
 
