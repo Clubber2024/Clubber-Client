@@ -40,7 +40,7 @@
     }
 
     .inner_cont .sign .active {
-        background-color: #fff;
+        background-color: #F9F9F9;
         border-top: 2px solid #7bc8e0;
         border-left: 1px solid#7BC8E0;
         border-right: 1px solid#7BC8E0;
@@ -65,7 +65,7 @@
     .inner_cont .sign-in-form-active,
     .inner_cont .sign-up-form-active {
         display: block;
-        background-color: #fff;
+        /* background-color: #fff; */
     }
 
     .inner_cont .sign-in-form-active .button-style {
@@ -127,6 +127,7 @@
         border: 1.3px solid #9c9c9c80;
         padding: 20px;
         margin: 20px 0px 8px 0px;
+        background-color: #fff;
     }
 
     .password-input {
@@ -136,6 +137,7 @@
         border: 1.3px solid #9c9c9c80;
         margin: auto;
         padding: 20px;
+        background-color: #fff;
     }
 
     .login-button {
@@ -274,6 +276,7 @@
         border-radius: 5px;
         border: 1.3px solid #9c9c9c80;
         padding: 20px;
+        background-color: #fff;
     }
 
     .email-input {
