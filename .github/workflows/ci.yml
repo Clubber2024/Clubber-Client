@@ -25,10 +25,6 @@ jobs:
               if: github.ref == 'refs/heads/dev'
               run: echo "${{ secrets.STAGING_ENV }}" > .env
 
-            - name: Set environment variables for production
-              if: github.ref == 'refs/heads/main'
-              run: echo "${{ secrets.PRODUCTION_ENV }}" > .env
-
             - name: Install dependencies
               run: npm install
 
