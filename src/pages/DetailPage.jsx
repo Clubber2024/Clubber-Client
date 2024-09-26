@@ -55,13 +55,20 @@ export default function ClubsPage() {
 
     const onClickIntroTab = () => {
         setWhichTab('Introduction');
-        //console.log('동아리 상세 소개 탭뷰');
     };
 
-    const onClickReviewTab = () => {
-        setWhichTab('Review');
-        // //console.log('동아리 상세 리뷰 탭뷰');'
-
+    const onClickReviewTab = async () => {
+        try {
+            const res = await customAxios.get(`/v1/clubs/${intClubId}/reviews/agree`);
+            if (res.data.data.agreeToReview) {
+                setWhichTab('Review');
+            } else {
+                setModalMessage('리뷰 제공에 동의하지 않은 동아리 입니다.');
+                setIsModalOpen(true);
+            }
+        } catch (error) {
+            console.error();
+        }
     };
 
     const handleReviewError = (error) => {
