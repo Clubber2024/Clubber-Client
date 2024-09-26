@@ -7,13 +7,13 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-
         strategy:
             matrix:
                 node-version: [20.x]
 
         steps:
-            - uses: actions/checkout@v4
+            - name: Checkout
+              uses: actions/checkout@v4
 
             - name: Setup node.js
               uses: actions/setup-node@v3
@@ -21,12 +21,19 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
 
+            - name: Set environment variables for staging
+              if: github.ref == 'refs/heads/dev'
+              run: echo "${{ secrets.STAGING_ENV }}" > .env
+
+            - name: Set environment variables for production
+              if: github.ref == 'refs/heads/main'
+              run: echo "${{ secrets.PRODUCTION_ENV }}" > .env
+
             - name: Install dependencies
               run: npm install
 
             - name: Build project
-              run: |
-                  CI=false npm run build
+              run: CI=false npm run build
 
             - name: Deploy to Remote Server
               if: success()
@@ -49,6 +56,5 @@ jobs:
                   port: ${{ secrets.SSH_PORT }}
                   script: |
                       cd /var/www/html
-                      # 여기에 원격 서버에서 실행할 명령어를 추가
-                      # ex) 서비스 재시작:
+                      # 서비스 재시작:
                       sudo systemctl restart nginx
