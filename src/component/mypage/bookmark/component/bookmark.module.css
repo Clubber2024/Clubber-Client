@@ -20,10 +20,10 @@
         top: 366px;
         left: 679px;
         border-radius: 15px;
-        background: rgba(255, 255, 255, 1);
+        background-color: #ffffff;
         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
         margin: auto;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .club_name {
@@ -55,6 +55,11 @@
     .divRow {
         display: flex;
         justify-content: space-between;
+        background-color: #ffffff;
+    }
+
+    .divRow a {
+        background-color: #ffffff;
     }
 
     .bookmark_button_div {
@@ -98,7 +103,7 @@
         width: 300px;
         height: 100px;
         border-radius: 15px;
-        background: rgba(255, 255, 255, 1);
+        background-color: #ffffff;
         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
         margin: auto;
         margin-bottom: 20px;
@@ -110,6 +115,7 @@
         margin: 10px;
         margin-top: 10px;
         float: left;
+        background-color: #ffffff;
     }
 
     .club_name {
@@ -120,6 +126,7 @@
         margin: auto;
         margin-left: 120px;
         padding-top: 30px;
+        background-color: #ffffff;
     }
     .club_branch {
         font-family: Noto Sans KR;
@@ -128,6 +135,7 @@
         margin: auto;
         margin-left: 120px;
         padding-top: 5px;
+        background-color: #ffffff;
     }
 
     .bookmark_icon {
@@ -136,6 +144,7 @@
         margin-right: 10px;
         margin-bottom: 15px;
         margin-top: -8px;
+        background-color: #ffffff;
     }
 
     .div {
@@ -147,9 +156,16 @@
     .divRow {
         display: flex;
         justify-content: space-between;
+        background-color: #ffffff;
     }
+
+    .divRow a {
+        background-color: #ffffff;
+    }
+
     .bookmark_button_div {
         text-align: center;
+        background-color: #ffffff;
     }
     .more_button {
         margin-top: 15px;

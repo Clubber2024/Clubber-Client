@@ -4,7 +4,7 @@ import styles from './favoriteClubs.module.css';
 
 export default function FavoriteClubs({ id, type, name }) {
     return (
-        <div key={id}>
+        <div key={id} className={styles.favoriteClubs_div}>
             <p className={styles.ClubName}>{name}</p>
             <p className={styles.ClubType}> {type}</p>
         </div>

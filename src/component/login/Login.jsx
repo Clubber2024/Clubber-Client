@@ -5,9 +5,12 @@ import { customAxios } from '../../config/axios-config';
 import ErrorModal from '../modal/ErrorModal';
 
 function Login() {
-    const REST_API_KEY = '6a5dafa758e469d18292acc6fbca333b';
-    const REDIRECT_URI = 'http://13.125.141.171/v1/auths/oauth/kakao';
-    // const REDIRECT_URI = 'http://localhost:3000/v1/auths/oauth/kakao';
+    // const REST_API_KEY = '6a5dafa758e469d18292acc6fbca333b';
+    // const REDIRECT_URI = 'http://13.125.141.171/v1/auths/oauth/kakao';
+    // // const REDIRECT_URI = 'http://localhost:3000/v1/auths/oauth/kakao';
+    const restApiKey = process.env.REACT_APP_REST_API_KEY;
+    const redirectURL = process.env.REACT_APP_REDIRECT_URI;
+
     const [activeForm, setActiveForm] = useState('sign-in-form-active');
 
     const [adminId, setAdminId] = useState('');
@@ -25,7 +28,7 @@ function Login() {
     // 1. 카카오 버튼 클릭 시, 로그인 창 띄우기 (링크는 노션에서 가져옴)
     //  rest api key와 redirect uri 값 받아서 해당 링크로 연결, window.location.href 이용하여 주소 변경
     const kakaoLoginHandler = () => {
-        window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
+        window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${restApiKey}&redirect_uri=${redirectURL}`;
     };
     const adminLoginHandler = async () => {
         try {

@@ -6,6 +6,10 @@
         margin-bottom: 150px;
     }
 
+    .review_box {
+        background-color: white;
+    }
+
     .review_box_container {
         width: 470px;
         background-color: white;
@@ -20,12 +24,14 @@
         flex-direction: row;
         align-items: center;
         margin-bottom: 10px;
+        background-color: white;
     }
 
     .review_box_header p {
         font-size: 16px;
         font-weight: 700;
         margin-right: 7px;
+        background-color: white;
     }
 
     .review_box_header span {
@@ -33,6 +39,7 @@
         font-weight: 400;
         color: gray;
         margin-top: 4px;
+        background-color: white;
     }
 
     .review_box_contents {
@@ -42,6 +49,7 @@
         flex-wrap: wrap;
         gap: 7px;
         margin-top: 10px;
+        background-color: white;
     }
 
     .keyword_container {
@@ -67,8 +75,8 @@
         height: 30px;
         border-radius: 50%;
         background-color: white;
-        border: 1.5px solid #7BC8E0;
-        color: #7BC8E0;
+        border: 1.5px solid #7bc8e0;
+        color: #7bc8e0;
         font-weight: 700;
     }
 
@@ -85,6 +93,10 @@
         margin-bottom: 150px;
     }
 
+    .review_box {
+        background-color: white;
+    }
+
     .review_box_container {
         width: 125%;
         background-color: white;
@@ -98,18 +110,21 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        background-color: white;
     }
 
     .review_box_header p {
         font-size: 13px;
         font-weight: 700;
         margin-right: 7px;
+        background-color: white;
     }
 
     .review_box_header span {
         font-size: 11px;
         font-weight: 400;
         color: gray;
+        background-color: white;
     }
 
     .review_box_contents {
@@ -118,6 +133,7 @@
         /* grid-template-columns: repeat(3, 1fr);*/
         gap: 5px;
         margin-top: 7px;
+        background-color: white;
         /* width: 100%; */
     }
 
@@ -144,8 +160,8 @@
         height: 30px;
         border-radius: 50%;
         background-color: white;
-        border: 1.5px solid #7BC8E0;
-        color: #7BC8E0;
+        border: 1.5px solid #7bc8e0;
+        color: #7bc8e0;
         font-weight: 700;
     }
 

@@ -2,6 +2,7 @@ import styles from './AdminRecruitWrite.module.css';
 import { customAxios } from '../../../config/axios-config';
 import { useEffect, useState, useRef } from 'react';
 import ConfirmModal from '../../modal/ConfirmModal';
+import ErrorModal from '../../modal/ErrorModal';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -15,12 +16,17 @@ export default function AdminRecruitWrite() {
     const [presignedImages, setPresignedImages] = useState([]);
     // const [inputValue, setInputValue] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
-    // const [modalMessage, setModalMessage] = useState('');
+    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const closeModal = () => {
         setIsModalOpen(false);
         // setModalMessage('모집글 작성이 완료되었습니다.');
         navigate(`/admin/recruit`);
+    };
+
+    const errorCloseModal = () => {
+        setIsErrorModalOpen(false);
     };
 
     const handleTitleChange = (e) => {
@@ -99,7 +105,21 @@ export default function AdminRecruitWrite() {
     };
 
     const handleSubmitButton = () => {
-        postRecruitData();
+        if (title === '') {
+            setModalMessage('제목을 입력하세요.');
+            setIsErrorModalOpen(true);
+        } else if (title.length > 100) {
+            setModalMessage('제목은 최대 100자까지 입력할 수 있습니다.');
+            setIsErrorModalOpen(true);
+        } else if (content == '') {
+            setModalMessage('모집글을 입력하세요.');
+            setIsErrorModalOpen(true);
+        } else if (content.length > 2000) {
+            setModalMessage('모집글은 최대 2000자까지 입력할 수 있습니다.');
+            setIsErrorModalOpen(true);
+        } else {
+            postRecruitData();
+        }
     };
 
     const postRecruitData = async () => {
@@ -178,6 +198,7 @@ export default function AdminRecruitWrite() {
                         ))}
                     </div>
                 </div>
+                <ErrorModal isOpen={isErrorModalOpen} message={modalMessage} onClose={errorCloseModal} />
                 <button className={styles.write_upload_button} onClick={handleSubmitButton}>
                     업로드
                 </button>

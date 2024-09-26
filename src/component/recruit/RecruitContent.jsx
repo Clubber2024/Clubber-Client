@@ -52,11 +52,11 @@ export default function RecruitContent() {
                     <p className={styles.content_content}>{contentData?.content}</p>
                 </div>
                 <div className={styles.horizontal_line}></div>
-                <div className={styles.img_div}>
-                    <button className={styles.content_list_button} onClick={onClickList}>
-                        목록
-                    </button>
-                </div>
+            </div>
+            <div className={styles.button_div}>
+                <button className={styles.content_list_button} onClick={onClickList}>
+                    목록
+                </button>
             </div>
         </>
     );
