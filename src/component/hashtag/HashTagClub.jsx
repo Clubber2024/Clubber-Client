@@ -27,7 +27,7 @@ function HashTagClub({ clubId, imageUrl, clubName, introduction, agreeToProvideI
             {isModalOpen && (
                 <ConfirmModal
                     isOpen={isModalOpen}
-                    message={'정보 미동의한 동아리입니다.'}
+                    message={'정보제공에 동의하지 않은 동아리입니다.'}
                     onClickOk={() => setIsModalOpen(false)}
                     onClose={() => setIsModalOpen(false)} // 모달 닫기
                 />
