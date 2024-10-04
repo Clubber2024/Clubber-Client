@@ -3,7 +3,7 @@ name: Deploy - prod
 on:
   push:
     branches: 
-      - feat/Docker-Deploy
+      - dev
 
 jobs: 
   build: 
