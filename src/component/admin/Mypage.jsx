@@ -19,7 +19,7 @@ export default function MyPage() {
                     Authorization: `Bearer ${accessToken}`,
                 },
             });
-            // console.log(response.data.data);
+            console.log(response.data.data);
             setClub(response.data.data);
             // console.log(response.data.data.clubInfo);
             setClubInfo(response.data.data.clubInfo);
@@ -58,10 +58,12 @@ export default function MyPage() {
 
                         <div className={styles.association_btn}>
                             <span className={styles.association_text}>
-                                {club.college === null || club.college === '' ? '중앙동아리' : club.college}
+                                {club.clubType === '해당 없음' ? club.college : club.clubType}
                             </span>
                             <span className={styles.association_text}>|</span>
-                            <span className={styles.association_text}>{club.department || club.division}</span>
+                            <span className={styles.association_text}>
+                                {club.clubType === '중앙동아리' ? club.division : club.department}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -77,7 +79,7 @@ export default function MyPage() {
                     division={club.division}
                     introduction={club.introduction}
                     imgUrl={club.imageUrl}
-                    instagram={club.instagram}
+                    instagram={clubInfo.instagram}
                     activity={clubInfo.activity}
                     leader={clubInfo.leader}
                     room={clubInfo.room}
