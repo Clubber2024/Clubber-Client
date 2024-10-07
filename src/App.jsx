@@ -34,6 +34,12 @@ import DetailRecruitList from './component/recruit/DetailRecruitList';
 import AdminRecruitContent from './component/admin/recruit/AdminRecruitContent';
 
 function App() {
+    const appStyle = {
+        backgroundColor: '#f9f9f9',
+        margin: 0,
+        padding: 0,
+      };
+
     const isPc = useMediaQuery({
         query: '(min-width:769px)',
     });
@@ -42,7 +48,7 @@ function App() {
     });
 
     return (
-        <>
+        <div style={appStyle}>
             {isPc && (
                 <BrowserRouter>
                     <Header />
@@ -128,7 +134,7 @@ function App() {
                     <Footer />
                 </BrowserRouter>
             )}
-        </>
+        </div>
     );
 }
 export default App;
