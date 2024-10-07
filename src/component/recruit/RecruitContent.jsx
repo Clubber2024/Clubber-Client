@@ -46,8 +46,8 @@ export default function RecruitContent() {
                 </div>
                 <div className={styles.horizontal_line}></div>
                 <div className={styles.img_div}>
-                    {contentData?.images.length > 0
-                        ? contentData.images.map((image, index) => (
+                    {contentData?.imageUrls.length > 0
+                        ? contentData.imageUrls.map((image, index) => (
                               <img key={index} src={image} alt="contentImg" className={styles.content_img} />
                           ))
                         : ''}

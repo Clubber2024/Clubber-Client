@@ -6,7 +6,6 @@ export default function AdminIntroductionPage({
     department,
     introduction,
     instagram,
-    //imgUrl,
     leader,
     activity,
     room,
@@ -27,7 +26,7 @@ export default function AdminIntroductionPage({
     const NewLines = ({ text }) => {
         return <div>{handleNewLines(text)}</div>;
     };
-
+    console.log(activity);
     return (
         <>
             <div className={styles.detailBody}>
@@ -42,9 +41,14 @@ export default function AdminIntroductionPage({
                 <p className={styles.p_style}>{introduction}</p>
                 <br></br>
                 <strong>📌 인스타</strong>
-                <a href={instagram} target="_blank" rel="noopener noreferrer">
-                    <img className={styles.InstaIcon} src="/buttons/instagram_icon.png" alt="instagram" />
-                </a>
+                {instagram !== null ? (
+                    <a href={instagram} target="_blank" rel="noopener noreferrer">
+                        <img className={styles.InstaIcon} src="/buttons/instagram_icon.png" alt="instagram" />
+                    </a>
+                ) : (
+                    ''
+                )}
+
                 <br></br>
                 <strong>📌 대표 활동</strong>
                 <p className={styles.p_style}>

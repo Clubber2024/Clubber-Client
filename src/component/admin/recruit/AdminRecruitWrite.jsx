@@ -22,7 +22,6 @@ export default function AdminRecruitWrite() {
 
     const closeModal = () => {
         setIsModalOpen(false);
-        // setModalMessage('모집글 작성이 완료되었습니다.');
         navigate(`/admin/recruit`);
     };
 
@@ -129,7 +128,7 @@ export default function AdminRecruitWrite() {
                     });
                 })
             );
-            return data.data.map((file) => file.key); // 업로드된 이미지 URL 반환
+            return data.data.map((file) => file.imageKey); // 업로드된 이미지 URL 반환
         } catch (error) {
             console.error('이미지 업로드 실패:', error);
             throw error;
@@ -161,7 +160,7 @@ export default function AdminRecruitWrite() {
                     {
                         title: title,
                         content: content,
-                        imageUrl: imageUrls,
+                        imageKey: imageUrls,
                     },
                     {
                         headers: {
@@ -170,7 +169,7 @@ export default function AdminRecruitWrite() {
                     }
                 );
                 if (res.data.success) {
-                    console.log(res.data);
+                    // console.log(res.data);
                     setIsModalOpen(true);
                 }
             } catch (error) {
@@ -274,12 +273,14 @@ export default function AdminRecruitWrite() {
                 <button className={styles.write_upload_button} onClick={handleSubmitButton}>
                     업로드
                 </button>
-                <ConfirmModal
-                    isOpen={isModalOpen}
-                    message={'모집글 작성이 완료되었습니다.'}
-                    onClose={closeModal}
-                    onClickOk={closeModal}
-                />
+                {isModalOpen && (
+                    <ConfirmModal
+                        isOpen={isModalOpen}
+                        message={'모집글 작성이 완료되었습니다.'}
+                        onClose={closeModal}
+                        onClickOk={closeModal}
+                    />
+                )}
             </div>
         </>
     );

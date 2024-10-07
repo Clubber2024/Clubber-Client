@@ -75,6 +75,7 @@
     .recruit_div {
         margin-left: 23px;
         width: 60%;
+        border-radius: 12px;
     }
 
     .recruit_title {
