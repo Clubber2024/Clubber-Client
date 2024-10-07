@@ -1,4 +1,4 @@
-name: Deploy - dev
+name: CI-CD dev
 
 on:
   push:
