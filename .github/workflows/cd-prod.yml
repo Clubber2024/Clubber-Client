@@ -1,4 +1,4 @@
-name: Deploy - prod
+name: CI-CD prod
 
 on:
   push:
