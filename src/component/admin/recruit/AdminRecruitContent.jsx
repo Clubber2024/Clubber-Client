@@ -1,10 +1,10 @@
-import { customAxios } from '../../config/axios-config';
+import { customAxios } from '../../../config/axios-config';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import styles from './recruitContent.module.css';
+import styles from './adminRecruitContent.module.css';
 
-export default function RecruitContent() {
+export default function AdminRecruitContent() {
     const navigate = useNavigate();
     const location = useLocation();
     const recruitId = location.state?.recruitId;

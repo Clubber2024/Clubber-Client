@@ -36,9 +36,6 @@ export default function MyPage() {
         const fetchClubData = async () => {
             const clubId = await getAdminClub();
             if (clubId !== null) {
-                // clubId를 사용하여 원하는 작업 수행
-                // console.log(`Retrieved club ID: ${clubId}`);
-                // 예시: 상태(state)에 저장
                 setClubId(clubId);
             } else {
                 // console.log('Failed to retrieve club ID');
@@ -46,7 +43,7 @@ export default function MyPage() {
         };
 
         fetchClubData();
-    }, [accessToken]);
+    }, []);
 
     return (
         <div className={styles.DivMyPage}>

@@ -37,7 +37,7 @@ export default function EditIntroduction({
         setcLeader(initialLeader);
         setcActivity(initialActivity);
         setcRoom(initialRoom);
-    }, [accessToken]);
+    }, []);
     // console.log('II', initialImgUrl);
 
     const handleIntroductionChange = (e) => setcIntroduction(e.target.value);
