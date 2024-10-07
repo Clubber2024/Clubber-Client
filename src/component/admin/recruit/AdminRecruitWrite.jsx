@@ -13,6 +13,7 @@ export default function AdminRecruitWrite() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [selectedImages, setSelectedImages] = useState([]);
+    const [selectedFiles, setSelectedFiles] = useState([]);
     const [presignedImages, setPresignedImages] = useState([]);
     // const [inputValue, setInputValue] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,6 +40,11 @@ export default function AdminRecruitWrite() {
 
     // 파일 선택 핸들러
     const handleFileChange = async (event) => {
+        if (selectedImages.length >= 10) {
+            alert('최대 10장까지만 업로드할 수 있습니다.');
+            event.preventDefault(); // 이벤트를 중지하여 더 이상 파일 선택을 처리하지 않음
+            return; // 함수를 빠져나와 추가 로직 실행을 방지
+        }
         const files = event.target.files;
 
         if (files.length > 10) {
@@ -47,104 +53,156 @@ export default function AdminRecruitWrite() {
             return;
         }
 
-        const imageFiles = Array.from(files);
-        const imagePreviews = imageFiles.map((file) => {
-            return URL.createObjectURL(file);
+        const newImageFiles = Array.from(files);
+        const newImageURLs = newImageFiles.map((file) => URL.createObjectURL(file));
+        console.log('url', newImageURLs);
+        console.log('img', newImageFiles);
+        setSelectedFiles((prevFiles) => {
+            return [...prevFiles, ...newImageFiles];
+        });
+        setSelectedImages((prevImages) => {
+            return [...prevImages, ...newImageURLs];
         });
 
-        setSelectedImages(imagePreviews); // 이미지 미리보기 URL을 상태에 저장
+        console.log('SS', selectedImages);
 
-        const extension = imageFiles.map((file) => file.name.split('.').pop().toUpperCase());
+        // const extension = newImageFiles.map((file) => file.name.split('.').pop().toUpperCase());
         // 확장자 추출
+
+        // try {
+        //     const { data } = await customAxios.post(
+        //         '/v1/images/club/recruit',
+
+        //         {
+        //             recruitImageExtensions: extension,
+        //         },
+
+        //         {
+        //             headers: {
+        //                 Authorization: Bearer ${accessToken},
+        //                 'Content-Type': 'application/json',
+        //             },
+        //             // params: {
+        //             //     recruitImageExtensions: [extension],
+        //             // },
+        //         }
+        //     );
+
+        //     console.log(data);
+
+        //     const imagePresigned = data.data.map((file) => {
+        //         return file.imageUrl;
+        //     });
+
+        //     setPresignedImages(imagePresigned); // 이미지 미리보기 URL을 상태에 저장
+        // } catch (error) {
+        //     console.error('이미지 업로드 실패:', error);
+        // }
+    };
+
+    const handleRemoveImage = (index) => {
+        setSelectedImages((prevImages) => prevImages.filter((_, i) => i !== index));
+    };
+
+    // console.log('img', selectedImages);
+
+    const uploadImages = async () => {
+        console.log('Ff', selectedFiles);
+        const extensions = selectedFiles.flat().map((File) => File.name.split('.').pop().toUpperCase());
 
         try {
             const { data } = await customAxios.post(
                 '/v1/images/club/recruit',
-
+                { recruitImageExtensions: extensions },
                 {
-                    recruitImageExtensions: extension,
-                },
-
-                {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json',
-                    },
-                    // params: {
-                    //     recruitImageExtensions: [extension],
-                    // },
+                    headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
                 }
             );
 
-            console.log(data);
+            console.log('data', data);
 
-            const imagePresigned = data.data.map((file) => {
-                return file.imageUrl;
-            });
-
-            setPresignedImages(imagePresigned); // 이미지 미리보기 URL을 상태에 저장
-
-            // 서버에서 받은 presigned URL을 사용하여 이미지 파일 업로드 (여기에 추가)
-
-            // if(data&&data.)
             await Promise.all(
                 data.data.map(async (fileData, index) => {
-                    const file = imageFiles[index];
-
+                    const file = selectedFiles.flat()[index]; // 파일 가져오기
                     await axios.put(fileData.presignedUrl, file, {
-                        headers: {
-                            'Content-Type': file.type,
-                        },
+                        headers: { 'Content-Type': file.type },
                     });
                 })
             );
+            return data.data.map((file) => file.key); // 업로드된 이미지 URL 반환
         } catch (error) {
             console.error('이미지 업로드 실패:', error);
+            throw error;
         }
-        // 선택된 파일들을 처리하는 로직 추가
     };
 
-    const handleSubmitButton = () => {
+    const handleSubmitButton = async () => {
         if (title === '') {
             setModalMessage('제목을 입력하세요.');
             setIsErrorModalOpen(true);
+            return;
         } else if (title.length > 100) {
             setModalMessage('제목은 최대 100자까지 입력할 수 있습니다.');
             setIsErrorModalOpen(true);
+            return;
         } else if (content == '') {
             setModalMessage('모집글을 입력하세요.');
             setIsErrorModalOpen(true);
+            return;
         } else if (content.length > 2000) {
             setModalMessage('모집글은 최대 2000자까지 입력할 수 있습니다.');
             setIsErrorModalOpen(true);
+            return;
         } else {
-            postRecruitData();
+            try {
+                const imageUrls = await uploadImages();
+                const res = await customAxios.post(
+                    `/v1/admins/recruits`,
+                    {
+                        title: title,
+                        content: content,
+                        imageUrl: imageUrls,
+                    },
+                    {
+                        headers: {
+                            Authorization: ` Bearer ${accessToken}`,
+                        },
+                    }
+                );
+                if (res.data.success) {
+                    console.log(res.data);
+                    setIsModalOpen(true);
+                }
+            } catch (error) {
+                console.error('이미지 업로드 실패:', error);
+            }
+            // postRecruitData();
         }
     };
 
-    const postRecruitData = async () => {
-        try {
-            const res = await customAxios.post(
-                `/v1/admins/recruits`,
-                {
-                    title: title,
-                    content: content,
-                    imageUrl: presignedImages,
-                },
-                {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                }
-            );
-            if (res.data.success) {
-                console.log(res.data);
-                setIsModalOpen(true);
-            }
-        } catch (error) {
-            console.error('Error fetching data : ', error);
-        }
-    };
+    // const postRecruitData = async () => {
+    //     try {
+    //         const res = await customAxios.post(
+    //             /v1/admins/recruits,
+    //             {
+    //                 title: title,
+    //                 content: content,
+    //                 imageUrl: presignedImages,
+    //             },
+    //             {
+    //                 headers: {
+    //                     Authorization: Bearer ${accessToken},
+    //                 },
+    //             }
+    //         );
+    //         if (res.data.success) {
+    //             console.log(res.data);
+    //             setIsModalOpen(true);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error fetching data : ', error);
+    //     }
+    // };
 
     return (
         <>
@@ -172,7 +230,9 @@ export default function AdminRecruitWrite() {
                         className={styles.write_content_input}
                         value={content}
                         onChange={handleContentChange}
-                        placeholder={`동아리 모집글에 관련된 게시글만 작성하세요. \n위반 시 게시물 삭제 및 서비스 이용기간이 일정 기간 제한될 수 있습니다.`}
+                        placeholder={
+                            '동아리 모집글에 관련된 게시글만 작성하세요. \n위반 시 게시물 삭제 및 서비스 이용기간이 일정 기간 제한될 수 있습니다.'
+                        }
                     />
                 </div>
                 <p className={styles.write_title_font}>내용을 입력해주세요.</p>
@@ -193,9 +253,21 @@ export default function AdminRecruitWrite() {
                     />
                     {/* 선택된 이미지 미리보기 */}
                     <div className={styles.image_preview_container}>
-                        {selectedImages.map((src, index) => (
-                            <img key={index} src={src} alt={`preview ${index}`} className={styles.image_preview} />
-                        ))}
+                        {selectedImages > 10
+                            ? alert('최대 10장까지 업로드 가능합니다.')
+                            : selectedImages.map((src, index) => (
+                                  <div key={index} className={styles.img_preview_div}>
+                                      <img
+                                          key={index}
+                                          src={src}
+                                          alt={`preview ${index}`}
+                                          className={styles.image_preview}
+                                      />
+                                      <button onClick={() => handleRemoveImage(index)} className={styles.remove_button}>
+                                          X
+                                      </button>
+                                  </div>
+                              ))}
                     </div>
                 </div>
                 <ErrorModal isOpen={isErrorModalOpen} message={modalMessage} onClose={errorCloseModal} />

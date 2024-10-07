@@ -57,7 +57,7 @@ export default function RecruitList() {
                         key={item.recruitId}
                         onClick={() => onClickRecruit(item.recruitId)}
                     >
-                        <img src={item.images ? item.images : ''} className={styles.recruit_logo} />
+                        <img src={item.images ? item.images[0] : ''} className={styles.recruit_logo} />
                         <div className={styles.recruit_div}>
                             <p className={styles.recruit_title}>{item.title}</p>
                             <p className={styles.recruit_text}>{item.content}</p>

@@ -17,7 +17,7 @@
     .write_rectangle {
         background: #ffffff;
         width: 60%;
-        height: 1000px;
+        height: 90%;
         border: 1.6px solid #bababa80;
         border-radius: 8px;
         align-items: center;
@@ -136,10 +136,13 @@
 
     .photo_div {
         display: flex;
+
         background-color: #ffffff;
+        margin-right: 10%;
     }
 
     .write_photo_button {
+        flex: 0 0 107px;
         width: 107px;
         height: 107px;
         border-radius: 12px;
@@ -154,6 +157,7 @@
     .write_photo {
         width: 32px;
         height: 32px;
+        background-color: #ffffff;
     }
 
     .hidden_input {
@@ -164,6 +168,7 @@
         display: flex; /* 이미지들을 가로로 나열 */
         flex-wrap: wrap; /* 여러 줄로 나열될 경우 줄 바꿈 */
         margin-top: 10px; /* 버튼과의 간격 */
+        background-color: #ffffff;
     }
 
     .image_preview {
@@ -171,8 +176,27 @@
         height: 107px;
         object-fit: cover;
         margin-right: 10px;
+        margin-bottom: 10px;
         border-radius: 12px;
         border: 1.6px solid var(--Main-Color, #7bc8e0);
+    }
+
+    .img_preview_div {
+        position: relative;
+        width: 107px;
+        height: 107px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .remove_button {
+        border: none;
+        background-color: #ff7e80;
+        border-radius: 3px;
+        position: absolute;
+        left: 80px;
+        top: 5px;
+        z-index: 1;
     }
 
     .write_upload_button {
@@ -184,7 +208,7 @@
         color: #ffffff;
         /* margin-left: 30px; */
         margin-top: 38px;
-
+        margin-bottom: 30px;
         font-family: Noto Sans;
         font-size: 16px;
         font-weight: 600;
@@ -212,7 +236,7 @@
     .write_rectangle {
         background: #ffffff;
         width: 80%;
-        height: 850px;
+        height: 90%;
         border: 1.6px solid #bababa80;
         border-radius: 8px;
         align-items: center;
@@ -289,7 +313,7 @@
 
     .write_content_input {
         width: 90%;
-        height: 300px;
+        height: 400px;
         border-radius: 12px;
         background: #ffffff;
         border: 1.6px solid #7bc8e0;
@@ -314,24 +338,34 @@
 
     .photo_div {
         display: flex;
-        background-color: #ffffff;
+        background-color: transparent;
+    }
+
+    .remove_button {
+        border: none;
+        background-color: #ff7e80;
+        border-radius: 3px;
+        position: absolute;
+        left: 250px;
     }
 
     .write_photo_button {
-        width: 107px;
-        height: 107px;
+        flex: 0 0 90px;
+        width: 90px;
+        height: 90px;
         border-radius: 12px;
         background: #ffffff;
         border: 1.6px solid var(--Main-Color, #7bc8e0);
         /* margin-left: 30px; */
-        margin-top: 13px;
+        margin-top: 10px;
         cursor: pointer;
         margin-right: 10px;
     }
 
     .write_photo {
-        width: 32px;
-        height: 32px;
+        width: 25px;
+        height: 25px;
+        background: #ffffff;
     }
 
     .hidden_input {
@@ -340,17 +374,38 @@
 
     .image_preview_container {
         display: flex; /* 이미지들을 가로로 나열 */
-        flex-wrap: wrap; /* 여러 줄로 나열될 경우 줄 바꿈 */
+        flex-wrap: wrap;
         margin-top: 10px; /* 버튼과의 간격 */
+        background: #ffffff;
     }
 
     .image_preview {
-        width: 107px;
-        height: 107px;
+        width: 90px;
+        height: 90px;
         object-fit: cover;
         margin-right: 10px;
+        margin-bottom: 5px;
         border-radius: 12px;
         border: 1.6px solid var(--Main-Color, #7bc8e0);
+    }
+
+    .img_preview_div {
+        position: relative;
+        width: 90px;
+        height: 90px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .remove_button {
+        position: absolute;
+        border: none;
+        background-color: #ff7e80;
+        top: 8px;
+        left: 63px;
+        z-index: 1;
+        width: 20px;
+        text-align: center;
     }
 
     .write_upload_button {
@@ -362,6 +417,7 @@
         color: #ffffff;
         /* margin-left: 30px; */
         margin-top: 38px;
+        margin-bottom: 20px;
 
         font-family: Noto Sans;
         font-size: 16px;
