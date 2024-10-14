@@ -1,43 +1,43 @@
-name: CI-CD prod
+# name: CI-CD prod
 
-on:
-    push:
-        branches:
-            - main
+# on:
+#     push:
+#         branches:
+#             - main
 
-jobs:
-    build:
-        runs-on: ubuntu-latest
+# jobs:
+#     build:
+#         runs-on: ubuntu-latest
 
-        strategy:
-            matrix:
-                node-version: [16.16.0]
+#         strategy:
+#             matrix:
+#                 node-version: [16.16.0]
 
-        steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
-              with:
-                  node-version: ${{ matrix.node-version }}
+#         steps:
+#             - uses: actions/checkout@v2
+#             - name: Use Node.js ${{ matrix.node-version }}
+#               uses: actions/setup-node@v1
+#               with:
+#                   node-version: ${{ matrix.node-version }}
 
-            - name: Set environment variables for production
-              run: echo "${{ secrets.PRODUCTION_ENV }}" > .env
+#             - name: Set environment variables for production
+#               run: echo "${{ secrets.PRODUCTION_ENV }}" > .env
 
-            - name: Docker build and push
-              run: |
-                  docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-                  docker build -t ${{ secrets.DOCKER_REPO }}/clubber-front .
-                  docker push ${{ secrets.DOCKER_REPO }}/clubber-front
+#             - name: Docker build and push
+#               run: |
+#                   docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+#                   docker build -t ${{ secrets.DOCKER_REPO }}/clubber-front .
+#                   docker push ${{ secrets.DOCKER_REPO }}/clubber-front
 
-            - name: Executing remote SSH commands
-              uses: appleboy/ssh-action@master
-              with:
-                  host: ${{ secrets.SSH_HOST_PROD }}
-                  username: ${{ secrets.SSH_USERNAME }}
-                  key: ${{ secrets.SSH_KEY_PROD }}
-                  port: ${{ secrets.SSH_PORT }}
-                  script: |
-                      sudo docker rm -f $(docker ps -qa)
-                      sudo docker pull ${{ secrets.DOCKER_REPO }}/clubber-front
-                      docker-compose up -d
-                      docker image prune -f
+#             - name: Executing remote SSH commands
+#               uses: appleboy/ssh-action@master
+#               with:
+#                   host: ${{ secrets.SSH_HOST_PROD }}
+#                   username: ${{ secrets.SSH_USERNAME }}
+#                   key: ${{ secrets.SSH_KEY_PROD }}
+#                   port: ${{ secrets.SSH_PORT }}
+#                   script: |
+#                       sudo docker rm -f $(docker ps -qa)
+#                       sudo docker pull ${{ secrets.DOCKER_REPO }}/clubber-front
+#                       docker-compose up -d
+#                       docker image prune -f
