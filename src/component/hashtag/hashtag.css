@@ -26,8 +26,7 @@
 }
 
 .tag_circle img {
-    background-color: transparent;
-    object-fit: cover; /* 이미지가 원 안에서 잘리더라도 비율 유지하며 꽉 차게 */
+    object-fit: contain;
     background-color: transparent;
 }
 

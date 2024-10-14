@@ -54,7 +54,50 @@
     }
 
     .rectangle_img {
-        width: 25%;
+        width: 73px;
+        height: 72px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_megaphone {
+        width: 124px;
+        height: 124px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_culture {
+        width: 73.68px;
+        height: 72.05px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_business {
+        width: 62.22px;
+        height: 72px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_religion {
+        width: 69px;
+        height: 67.32px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_art {
+        width: 98.45px;
+        height: 96px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_athletic {
+        width: 107.34px;
+        height: 104.76px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_academic {
+        width: 94.9px;
+        height: 92.6px;
         vertical-align: middle;
     }
 
@@ -134,6 +177,48 @@
 
     .rectangle_img {
         width: 40%;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_megaphone {
+        width: 80px;
+        height: 80px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_culture {
+        width: 50px;
+        height: 48px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_business {
+        width: 50px;
+        height: 48px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_religion {
+        width: 50px;
+        height: 48px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_art {
+        width: 62px;
+        height: 60px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_athletic {
+        width: 65px;
+        height: 63px;
+        vertical-align: middle;
+    }
+
+    .rectangle_img_academic {
+        width: 62pxpx;
+        height: 60px;
         vertical-align: middle;
     }
 

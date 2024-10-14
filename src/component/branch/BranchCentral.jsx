@@ -24,7 +24,7 @@ function CentralClub() {
             <div className={styles.container}>
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
-                        <img src="/central/culture.png" alt="culture" className={styles.rectangle_img} />
+                        <img src="/central/culture.png" alt="culture" className={styles.rectangle_img_culture} />
                         <div className={styles.title} onClick={() => onClicked('EDUCATION')}>
                             교양분과
                         </div>
@@ -32,7 +32,7 @@ function CentralClub() {
                 </div>
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
-                        <img src="/central/business.png" alt="business" className={styles.rectangle_img} />
+                        <img src="/central/business.png" alt="business" className={styles.rectangle_img_business} />
                         <h3 className={styles.title} onClick={() => onClicked('BUSINESS')}>
                             연대사업분과
                         </h3>
@@ -40,7 +40,7 @@ function CentralClub() {
                 </div>
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
-                        <img src="/central/megaphone.png" alt="megaphone" className={styles.rectangle_img} />
+                        <img src="/central/megaphone.png" alt="megaphone" className={styles.rectangle_img_megaphone} />
                         <h3 className={styles.title} onClick={() => onClicked('ART')}>
                             연행예술분과
                         </h3>
@@ -51,7 +51,7 @@ function CentralClub() {
             <div className={styles.container}>
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
-                        <img src="/central/athletic.png" alt="athletic" className={styles.rectangle_img} />
+                        <img src="/central/religion.png" alt="religion" className={styles.rectangle_img_religion} />
                         <h3 className={styles.title} onClick={() => onClicked('RELIGION')}>
                             종교분과
                         </h3>
@@ -59,7 +59,7 @@ function CentralClub() {
                 </div>
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
-                        <img src="/central/art.png" alt="art" className={styles.rectangle_img} />
+                        <img src="/central/art.png" alt="art" className={styles.rectangle_img_art} />
                         <h3 className={styles.title} onClick={() => onClicked('CREATIVE_EXHIBITION')}>
                             창작전시분과
                         </h3>
@@ -67,7 +67,7 @@ function CentralClub() {
                 </div>
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
-                        <img src="/central/athletic.png" alt="athletic" className={styles.rectangle_img} />
+                        <img src="/central/athletic.png" alt="athletic" className={styles.rectangle_img_athletic} />
                         <h3 className={styles.title} onClick={() => onClicked('SPORTS')}>
                             체육분과
                         </h3>
@@ -75,7 +75,7 @@ function CentralClub() {
                 </div>
                 <div className={styles.rectangle}>
                     <div className={styles.wrap}>
-                        <img src="/central/academic.png" alt="academic" className={styles.rectangle_img} />
+                        <img src="/central/academic.png" alt="academic" className={styles.rectangle_img_academic} />
                         <h3 className={styles.title} onClick={() => onClicked('ACADEMIC')}>
                             학술분과
                         </h3>

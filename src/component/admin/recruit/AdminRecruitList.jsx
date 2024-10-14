@@ -3,9 +3,11 @@ import { customAxios } from '../../../config/axios-config';
 import { useEffect, useState } from 'react';
 import { LinkItem } from '../../branch/BranchCentral';
 import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminRecruitList() {
     const accessToken = localStorage.getItem('accessToken');
+    const navigate = useNavigate();
     const [PromoteData, setPromoteData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -43,6 +45,12 @@ export default function AdminRecruitList() {
         setCurrentPage(newPage);
     };
 
+    const onClickRecruit = (recruitId) => {
+        navigate(`/admin/recruit/${recruitId}`, {
+            state: { recruitId: recruitId },
+        });
+    };
+
     return (
         <>
             <div className={styles.title}>나의 모집글</div>
@@ -57,8 +65,12 @@ export default function AdminRecruitList() {
                     </LinkItem>
                 </div>
                 {PromoteData?.map((item) => (
-                    <div className={styles.recruit_box} key={item.recruitId}>
-                        <img src={item.images ? item.imges : ''} className={styles.recruit_logo} />
+                    <div
+                        className={styles.recruit_box}
+                        key={item.recruitId}
+                        onClick={() => onClickRecruit(item.recruitId)}
+                    >
+                        <img src={item.imageUrls.length > 0 ? item.imageUrls[0] : ''} className={styles.recruit_logo} />
                         <div className={styles.recruit_div}>
                             <p className={styles.recruit_title}>{item.title}</p>
                             <p className={styles.recruit_text}>{item.content}</p>
