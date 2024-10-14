@@ -1,0 +1,71 @@
+name: CI-CD
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.16.0]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Set environment variables for staging
+        if: contains(github.ref, 'dev')
+        run: echo "${{ secrets.STAGING_ENV }}" > .env
+
+      - name: Set environment variables for prod
+        if: contains(github.ref, 'main')
+        run: echo "${{ secrets.PRODUCTION_ENV }}" > .env
+
+      - name: Docker build and push to dev
+        if: contains(github.ref, 'dev')
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build -t ${{ secrets.DOCKER_REPO }}/clubber-front-dev .
+          docker push ${{ secrets.DOCKER_REPO }}/clubber-front-dev
+
+      - name: Docker build and push to prod
+        if: contains(github.ref, 'main')
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build -t ${{ secrets.DOCKER_REPO }}/clubber-front-prod .
+          docker push ${{ secrets.DOCKER_REPO }}/clubber-front-prod
+
+      - name: Deploy to dev
+        if: contains(github.ref, 'dev')
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            sudo docker rm -f $(docker ps -qa)
+            sudo docker pull ${{ secrets.DOCKER_REPO }}/clubber-front-dev
+            docker-compose up -d
+            docker image prune -f
+
+      - name: Deploy to prod
+        if: contains(github.ref, 'main')
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST_PROD }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY_PROD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            sudo docker rm -f $(docker ps -qa)
+            sudo docker pull ${{ secrets.DOCKER_REPO }}/clubber-front-prod
+            docker-compose up -d
+            docker image prune -f
