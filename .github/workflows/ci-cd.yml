@@ -53,7 +53,7 @@ jobs:
           script: |
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKER_REPO }}/clubber-front-dev
-            docker-compose up -d
+            sudo docker-compose -f docker-compose-dev.yml up -d
             docker image prune -f
 
       - name: Deploy to prod
@@ -67,5 +67,5 @@ jobs:
           script: |
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKER_REPO }}/clubber-front-prod
-            docker-compose up -d
+            sudo docker-compose -f docker-compose-prod.yml up -d
             docker image prune -f
