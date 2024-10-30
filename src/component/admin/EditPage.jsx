@@ -19,6 +19,7 @@ export default function EditPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [extension, setExtension] = useState('');
     // const [cIntroduction, setcIntroduction] = useState('');
 
     // console.log('bb', baseLogoUrl);
@@ -28,9 +29,9 @@ export default function EditPage() {
     };
 
     const handleIntroductionChange = (e) => {
-        setClubInfo((prevState) => ({
+        setClub((prevState) => ({
             ...prevState,
-            instagram: e.target.value,
+            introduction: e.target.value,
         }));
     };
     const handleInstagramChange = (e) => {
@@ -76,7 +77,7 @@ export default function EditPage() {
                     Authorization: `Bearer ${accessToken}`,
                 },
             });
-            // console.log(response.data.data);
+            console.log(response.data.data);
             setClub(response.data.data);
             // console.log(response.data.data.clubInfo);
             setClubInfo(response.data.data.clubInfo);
@@ -103,58 +104,63 @@ export default function EditPage() {
         setImageFile(file);
         setImagePreview(URL.createObjectURL(file));
 
-        const extension = file.name.split('.').pop().toUpperCase(); // 확장자 추출
-
-        try {
-            // presigned URL을 가져오는 API 호출
-            const { data } = await customAxios.post(
-                '/v1/images/club/logo',
-
-                {
-                    imageFileExtension: extension,
-                },
-
-                {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                    params: {
-                        imageFileExtension: extension,
-                    },
-                }
-            );
-
-            console.log(data.data);
-
-            // 이미지 파일을 presigned URL로 업로드
-
-            await axios.put(data.data.presignedUrl, file, {
-                headers: {
-                    'Content-Type': file.type,
-                },
-            });
-            setImageUrl(data.data.imageKey);
-        } catch (error) {
-            console.error('이미지 업로드 실패:', error);
-            alert('이미지 업로드에 실패했습니다.');
-        }
+        setExtension(file.name.split('.').pop().toUpperCase()); // 확장자 추출
     };
-    console.log(imageUrl);
 
     const deleteImage = async () => {
         if (!imageUrl) return;
         try {
-            setImageUrl(baseLogoUrl);
-            setImagePreview(baseLogoUrl);
+            setImageUrl(`http://dev.ssuclubber.com/${baseLogoUrl}`);
+            setImagePreview(`http://dev.ssuclubber.com/${baseLogoUrl}`);
         } catch (error) {
             console.error('이미지 삭제 실패:', error);
             alert('이미지 삭제에 실패했습니다.');
         }
     };
 
-    const patchEditClub = async () => {
+    // 저장 버튼 클릭 시 동작할 함수
+    const handleSave = async () => {
+        if (setClubInfo?.activity?.length > 1500) {
+            setIsErrorModalOpen(true);
+            setModalMessage('대표활동은 최대 1500자까지 작성 가능합니다.');
+        } else {
+            try {
+                // presigned URL을 가져오는 API 호출
+                const { data } = await customAxios.post(
+                    '/v1/images/club/logo',
+
+                    {
+                        imageFileExtension: extension,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                        params: {
+                            imageFileExtension: extension,
+                        },
+                    }
+                );
+                console.log(data.data);
+                setImageUrl(data.data.imageKey);
+
+                // 이미지 파일을 presigned URL로 업로드
+                await axios.put(data.data.presignedUrl, imageFile, {
+                    headers: {
+                        'Content-Type': imageFile.type,
+                    },
+                });
+                patchEditClub(data.data.imageKey);
+            } catch (error) {
+                console.error('이미지 업로드 실패:', error);
+                alert('이미지 업로드에 실패했습니다.');
+            }
+        }
+    };
+
+    const patchEditClub = async (imageUrl) => {
         try {
-            // console.log('img', img);
+            // console.log('img', imageUrl);
             const response = await customAxios.patch(
                 `/v1/admins/change-page`,
                 {
@@ -175,16 +181,6 @@ export default function EditPage() {
             setIsModalOpen(true);
         } catch (error) {
             console.log(error);
-        }
-    };
-
-    // 저장 버튼 클릭 시 동작할 함수
-    const handleSave = () => {
-        if (setClubInfo?.activity?.length > 1500) {
-            setIsErrorModalOpen(true);
-            setModalMessage('대표활동은 최대 1500자까지 작성 가능합니다.');
-        } else {
-            patchEditClub();
         }
     };
 

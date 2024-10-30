@@ -21,14 +21,11 @@ export default function MyPage() {
             });
             console.log(response.data.data);
             setClub(response.data.data);
-            // console.log(response.data.data.clubInfo);
             setClubInfo(response.data.data.clubInfo);
             const clubID = response.data.data.clubId;
-            // console.log(clubID);
             const intClubID = parseInt(clubID);
             return intClubID;
         } catch (error) {
-            // console.log(error);
             return null;
         }
     };
