@@ -48,6 +48,7 @@
 
 .pagination li a:hover {
     border: 1px solid var(--Main-Color, #7bc8e0);
+    cursor: pointer;
 }
 
 .pagination li.active a {
