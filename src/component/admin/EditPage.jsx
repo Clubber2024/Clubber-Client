@@ -77,25 +77,21 @@ export default function EditPage() {
                     Authorization: `Bearer ${accessToken}`,
                 },
             });
-            console.log(response.data.data);
+            console.log('setClub', response.data.data);
             setClub(response.data.data);
-            // console.log(response.data.data.clubInfo);
             setClubInfo(response.data.data.clubInfo);
             setImageUrl(response.data.data.imageUrl);
             const clubID = response.data.data.clubId;
-            //console.log(clubID);
             const intClubID = parseInt(clubID);
             setClubId(clubID);
             return intClubID;
         } catch (error) {
-            // console.log(error);
             return null;
         }
     };
     useEffect(() => {
         getAdminClub();
     }, []);
-    //console.log(imageUrl);
 
     const handleFileChange = async (event) => {
         const file = event.target.files[0];
@@ -120,40 +116,47 @@ export default function EditPage() {
 
     // 저장 버튼 클릭 시 동작할 함수
     const handleSave = async () => {
-        if (setClubInfo?.activity?.length > 1500) {
+        if (clubInfo?.activity?.length > 1500) {
             setIsErrorModalOpen(true);
-            setModalMessage('대표활동은 최대 1500자까지 작성 가능합니다.');
+            setModalMessage("'📌 대표활동 ' 은 최대 1500자까지 작성 가능합니다.");
+        } else if (club?.introduction?.length > 100) {
+            setIsErrorModalOpen(true);
+            setModalMessage("'📌 소개 ' 는 최대 100자까지 작성 가능합니다. ");
         } else {
-            try {
-                // presigned URL을 가져오는 API 호출
-                const { data } = await customAxios.post(
-                    '/v1/images/club/logo',
+            if (imagePreview) {
+                try {
+                    // presigned URL을 가져오는 API 호출
+                    const { data } = await customAxios.post(
+                        '/v1/images/club/logo',
 
-                    {
-                        imageFileExtension: extension,
-                    },
-                    {
-                        headers: {
-                            Authorization: `Bearer ${accessToken}`,
-                        },
-                        params: {
+                        {
                             imageFileExtension: extension,
                         },
-                    }
-                );
-                console.log(data.data);
-                setImageUrl(data.data.imageKey);
+                        {
+                            headers: {
+                                Authorization: `Bearer ${accessToken}`,
+                            },
+                            params: {
+                                imageFileExtension: extension,
+                            },
+                        }
+                    );
+                    console.log(data.data);
+                    setImageUrl(data.data.imageKey);
 
-                // 이미지 파일을 presigned URL로 업로드
-                await axios.put(data.data.presignedUrl, imageFile, {
-                    headers: {
-                        'Content-Type': imageFile.type,
-                    },
-                });
-                patchEditClub(data.data.imageKey);
-            } catch (error) {
-                console.error('이미지 업로드 실패:', error);
-                alert('이미지 업로드에 실패했습니다.');
+                    // 이미지 파일을 presigned URL로 업로드
+                    await axios.put(data.data.presignedUrl, imageFile, {
+                        headers: {
+                            'Content-Type': imageFile.type,
+                        },
+                    });
+                    patchEditClub(data.data.imageKey);
+                } catch (error) {
+                    console.error('이미지 업로드 실패:', error);
+                    alert('이미지 업로드에 실패했습니다.');
+                }
+            } else {
+                patchEditClub(imageUrl);
             }
         }
     };
