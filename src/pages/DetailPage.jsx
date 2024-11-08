@@ -40,8 +40,6 @@ export default function ClubsPage() {
                 setDetailData(res.data.data);
                 setClubInfoData(res.data.data.clubInfo);
                 setClubInfoId(res.data.data.clubInfo);
-                //console.log(res.data.data);
-                //console.log(res.data.data.clubInfo);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
@@ -80,7 +78,7 @@ export default function ClubsPage() {
             setModalMessage('알 수 없는 오류가 발생했습니다.');
             setIsModalOpen(true);
         }
-    }
+    };
 
     const getBookmarkData = async () => {
         setIsLoading(true);
@@ -237,7 +235,13 @@ export default function ClubsPage() {
                     room={clubInfoData.room}
                 />
             )}
-            {whichTab === 'Review' && <ReviewPage clubId={clubId} clubName={detailData.clubName} onError={(error) => handleReviewError(error)}/>}
+            {whichTab === 'Review' && (
+                <ReviewPage
+                    clubId={clubId}
+                    clubName={detailData.clubName}
+                    onError={(error) => handleReviewError(error)}
+                />
+            )}
             <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
         </div>
     );
