@@ -28,12 +28,12 @@ export default function AdminRecruitList() {
                 params: {
                     page: page,
                     size: pageSize,
+                    // sort: ['string'],
                 },
             });
             if (res.data.success) {
-                // console.log(res.data);
+                console.log(res.data);
                 setPromoteData(res.data.data.content);
-                setTotalPages(res.data.data.totalPages);
                 console.log(res.data.data.content);
             }
         } catch (error) {

@@ -20,7 +20,8 @@ export default function EditPage() {
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const [extension, setExtension] = useState('');
-    // const [cIntroduction, setcIntroduction] = useState('');
+    const [imgType, setImageType] = useState('0');
+    //->이미지 파일 선택 시 imaType=1, 로고 삭제 시, imgType=2, 미변경시 imgType=0
 
     // console.log('bb', baseLogoUrl);
     const closeModal = () => {
@@ -96,7 +97,7 @@ export default function EditPage() {
     const handleFileChange = async (event) => {
         const file = event.target.files[0];
         if (!file) return; // 파일이 없을 경우 처리 종료
-
+        setImageType('1');
         setImageFile(file);
         setImagePreview(URL.createObjectURL(file));
 
@@ -106,8 +107,9 @@ export default function EditPage() {
     const deleteImage = async () => {
         if (!imageUrl) return;
         try {
-            setImageUrl(`http://dev.ssuclubber.com/${baseLogoUrl}`);
-            setImagePreview(`http://dev.ssuclubber.com/${baseLogoUrl}`);
+            setImageType('2');
+            setImageUrl(`common/logo/soongsil_default.png `);
+            setImagePreview(`https://image.ssuclubber.com/common/logo/soongsil_default.png `);
         } catch (error) {
             console.error('이미지 삭제 실패:', error);
             alert('이미지 삭제에 실패했습니다.');
@@ -123,9 +125,10 @@ export default function EditPage() {
             setIsErrorModalOpen(true);
             setModalMessage("'📌 소개 ' 는 최대 100자까지 작성 가능합니다. ");
         } else {
-            if (imagePreview) {
+            if (imgType === '1') {
                 try {
                     // presigned URL을 가져오는 API 호출
+
                     const { data } = await customAxios.post(
                         '/v1/images/club/logo',
 
@@ -141,7 +144,7 @@ export default function EditPage() {
                             },
                         }
                     );
-                    console.log(data.data);
+                    // console.log(data.data);
                     setImageUrl(data.data.imageKey);
 
                     // 이미지 파일을 presigned URL로 업로드
