@@ -12,7 +12,7 @@ export default function RecruitList() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [pageSize, setPageSize] = useState(5); // 한 페이지에 표시할 항목 수
-    const [sort, setSort] = useState(['string']); // 정렬 기준
+    const [sort, setSort] = useState('desc'); // 정렬 기준
 
     const getPromoteData = async (page) => {
         try {
@@ -20,13 +20,13 @@ export default function RecruitList() {
                 params: {
                     page: page,
                     size: pageSize,
-                    //sort: sort,
+                    sort: sort,
                 },
             });
             if (res.data.success) {
                 setPromoteData(res.data.data.content);
                 setTotalPages(res.data.data.totalPages);
-                console.log(res.data.data.content);
+                console.log(res.data.data);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
@@ -37,8 +37,8 @@ export default function RecruitList() {
         getPromoteData(currentPage);
     }, [currentPage]);
 
-    const handlePageChange = (newPage) => {
-        setCurrentPage(newPage);
+    const handlePageChange = ({ selected }) => {
+        setCurrentPage(selected + 1);
     };
 
     const onClickRecruit = (recruitId) => {

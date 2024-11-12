@@ -66,15 +66,26 @@ export default function PendingList() {
     }, [accessToken]);
 
     const onClickApprove = () => {
-        setIsModalOpen(true);
-        setModalMessage('승인하시겠습니까?');
-        setAction('APPROVED');
+        if (checkedList.length > 0) {
+            console.log('check', checkedList);
+            setIsModalOpen(true);
+            setModalMessage('승인하시겠습니까?');
+            setAction('APPROVED');
+        } else {
+            setIsErrorModalOpen(true);
+            setErrorModalMessage('리뷰를 선택해주세요.');
+        }
     };
 
     const onClickReject = () => {
-        setIsModalOpen(true);
-        setModalMessage('거절하시겠습니까?');
-        setAction('REJECTED');
+        if (checkedList.length > 0) {
+            setIsModalOpen(true);
+            setModalMessage('승인 거절하시겠습니까?');
+            setAction('REJECTED');
+        } else {
+            setIsErrorModalOpen(true);
+            setErrorModalMessage('리뷰를 선택해주세요.');
+        }
     };
 
     const onClickOk = () => {
