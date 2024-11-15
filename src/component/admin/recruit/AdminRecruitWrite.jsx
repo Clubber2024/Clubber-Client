@@ -3,22 +3,56 @@ import { customAxios } from '../../../config/axios-config';
 import { useEffect, useState, useRef } from 'react';
 import ConfirmModal from '../../modal/ConfirmModal';
 import ErrorModal from '../../modal/ErrorModal';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function AdminRecruitWrite() {
     const navigate = useNavigate();
+    const location = useLocation();
     const accessToken = localStorage.getItem('accessToken');
     const inputFileRef = useRef(null);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [selectedImages, setSelectedImages] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
-    const [presignedImages, setPresignedImages] = useState([]);
-    // const [inputValue, setInputValue] = useState('');
+
+    //const [presignedImages, setPresignedImages] = useState([]);
+    // const [editContent, setEditContent] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    //모집글 수정인 경우로 넘어올 때 recruitId 존재
+    //그냥 모집글 작성인 경우는 recruitId 존재x
+    const recruitId = location.state?.recruitId;
+    //삭제할 파일들을 저장
+    const [deletedFiles, setDeletedFiles] = useState([]);
+    // 새로 추가된 파일들을 저장
+    const [newAddedFiles, setNewAddedFiles] = useState([]);
+    // 새로 추가된 이미지 URL들을 저장
+    const [newAddedImages, setNewAddedImages] = useState([]);
+    // (삭제x, 추가x)기존 이미지들을 저장
+    const [remainedImages, setRemainedImages] = useState([]);
+
+    //모집글 수정 시 데이터 get
+    const getRecruitData = async () => {
+        try {
+            const res = await customAxios.get(`/v1/admins/recruits/${recruitId}`);
+            if (res.data.success) {
+                console.log('edit content', res.data);
+                setTitle(res.data.data.title);
+                setContent(res.data.data.content);
+                setSelectedImages(res.data.data.imageUrls);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        if (recruitId) {
+            getRecruitData();
+        }
+    }, []);
 
     const closeModal = () => {
         setIsModalOpen(false);
@@ -54,60 +88,52 @@ export default function AdminRecruitWrite() {
 
         const newImageFiles = Array.from(files);
         const newImageURLs = newImageFiles.map((file) => URL.createObjectURL(file));
-        console.log('url', newImageURLs);
-        console.log('img', newImageFiles);
+
+        //모집글 수정 시
+        if (recruitId) {
+            // 새로 추가된 파일과 이미지 URL 상태 업데이트
+            setNewAddedFiles(newImageFiles);
+            setNewAddedImages(newImageURLs);
+        }
+
         setSelectedFiles((prevFiles) => {
             return [...prevFiles, ...newImageFiles];
         });
         setSelectedImages((prevImages) => {
             return [...prevImages, ...newImageURLs];
         });
-
-        console.log('SS', selectedImages);
-
-        // const extension = newImageFiles.map((file) => file.name.split('.').pop().toUpperCase());
-        // 확장자 추출
-
-        // try {
-        //     const { data } = await customAxios.post(
-        //         '/v1/images/club/recruit',
-
-        //         {
-        //             recruitImageExtensions: extension,
-        //         },
-
-        //         {
-        //             headers: {
-        //                 Authorization: Bearer ${accessToken},
-        //                 'Content-Type': 'application/json',
-        //             },
-        //             // params: {
-        //             //     recruitImageExtensions: [extension],
-        //             // },
-        //         }
-        //     );
-
-        //     console.log(data);
-
-        //     const imagePresigned = data.data.map((file) => {
-        //         return file.imageUrl;
-        //     });
-
-        //     setPresignedImages(imagePresigned); // 이미지 미리보기 URL을 상태에 저장
-        // } catch (error) {
-        //     console.error('이미지 업로드 실패:', error);
-        // }
     };
 
     const handleRemoveImage = (index) => {
-        setSelectedImages((prevImages) => prevImages.filter((_, i) => i !== index));
+        setSelectedImages((prevImages) => {
+            const imageToDelete = prevImages[index]; // 삭제될 이미지 찾음
+            //모집글 수정 시
+            if (recruitId) {
+                // deletedFiles 배열에 삭제될 이미지 추가
+                setDeletedFiles((prevDeletedFiles) => [...prevDeletedFiles, imageToDelete]);
+            }
+
+            // 필터를 사용하여 선택된 이미지 목록에서 해당 이미지를 제거
+            const updatedImages = prevImages.filter((_, i) => i !== index);
+
+            //모집글 수정 시
+            if (recruitId) {
+                // 남은 이미지들을 remainingImages 상태에 저장
+                setRemainedImages(updatedImages);
+            }
+
+            // 필터를 사용하여 선택된 이미지 목록에서 해당 이미지를 제거
+            return updatedImages;
+        });
     };
 
-    // console.log('img', selectedImages);
-
     const uploadImages = async () => {
-        console.log('Ff', selectedFiles);
-        const extensions = selectedFiles.flat().map((File) => File.name.split('.').pop().toUpperCase());
+        // console.log('Ff', selectedFiles);
+        //선택된 파일 배열 확정
+        const filesToUpload = recruitId ? newAddedFiles.flat() : selectedFiles.flat();
+
+        // 파일 확장자 추출
+        const extensions = filesToUpload.map((file) => file.name.split('.').pop().toUpperCase());
 
         try {
             const { data } = await customAxios.post(
@@ -118,17 +144,17 @@ export default function AdminRecruitWrite() {
                 }
             );
 
-            console.log('data', data);
-
             await Promise.all(
                 data.data.map(async (fileData, index) => {
-                    const file = selectedFiles.flat()[index]; // 파일 가져오기
+                    // 파일 가져오기
+                    const file = selectedFiles.flat()[index];
                     await axios.put(fileData.presignedUrl, file, {
                         headers: { 'Content-Type': file.type },
                     });
                 })
             );
-            return data.data.map((file) => file.imageKey); // 업로드된 이미지 URL 반환
+            // 업로드된 이미지 URL 반환
+            return data.data.map((file) => file.imageKey);
         } catch (error) {
             console.error('이미지 업로드 실패:', error);
             throw error;
@@ -155,53 +181,51 @@ export default function AdminRecruitWrite() {
         } else {
             try {
                 const imageUrls = await uploadImages();
-                const res = await customAxios.post(
-                    `/v1/admins/recruits`,
-                    {
-                        title: title,
-                        content: content,
-                        imageKey: imageUrls,
-                    },
-                    {
-                        headers: {
-                            Authorization: ` Bearer ${accessToken}`,
+                if (recruitId) {
+                    const combinedImages = [...remainedImages, ...imageUrls];
+
+                    const res = await customAxios.patch(
+                        `/v1/admins/recruits/${recruitId}`,
+                        {
+                            title: title,
+                            content: content,
+                            deletedImageUrls: deletedFiles,
+                            newImageKeys: imageUrls,
+                            remainImageUrls: remainedImages,
+                            images: combinedImages,
                         },
+                        {
+                            headers: {
+                                Authorization: ` Bearer ${accessToken}`,
+                            },
+                        }
+                    );
+                    if (res.data.success) {
+                        setIsModalOpen(true);
                     }
-                );
-                if (res.data.success) {
-                    // console.log(res.data);
-                    setIsModalOpen(true);
+                } else {
+                    const res = await customAxios.post(
+                        `/v1/admins/recruits`,
+                        {
+                            title: title,
+                            content: content,
+                            imageKey: imageUrls,
+                        },
+                        {
+                            headers: {
+                                Authorization: ` Bearer ${accessToken}`,
+                            },
+                        }
+                    );
+                    if (res.data.success) {
+                        setIsModalOpen(true);
+                    }
                 }
             } catch (error) {
                 console.error('이미지 업로드 실패:', error);
             }
-            // postRecruitData();
         }
     };
-
-    // const postRecruitData = async () => {
-    //     try {
-    //         const res = await customAxios.post(
-    //             /v1/admins/recruits,
-    //             {
-    //                 title: title,
-    //                 content: content,
-    //                 imageUrl: presignedImages,
-    //             },
-    //             {
-    //                 headers: {
-    //                     Authorization: Bearer ${accessToken},
-    //                 },
-    //             }
-    //         );
-    //         if (res.data.success) {
-    //             console.log(res.data);
-    //             setIsModalOpen(true);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error fetching data : ', error);
-    //     }
-    // };
 
     return (
         <>
