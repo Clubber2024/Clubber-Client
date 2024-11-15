@@ -32,10 +32,10 @@ export default function AdminRecruitList() {
                 },
             });
             if (res.data.success) {
-                console.log(res.data);
+                // console.log(res.data);
                 setPromoteData(res.data.data.content);
                 setTotalPages(res.data.data.totalPages);
-                console.log(res.data.data.content);
+                // console.log(res.data.data.content);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
