@@ -106,7 +106,7 @@ export default function AdminRecruitWrite() {
 
     const handleRemoveImage = (index) => {
         setSelectedImages((prevImages) => {
-            const imageToDelete = prevImages[index]; // 삭제될 이미지를 찾습니다.
+            const imageToDelete = prevImages[index]; // 삭제될 이미지 찾음
             //모집글 수정 시
             if (recruitId) {
                 // deletedFiles 배열에 삭제될 이미지 추가
