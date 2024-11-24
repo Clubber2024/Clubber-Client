@@ -131,7 +131,7 @@ export default function ClubsPage() {
                             Authorization: `Bearer ${token}`,
                         },
                     });
-                    if (res.status == 200) {
+                    if (res.status === 200) {
                         //console.log('delete res:', res);
                         setIsFavorite(false);
                         setFavoriteId(null); //즐겨찾기 ID 초기화

@@ -62,9 +62,7 @@ export default function MyPage() {
             // 로컬 스토리지에서 사용자 정보 삭제
             localStorage.removeItem('accessToken');
             localStorage.removeItem('refreshToken');
-            localStorage.removeItem('adminId');
             localStorage.removeItem('isAdmin');
-            localStorage.removeItem('userId');
 
             // 로그아웃 후 메인 페이지로 이동
             navigate('/');
