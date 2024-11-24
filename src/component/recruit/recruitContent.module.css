@@ -44,10 +44,11 @@
     text-align: center;
     margin-top: 51px;
     background-color: #ffffff;
-    width: 80%;
+    width: 50%;
     height: fit-content;
     overflow-x: scroll;
     display: flex;
+    align-items: center;
     flex-direction: row;
     margin-left: auto;
     margin-right: auto;
@@ -102,7 +103,7 @@
 
 .content_list_button {
     padding: 10px 33px;
-    margin-top: 70px;
+    margin-top: 50px;
     border: none;
     border-radius: 5px;
     background-color: #7bc8e0;

@@ -22,7 +22,7 @@ export default function AdminRecruitContent() {
             if (res.data.success) {
                 setContentData(res.data.data);
                 // setTotalPages(res.data.data.totalPages);
-                console.log(res.data.data);
+                // console.log(res.data.data);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
@@ -36,9 +36,21 @@ export default function AdminRecruitContent() {
     const onClickList = () => {
         navigate('/recruit');
     };
+
+    const onClickEditContent = () => {
+        navigate('/admin/recruit/edit', {
+            state: { recruitId: recruitId },
+        });
+    };
     return (
         <>
             <div className={styles.total_div}>
+                <div className={styles.edit_button_div}>
+                    <button className={styles.edit_button} onClick={onClickEditContent}>
+                        수정하기
+                    </button>
+                </div>
+
                 <p className={styles.content_title}>{contentData?.title}</p>
                 <div className={styles.date_div}>
                     <p className={styles.content_date}>{new Date(contentData?.createdAt).toLocaleDateString()}</p>

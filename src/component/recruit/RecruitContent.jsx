@@ -22,7 +22,7 @@ export default function RecruitContent() {
             if (res.data.success) {
                 setContentData(res.data.data);
                 // setTotalPages(res.data.data.totalPages);
-                console.log(res.data.data);
+                // console.log(res.data.data);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
