@@ -42,13 +42,13 @@ export default function ReviewStatics({ clubId }) {
     getReviewsSortedByCount();
   }, [clubId]);
 
-  const sortedReviews = Object.entries(reviews);
-  console.log(sortedReviews);
-  const reviewsWithKoreanLabels = sortedReviews.map(([text, count]) => [
-    labels[text],
-    count,
-  ]);
-  console.log(reviewsWithKoreanLabels);
+  // const sortedReviews = Object.entries(reviews);
+  // console.log(sortedReviews);
+  // const reviewsWithKoreanLabels = sortedReviews.map(([text, count]) => [
+  //   labels[text],
+  //   count,
+  // ]);
+  // console.log(reviewsWithKoreanLabels);
 
   const PercentageBar = ({ text, count, total }) => {
     const percentage = (count / total) * 100;
@@ -83,8 +83,7 @@ export default function ReviewStatics({ clubId }) {
 
   return (
     <>
-      <ReviewStats data={reviewsWithKoreanLabels} />
+      <ReviewStats data={Object.entries(reviews)} />
     </>
   );
 }
-//<ReviewStats data={reviewsWithKoreanLabels} />
