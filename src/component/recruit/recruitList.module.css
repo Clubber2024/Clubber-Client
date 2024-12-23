@@ -10,13 +10,14 @@
     }
 
     .recruit_container {
-        margin-left: 10%;
+        margin-left: 15%;
+        margin-right: 15%;
         align-items: center;
     }
 
     .recruit_box {
         display: flex;
-        width: 70%;
+        width: 80%;
         height: 206px;
         border-radius: 12px;
         border: 1px solid #9c9c9c4d;
@@ -24,13 +25,16 @@
         margin-left: 10%;
         margin-bottom: 20px;
         cursor: pointer;
+        justify-content: space-between;
     }
     .recruit_logo {
         width: 200px;
         /* width: 35%; */
         height: 170px;
         margin-top: 19px;
-        margin-left: 20px;
+        margin-right: 20px;
+        /* margin-left: 20px; */
+        /* justify-items: flex-end; */
     }
 
     .recruit_div {
@@ -90,19 +94,22 @@
         margin-left: 10%;
         margin-bottom: 20px;
         cursor: pointer;
+        justify-content: space-between;
+        align-items: center;
     }
     .recruit_logo {
         width: 90px;
         height: 90px;
-        margin-top: 30px;
-        margin-left: 13px;
-        background-color: #ffffff;
+        /* margin-top: 30px; */
+        /* margin-left: 13px; */
+        background-color: #f9f9f9;
+        margin-right: 20px;
     }
 
     .recruit_div {
         margin-left: 15px;
         width: 50%;
-        background-color: #ffffff;
+        background-color: #f9f9f9;
     }
 
     .recruit_title {
@@ -113,10 +120,13 @@
         text-align: left;
         height: 23px;
         color: #52555b;
-        margin-top: 20px;
-        margin-bottom: 25px;
+        /* margin-top: 20px; */
+        /* margin-bottom: 25px; */
+        width: 118px;
+        height: 30px;
+        white-space: nowrap;
         margin-right: 2px;
-        background-color: #ffffff;
+        background-color: #f9f9f9;
     }
 
     .recruit_text {
@@ -136,6 +146,6 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
-        background-color: #ffffff;
+        background-color: #f9f9f9;
     }
 }
