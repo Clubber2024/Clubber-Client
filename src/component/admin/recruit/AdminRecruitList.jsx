@@ -71,11 +71,11 @@ export default function AdminRecruitList() {
                         key={item.recruitId}
                         onClick={() => onClickRecruit(item.recruitId)}
                     >
-                        <img src={item.imageUrls.length > 0 ? item.imageUrls[0] : ''} className={styles.recruit_logo} />
                         <div className={styles.recruit_div}>
                             <p className={styles.recruit_title}>{item.title}</p>
                             <p className={styles.recruit_text}>{item.content}</p>
                         </div>
+                        {item.imageUrl ? <img src={item.imageUrl} className={styles.recruit_logo} /> : ''}
                     </div>
                 ))}
             </div>

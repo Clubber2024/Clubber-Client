@@ -10,6 +10,8 @@
         flex-direction: row;
         align-items: center;
         width: 70%;
+        margin-top: 20px;
+        margin-bottom: 20px;
         /* height: 60%; */
     }
 
@@ -33,7 +35,7 @@
     .detail_logo {
         width: 150px;
         height: 150px;
-        margin: 12px 24px 20px 22px;
+        margin: 10px 24px 10px 22px;
     }
 
     .insta_icon {
@@ -160,7 +162,7 @@
     .detail_body p {
         margin-top: 1%;
         margin-left: 3%;
-        width: 50%;
+        width: 95%;
         text-align: left;
     }
 

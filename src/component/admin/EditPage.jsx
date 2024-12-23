@@ -21,6 +21,8 @@ export default function EditPage() {
     const [modalMessage, setModalMessage] = useState('');
     const [extension, setExtension] = useState('');
     const [imgType, setImageType] = useState('0');
+    const [introCount, setIntroCount] = useState(0);
+    const [actiCount, setActiCount] = useState(0);
     //->이미지 파일 선택 시 imaType=1, 로고 삭제 시, imgType=2, 미변경시 imgType=0
 
     // console.log('bb', baseLogoUrl);
@@ -34,6 +36,7 @@ export default function EditPage() {
             ...prevState,
             introduction: e.target.value,
         }));
+        setIntroCount(e.target.value.length);
     };
     const handleInstagramChange = (e) => {
         setClubInfo((prevState) => ({
@@ -54,6 +57,7 @@ export default function EditPage() {
             ...prevState,
             activity: e.target.value,
         }));
+        setActiCount(e.target.value.length);
     };
 
     const handleRoomChange = (e) => {
@@ -80,7 +84,9 @@ export default function EditPage() {
             });
             console.log('setClub', response.data.data);
             setClub(response.data.data);
+            setIntroCount(response.data.data.introduction.length);
             setClubInfo(response.data.data.clubInfo);
+            setActiCount(response.data.data.clubInfo.activity.length);
             setImageUrl(response.data.data.imageUrl);
             const clubID = response.data.data.clubId;
             const intClubID = parseInt(clubID);
@@ -246,7 +252,8 @@ export default function EditPage() {
                         {club.department === null ? club.division : club.department}
                     </p>
                     <br />
-                    <strong>📌 소개</strong>
+                    <strong>📌 소개 ({introCount}/100)</strong>
+
                     <textarea
                         value={club.introduction}
                         defaultValue={club.introduction}
@@ -266,7 +273,7 @@ export default function EditPage() {
                         placeholder=" 동아리 인스타 URL을 입력하세요."
                     />
                     <br />
-                    <strong>📌 대표 활동</strong>
+                    <strong>📌 대표 활동 ({actiCount}/500)</strong>
                     <textarea
                         value={clubInfo.activity}
                         defaultValue={clubInfo.activity}
