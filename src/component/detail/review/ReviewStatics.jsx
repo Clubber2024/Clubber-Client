@@ -41,9 +41,9 @@ export default function ReviewStatics({ clubId }) {
     }, [clubId]);
 
     const sortedReviews = Object.entries(reviews);
-    console.log('ss', sortedReviews);
+    console.log(sortedReviews);
     const reviewsWithKoreanLabels = sortedReviews.map(([text, count]) => [labels[text], count]);
-    console.log('kk', reviewsWithKoreanLabels);
+    console.log(reviewsWithKoreanLabels);
 
     const PercentageBar = ({ text, count, total }) => {
         const percentage = (count / total) * 100;

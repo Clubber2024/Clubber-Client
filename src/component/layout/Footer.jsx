@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import ConfirmModal from '../modal/ConfirmModal';
 
 function Footer() {
-    const userId = localStorage.getItem('userId');
     const accessToken = localStorage.getItem('accessToken');
     const Admin = localStorage.getItem('isAdmin');
     const navigate = useNavigate();
