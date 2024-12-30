@@ -112,6 +112,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow-y: auto;
+        border-radius: 10pxg;
     }
 
     .cover {

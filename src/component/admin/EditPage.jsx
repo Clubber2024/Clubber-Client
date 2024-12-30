@@ -228,9 +228,7 @@ export default function EditPage() {
                     }
 
                     <div className={styles.admin_detail_header_container}>
-                        <div className={styles.admin_detail_header_name}>
-                            <h3>{club.clubName}</h3>
-                        </div>
+                        <div className={styles.admin_detail_header_name}>{club.clubName}</div>
 
                         <div className={styles.association_btn}>
                             <span>{club.clubType === '해당 없음' ? club.college : club.clubType}</span>

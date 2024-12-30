@@ -162,12 +162,14 @@
         box-shadow: inset 0px -15px 0 #7bc8e04d;
     }
 
-    .detailBody p {
+    .p_style {
         margin-top: 1%;
         margin-left: 7%;
-        /* width: 50%; */
+        width: 90%;
         text-align: left;
         font-size: 13px;
+        /* white-space: nowrap; */
+        word-break: break-all;
     }
 
     .detailTab button {
