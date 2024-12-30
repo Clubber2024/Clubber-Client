@@ -38,29 +38,31 @@ export default function RecruitContent() {
     };
     return (
         <>
-            <div className={styles.total_div}>
-                <p className={styles.content_title}>{contentData?.title}</p>
-                <div className={styles.date_div}>
-                    <p className={styles.content_date}>{new Date(contentData?.createdAt).toLocaleDateString()}</p>
-                    <p className={styles.content_date}>조회수 {contentData?.totalView}</p>
+            <div className={styles.recruit_div}>
+                <div className={styles.total_div}>
+                    <p className={styles.content_title}>{contentData?.title}</p>
+                    <div className={styles.date_div}>
+                        <p className={styles.content_date}>{new Date(contentData?.createdAt).toLocaleDateString()}</p>
+                        <p className={styles.content_date}>조회수 {contentData?.totalView}</p>
+                    </div>
+                    <div className={styles.horizontal_line}></div>
+                    <div className={styles.img_div}>
+                        {contentData?.imageUrls.length > 0
+                            ? contentData.imageUrls.map((image, index) => (
+                                  <img key={index} src={image} alt="contentImg" className={styles.content_img} />
+                              ))
+                            : ''}
+                    </div>
+                    <div className={styles.content_div}>
+                        <p className={styles.content_content}>{contentData?.content}</p>
+                    </div>
+                    <div className={styles.horizontal_line_bottom}></div>
                 </div>
-                <div className={styles.horizontal_line}></div>
-                <div className={styles.img_div}>
-                    {contentData?.imageUrls.length > 0
-                        ? contentData.imageUrls.map((image, index) => (
-                              <img key={index} src={image} alt="contentImg" className={styles.content_img} />
-                          ))
-                        : ''}
+                <div className={styles.button_div}>
+                    <button className={styles.content_list_button} onClick={onClickList}>
+                        목록
+                    </button>
                 </div>
-                <div className={styles.content_div}>
-                    <p className={styles.content_content}>{contentData?.content}</p>
-                </div>
-                <div className={styles.horizontal_line}></div>
-            </div>
-            <div className={styles.button_div}>
-                <button className={styles.content_list_button} onClick={onClickList}>
-                    목록
-                </button>
             </div>
         </>
     );
