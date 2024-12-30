@@ -103,7 +103,8 @@
         /* margin-top: 30px; */
         /* margin-left: 13px; */
         background-color: #f9f9f9;
-        margin-right: 20px;
+        margin-right: 10px;
+        margin-left: 5px;
     }
 
     .recruit_div {
@@ -125,6 +126,8 @@
         width: 118px;
         height: 30px;
         white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         margin-right: 2px;
         background-color: #f9f9f9;
     }
