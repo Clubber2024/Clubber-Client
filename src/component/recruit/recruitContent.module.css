@@ -4,14 +4,95 @@
         flex-direction: column;
         align-items: center;
     }
+    /*즐겨찾기 css*/
+    .bookmark_div {
+        margin-bottom: 200px;
+    }
+    .title {
+        margin: 40px auto;
+        width: 200px;
+        height: 40px;
+        font-family: Noto Sans KR;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 34.75px;
+        text-align: center;
+    }
 
+    .rectangle {
+        display: flex;
+        align-items: center;
+        width: 55%;
+        height: 10%;
+
+        border-radius: 15px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 5px 0px #0000001a;
+
+        margin: auto;
+        margin-top: 24px;
+        /* margin-bottom: 30px; */
+    }
+
+    .rectangle_p {
+        /* display: flex; */
+        align-items: center;
+        width: 100%;
+    }
+
+    .favoriteClubs_div {
+        border-radius: 15px;
+    }
+    .clubName {
+        justify-content: start;
+        font-family: Noto Sans KR;
+        font-size: 23px;
+        font-weight: 600;
+        line-height: 37.65px;
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: auto;
+    }
+    .clubType {
+        font-family: Noto Sans KR;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 26.06px;
+        justify-content: start;
+        padding-right: 5px;
+        display: flex;
+        float: left;
+        background-color: #ffffff;
+    }
+
+    .divRow {
+        display: flex;
+        /* align-items: center; */
+        justify-content: space-between;
+        background-color: #ffffff;
+        border-radius: 15px;
+        height: 30px;
+        /* width: 40px; */
+    }
+
+    .divRow a {
+        background-color: #ffffff;
+        border-radius: 15px;
+    }
+
+    .bookmark_button_div {
+        text-align: center;
+        background-color: #f9f9f9;
+    }
+
+    /* 모집글 글 css */
     .total_div {
         width: 55%;
         background: #ffffff;
-        margin-top: 100px;
+        margin-top: 21px;
         padding-bottom: 30px;
-        border: #a7a7a780 1px solid;
-        border-radius: 5px;
+        box-shadow: 0px 0px 5px 0px #0000001a;
+        border-radius: 15px;
     }
     .content_title {
         font-family: Noto Sans KR;
@@ -22,7 +103,7 @@
         background-color: #ffffff;
         padding-top: 61px;
 
-        border-radius: 5px;
+        border-radius: 15px;
     }
 
     .content_date {
@@ -58,7 +139,7 @@
 
     .img_div {
         text-align: center;
-        margin-top: 51px;
+        margin-top: 20px;
         background-color: #ffffff;
         width: 70%;
         height: fit-content;
@@ -68,6 +149,7 @@
         flex-direction: row;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 20px;
     }
 
     .img_div::-webkit-scrollbar {
@@ -91,12 +173,14 @@
     }
 
     .content_img {
-        width: 100%;
+        width: 210px;
+        height: 210px;
+        object-fit: cover;
         border: #d9d9d9;
         margin-bottom: 20px;
         background-color: #ffffff;
-        margin-left: 10px;
-        margin-right: 10px;
+        /* margin-left: 10px; */
+        margin-right: 7px;
     }
 
     .content_div {
@@ -125,6 +209,71 @@
         background-color: #7bc8e0;
         color: white;
     }
+
+    .img_div img {
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .modal {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .modal_img {
+        max-width: 90%;
+        max-height: 90%;
+        animation: zoom 0.6s;
+    }
+
+    @keyframes zoom {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        font-size: 60px;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 30px;
+        user-select: none;
+        transition: 0.6s ease;
+    }
+
+    .prev {
+        left: 0;
+    }
+
+    .next {
+        right: 0;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -135,22 +284,22 @@
     }
 
     .total_div {
-        width: 70%;
+        width: 80%;
         background: #ffffff;
-        margin-top: 100px;
+        margin-top: 5px;
         padding-bottom: 30px;
-        border: #a7a7a780 1px solid;
-        border-radius: 5px;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
     }
     .content_title {
         font-family: Noto Sans KR;
-        font-size: 22px;
+        font-size: 21px;
         font-weight: 400;
         line-height: 40.54px;
         text-align: center;
         background-color: #ffffff;
         padding-top: 25px;
-        border-radius: 5px;
+        border-radius: 15px;
     }
 
     .content_date {
@@ -185,7 +334,7 @@
 
     .img_div {
         text-align: center;
-        margin-top: 26px;
+        /* margin-top: 10px; */
         background-color: #ffffff;
         width: 70%;
         height: fit-content;
@@ -195,6 +344,7 @@
         flex-direction: row;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 20px;
     }
 
     .img_div::-webkit-scrollbar {
@@ -218,12 +368,14 @@
     }
 
     .content_img {
-        width: 100%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
         border: #d9d9d9;
         margin-bottom: 20px;
         background-color: #ffffff;
-        margin-left: 10px;
-        margin-right: 10px;
+        /* margin-left: 10px; */
+        margin-right: 5px;
     }
 
     .content_div {
@@ -234,7 +386,7 @@
 
     .content_content {
         font-family: Noto Sans KR;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 400;
         line-height: 23.17px;
         text-align: center;
@@ -251,5 +403,164 @@
         border-radius: 5px;
         background-color: #7bc8e0;
         color: white;
+    }
+    /* 즐겨찾기 기능 css */
+    .bookmark_div {
+        margin-bottom: 100px;
+    }
+    .title {
+        margin: 40px auto;
+        width: 200px;
+        height: 40px;
+        font-family: Noto Sans KR;
+        font-size: 21px;
+        font-weight: 500;
+        line-height: 34.75px;
+        text-align: center;
+    }
+
+    .rectangle {
+        display: flex;
+        align-items: center;
+        width: 80%;
+        /* height: 100px; */
+        border-radius: 15px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 1px;
+    }
+
+    .rectangle_p {
+        width: 100%;
+    }
+
+    .favoriteClubs_div {
+        border-radius: 15px;
+    }
+    .clubName {
+        justify-content: start;
+        font-family: Noto Sans KR;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 37.65px;
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: auto;
+        height: 27px;
+    }
+    .clubType {
+        font-family: Noto Sans KR;
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 26.06px;
+        justify-content: start;
+        padding-right: 5px;
+        display: flex;
+        float: left;
+        background-color: #ffffff;
+        height: 15px;
+    }
+
+    .divRow {
+        display: flex;
+        justify-content: space-between;
+        background-color: #ffffff;
+        border-radius: 15px;
+        height: 30px;
+    }
+
+    .divRow a {
+        background-color: #ffffff;
+        border-radius: 15px;
+    }
+
+    .bookmark_button_div {
+        text-align: center;
+        background-color: #f9f9f9;
+    }
+
+    .bookmark_ClubLogo {
+        width: 80px !important;
+        height: 80px !important;
+        margin: 10px;
+        margin-top: 10px;
+        float: left;
+        background-color: #ffffff;
+    }
+
+    .bookmark_icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+        margin-bottom: 15px;
+        margin-top: -8px;
+        background-color: #ffffff;
+    }
+
+    .img_div img {
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .modal {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .modal_img {
+        max-width: 70%;
+        max-height: 70%;
+        animation: zoom 0.6s;
+    }
+
+    @keyframes zoom {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 50px;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+        user-select: none;
+        transition: 0.6s ease;
+    }
+
+    .prev {
+        left: 0;
+    }
+
+    .next {
+        right: 0;
     }
 }

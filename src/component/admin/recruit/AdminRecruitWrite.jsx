@@ -1,6 +1,6 @@
 import styles from './AdminRecruitWrite.module.css';
 import { customAxios } from '../../../config/axios-config';
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ConfirmModal from '../../modal/ConfirmModal';
 import ErrorModal from '../../modal/ErrorModal';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -15,9 +15,6 @@ export default function AdminRecruitWrite() {
     const [content, setContent] = useState('');
     const [selectedImages, setSelectedImages] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
-
-    //const [presignedImages, setPresignedImages] = useState([]);
-    // const [editContent, setEditContent] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
@@ -32,6 +29,9 @@ export default function AdminRecruitWrite() {
     const [newAddedImages, setNewAddedImages] = useState([]);
     // (삭제x, 추가x)기존 이미지들을 저장
     const [remainedImages, setRemainedImages] = useState([]);
+    //
+    const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     //모집글 수정 시 데이터 get
     const getRecruitData = async () => {
@@ -161,6 +161,39 @@ export default function AdminRecruitWrite() {
         }
     };
 
+    //이미지 드래그 기능
+    const onOpenImageLightBox = (index) => {
+        setCurrentImageIndex(index);
+        setIsLightBoxOpen(true);
+    };
+
+    const onCloseLightBox = () => {
+        setIsLightBoxOpen(false);
+    };
+
+    const onDragStart = (e, id) => {
+        e.dataTransfer.effectAllowd = 'move';
+        e.dataTransfer.setData('imgIndex', String(id));
+    };
+
+    const onDragDrop = (e, index) => {
+        e.preventDefault();
+
+        const sourceIndex = Number(e.dataTransfer.getData('imgIndex'));
+        if (sourceIndex === index) return;
+        const updateImages = [...selectedImages];
+        const [movedImage] = updateImages.splice(sourceIndex, 1);
+
+        updateImages.splice(index, 0, movedImage);
+        setSelectedImages(updateImages);
+    };
+
+    const onDragOver = (e) => {
+        e.preventDefault();
+    };
+
+    //
+
     const handleSubmitButton = async () => {
         if (title === '') {
             setModalMessage('제목을 입력하세요.');
@@ -263,31 +296,48 @@ export default function AdminRecruitWrite() {
                     사진 <p className={styles.write_title_sub}>(선택 / 최대 10장)</p>
                 </p>
                 <div className={styles.photo_div}>
-                    <button className={styles.write_photo_button} onClick={() => inputFileRef.current.click()}>
-                        <img src="/admin/photo.png" alt="photo" className={styles.write_photo} />
-                    </button>
-                    <input
-                        type="file"
-                        ref={inputFileRef}
-                        className={styles.hidden_input}
-                        accept="image/*"
-                        multiple
-                        onChange={handleFileChange} // 파일 선택 핸들러 연결
-                    />
-                    {/* 선택된 이미지 미리보기 */}
                     <div className={styles.image_preview_container}>
+                        <button className={styles.write_photo_button} onClick={() => inputFileRef.current.click()}>
+                            <img src="/admin/photo.png" alt="photo" className={styles.write_photo} />
+                        </button>
+                        <input
+                            type="file"
+                            ref={inputFileRef}
+                            className={styles.hidden_input}
+                            accept="image/*"
+                            multiple
+                            onChange={handleFileChange} // 파일 선택 핸들러 연결
+                        />
+                        {/* 선택된 이미지 미리보기 */}
+
                         {selectedImages > 10
                             ? alert('최대 10장까지 업로드 가능합니다.')
                             : selectedImages.map((src, index) => (
                                   <div key={index} className={styles.img_preview_div}>
-                                      <img
-                                          key={index}
-                                          src={src}
-                                          alt={`preview ${index}`}
-                                          className={styles.image_preview}
-                                      />
-                                      <button onClick={() => handleRemoveImage(index)} className={styles.remove_button}>
-                                          X
+                                      <button
+                                          onClick={() => onOpenImageLightBox(index)}
+                                          onDragOver={onDragOver}
+                                          onDrop={(e) => onDragDrop(e, index)}
+                                          className={styles.draggable}
+                                      >
+                                          <img
+                                              key={index}
+                                              src={src}
+                                              alt={`preview ${index}`}
+                                              draggable
+                                              onDragStart={(e) => onDragStart(e, index)}
+                                              onDragOver={onDragOver}
+                                              onDrop={(e) => onDragDrop(e, index)}
+                                              className={styles.draggable_img}
+                                              // className={styles.image_preview}
+                                          />
+
+                                          <button
+                                              onClick={() => handleRemoveImage(index)}
+                                              className={styles.remove_button}
+                                          >
+                                              X
+                                          </button>
                                       </button>
                                   </div>
                               ))}
