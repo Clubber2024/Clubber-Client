@@ -18,6 +18,8 @@ export default function AdminRecruitWrite() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [titleCount, setTitleCount] = useState(0);
+    const [contentCount, setContentCount] = useState(0);
     //모집글 수정인 경우로 넘어올 때 recruitId 존재
     //그냥 모집글 작성인 경우는 recruitId 존재x
     const recruitId = location.state?.recruitId;
@@ -40,7 +42,9 @@ export default function AdminRecruitWrite() {
             if (res.data.success) {
                 console.log('edit content', res.data);
                 setTitle(res.data.data.title);
+                setTitleCount(res.data.data.title.length);
                 setContent(res.data.data.content);
+                setContentCount(res.data.data.content.length);
                 setSelectedImages(res.data.data.imageUrls);
             }
         } catch (error) {
@@ -65,10 +69,12 @@ export default function AdminRecruitWrite() {
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
+        setTitleCount(e.target.value.length);
     };
 
     const handleContentChange = (e) => {
         setContent(e.target.value);
+        setContentCount(e.target.value.length);
     };
 
     // 파일 선택 핸들러
@@ -265,7 +271,7 @@ export default function AdminRecruitWrite() {
             <div className={styles.write_header}>모집글 작성하기</div>
             <div className={styles.write_rectangle}>
                 <p className={styles.write_title}>
-                    제목 <p className={styles.write_title_sub}>(최대 100자)</p>
+                    제목 <p className={styles.write_title_sub}>({titleCount}/100)</p>
                 </p>
                 <div className={styles.write_backgroud}>
                     <input
@@ -278,7 +284,7 @@ export default function AdminRecruitWrite() {
                     <p className={styles.write_title_font}>제목을 입력해주세요.</p>
                 </div>
                 <p className={styles.write_title}>
-                    내용 <p className={styles.write_title_sub}>(최대 2000자)</p>
+                    내용 <p className={styles.write_title_sub}>({contentCount}/2000)</p>
                 </p>
                 <div className={styles.write_backgroud}>
                     <textarea
