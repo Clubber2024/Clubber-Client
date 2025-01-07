@@ -228,9 +228,7 @@ export default function EditPage() {
                     }
 
                     <div className={styles.admin_detail_header_container}>
-                        <div className={styles.admin_detail_header_name}>
-                            <h3>{club.clubName}</h3>
-                        </div>
+                        <div className={styles.admin_detail_header_name}>{club.clubName}</div>
 
                         <div className={styles.association_btn}>
                             <span>{club.clubType === '해당 없음' ? club.college : club.clubType}</span>
@@ -273,15 +271,14 @@ export default function EditPage() {
                         placeholder=" 동아리 인스타 URL을 입력하세요."
                     />
                     <br />
-                    <strong>📌 대표 활동 ({actiCount}/500)</strong>
+                    <strong>📌 대표 활동 ({actiCount}/1500)</strong>
                     <textarea
                         value={clubInfo.activity}
                         defaultValue={clubInfo.activity}
                         onChange={handleActivityChange}
                         rows={5}
                         cols={50}
-                        placeholder=" 대표 활동을 입력하세요.
-										(최대 1500자)"
+                        placeholder=" 대표 활동을 입력하세요."
                     />
                     <br />
                     <strong>📌 동아리장</strong>

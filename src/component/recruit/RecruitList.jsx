@@ -26,7 +26,7 @@ export default function RecruitList() {
             if (res.data.success) {
                 setPromoteData(res.data.data.content);
                 setTotalPages(res.data.data.totalPages);
-                console.log(res.data.data);
+                // console.log(res.data.data);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
@@ -57,11 +57,11 @@ export default function RecruitList() {
                         key={item.recruitId}
                         onClick={() => onClickRecruit(item.recruitId)}
                     >
+                        <img src={item.imageUrl ? item.imageUrl : ''} className={styles.recruit_logo} />
                         <div className={styles.recruit_div}>
                             <p className={styles.recruit_title}>{item.title}</p>
                             <p className={styles.recruit_text}>{item.content}</p>
                         </div>
-                        {item.imageUrl ? <img src={item.imageUrl} className={styles.recruit_logo} /> : ''}
                     </div>
                 ))}
             </div>

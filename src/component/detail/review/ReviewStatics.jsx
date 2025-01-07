@@ -21,13 +21,13 @@ export default function ReviewStatics({ clubId }) {
             try {
                 const res = await customAxios.get(`/v1/clubs/${clubId}/reviews/keyword-stats`);
                 if (res.data.success) {
-                    // console.log(res.data.data);
+                    //console.log(res.data.data);
                     const reviews = res.data.data.keywordStats;
 
                     const sortedReviews = Object.entries(reviews)
                         .sort(([, countA], [, countB]) => countB - countA) // value 값 내림차순
                         .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {}); // Convert back to object
-                    // console.log('sorted:', sortedReviews);
+                    console.log('sorted:', sortedReviews);
                     setReviews(sortedReviews);
                 } else {
                     console.error('Failed to fetch reviews');
@@ -41,7 +41,9 @@ export default function ReviewStatics({ clubId }) {
     }, [clubId]);
 
     const sortedReviews = Object.entries(reviews);
-
+    console.log(sortedReviews);
+    const reviewsWithKoreanLabels = sortedReviews.map(([text, count]) => [labels[text], count]);
+    console.log(reviewsWithKoreanLabels);
 
     const PercentageBar = ({ text, count, total }) => {
         const percentage = (count / total) * 100;
@@ -57,6 +59,9 @@ export default function ReviewStatics({ clubId }) {
     const ReviewStats = ({ data }) => {
         // reduce -> acc + curr.count (누적값) , 0 (초기값)
         const total = data.reduce((acc, curr) => acc + curr[1], 0);
+
+        console.log('total: ', total);
+        console.log('data: ', data);
         return (
             <div className="review-stats">
                 {data.map((item) => (
@@ -68,8 +73,8 @@ export default function ReviewStatics({ clubId }) {
 
     return (
         <>
-            <ReviewStats data={sortedReviews} />
+            <ReviewStats data={reviewsWithKoreanLabels} />
         </>
     );
-
 }
+//<ReviewStats data={reviewsWithKoreanLabels} />

@@ -344,9 +344,11 @@
     .detail_body p {
         margin-top: 1%;
         margin-left: 5%;
-        width: 50%;
+        padding-right: 5%;
+        width: 100%;
         text-align: left;
         font-size: 13px;
+        word-break: break-all;
     }
 
     .detail_tab button {

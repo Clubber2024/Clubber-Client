@@ -34,7 +34,6 @@
         margin: auto;
         margin-left: 120px;
         padding-top: 30px;
-
     }
 
     .club_branch {
@@ -64,6 +63,7 @@
 
     .bookmark_button_div {
         text-align: center;
+        background-color: #f9f9f9;
     }
 
     .more_button {
@@ -165,7 +165,7 @@
 
     .bookmark_button_div {
         text-align: center;
-        background-color: #ffffff;
+        background-color: #f9f9f9;
     }
     .more_button {
         margin-top: 15px;

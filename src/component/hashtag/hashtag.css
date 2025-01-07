@@ -1,38 +1,81 @@
-.tag_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 17px;
-    cursor: pointer;
+@media screen and (min-width: 768px) {
+    .tag_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 17px;
+        cursor: pointer;
+    }
+
+    .tag_circle {
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 50%;
+        background-color: white;
+        box-shadow: 0px 0px 3px 2px #0000000d;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* 이미지가 원 밖으로 나가지 않도록 설정 */
+    }
+
+    .tag_circle:hover {
+        background-color: #c4e7f1;
+    }
+
+    .tag_circle img {
+        object-fit: contain;
+        background-color: transparent;
+    }
+
+    .tag_text {
+        padding-top: 8px;
+        font-size: 14px;
+        font-weight: 350;
+        text-align: center;
+    }
 }
 
-.tag_circle {
-    width: 60px;
-    height: 60px;
-    border: none;
-    border-radius: 50%;
-    background-color: white;
-    box-shadow: 0px 0px 3px 2px #0000000d;
+@media screen and (max-width: 768px) {
+    .tag_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        cursor: pointer;
+    }
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; /* 이미지가 원 밖으로 나가지 않도록 설정 */
-}
+    .tag_circle {
+        width: 55px;
+        height: 55px;
+        border: none;
+        border-radius: 50%;
+        background-color: white;
+        box-shadow: 0px 0px 3px 2px #0000000d;
 
-.tag_circle:hover {
-    background-color: #c4e7f1;
-}
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* 이미지가 원 밖으로 나가지 않도록 설정 */
+    }
 
-.tag_circle img {
-    object-fit: contain;
-    background-color: transparent;
-}
+    .tag_circle:hover {
+        background-color: #c4e7f1;
+    }
 
-.tag_text {
-    padding-top: 8px;
-    font-size: 14px;
-    font-weight: 350;
-    text-align: center;
+    .tag_circle img {
+        object-fit: contain;
+        background-color: transparent;
+    }
+
+    .tag_text {
+        padding-top: 8px;
+        font-size: 14px;
+        font-weight: 350;
+        text-align: center;
+    }
 }
