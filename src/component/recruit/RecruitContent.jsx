@@ -51,9 +51,6 @@ const Icon = styled.img`
         margin-right: 5px;
     }
     margin-right: 10px;
-    /* padding-bottom: 15px; */
-    /* margin-bottom: 15px; */
-
     background-color: #ffffff;
 `;
 

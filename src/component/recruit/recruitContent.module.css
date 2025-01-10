@@ -199,6 +199,7 @@
         margin-top: 21px;
         margin-bottom: 100px;
         background-color: #ffffff;
+        white-space: pre-wrap;
     }
 
     .content_list_button {
@@ -208,6 +209,7 @@
         border-radius: 5px;
         background-color: #7bc8e0;
         color: white;
+        font-size: 16px;
     }
 
     .img_div img {
@@ -394,6 +396,7 @@
         margin-top: 21px;
         margin-bottom: 50px;
         background-color: #ffffff;
+        white-space: pre-wrap;
     }
 
     .content_list_button {
