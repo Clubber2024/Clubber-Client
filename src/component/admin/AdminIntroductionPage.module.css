@@ -103,7 +103,7 @@
         margin-top: 1% !important;
         margin-left: 30px !important;
         margin-bottom: 2%;
-
+        white-space: pre-wrap;
         width: 100%;
         text-align: left;
     }
@@ -170,6 +170,7 @@
         font-size: 13px;
         /* white-space: nowrap; */
         word-break: break-all;
+        white-space: pre-wrap;
     }
 
     .detailTab button {
