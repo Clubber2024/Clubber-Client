@@ -68,7 +68,7 @@ export default function Header() {
 
     const getNewToken = async () => {
         try {
-            if (isAdmin) {
+            if (isAdmin === "true") {
                 const res = await customAxios.post(
                     `/v1/admins/refresh`,
                     {},

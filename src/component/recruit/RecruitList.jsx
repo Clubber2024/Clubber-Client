@@ -11,8 +11,8 @@ export default function RecruitList() {
     const [PromoteData, setPromoteData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [pageSize, setPageSize] = useState(5); // 한 페이지에 표시할 항목 수
-    const [sort, setSort] = useState('desc'); // 정렬 기준
+    const [pageSize] = useState(6); // 한 페이지에 표시할 항목 수
+    const [sort] = useState('desc'); // 정렬 기준
 
     const getPromoteData = async (page) => {
         try {
@@ -52,7 +52,7 @@ export default function RecruitList() {
             <div className={styles.title}>모집글</div>
             <div className={styles.recruit_container}>
                 {PromoteData?.map((item) => (
-                    <div
+                    <divco
                         className={styles.recruit_box}
                         key={item.recruitId}
                         onClick={() => onClickRecruit(item.recruitId)}
@@ -62,7 +62,7 @@ export default function RecruitList() {
                             <p className={styles.recruit_text}>{item.content}</p>
                         </div>
                         {item.imageUrl ? <img src={item.imageUrl} className={styles.recruit_logo} /> : ''}
-                    </div>
+                    </divco>
                 ))}
             </div>
 
