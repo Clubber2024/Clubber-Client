@@ -10,14 +10,25 @@
     }
 
     .recruit_container {
-        margin-left: 15%;
-        margin-right: 15%;
-        align-items: center;
+        display: flex;
+        flex-wrap: wrap; /* 자식 요소 줄 바꿈 가능하게 */
+        gap: 20px;
+        justify-content: center;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 8%;
     }
 
     .recruit_box {
+        flex: 0 1 calc(40% - 20px);
+        height: 206px;
+        border-radius: 12px;
+        border: 1px solid #9c9c9c4d;
+        box-shadow: 0px 0px 2px 1px #0000000d;
+        cursor: pointer;
         display: flex;
-        width: 80%;
+        justify-content: space-between;
+        /* width: 80%;
         height: 206px;
         border-radius: 12px;
         border: 1px solid #9c9c9c4d;
@@ -25,7 +36,7 @@
         margin-left: 10%;
         margin-bottom: 20px;
         cursor: pointer;
-        justify-content: space-between;
+        justify-content: space-between; */
     }
     .recruit_logo {
         width: 200px;
@@ -53,7 +64,7 @@
         height: 23px;
         color: #52555b;
         margin-top: 29px;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
     }
 
     .recruit_box .recruit_text {
@@ -62,10 +73,15 @@
         font-weight: 400;
         line-height: 20px;
         text-align: left;
-        height: 67px;
+        height: 100px;
         color: #9c9c9c;
         margin-top: 10px;
-        padding-right: 10px;
+        padding-right: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
     }
 }
 
