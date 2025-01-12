@@ -30,10 +30,20 @@
     .faq_container {
         display: flex;
         flex-direction: row;
-        margin-bottom: 60px;
+        /* flex-wrap: wrap; */
+        margin-bottom: 100px;
         margin-left: 5%;
         margin-right: 5%;
+        padding-top: 5px;
         background: transparent;
+    }
+
+    .faq_item {
+        position: relative;
+        /* width: 90%; */
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* justify-content: center; */
     }
 
     .faq_rectangle {
@@ -43,12 +53,13 @@
         background: #ffffff;
         border: 1px solid #9c9c9c4d;
         box-shadow: 0px 0px 2px 1px #0000000d;
-        margin-top: 36px;
+        margin-top: 100px;
         margin-right: 20px;
         display: block;
         flex-direction: row;
-        margin-bottom: 70px;
+        /* margin-bottom: 70px; */
         cursor: pointer;
+        z-index: 1;
     }
 
     .faq_Q {
@@ -81,10 +92,25 @@
     }
     .faq_answer_div {
         position: absolute;
+        top: 100%;
+        left: 0;
+        max-height: 0;
+        width: 285px;
+        overflow: visible;
         background: #d6d6d633;
-        width: 70%;
-        margin-top: 150px;
         border-bottom: 1.5px solid #d6d6d6cc;
+        /* transition: max-height 0.3s ease-in-out; */
+    }
+    .expanded {
+        max-height: 300px; /* 적절한 높이 설정 */
+        /* padding: 20px; */
+        padding-right: 20px;
+        padding-bottom: 10px;
+    }
+
+    .faq_answer_placeholder {
+        height: 0px;
+        overflow: hidden;
     }
     .faq_answer {
         height: 95px;
@@ -105,7 +131,7 @@
         text-align: left;
         margin-top: 10px;
 
-        margin-left: 28px;
+        margin-left: 25px;
         background: transparent;
     }
 }
@@ -114,6 +140,7 @@
     .qna_div {
         margin-left: 10%;
         margin-right: 5%;
+        margin-bottom: 100px;
     }
 
     .qna_title {
@@ -123,7 +150,14 @@
         line-height: 35.41px;
         text-align: center;
         color: #202123;
-        margin-top: 47px;
+        margin-top: 50px;
+    }
+
+    .faq_item {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .faq_title {
@@ -139,24 +173,25 @@
     .faq_container {
         display: flex;
         flex-direction: row;
-        margin-bottom: 50px;
+        /* margin-bottom: 25px; */
         background-color: transparent;
         margin-left: 5%;
         margin-right: 5%;
+        width: fit-content;
     }
 
     .faq_rectangle {
         width: 285px;
-        height: 110px;
+        height: 90px;
         border-radius: 20px;
         background: #ffffff;
         border: 1px solid #9c9c9c4d;
         box-shadow: 0px 0px 2px 1px #0000000d;
-        margin-top: 36px;
-        margin-right: 20px;
+        margin-top: 20px;
+        /* margin-right: 20px; */
         display: flex;
         flex-direction: row;
-        margin-bottom: 100px;
+        /* margin-bottom: 130px; */
         cursor: pointer;
     }
 
@@ -188,15 +223,23 @@
     }
 
     .faq_answer_div {
-        position: absolute;
+        max-height: 0;
+        width: 285px;
+        overflow: hidden;
         background: #d6d6d633;
-        width: 75%;
-        margin-top: 148px;
         border-bottom: 1.5px solid #d6d6d6cc;
+        transition: max-height 0.3s ease-in-out;
     }
 
+    .expanded {
+        max-height: 500px; /* 최대 높이를 충분히 큰 값으로 설정 */
+    }
+    .faq_answer_placeholder {
+        height: 0px;
+        overflow: hidden;
+    }
     .faq_answer {
-        height: 95px;
+        height: 180px;
         /* margin-bottom: 50px; */
         z-index: 100;
         padding-top: 10px;

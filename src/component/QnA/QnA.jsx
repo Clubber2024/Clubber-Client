@@ -24,9 +24,11 @@ export default function QnA() {
     useEffect(() => {
         // 화면 크기 변경 시마다 호출될 이벤트 핸들러
         const handleResize = () => {
-            if (window.innerWidth <= 865) {
-                setItemRow(2); // 화면 너비가 900px보다 작으면 2개씩 표시
-            } else if (865 < window.innerWidth && window.innerWidth <= 1330) {
+            if (window.innerWidth <= 786) {
+                setItemRow(1);
+            } else if (786 < window.innerWidth && window.innerWidth < 1080) {
+                setItemRow(2);
+            } else if (1080 < window.innerWidth && window.innerWidth <= 1450) {
                 setItemRow(3); // 그 외에는 4개씩 표시
             } else {
                 setItemRow(4);
@@ -47,6 +49,7 @@ export default function QnA() {
             setActiveIndex(null); // 같은 질문 클릭 시 닫기
         } else {
             setActiveIndex(index); // 다른 질문 클릭 시 해당 인덱스로 설정
+            console.log('index', index);
         }
     };
 
@@ -60,28 +63,33 @@ export default function QnA() {
                         const globalIndex = i + index; // 전역 인덱스를 계산합니다.
 
                         return (
-                            <div
-                                key={item.id} // 고유한 key 사용
-                                className={styles.faq_rectangle}
-                                onClick={() => toggleAnswer(globalIndex)} // 각 아이템에 고유한 인덱스를 주기 위해 globalIndex 사용
-                            >
-                                <div className={styles.faq_container}>
-                                    <p className={styles.faq_Q}>Q</p>
-                                    <p className={styles.faq_question}>{item.question}</p>
+                            <div key={item.id} className={styles.faq_item}>
+                                <div
+                                    // key={item.id} // 고유한 key 사용
+                                    className={styles.faq_rectangle}
+                                    onClick={() => toggleAnswer(globalIndex)} // 각 아이템에 고유한 인덱스를 주기 위해 globalIndex 사용
+                                >
+                                    <div className={styles.faq_container}>
+                                        <p className={styles.faq_Q}>Q</p>
+                                        <p className={styles.faq_question}>{item.question}</p>
+                                    </div>
                                 </div>
+                                {activeIndex === globalIndex ? ( // 현재 활성화된 질문에 대한 답변만 표시
+                                    <div
+                                        className={`${styles.faq_answer_div} ${
+                                            activeIndex >= i && activeIndex < i + itemRow ? styles.expanded : ''
+                                        }`}
+                                    >
+                                        <div className={styles.faq_answer}>
+                                            <p className={styles.faq_answer_content}> {faqData[globalIndex].answer}</p>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className={styles.faq_answer_placeholder}>{}</div>
+                                )}
                             </div>
                         );
                     })}
-
-                    {activeIndex !== null &&
-                        activeIndex >= i &&
-                        activeIndex < i + itemRow && ( // 현재 활성화된 질문에 대한 답변만 표시
-                            <div className={styles.faq_answer_div}>
-                                <div className={styles.faq_answer}>
-                                    <p className={styles.faq_answer_content}> {faqData[activeIndex].answer}</p>
-                                </div>
-                            </div>
-                        )}
                 </div>
             );
         }
