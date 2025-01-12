@@ -52,12 +52,12 @@ export default function RecruitList() {
             <div className={styles.title}>모집글</div>
             <div className={styles.recruit_container}>
                 {PromoteData?.map((item) => (
-                    <divco
+                    <div
                         className={styles.recruit_box}
                         key={item.recruitId}
                         onClick={() => onClickRecruit(item.recruitId)}
                     >
-                        <img src={item.imageUrl ? item.imageUrl : ''} className={styles.recruit_logo} />
+                        <img src={item.imageUrl ? item.imageUrl : ''} className={styles.recruit_logo} alt='recruit logo' />
                         <div className={styles.recruit_div}>
                             <p className={styles.recruit_title}>{item.title}</p>
                             <p className={styles.recruit_text}>{item.content}</p>
