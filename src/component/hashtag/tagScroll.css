@@ -6,13 +6,16 @@
     }
 
     .tags_wrapper {
-        padding-left: 5%;
+        padding-left: 3%;
         padding-right: 3%;
         display: flex;
         flex-direction: row;
-        overflow: auto;
+        justify-content: space-between;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        /* padding-left: 0; */
         white-space: no-wrap;
-        justify-content: space-around;
+        /* justify-content: space-around; */
     }
 
     .tags_wrapper::-webkit-scrollbar {
@@ -32,20 +35,25 @@
 
 @media screen and (max-width: 769px) {
     .tagScroll_wrapper {
-        padding: 0% 10%;
+        padding: 0% 14%;
         padding-bottom: 3px;
         width: 100%;
     }
 
     .tags_wrapper {
+        padding-left: 35%;
+        /* padding-right: 0%; */
         display: flex;
         flex-direction: row;
-        overflow: auto;
         white-space: no-wrap;
+        justify-content: space-between;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-left: 0;
     }
 
     .tags_wrapper::-webkit-scrollbar {
-        height: 10px;
+        height: 5px;
     }
 
     .tags_wrapper::-webkit-scrollbar-thumb {

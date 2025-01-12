@@ -67,8 +67,8 @@
 @media screen and (max-width: 769px) {
     .rectangle {
         position: relative;
-        width: 20%;
-        height: 21.6%;
+        width: 162px;
+        height: 192px;
         border-radius: 10px;
         background: #ffffff;
         border: 1px solid #d9d9d9;
@@ -82,11 +82,11 @@
     }
 
     .rectangle p {
-        background: #ffffff;
+        background: transparent;
     }
 
     .image {
-        width: 100%;
+        width: 80%;
         border-radius: 10px 10px 0px 0px;
         background: #ffffff;
         aspect-ratio: 1/1;
@@ -99,6 +99,7 @@
         font-weight: 600;
         text-align: left;
         padding: 0 0 0 3%;
+        border-radius: 10px;
     }
     .content {
         width: 100%;
@@ -112,6 +113,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow-y: auto;
+        border-radius: 10px;
     }
 
     .cover {
