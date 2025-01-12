@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { customAxios } from '../../config/axios-config';
 import './myPage.css';
+import ErrorModal from '../modal/ErrorModal';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function MyPage() {
@@ -8,6 +10,16 @@ export default function MyPage() {
     const isAdmin = localStorage.getItem('isAdmin');
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
+
+    // 에러 모달창
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setModalMessage('');
+        navigate(`/login`);
+    };
 
     // 새 토큰을 발급받는 함수
     const getNewToken = async (retryLogout = false) => {
@@ -43,6 +55,10 @@ export default function MyPage() {
             }
         } catch (error) {
             console.error('토큰 재발급 실패 : ', error);
+
+            setModalMessage(error.response.data.reason);
+            setIsModalOpen(true);
+
             // 토큰 재발급이 실패하면 강제 로그아웃 처리
             localStorage.removeItem('accessToken');
             localStorage.removeItem('refreshToken');
@@ -133,6 +149,7 @@ export default function MyPage() {
                     </>
                 )}
             </div>
+            <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
         </div>
     );
 }
