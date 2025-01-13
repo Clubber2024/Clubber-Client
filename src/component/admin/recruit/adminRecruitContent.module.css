@@ -22,8 +22,9 @@
         text-align: center;
         background-color: #ffffff;
         padding-top: 52px;
-
         border-radius: 15px;
+        padding-left: 8%;
+        padding-right: 8%;
     }
 
     .content_date {
@@ -44,17 +45,17 @@
         flex-direction: row;
         justify-content: flex-end;
         background-color: #ffffff;
-        margin-right: 80px;
+        margin-right: 8%;
     }
 
     .horizontal_line {
         border: 1.5px solid var(--section, #d6d6d6);
-        margin: 0 80px;
+        margin: 0 8%;
     }
 
     .horizontal_line_bottom {
         border: 1.5px solid var(--section, #d6d6d6);
-        margin: 0 80px 95px;
+        margin: 0 8% 95px;
     }
 
     .img_div {
@@ -243,6 +244,8 @@
         background-color: #ffffff;
         padding-top: 25px;
         border-radius: 15px;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 
     .content_date {
