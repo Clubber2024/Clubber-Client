@@ -46,9 +46,9 @@ jobs:
         if: contains(github.ref, 'dev')
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }}
+          host: ${{ secrets.HOST_DEV }}
           username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_KEY_DEV }}
           port: ${{ secrets.SSH_PORT }}
           script: |
             sudo docker rm -f $(docker ps -qa)
@@ -60,7 +60,7 @@ jobs:
         if: contains(github.ref, 'main')
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST_PROD }}
+          host: ${{ secrets.HOST_PROD }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY_PROD }}
           port: ${{ secrets.SSH_PORT }}
