@@ -35,22 +35,42 @@ function BranchCentral() {
 
     const renderDataInRows = (data) => {
         const rows = [];
-        for (let i = 0; i < data.length; i += 4) {
-            const rowItems = data.slice(i, i + 4);
-            rows.push(
-                <div className={styles.container} key={i}>
-                    {rowItems.map((club) => (
-                        <CentralClub
-                            key={club.clubId}
-                            clubId={club.clubId}
-                            imageUrl={club.imageUrl}
-                            clubName={club.clubName}
-                            introduction={club.introduction}
-                            agreeToProvideInfo={club.agreeToProvideInfo}
-                        />
-                    ))}
-                </div>
-            );
+        if (window.innerWidth <= 768) {
+            for (let i = 0; i < data.length; i += 2) {
+                const rowItems = data.slice(i, i + 2);
+                rows.push(
+                    <div className={styles.container} key={i}>
+                        {rowItems.map((club) => (
+                            <CentralClub
+                                key={club.clubId}
+                                clubId={club.clubId}
+                                imageUrl={club.imageUrl}
+                                clubName={club.clubName}
+                                introduction={club.introduction}
+                                agreeToProvideInfo={club.agreeToProvideInfo}
+                            />
+                        ))}
+                    </div>
+                );
+            }
+        } else {
+            for (let i = 0; i < data.length; i += 4) {
+                const rowItems = data.slice(i, i + 4);
+                rows.push(
+                    <div className={styles.container} key={i}>
+                        {rowItems.map((club) => (
+                            <CentralClub
+                                key={club.clubId}
+                                clubId={club.clubId}
+                                imageUrl={club.imageUrl}
+                                clubName={club.clubName}
+                                introduction={club.introduction}
+                                agreeToProvideInfo={club.agreeToProvideInfo}
+                            />
+                        ))}
+                    </div>
+                );
+            }
         }
         return rows;
     };

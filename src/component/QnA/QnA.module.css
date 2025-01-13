@@ -181,9 +181,9 @@
     }
 
     .faq_rectangle {
-        width: 285px;
-        height: 90px;
-        border-radius: 20px;
+        width: 290px;
+        height: 80px;
+        border-radius: 10px;
         background: #ffffff;
         border: 1px solid #9c9c9c4d;
         box-shadow: 0px 0px 2px 1px #0000000d;
@@ -191,8 +191,27 @@
         /* margin-right: 20px; */
         display: flex;
         flex-direction: row;
-        /* margin-bottom: 130px; */
+        margin-bottom: 10px;
         cursor: pointer;
+        &:hover {
+            border: 1px solid var(--section2, #a7a7a7);
+        }
+    }
+
+    .active_faq_rectangle {
+        width: 290px;
+        height: 80px;
+        border-radius: 10px;
+        background: #ffffff;
+        border: 1px solid #9c9c9c4d;
+        box-shadow: 0px 0px 2px 1px #0000000d;
+        margin-top: 20px;
+        /* margin-right: 20px; */
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        cursor: pointer;
+        border: 1px solid var(--section2, #a7a7a7);
     }
 
     .faq_Q {
@@ -203,8 +222,8 @@
         text-align: left;
         color: #202123;
         margin-left: 10px;
-        margin-top: 8px;
-        margin-right: 8px;
+        margin-top: 10px;
+        margin-right: 13px;
         background-color: transparent;
         /* display: contents; */
     }
@@ -224,7 +243,7 @@
 
     .faq_answer_div {
         max-height: 0;
-        width: 285px;
+        width: 290px;
         overflow: hidden;
         background: #d6d6d633;
         border-bottom: 1.5px solid #d6d6d6cc;
@@ -240,10 +259,8 @@
     }
     .faq_answer {
         height: 180px;
-        /* margin-bottom: 50px; */
         z-index: 100;
         padding-top: 10px;
-        /* justify-content: center; */
         width: 100%;
     }
 
