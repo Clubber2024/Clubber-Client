@@ -63,6 +63,7 @@
         width: 124px;
         height: 124px;
         vertical-align: middle;
+        opacity: 50%;
     }
 
     .rectangle_img_culture {
@@ -184,6 +185,7 @@
         width: 80px;
         height: 80px;
         vertical-align: middle;
+        opacity: 50%;
     }
 
     .rectangle_img_culture {
