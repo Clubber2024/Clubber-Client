@@ -37,7 +37,7 @@ export default function AdminRecruitContent() {
     }, []);
 
     const onClickList = () => {
-        navigate('/recruit');
+        navigate('/admin/recruit');
     };
 
     const onClickEditContent = () => {
