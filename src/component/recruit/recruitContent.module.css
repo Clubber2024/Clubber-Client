@@ -75,6 +75,15 @@
         /* width: 40px; */
     }
 
+    .divRow_noStar {
+        display: flex;
+        justify-content: flex-end;
+        background-color: #ffffff;
+        border-radius: 15px;
+        height: 31px;
+        /* width: 40px; */
+    }
+
     .divRow a {
         background-color: #ffffff;
         border-radius: 15px;
@@ -99,7 +108,7 @@
         font-size: 28px;
         font-weight: 400;
         line-height: 40.54px;
-        text-align: center;
+        text-align: left;
         background-color: #ffffff;
         padding-top: 61px;
         border-radius: 15px;
@@ -142,7 +151,7 @@
         text-align: center;
         margin-top: 20px;
         background-color: #ffffff;
-        width: 70%;
+        width: 80%;
         height: fit-content;
         overflow-x: scroll;
         display: flex;
@@ -195,7 +204,7 @@
         font-size: 16px;
         font-weight: 400;
         line-height: 23.17px;
-        text-align: center;
+        text-align: left;
         color: var(--Black, #202123);
         margin-top: 21px;
         margin-bottom: 100px;
@@ -299,7 +308,7 @@
         font-size: 21px;
         font-weight: 400;
         line-height: 40.54px;
-        text-align: center;
+        text-align: left;
         background-color: #ffffff;
         padding-top: 35px;
         border-radius: 15px;
@@ -341,7 +350,7 @@
         text-align: center;
         /* margin-top: 10px; */
         background-color: #ffffff;
-        width: 70%;
+        width: 80%;
         height: fit-content;
         overflow-x: scroll;
         display: flex;
@@ -394,7 +403,7 @@
         font-size: 13px;
         font-weight: 400;
         line-height: 23.17px;
-        text-align: center;
+        text-align: left;
         color: var(--Black, #202123);
         margin-top: 21px;
         margin-bottom: 50px;
@@ -475,6 +484,14 @@
         background-color: #ffffff;
         border-radius: 15px;
         height: 30px;
+    }
+
+    .divRow_noStar {
+        display: flex;
+        justify-content: flex-end;
+        background-color: #ffffff;
+        border-radius: 15px;
+        height: 31px;
     }
 
     .divRow a {
