@@ -46,7 +46,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        color: #52555b;
+        /* color: #52555b; */
         font-size: 11px;
         font-weight: 350;
         padding-right: 20px;
@@ -61,6 +61,10 @@
         display: flex;
         flex-direction: row;
         background-color: #ffffff;
+        font-size: 11px;
+        font-weight: 350;
+        color: black;
+        font-family: Noto Sans KR;
     }
 
     .div_promote div {
@@ -85,6 +89,8 @@
         margin-left: 5px;
         background-color: #ffffff;
         border: #ffffff;
+        font-size: 11px;
+        font-weight: 350;
     }
 }
 
@@ -95,7 +101,7 @@
     }
 
     .promote_index {
-        width: 120px;
+        width: 100px;
         position: absolute;
         z-index: 1;
         top: 3px;
@@ -108,6 +114,7 @@
         font-weight: 500;
         text-align: center;
         padding: 10px 20px;
+        font-family: Noto Sans KR;
     }
 
     .promote_container {
@@ -135,9 +142,8 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        color: #52555b;
-        font-size: 11px;
-        font-weight: 350;
+        /* font-size: 11px;
+        font-weight: 350; */
         cursor: pointer;
     }
 
@@ -148,6 +154,10 @@
     .div_promote_content {
         display: flex;
         flex-direction: row;
+        font-size: 11px;
+        font-weight: 350;
+        font-family: Noto Sans KR;
+        color: black;
     }
 
     .div_promote div {
