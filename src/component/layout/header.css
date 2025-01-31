@@ -31,6 +31,7 @@
         padding-left: 60px;
         padding-right: 10px;
         margin-top: 0;
+        background-color: #ffffff;
     }
 
     .search_icon {
@@ -54,6 +55,7 @@
     .login_text {
         font-size: 12px;
         font-weight: 500;
+        font-family: Noto Sans KR;
     }
 
     .menu_container {
@@ -334,6 +336,7 @@
         font-size: 10px;
         font-weight: 500;
         padding-top: 3px;
+        font-family: Noto Sans KR;
     }
 
     .menu_container {
