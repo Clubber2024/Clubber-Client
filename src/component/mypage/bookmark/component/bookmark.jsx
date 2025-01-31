@@ -41,6 +41,7 @@ function BookMark() {
     const [favoriteIds, setFavoriteIds] = useState([]);
     const [page, setPage] = useState(1);
     const [hasNextPage, setHasNextPage] = useState(true);
+    const [fix, setFix] = useState(0);
 
     const accessToken = localStorage.getItem('accessToken');
 
@@ -56,13 +57,17 @@ function BookMark() {
                 const data = res.data.data;
 
                 console.log('content: ', data);
-                const clubIds = data.content.map((item) => item.clubId);
+
                 const favoriteClub = data.content.map((item) => item);
 
-                console.log('CC:', clubIds);
-                console.log('clubs', favoriteClub);
-                setClubID((prevID) => [...prevID, ...clubIds]);
-                setClubs((prevData) => [...prevData, ...favoriteClub]);
+                //이전 동아리 값과 중복 제거 후 상태 저장
+                setClubs((prevData) => {
+                    const mergedData = [...prevData, ...favoriteClub];
+                    return mergedData.filter(
+                        (club, index, self) => index === self.findIndex((c) => c.clubId === club.clubId)
+                    );
+                });
+
                 setHasNextPage(data.hasNextPage);
             }
         } catch (error) {
@@ -74,7 +79,7 @@ function BookMark() {
 
     useEffect(() => {
         getFavorites(page);
-    }, [page]);
+    }, [page, favoriteIds]);
 
     const loadMoreBookmarks = () => {
         if (hasNextPage) {
@@ -92,18 +97,13 @@ function BookMark() {
                     },
                 });
                 if (res.status == 200) {
-                    //console.log('delete res:', res);
-
                     setClubs((prevClubs) => prevClubs.filter((club) => club.clubId !== clubId));
                     setFavoriteIds((prevIds) => prevIds.filter((id) => id !== favoriteId)); // 배열에서 해당 ID 제거
                 } else {
-                    //console.error('Failed to delete favorite:', res);
                     return; // 실패 시 추가 요청을 하지 않음
                 }
             }
-        } catch (error) {
-            //console.error('Favorite error:', error); // 에러 로그
-        }
+        } catch (error) {}
     };
 
     return (
@@ -112,7 +112,7 @@ function BookMark() {
 
             {clubs.map((club) => (
                 <div key={club.clubId} className={styles.rectangle}>
-                    <Club src={club.imageUrl} className={styles.bookmark_ClubLogo} />
+                    <Club src={club?.imageUrl} className={styles.bookmark_ClubLogo} />
                     <FavoriteClubs id={club.clubId} name={club.clubName} type={club.clubType} />
                     <div className={styles.divRow}>
                         <Star src={StarImg} onClick={() => handleFavorite(club.clubId, club.favoriteId)} />

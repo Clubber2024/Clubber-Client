@@ -53,6 +53,7 @@
     .star_icon {
         width: 22px;
         height: 21px;
+        margin-top: 6px;
         margin-left: 7px;
         background-color: transparent;
         /*transition: filter 0.3s ease;*/
@@ -239,6 +240,7 @@
     .star_icon {
         width: 23px;
         height: 23px;
+        margin-top: 5px;
         margin-left: 2px;
         padding: 2px;
         background-color: transparent;
