@@ -21,7 +21,7 @@
         height: 53px;
         /* padding: 12px 21px; */
         border-radius: 20px;
-        background-color: #fff;
+        background-color: #ffffff;
     }
 
     .input_header {
@@ -72,6 +72,7 @@
         font-weight: 500;
         padding-right: 45px;
         color: #52555b;
+        font-family: Noto Sans KR;
     }
 
     .tab_text_highlight_active {
@@ -82,6 +83,7 @@
         background-color: transparent;
         cursor: pointer;
         color: #52555b;
+        font-family: Noto Sans KR;
     }
 
     .tab_text_central {
@@ -89,6 +91,7 @@
         font-weight: 500;
         color: #52555b;
         padding-right: 50px;
+        font-family: Noto Sans KR;
     }
 
     .tab_text_central_active {
@@ -96,6 +99,7 @@
         font-weight: 700;
         color: #52555b;
         padding-right: 50px;
+        font-family: Noto Sans KR;
     }
 
     .tab_text_small {
@@ -103,6 +107,7 @@
         font-weight: 500;
         color: #52555b;
         padding-right: 7px;
+        font-family: Noto Sans KR;
     }
 
     .tab_text_small_active {
@@ -110,6 +115,7 @@
         font-weight: 600;
         color: #52555b;
         padding-right: 7px;
+        font-family: Noto Sans KR;
     }
 
     .small_club_container {
@@ -119,6 +125,7 @@
         border: 0;
         background-color: transparent;
         cursor: pointer;
+        font-family: Noto Sans KR;
     }
 
     .vertical_line {
@@ -284,16 +291,15 @@
         flex-direction: row;
         width: 53%;
         height: 53px;
-
-        /* padding: 12px 21px; */
+        background-color: #ffffff;
     }
 
     .input_header {
         width: 100%;
         border: 3px solid #7bc8e0;
         border-radius: 15px;
-        padding-left: 50px;
-        padding-right: 10px;
+        padding-left: 38px;
+        padding-right: 0px;
         margin-top: 5px;
         background-color: #ffffff;
         font-size: 12px;
@@ -304,8 +310,8 @@
         position: absolute;
         width: 25px;
         /* height: 28px; */
-        top: 15px;
-        left: 21px;
+        top: 16px;
+        left: 12px;
         /* margin: 0px; */
     }
 
@@ -346,7 +352,7 @@
         width: 80px;
         font-size: 13px;
         font-weight: 600;
-
+        font-family: Noto Sans KR;
         border: 0;
         background-color: transparent;
         cursor: pointer;
@@ -358,7 +364,7 @@
         width: 90px;
         font-size: 14px;
         font-weight: 700;
-
+        font-family: Noto Sans KR;
         border: 0;
         background-color: transparent;
         cursor: pointer;
@@ -370,6 +376,7 @@
         font-weight: 600;
         color: #52555b;
         padding-right: 15px;
+        font-family: Noto Sans KR;
     }
 
     .tab_text_central_active {
@@ -377,6 +384,7 @@
         font-weight: 800;
         color: #52555b;
         padding-right: 15px;
+        font-family: Noto Sans KR;
     }
 
     .tab_text_small {
@@ -384,6 +392,7 @@
         font-weight: 600;
         color: #52555b;
         padding-right: 7px;
+        font-family: Noto Sans KR;
     }
 
     .tab_text_small_active {
@@ -391,6 +400,7 @@
         font-weight: 800;
         color: #52555b;
         padding-right: 7px;
+        font-family: Noto Sans KR;
     }
 
     .small_club_container {
@@ -400,6 +410,7 @@
         border: 0;
         background-color: transparent;
         cursor: pointer;
+        font-family: Noto Sans KR;
     }
 
     .vertical_line {

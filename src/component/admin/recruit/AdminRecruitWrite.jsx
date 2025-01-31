@@ -201,7 +201,7 @@ export default function AdminRecruitWrite() {
     //
 
     const handleSubmitButton = async () => {
-        if (title === '') {
+        if (title === '' || !title.trim()) {
             setModalMessage('제목을 입력하세요.');
             setIsErrorModalOpen(true);
             return;
@@ -209,7 +209,7 @@ export default function AdminRecruitWrite() {
             setModalMessage('제목은 최대 100자까지 입력할 수 있습니다.');
             setIsErrorModalOpen(true);
             return;
-        } else if (content == '') {
+        } else if (content == '' || !content.trim()) {
             setModalMessage('모집글을 입력하세요.');
             setIsErrorModalOpen(true);
             return;

@@ -75,6 +75,15 @@
         /* width: 40px; */
     }
 
+    .divRow_noStar {
+        display: flex;
+        justify-content: flex-end;
+        background-color: #ffffff;
+        border-radius: 15px;
+        height: 31px;
+        /* width: 40px; */
+    }
+
     .divRow a {
         background-color: #ffffff;
         border-radius: 15px;
@@ -99,11 +108,12 @@
         font-size: 28px;
         font-weight: 400;
         line-height: 40.54px;
-        text-align: center;
+        text-align: left;
         background-color: #ffffff;
         padding-top: 61px;
-
         border-radius: 15px;
+        padding-left: 8%;
+        padding-right: 8%;
     }
 
     .content_date {
@@ -124,24 +134,24 @@
         flex-direction: row;
         justify-content: flex-end;
         background-color: #ffffff;
-        margin-right: 80px;
+        margin-right: 8%;
     }
 
     .horizontal_line {
         border: 1.5px solid var(--section, #d6d6d6);
-        margin: 0 80px;
+        margin: 0 8%;
     }
 
     .horizontal_line_bottom {
         border: 1.5px solid var(--section, #d6d6d6);
-        margin: 0 80px 95px;
+        margin: 0 8% 95px;
     }
 
     .img_div {
         text-align: center;
         margin-top: 20px;
         background-color: #ffffff;
-        width: 70%;
+        width: 80%;
         height: fit-content;
         overflow-x: scroll;
         display: flex;
@@ -194,7 +204,7 @@
         font-size: 16px;
         font-weight: 400;
         line-height: 23.17px;
-        text-align: center;
+        text-align: left;
         color: var(--Black, #202123);
         margin-top: 21px;
         margin-bottom: 100px;
@@ -298,10 +308,12 @@
         font-size: 21px;
         font-weight: 400;
         line-height: 40.54px;
-        text-align: center;
+        text-align: left;
         background-color: #ffffff;
-        padding-top: 25px;
+        padding-top: 35px;
         border-radius: 15px;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 
     .content_date {
@@ -338,7 +350,7 @@
         text-align: center;
         /* margin-top: 10px; */
         background-color: #ffffff;
-        width: 70%;
+        width: 80%;
         height: fit-content;
         overflow-x: scroll;
         display: flex;
@@ -391,7 +403,7 @@
         font-size: 13px;
         font-weight: 400;
         line-height: 23.17px;
-        text-align: center;
+        text-align: left;
         color: var(--Black, #202123);
         margin-top: 21px;
         margin-bottom: 50px;
@@ -472,6 +484,14 @@
         background-color: #ffffff;
         border-radius: 15px;
         height: 30px;
+    }
+
+    .divRow_noStar {
+        display: flex;
+        justify-content: flex-end;
+        background-color: #ffffff;
+        border-radius: 15px;
+        height: 31px;
     }
 
     .divRow a {

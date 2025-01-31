@@ -66,7 +66,9 @@ export default function QnA() {
                             <div key={item.id} className={styles.faq_item}>
                                 <div
                                     // key={item.id} // 고유한 key 사용
-                                    className={styles.faq_rectangle}
+                                    className={`${styles.faq_rectangle} ${
+                                        activeIndex === globalIndex ? styles.active_faq_rectangle : ''
+                                    }`}
                                     onClick={() => toggleAnswer(globalIndex)} // 각 아이템에 고유한 인덱스를 주기 위해 globalIndex 사용
                                 >
                                     <div className={styles.faq_container}>

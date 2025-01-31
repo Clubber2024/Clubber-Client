@@ -148,8 +148,8 @@
         display: flex;
         flex-direction: column;
         align-items: left;
-        width: 70%;
-        margin: 2.5% 0 15% 0;
+        width: 65%;
+        margin: 2.5% 2.5% 15% 2.5%;
     }
 
     .detail_body h3 {
@@ -161,7 +161,7 @@
 
     .detail_body p {
         margin-top: 1%;
-        margin-left: 3%;
+        margin-left: 25px;
         width: 95%;
         text-align: left;
         white-space: pre-wrap;

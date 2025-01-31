@@ -23,6 +23,10 @@ export default function ErrorModal({ isOpen, message, onClose }) {
             justifyContent: 'center',
             alignItems: 'center',
             textAlign: 'center',
+            fontFamily: 'Noto Sans KR',
+            fontSize: '18px',
+            fontWeight: '500',
+
             // position: 'absolute',
             // top: '50%',
             // left: '50%',
