@@ -52,7 +52,6 @@ export default function Header() {
             setUserEmail(res.data.data.email);
         } catch (error) {
             if (error.response && error.response.status === 401) {
-                //console.log(error.response.data.reason);
                 getNewToken(false);
             } else {
                 console.error('Error fetching user data : ', error);
@@ -107,6 +106,7 @@ export default function Header() {
         }
     };
 
+    // api 요청 추가 ?
     const onClickMy = () => {
         if (!accessToken) {
             navigate('/login');

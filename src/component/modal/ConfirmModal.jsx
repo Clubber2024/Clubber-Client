@@ -1,6 +1,5 @@
 import ReactModal from 'react-modal';
 import './modal.css';
-import zIndex from '@mui/material/styles/zIndex';
 
 export default function ConfirmModal({ isOpen, message, onClickOk, onClose }) {
     const customStyles = {
