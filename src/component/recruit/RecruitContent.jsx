@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import StarImg from '../mypage/bookmark/bookmark_image/starYellow.png';
 import WhiteStarImg from '../mypage/bookmark/bookmark_image/star.png';
 import BookMarkIcon from '../mypage/bookmark/bookmark_image/bookmarkIcon.png';
-
+import ErrorModal from '../modal/ErrorModal';
 import { LinkItem } from '../branch/BranchCentral';
 
 const Club = styled.img`
@@ -61,6 +61,7 @@ export default function RecruitContent() {
     const [contentData, setContentData] = useState();
     //즐겨찾기 기능능
     const isAdmin = localStorage.getItem('isAdmin');
+
     const accessToken = localStorage.getItem('accessToken');
     const [isLoading, setIsLoading] = useState(false);
     const [favoriteId, setFavoriteId] = useState(null);
@@ -77,6 +78,10 @@ export default function RecruitContent() {
     // 모달창
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+
+    //즐겨찾기 모달창
+    const [isBookmarkModalOpen, setIsBookmarkModalOpen] = useState(false);
+    const [bookmarkModalMessage, setBookmarkModalMessage] = useState('');
 
     const getRecruitData = async () => {
         try {
@@ -115,15 +120,9 @@ export default function RecruitContent() {
             if (res.data.success) {
                 setIsLoading(false);
                 const data = res.data.data.userFavorites;
-
-                console.log('content: ', data);
-                // const data = response.data.data.userFavorites;
-                //console.log('Data: ', data);
                 const clubIds = data.map((item) => item.favoriteClub['clubId']);
-                //console.log(clubIds);
                 const isFavoriteClub = clubIds.some((id) => id === clubId);
                 const favorite = data.find((item) => item.favoriteClub['clubId'] === clubId);
-                //console.log('isfavoriteClub: ', isFavoriteClub);
                 setIsFavorite(isFavoriteClub);
                 if (favorite) {
                     setFavoriteId(favorite.favoriteId);
@@ -131,10 +130,8 @@ export default function RecruitContent() {
                     setFavoriteId(null);
                 }
             } else {
-                //console.error('Failed to fetch bookmark data');
             }
         } catch (error) {
-            // setError(error);
         } finally {
             setIsLoading(false);
         }
@@ -153,6 +150,7 @@ export default function RecruitContent() {
         if (isAdmin) return;
         try {
             if (!isAdmin && accessToken) {
+                //즐겨찾기 해제
                 if (isFavorite) {
                     const res = await customAxios.delete(`/v1/clubs/${clubId}/favorites/${favoriteId}`, {
                         headers: {
@@ -161,15 +159,15 @@ export default function RecruitContent() {
                         },
                     });
                     if (res.status === 200) {
-                        //console.log('delete res:', res);
                         setIsFavorite(false);
                         setFavoriteId(null); //즐겨찾기 ID 초기화
+                        setBookmarkModalMessage('동아리가 즐겨찾기에서 해제되었습니다.');
+                        setIsBookmarkModalOpen(true);
                     } else {
-                        //console.error('Failed to delete favorite:', res);
                         return; // 실패 시 추가 요청을 하지 않음
                     }
                 }
-
+                //즐겨찾기 추가
                 if (!isFavorite) {
                     const address = await customAxios.post(`/v1/clubs/${clubId}/favorites`, favoriteData, {
                         headers: {
@@ -178,23 +176,16 @@ export default function RecruitContent() {
                         },
                     });
                     if (address.data.success) {
-                        //console.log('add res : ', addres);
                         setIsFavorite(true);
                         setFavoriteId(address.data.data.favoriteId);
+                        setBookmarkModalMessage('동아리가 즐겨찾기에 추가되었습니다.');
+                        setIsBookmarkModalOpen(true);
                     } else {
-                        //console.error('Failed to add favorite:', addres);
                     }
                 }
-            } else if (isAdmin && accessToken) {
-                setModalMessage('관리자는 즐겨찾기를 이용할 수 없습니다.');
-                setIsModalOpen(true);
-            } else {
-                setModalMessage('즐겨찾기 추가는 로그인 이후 가능합니다.');
-                setIsModalOpen(true);
             }
             getFavorites(); // 각 요청 후 즐겨찾기 리스트 업데이트
         } catch (error) {
-            //console.error('Favorite error:', error); // 에러 로그
             getFavorites(); //에러 발생해도 업데이트
         }
     };
@@ -219,6 +210,11 @@ export default function RecruitContent() {
         );
     };
 
+    //즐겨찾기 모달창
+    const closeBookmarkModal = () => {
+        setIsBookmarkModalOpen(false);
+    };
+
     return (
         <>
             <div className={styles.recruit_div}>
@@ -228,15 +224,23 @@ export default function RecruitContent() {
                         <p className={styles.clubName}>{clubName}</p>
                         <p className={styles.clubType}>{clubType}</p>
 
-                        <div className={styles.divRow}>
-                            <Star
-                                src={isFavorite ? StarImg : WhiteStarImg}
-                                onClick={() => handleFavorite(clubId, favoriteId)}
-                            />
-                            <LinkItem to={`/clubs/${clubId}`}>
-                                <Icon src={BookMarkIcon} className={styles.bookmark_icon} />
-                            </LinkItem>
-                        </div>
+                        {!isAdmin && accessToken ? (
+                            <div className={styles.divRow}>
+                                <Star
+                                    src={isFavorite ? StarImg : WhiteStarImg}
+                                    onClick={() => handleFavorite(clubId, favoriteId)}
+                                />
+                                <LinkItem to={`/clubs/${clubId}`}>
+                                    <Icon src={BookMarkIcon} className={styles.bookmark_icon} />
+                                </LinkItem>
+                            </div>
+                        ) : (
+                            <div className={styles.divRow_noStar}>
+                                <LinkItem to={`/clubs/${clubId}`}>
+                                    <Icon src={BookMarkIcon} className={styles.bookmark_icon} />
+                                </LinkItem>
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -290,6 +294,9 @@ export default function RecruitContent() {
                         &#10095;
                     </span>
                 </div>
+            )}
+            {isBookmarkModalOpen && (
+                <ErrorModal isOpen={isBookmarkModalOpen} message={bookmarkModalMessage} onClose={closeBookmarkModal} />
             )}
         </>
     );

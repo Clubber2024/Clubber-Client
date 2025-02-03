@@ -18,6 +18,7 @@
         font-weight: 500;
         text-align: center;
         padding: 10px 20px;
+        font-family: Noto Sans KR;
     }
 
     .notice_index:hover {
@@ -32,14 +33,10 @@
         top: 35px;
         left: 0px;
         width: 75%;
-        /* height: 215px; */
-
+        font-family: Noto Sans KR;
         border-radius: 13px;
         margin-right: 9px;
         text-align: center;
-        /* font-family: Noto Sans KR;
-	font-size: 18px;
-	font-weight: 500; */
         line-height: 26px;
         box-shadow: 0px 0px 3px 1px #00000033;
         padding: 15px 25px;
@@ -57,6 +54,7 @@
         padding-right: 25px;
         background-color: #ffffff;
         border: #ffffff;
+        font-family: Noto Sans KR;
     }
 
     .notice_title {
@@ -68,6 +66,7 @@
         color: black;
         background-color: #ffffff;
         border: #ffffff;
+        font-family: Noto Sans KR;
     }
 
     .notice_title:hover {
@@ -85,6 +84,7 @@
         margin-left: 5px;
         background-color: #ffffff;
         border: #ffffff;
+        font-family: Noto Sans KR;
     }
 }
 
@@ -108,6 +108,7 @@
         font-weight: 500;
         text-align: center;
         padding: 10px 20px;
+        font-family: Noto Sans KR;
     }
 
     .notice_container {
@@ -116,33 +117,19 @@
         z-index: 2;
         left: 0px;
         width: 80%;
-        /* height: 215px; */
         background-color: #ffffff;
         border: #ffffff;
         border-radius: 13px;
         margin-right: 9px;
         text-align: center;
-        /* font-family: Noto Sans KR;
-		font-size: 18px;
-		font-weight: 500; */
+        font-family: Noto Sans KR;
         line-height: 26px;
         box-shadow: 0px 0px 3px 1px #00000033;
         padding: 15px 25px;
     }
 
-    /* .img_notice {
-		width: 5px;
-		height: 5px;
-		color: black;
-		margin-right: 10px;
-		margin-left: 10px;
-		margin-top: 12px;
-		margin-bottom: 12px;
-		vertical-align: middle;
-	} */
     .div_notice {
-        /* margin-top: 9px;
-		align-items: center; */
+        font-family: Noto Sans KR;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -161,6 +148,7 @@
         white-space: nowrap;
         background-color: #ffffff;
         border: #ffffff;
+        font-family: Noto Sans KR;
     }
 
     .notice_title:hover {
@@ -179,5 +167,6 @@
         margin-right: 25px;
         background-color: #ffffff;
         border: #ffffff;
+        font-family: Noto Sans KR;
     }
 }

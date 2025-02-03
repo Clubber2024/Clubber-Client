@@ -67,7 +67,7 @@ export default function Header() {
 
     const getNewToken = async () => {
         try {
-            if (isAdmin === "true" || isAdmin) {
+            if (isAdmin === 'true' || isAdmin) {
                 const res = await customAxios.post(
                     `/v1/admins/refresh`,
                     {},
@@ -136,7 +136,9 @@ export default function Header() {
     };
 
     const enterKeyDown = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && event.target.value.trim() === '') {
+            event.preventDefault();
+        } else if (event.key === 'Enter' && event.target.value.trim() !== '') {
             handleSearch();
         }
     };

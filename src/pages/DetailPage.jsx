@@ -31,6 +31,10 @@ export default function ClubsPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 
+    //즐겨찾기 모달창
+    const [isBookmarkModalOpen, setIsBookmarkModalOpen] = useState(false);
+    const [bookmarkMessage, setBookmarkMessage] = useState('');
+
     const getDetailData = async () => {
         try {
             //console.log(intClubId);
@@ -133,6 +137,8 @@ export default function ClubsPage() {
                         //console.log('delete res:', res);
                         setIsFavorite(false);
                         setFavoriteId(null); //즐겨찾기 ID 초기화
+                        setBookmarkMessage('동아리가 즐겨찾기에서 해제되었습니다.');
+                        setIsBookmarkModalOpen(true);
                     } else {
                         //console.error('Failed to delete favorite:', res);
                         return; // 실패 시 추가 요청을 하지 않음
@@ -150,6 +156,8 @@ export default function ClubsPage() {
                         //console.log('add res : ', addres);
                         setIsFavorite(true);
                         setFavoriteId(address.data.data.favoriteId);
+                        setBookmarkMessage('동아리가 즐겨찾기에 추가되었습니다.');
+                        setIsBookmarkModalOpen(true);
                     } else {
                         //console.error('Failed to add favorite:', addres);
                     }
@@ -176,6 +184,12 @@ export default function ClubsPage() {
 
     const OnClickRecruitBtn = () => {
         navigate(`/recruit/club/${clubId}`, { state: { clubId: clubId } });
+    };
+
+    //즐겨찾기 모달
+    const closeBookmarkModal = () => {
+        setIsBookmarkModalOpen(false);
+        setModalMessage('');
     };
 
     return (
@@ -243,6 +257,9 @@ export default function ClubsPage() {
                 />
             )}
             <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
+            {isBookmarkModalOpen && (
+                <ErrorModal isOpen={isBookmarkModalOpen} message={bookmarkMessage} onClose={closeBookmarkModal} />
+            )}
         </div>
     );
 }
