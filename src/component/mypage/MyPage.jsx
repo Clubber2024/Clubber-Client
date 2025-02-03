@@ -53,6 +53,8 @@ export default function MyPage() {
             if (retryLogout) {
                 handleLogout();
             }
+
+            return accessToken;
         } catch (error) {
             console.error('토큰 재발급 실패 : ', error);
 
@@ -60,10 +62,7 @@ export default function MyPage() {
             setIsModalOpen(true);
 
             // 토큰 재발급이 실패하면 강제 로그아웃 처리
-            localStorage.removeItem('accessToken');
-            localStorage.removeItem('refreshToken');
-            localStorage.removeItem('adminId');
-            localStorage.removeItem('isAdmin');
+            handleLogout();
             navigate('/login');
         }
     };
@@ -89,9 +88,10 @@ export default function MyPage() {
             console.log(res);
 
             // 로컬 스토리지에서 사용자 정보 삭제
-            localStorage.removeItem('accessToken');
-            localStorage.removeItem('refreshToken');
-            localStorage.removeItem('isAdmin');
+            // localStorage.removeItem('accessToken');
+            // localStorage.removeItem('refreshToken');
+            // localStorage.removeItem('isAdmin');
+            localStorage.clear();
 
             // 로그아웃 후 메인 페이지로 이동
             navigate('/');

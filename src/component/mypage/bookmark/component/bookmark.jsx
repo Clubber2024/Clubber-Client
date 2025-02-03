@@ -6,6 +6,7 @@ import { customAxios } from '../../../../config/axios-config';
 import StarImg from '../bookmark_image/starYellow.png';
 import BookMarkIcon from '../bookmark_image/bookmarkIcon.png';
 import { LinkItem } from '../../../branch/BranchCentral';
+import ConfirmModal from '../../../modal/ConfirmModal';
 
 const Club = styled.img`
     width: 100px;
@@ -42,7 +43,20 @@ function BookMark() {
     const [page, setPage] = useState(1);
     const [hasNextPage, setHasNextPage] = useState(true);
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+
+    // 선택된 즐겨찾기
+    const [selectedClubId, setSelectedClubId] = useState(null);
+    const [selectedFavoriteId, setSelectedFavoriteId] = useState(null);
+    const [fix, setFix] = useState(0);
+
     const accessToken = localStorage.getItem('accessToken');
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setModalMessage("");
+    };
 
     const getFavorites = async () => {
         try {
@@ -56,13 +70,17 @@ function BookMark() {
                 const data = res.data.data;
 
                 console.log('content: ', data);
-                const clubIds = data.content.map((item) => item.clubId);
+
                 const favoriteClub = data.content.map((item) => item);
 
-                console.log('CC:', clubIds);
-                console.log('clubs', favoriteClub);
-                setClubID((prevID) => [...prevID, ...clubIds]);
-                setClubs((prevData) => [...prevData, ...favoriteClub]);
+                //이전 동아리 값과 중복 제거 후 상태 저장
+                setClubs((prevData) => {
+                    const mergedData = [...prevData, ...favoriteClub];
+                    return mergedData.filter(
+                        (club, index, self) => index === self.findIndex((c) => c.clubId === club.clubId)
+                    );
+                });
+
                 setHasNextPage(data.hasNextPage);
             }
         } catch (error) {
@@ -74,7 +92,7 @@ function BookMark() {
 
     useEffect(() => {
         getFavorites(page);
-    }, [page]);
+    }, [page, favoriteIds]);
 
     const loadMoreBookmarks = () => {
         if (hasNextPage) {
@@ -82,28 +100,34 @@ function BookMark() {
         }
     };
 
-    const handleFavorite = async (clubId, favoriteId) => {
-        try {
-            {
-                const res = await customAxios.delete(`/v1/clubs/${clubId}/favorites/${favoriteId}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                });
-                if (res.status == 200) {
-                    //console.log('delete res:', res);
+    const onClickStar = (clubId, favoriteId) => {
+        setModalMessage("즐겨찾기를 해제하시겠습니까?");
+        setSelectedClubId(clubId);
+        setSelectedFavoriteId(favoriteId);
+        setIsModalOpen(true);
+    }
 
-                    setClubs((prevClubs) => prevClubs.filter((club) => club.clubId !== clubId));
-                    setFavoriteIds((prevIds) => prevIds.filter((id) => id !== favoriteId)); // 배열에서 해당 ID 제거
-                } else {
-                    //console.error('Failed to delete favorite:', res);
-                    return; // 실패 시 추가 요청을 하지 않음
-                }
+    const handleFavorite = async () => {
+        try {
+            const res = await customAxios.delete(`/v1/clubs/${selectedClubId}/favorites/${selectedFavoriteId}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+            if (res.status === 200) {
+                //console.log('delete res:', res);
+                setClubs((prevClubs) => prevClubs.filter((club) => club.clubId !== selectedClubId));
+                setFavoriteIds((prevIds) => prevIds.filter((id) => id !== selectedFavoriteId)); // 배열에서 해당 ID 제거
+            } else {
+                //console.error('Failed to delete favorite:', res);
+                return; // 실패 시 추가 요청을 하지 않음
             }
         } catch (error) {
-            //console.error('Favorite error:', error); // 에러 로그
+            console.error('Favorite error:', error);
         }
+        setIsModalOpen(false);
+        setModalMessage("");
     };
 
     return (
@@ -112,10 +136,10 @@ function BookMark() {
 
             {clubs.map((club) => (
                 <div key={club.clubId} className={styles.rectangle}>
-                    <Club src={club.imageUrl} className={styles.bookmark_ClubLogo} />
+                    <Club src={club?.imageUrl} className={styles.bookmark_ClubLogo} />
                     <FavoriteClubs id={club.clubId} name={club.clubName} type={club.clubType} />
                     <div className={styles.divRow}>
-                        <Star src={StarImg} onClick={() => handleFavorite(club.clubId, club.favoriteId)} />
+                        <Star src={StarImg} onClick={() => onClickStar(club.clubId, club.favoriteId)} />
                         <LinkItem to={`/clubs/${club.clubId}`}>
                             <Icon src={BookMarkIcon} className={styles.bookmark_icon} />
                         </LinkItem>
@@ -130,6 +154,7 @@ function BookMark() {
                     </button>
                 </div>
             )}
+            <ConfirmModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} onClickOk={handleFavorite}/>
         </div>
     );
 }

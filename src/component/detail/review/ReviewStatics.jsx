@@ -21,7 +21,6 @@ export default function ReviewStatics({ clubId }) {
             try {
                 const res = await customAxios.get(`/v1/clubs/${clubId}/reviews/keyword-stats`);
                 if (res.data.success) {
-                    //console.log(res.data.data);
                     const reviews = res.data.data.keywordStats;
 
                     const sortedReviews = Object.entries(reviews)
@@ -42,14 +41,14 @@ export default function ReviewStatics({ clubId }) {
 
     const sortedReviews = Object.entries(reviews);
     console.log(sortedReviews);
-    const reviewsWithKoreanLabels = sortedReviews.map(([text, count]) => [labels[text], count]);
-    console.log(reviewsWithKoreanLabels);
 
     const PercentageBar = ({ text, count, total }) => {
         const percentage = (count / total) * 100;
+        const barColor = percentage === 0 ? "lightgray" : `rgba(123, 200, 224, ${Math.min(0.3 + count / total, 1)})`;
+
         return (
             <div className="bar-container">
-                <div className="bar" style={{ width: `${percentage}%` }}>
+                <div className="bar" style={{ width: `${percentage}%`, backgroundColor: barColor }}>
                     <span className="bar_text">{text}</span>
                     <p className="bar_count">{count}</p>
                 </div>
@@ -64,8 +63,8 @@ export default function ReviewStatics({ clubId }) {
         console.log('data: ', data);
         return (
             <div className="review-stats">
-                {data.map((item) => (
-                    <PercentageBar key={item[0]} text={item[0]} count={item[1]} total={total} />
+                {data.map(([text, count]) => (
+                    <PercentageBar key={text} text={text} count={count} total={total} />
                 ))}
             </div>
         );
@@ -73,7 +72,7 @@ export default function ReviewStatics({ clubId }) {
 
     return (
         <>
-            <ReviewStats data={reviewsWithKoreanLabels} />
+            <ReviewStats data={sortedReviews} />
         </>
     );
 }
