@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
 import { customAxios } from '../../config/axios-config';
 import { LinkItem } from '../branch/BranchCentral';
-import { handleAuth } from '../login/auth';
 import AdminIntroductionPage from './AdminIntroductionpage';
 import styles from './mypage.module.css';
-import { useNavigate } from 'react-router-dom';
 
 export default function MyPage() {
-    const navigate = useNavigate();
-    let accessToken = localStorage.getItem('accessToken');
     const [club, setClub] = useState([]);
     const [clubId, setClubId] = useState();
     const [clubInfo, setClubInfo] = useState([]);
@@ -16,11 +12,7 @@ export default function MyPage() {
     
     const getAdminClub = async () => {
         try {
-            const response = await customAxios.get(`/v1/admins/mypage`, {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            });
+            const response = await customAxios.get(`/v1/admins/mypage`);
             console.log(response.data.data);
             setClub(response.data.data);
             setClubInfo(response.data.data.clubInfo);
@@ -28,14 +20,7 @@ export default function MyPage() {
             const intClubID = parseInt(clubID);
             return intClubID;
         } catch (error) {
-            if (error.response?.status === 401) {
-                accessToken = await handleAuth(navigate); // 공통 함수 호출
-                if (accessToken) {
-                    return await getAdminClub(); // 토큰 갱신 후 재시도
-                }
-            } else {
-                console.error('Failed to fetch admin club data:', error);
-            }
+            console.error('Failed to fetch admin club data:', error);
             return null;
         }
     };
@@ -45,7 +30,7 @@ export default function MyPage() {
             if (clubId !== null) {
                 setClubId(clubId);
             } else {
-                // console.log('Failed to retrieve club ID');
+                console.log('Failed to retrieve club ID');
             }
         };
 

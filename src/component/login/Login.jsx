@@ -3,11 +3,9 @@ import './login.css';
 import { useNavigate } from 'react-router-dom';
 import { customAxios } from '../../config/axios-config';
 import ErrorModal from '../modal/ErrorModal';
+import { saveTokens } from '../../auth/AuthService';
 
 function Login() {
-    // const REST_API_KEY = '6a5dafa758e469d18292acc6fbca333b';
-    // const REDIRECT_URI = 'http://13.125.141.171/v1/auths/oauth/kakao';
-    // // const REDIRECT_URI = 'http://localhost:3000/v1/auths/oauth/kakao';
     const restApiKey = process.env.REACT_APP_REST_API_KEY;
     const redirectURL = process.env.REACT_APP_REDIRECT_URI;
 
@@ -25,25 +23,23 @@ function Login() {
         setModalMessage('');
     };
 
-    // 1. 카카오 버튼 클릭 시, 로그인 창 띄우기 (링크는 노션에서 가져옴)
+    // 카카오 로그인 핸들러 : 카카오 버튼 클릭 시, 로그인 창 (링크는 노션에서 가져옴)
     //  rest api key와 redirect uri 값 받아서 해당 링크로 연결, window.location.href 이용하여 주소 변경
     const kakaoLoginHandler = () => {
         window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${restApiKey}&redirect_uri=${redirectURL}`;
     };
+
+    // 관리자 로그인 핸들러
     const adminLoginHandler = async () => {
         try {
             const res = await customAxios.post(`/v1/admins/login`, {
                 username: adminId,
                 password: adminPw,
             });
-            // console.log(res);
-            const accessToken = res.data.data.accessToken;
-            const refreshToken = res.data.data.refreshToken;
-            const isAdmin = true;
 
-            localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('refreshToken', refreshToken);
-            localStorage.setItem('isAdmin', isAdmin);
+            const { accessToken, refreshToken } = res.data.data;
+            // 로컬스토리지에 accessToken, refreshToken, isAdmin 값 저장
+            saveTokens(accessToken, refreshToken, true);
 
             navigate('/');
         } catch (error) {
@@ -55,22 +51,11 @@ function Login() {
         }
     };
 
-    const saveAdminId = (event) => {
-        setAdminId(event.target.value);
-        // console.log(event.target.value);
-    };
-
-    const saveAdminPw = (event) => {
-        setAdminPw(event.target.value);
-        // console.log(event.target.value);
-    };
-
-    const handleTabClick = (form) => {
-        setActiveForm(form);
-    };
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-    };
+    const saveAdminId = (event) => setAdminId(event.target.value);
+    const saveAdminPw = (event) => setAdminPw(event.target.value);
+    const handleTabClick = (form) => setActiveForm(form);
+    const handleFormSubmit = (event) => event.preventDefault();
+    
     return (
         <>
             <div className="wrapper">
