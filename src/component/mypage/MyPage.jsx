@@ -3,13 +3,13 @@ import { customAxios } from '../../config/axios-config';
 import './myPage.css';
 import ErrorModal from '../modal/ErrorModal';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { clearTokens, getIsAdmin, getAccessToken } from '../../auth/AuthService';
 
 export default function MyPage() {
     const navigate = useNavigate();
 
-    const isAdmin = localStorage.getItem('isAdmin');
-    const accessToken = localStorage.getItem('accessToken');
-    const refreshToken = localStorage.getItem('refreshToken');
+    const isAdmin = getIsAdmin();
+    const accessToken = getAccessToken();
 
     // 에러 모달창
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,52 +21,6 @@ export default function MyPage() {
         navigate(`/login`);
     };
 
-    // 새 토큰을 발급받는 함수
-    const getNewToken = async (retryLogout = false) => {
-        try {
-            if (isAdmin === "true || isAdmin") {
-                const res = await customAxios.post(
-                    `/v1/admins/refresh`,
-                    {},
-                    {
-                        headers: {
-                            Authorization: `Bearer ${refreshToken}`,
-                        },
-                    }
-                );
-                const newAccessToken = res.data.data.accessToken;
-                localStorage.setItem('accessToken', newAccessToken);
-            } else {
-                const res = await customAxios.post(
-                    `/v1/auths/refresh`,
-                    {},
-                    {
-                        headers: {
-                            Authorization: `Bearer ${refreshToken}`,
-                        },
-                    }
-                );
-                const newAccessToken = res.data.data.accessToken;
-                localStorage.setItem('accessToken', newAccessToken);
-            }
-            // 만약 토큰 갱신 후 로그아웃을 재시도해야 한다면
-            if (retryLogout) {
-                handleLogout();
-            }
-
-            return accessToken;
-        } catch (error) {
-            console.error('토큰 재발급 실패 : ', error);
-
-            setModalMessage(error.response.data.reason);
-            setIsModalOpen(true);
-
-            // 토큰 재발급이 실패하면 강제 로그아웃 처리
-            handleLogout();
-            navigate('/login');
-        }
-    };
-
     // 비밀번호 변경
     const handleModifyPW = async () => {
         navigate('/admin/password', { state: { accessToken } });
@@ -76,32 +30,13 @@ export default function MyPage() {
     const handleLogout = async () => {
         try {
             const url = isAdmin ? '/v1/admins/logout' : '/v1/auths/logout';
-            const res = await customAxios.post(
-                url,
-                {},
-                {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                }
-            );
-            console.log(res);
-
-            // 로컬 스토리지에서 사용자 정보 삭제
-            // localStorage.removeItem('accessToken');
-            // localStorage.removeItem('refreshToken');
-            // localStorage.removeItem('isAdmin');
-            localStorage.clear();
+            await customAxios.post(url);
+            clearTokens();
 
             // 로그아웃 후 메인 페이지로 이동
             navigate('/');
         } catch (error) {
-            if (error.response && error.response.status === 401) {
-                // 토큰이 만료된 경우 새 토큰 발급 후 로그아웃 재시도
-                await getNewToken(true);
-            } else {
-                console.error('로그아웃 실패:', error);
-            }
+            console.error('로그아웃 실패:', error);
         }
     };
 
