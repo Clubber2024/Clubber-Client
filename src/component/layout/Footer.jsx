@@ -65,26 +65,43 @@ function Footer() {
 
     return (
         <>
-            <div className={styles.font_container}>
-                <p className={styles.font}>이용약관ㅣ</p>
-                <p className={styles.font}>개인정보처리방침ㅣ</p>
-                <p className={styles.font}>운영정책ㅣ</p>
-                <p className={styles.font} onClick={onClickDelete}>
-                    회원탈퇴ㅣ
-                </p>
-                <LinkItem to={'/qna'}>
-                    <p className={styles.font}>FAQ</p>
-                </LinkItem>
-            </div>
             <div className={styles.footer}>
                 <div className={styles.footer_content}>
-                    <div className={styles.circle_insta}>
-                        <a href="https://www.instagram.com/clubber_ssu/">
-                            <img src={'/footer/insta.png'} alt="insta" className={styles.footer_insta} />
-                        </a>
+                    <div className={styles.circle_div}>
+                        <div className={styles.circle_insta}>
+                            <a href="http://pf.kakao.com/_QiHDG">
+                                <img src={'/footer/email.png'} alt="mail" className={styles.footer_insta} />
+                            </a>
+                        </div>
+                        <div className={styles.circle_insta}>
+                            <a href="https://www.instagram.com/clubber_ssu/">
+                                <img src={'/footer/insta.png'} alt="insta" className={styles.footer_insta} />
+                            </a>
+                        </div>
+
+                        <div className={styles.circle_insta}>
+                            <a href="http://pf.kakao.com/_QiHDG">
+                                <img src={'/footer/talk.png'} alt="talk" className={styles.footer_insta} />
+                            </a>
+                        </div>
                     </div>
-                    <p className={styles.p}>상호 : (주)클로버 | 대표자명 : 클러버</p>
+
                     <br />
+                    <div className={styles.font_container}>
+                        <p className={styles.font_copyright}>Copyrightⓒ2024-2024 Clubber Inc. All rights reserved.</p>
+                        <div className={styles.font_set}>
+                            <p className={styles.font}>이용약관ㅣ</p>
+                            <p className={styles.font}>개인정보처리방침ㅣ</p>
+                            <p className={styles.font}>운영정책ㅣ</p>
+                            <p className={styles.font} onClick={onClickDelete}>
+                                회원탈퇴ㅣ
+                            </p>
+
+                            <LinkItem to={'/qna'}>
+                                <p className={styles.font}>FAQ</p>
+                            </LinkItem>
+                        </div>
+                    </div>
                 </div>
             </div>
 
