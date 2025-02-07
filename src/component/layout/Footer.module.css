@@ -28,6 +28,11 @@
         margin-bottom: 19px;
     }
 
+    .font_set {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
     .font:hover {
         color: #7bc8e0;
     }
