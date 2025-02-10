@@ -106,7 +106,6 @@ export default function EditPage() {
         setImageType('1');
         setImageFile(file);
         setImagePreview(URL.createObjectURL(file));
-
         setExtension(file.name.split('.').pop().toUpperCase()); // 확장자 추출
     };
 
@@ -137,7 +136,6 @@ export default function EditPage() {
 
                     const { data } = await customAxios.post(
                         '/v1/images/club/logo',
-
                         {
                             imageFileExtension: extension,
                         },
@@ -150,7 +148,7 @@ export default function EditPage() {
                             },
                         }
                     );
-                    // console.log(data.data);
+
                     setImageUrl(data.data.imageKey);
 
                     // 이미지 파일을 presigned URL로 업로드
@@ -160,6 +158,7 @@ export default function EditPage() {
                         },
                     });
                     patchEditClub(data.data.imageKey);
+                    console.log('imagefile', imageFile);
                 } catch (error) {
                     console.error('이미지 업로드 실패:', error);
                     alert('이미지 업로드에 실패했습니다.');
@@ -172,7 +171,6 @@ export default function EditPage() {
 
     const patchEditClub = async (imageUrl) => {
         try {
-            // console.log('img', imageUrl);
             const response = await customAxios.patch(
                 `/v1/admins/change-page`,
                 {

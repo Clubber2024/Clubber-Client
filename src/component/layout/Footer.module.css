@@ -68,6 +68,13 @@
         margin-right: 16px;
     }
 
+    .circle_talk {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background: #ffffff;
+    }
+
     .footer_insta {
         width: 24px;
         height: 24px;
@@ -91,6 +98,7 @@
         margin-top: 23px;
     }
 }
+
 @media screen and (max-width: 769px) {
     .font_container {
         display: flex;
@@ -153,6 +161,14 @@
         border-radius: 100%;
         background: #ffffff;
         margin-right: 13px;
+        margin-top: 10px;
+    }
+
+    .circle_talk {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background: #ffffff;
         margin-top: 10px;
     }
 

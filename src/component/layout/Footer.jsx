@@ -79,7 +79,7 @@ function Footer() {
                             </a>
                         </div>
 
-                        <div className={styles.circle_insta}>
+                        <div className={styles.circle_talk}>
                             <a href="http://pf.kakao.com/_QiHDG">
                                 <img src={'/footer/talk.png'} alt="talk" className={styles.footer_insta} />
                             </a>
