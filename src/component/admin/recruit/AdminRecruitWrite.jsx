@@ -220,9 +220,21 @@ export default function AdminRecruitWrite() {
         } else {
             try {
                 const imageUrls = await uploadImages();
+                console.log(
+                    'title:',
+                    title,
+                    'content:',
+                    content,
+                    'deletedImageUrls:',
+                    deletedFiles,
+                    'newImageKeys:',
+                    imageUrls,
+                    'remainImageUrls:',
+                    remainedImages
+                );
                 if (recruitId) {
                     const combinedImages = [...remainedImages, ...imageUrls];
-
+                    console.log('combined', combinedImages);
                     const res = await customAxios.patch(
                         `/v1/admins/recruits/${recruitId}`,
                         {
