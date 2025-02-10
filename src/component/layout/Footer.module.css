@@ -5,7 +5,17 @@
         justify-content: center;
         padding-top: 13px;
         margin-bottom: 13px;
-        border-top: 2px solid var(--Main-Color, #7bc8e0);
+        border-top: 1px solid var(--section2, #a7a7a7);
+    }
+    .font_copyright {
+        font-family: Noto Sans;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19.07px;
+        text-align: center;
+        color: #646464;
+        margin-right: 22px;
+        margin-bottom: 19px;
     }
     .font {
         font-family: Noto Sans;
@@ -15,6 +25,12 @@
         text-align: left;
         color: #646464;
         cursor: pointer;
+        margin-bottom: 19px;
+    }
+
+    .font_set {
+        display: flex;
+        margin-bottom: 10px;
     }
 
     .font:hover {
@@ -24,16 +40,24 @@
     .footer {
         background-color: #f1f1f1;
         position: relative;
-        transform: translateY(0%);
+        /* transform: translateY(0%); */
         height: 110px;
         width: 100%;
         border-top: 1px solid #f1f1f1;
         text-align: center;
-        padding: 10px;
+        transform: translateY(100%);
     }
 
     .footer_content {
         background: #f1f1f1;
+    }
+
+    .circle_div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 21px;
     }
 
     .circle_insta {
@@ -41,12 +65,19 @@
         height: 40px;
         border-radius: 100%;
         background: #ffffff;
-        margin: auto;
+        margin-right: 16px;
+    }
+
+    .circle_talk {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background: #ffffff;
     }
 
     .footer_insta {
-        width: 23.28px;
-        height: 23.28px;
+        width: 24px;
+        height: 24px;
         margin-top: 8px;
     }
 
@@ -67,14 +98,25 @@
         margin-top: 23px;
     }
 }
+
 @media screen and (max-width: 769px) {
     .font_container {
         display: flex;
-        flex-direction: row;
+        flex-direction: column-reverse;
         justify-content: center;
+        align-items: center;
         padding-top: 13px;
         margin-bottom: 13px;
-        border-top: 2px solid var(--Main-Color, #7bc8e0);
+        padding-bottom: 20px;
+        border-top: 1px solid var(--section2, #a7a7a7);
+    }
+    .font_copyright {
+        font-family: Noto Sans;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19.07px;
+        text-align: center;
+        color: #646464;
     }
     .font {
         font-family: Noto Sans;
@@ -85,14 +127,17 @@
         color: #646464;
         cursor: pointer;
     }
-
+    .font_set {
+        display: flex;
+        margin-bottom: 10px;
+    }
     .font:hover {
         color: #7bc8e0;
     }
     .footer {
         background-color: #9c9c9c26;
         position: relative;
-        transform: translateY(0%);
+        transform: translateY(100%);
         height: 110px;
         width: 100%;
         border-top: 1px solid #9c9c9c26;
@@ -100,12 +145,30 @@
         padding: 0px;
     }
 
+    .footer_content {
+        background: #f1f1f1;
+    }
+    .circle_div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 21px;
+    }
     .circle_insta {
         width: 40px;
         height: 40px;
         border-radius: 100%;
         background: #ffffff;
-        margin: auto;
+        margin-right: 13px;
+        margin-top: 10px;
+    }
+
+    .circle_talk {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background: #ffffff;
         margin-top: 10px;
     }
 
