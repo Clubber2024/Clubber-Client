@@ -1,0 +1,30 @@
+.loading_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 화면 중앙 정렬 */
+}
+
+.loading_spinner {
+    width: 50px;
+    height: 50px;
+    animation: spin 1.2s linear infinite;
+}
+
+.loading_text {
+    color: #7BC8E0;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* 회전 애니메이션 */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

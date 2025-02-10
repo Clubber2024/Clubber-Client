@@ -10,6 +10,7 @@ export default function MyPage() {
 
     const isAdmin = getIsAdmin();
     const accessToken = getAccessToken();
+    console.log(isAdmin);
 
     // 에러 모달창
     const [isModalOpen, setIsModalOpen] = useState(false);

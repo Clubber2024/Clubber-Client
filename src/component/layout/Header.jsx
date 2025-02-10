@@ -4,7 +4,7 @@ import TagScroll from '../hashtag/TagScroll';
 import ErrorModal from '../modal/ErrorModal';
 import './header.css';
 import { customAxios } from '../../config/axios-config';
-import { clearTokens, getAccessToken, getIsAdmin } from '../../auth/AuthService';
+import {getAccessToken, getIsAdmin } from '../../auth/AuthService';
 
 export default function Header() {
     const location = useLocation();
@@ -13,6 +13,9 @@ export default function Header() {
     const [menubarActive, setMenuBarActive] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
     // const [setUserEmail] = useState('');
+
+    const accessToken = getAccessToken();
+    const isAdmin = getIsAdmin();
 
     // 에러 모달창
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,11 +26,6 @@ export default function Header() {
         setModalMessage('');
         navigate(`/login`);
     };
-
-    // 관리자 여부 관리
-    const isAdmin = getIsAdmin();
-
-    const accessToken = getAccessToken();
 
     useEffect(() => {
         const path = location.pathname;
@@ -55,20 +53,25 @@ export default function Header() {
 
 
     const onClickMy = async () => {
-        // clearTokens();
+        console.log("AccessToken:", accessToken);
+        console.log("IsAdmin:", isAdmin, typeof isAdmin); // 타입까지 출력
+
         if (accessToken) {
             try {
-                if (isAdmin) {
+                if (isAdmin) {  
                     await customAxios.get(`/v1/admins/mypage`);
                     navigate('/admin');
+                    console.log("✅ 관리자 계정, '/admin'으로 이동");
                 } else {
                     await customAxios.get(`/v1/users/me`);
                     navigate('/user');
+                    console.log("🟡 일반 사용자 계정, '/user'으로 이동");
                 }
             } catch (error) {
-                console.error();
+                console.error("❌ API 요청 중 오류 발생:", error);
             }
         } else {
+            console.log("🔴 비로그인 상태, '/login'으로 이동");
             navigate('/login');
         }
     };

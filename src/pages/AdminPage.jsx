@@ -1,5 +1,5 @@
-import MyPage from '../component/admin/Mypage';
+import AdminMyPage from '../component/admin/AdminMyPage';
 
 export default function AdminPage() {
-    return <MyPage />;
+    return <AdminMyPage />;
 }

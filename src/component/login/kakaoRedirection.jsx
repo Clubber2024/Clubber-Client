@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { customAxios } from '../../config/axios-config';
+import LoadingPage from '../loading/LoadingPage';
 
 export default function KakaoRedirection() {
     const location = useLocation();
@@ -29,5 +30,5 @@ export default function KakaoRedirection() {
         }
     }, [location.search, navigate]);
 
-    return <>loading...</>;
+    return <LoadingPage />;
 }

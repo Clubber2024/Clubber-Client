@@ -32,6 +32,7 @@ import ModifyPassword from './component/mypage/ModifyPassword';
 import AdminRecruitWrite from './component/admin/recruit/AdminRecruitWrite';
 import DetailRecruitList from './component/recruit/DetailRecruitList';
 import AdminRecruitContent from './component/admin/recruit/AdminRecruitContent';
+import LoadingPage from './component/loading/LoadingPage';
 
 function App() {
     const appStyle = {
@@ -87,6 +88,7 @@ function App() {
                         <Route path="/admin/recruit/edit" element={<AdminRecruitWrite />} />
                         <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
                         <Route path="/admin/password" element={<ModifyPassword />} />
+                        <Route path="/loading" element={<LoadingPage />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
