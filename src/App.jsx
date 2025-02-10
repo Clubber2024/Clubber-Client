@@ -32,6 +32,7 @@ import ModifyPassword from './component/mypage/ModifyPassword';
 import AdminRecruitWrite from './component/admin/recruit/AdminRecruitWrite';
 import DetailRecruitList from './component/recruit/DetailRecruitList';
 import AdminRecruitContent from './component/admin/recruit/AdminRecruitContent';
+import LoadingPage from './component/loading/LoadingPage';
 import { minHeight } from '@mui/system';
 import { Padding } from '@mui/icons-material';
 
@@ -87,17 +88,17 @@ function App() {
 
                             <Route path="/qna" element={<QnAPage />} />
 
-                            <Route path="/admin" element={<MyPage />} />
-                            <Route path="/admin/mypage" element={<AdminPage />} />
-                            <Route path="/admin/edit/:clubId" element={<EditPage />} />
-                            <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
-                            <Route path="/admin/mypage/pending" element={<PendingList />} />
-                            <Route path="/admin/recruit" element={<AdminRecruitList />} />
-                            <Route path="/admin/recruit/edit" element={<AdminRecruitWrite />} />
-                            <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
-                            <Route path="/admin/password" element={<ModifyPassword />} />
-                        </Routes>
-                    </div>
+                        <Route path="/admin" element={<MyPage />} />
+                        <Route path="/admin/mypage" element={<AdminPage />} />
+                        <Route path="/admin/edit/:clubId" element={<EditPage />} />
+                        <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
+                        <Route path="/admin/mypage/pending" element={<PendingList />} />
+                        <Route path="/admin/recruit" element={<AdminRecruitList />} />
+                        <Route path="/admin/recruit/edit" element={<AdminRecruitWrite />} />
+                        <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
+                        <Route path="/admin/password" element={<ModifyPassword />} />
+                        <Route path="/loading" element={<LoadingPage />} />
+                    </Routes>
                     <Footer />
                 </BrowserRouter>
             )}

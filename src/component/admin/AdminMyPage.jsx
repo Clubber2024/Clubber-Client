@@ -4,7 +4,7 @@ import { LinkItem } from '../branch/BranchCentral';
 import AdminIntroductionPage from './AdminIntroductionpage';
 import styles from './mypage.module.css';
 
-export default function MyPage() {
+export default function AdminMyPage() {
     const [club, setClub] = useState([]);
     const [clubId, setClubId] = useState();
     const [clubInfo, setClubInfo] = useState([]);

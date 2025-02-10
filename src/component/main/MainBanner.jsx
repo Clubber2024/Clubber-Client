@@ -43,7 +43,7 @@ export default function MainBanner() {
             <Slider {...settings}>
                 <div className="banner_container" onClick={onClickBan1}>
                 <img
-                    src={isMobile ? "/main/ban1_mob.png" : "/main/ban1.png"}
+                    src={isMobile ? "/main/ban1_mob2.png" : "/main/ban1.png"}
                     alt="main banner"
                 />
                 </div>

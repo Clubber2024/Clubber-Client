@@ -1,6 +1,5 @@
 // src/auth/AuthService.js
 import { customAxios } from '../config/axios-config';
-import axios from 'axios';
 
 // 로컬 스토리지 키 설정
 const ACCESS_TOKEN_KEY = "accessToken";
@@ -14,13 +13,19 @@ export const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN_KEY);
 export const getRefreshToken = () => localStorage.getItem(REFRESH_TOKEN_KEY);
 
 // 관리자 여부 가져오기
-export const getIsAdmin = () => localStorage.getItem(IS_ADMIN_KEY);
+// export const getIsAdmin = () => localStorage.getItem(IS_ADMIN_KEY);
+export const getIsAdmin = () => {
+    return localStorage.getItem(IS_ADMIN_KEY) === "true"; // 문자열이 아니라 Boolean을 반환
+};
 
-// 토큰 저장
-export const saveTokens = (accessToken, refreshToken, isAdmin = false) => {
+
+// 토큰 저장 -> isAdmin default value가 false였음 바보야
+export const saveTokens = (accessToken, refreshToken, isAdmin) => {
     localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
     localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
-    localStorage.setItem(IS_ADMIN_KEY, isAdmin);
+    // 왜 다시 해줘야하는지 모르겠음 
+    localStorage.setItem(IS_ADMIN_KEY, isAdmin ? "true" : "false");
+    // localStorage.setItem(IS_ADMIN_KEY, isAdmin);
 };
 
 // 토큰 삭제 (로그아웃)
@@ -36,16 +41,22 @@ export const refreshAccessToken = async () => {
         const refreshToken = getRefreshToken();
         if (!refreshToken) throw new Error("No refresh token available");
 				
-		const endpoint = getIsAdmin() ? `https://dev.ssuclubber.com/api/v1/admins/refresh` : `https://dev.ssuclubber.com/api/v1/auths/refresh`;
-        const response = await axios.post(endpoint, { token: refreshToken });
+        console.log(getIsAdmin());
+        const isAdmin = getIsAdmin();
+		const endpoint = getIsAdmin() ? `v1/admins/refresh` : `v1/auths/refresh`;
+        const response = await customAxios.post(endpoint, {}, {
+            headers: {
+                refreshToken: refreshToken 
+            }
+        });
 
         const { accessToken, refreshToken: newRefreshToken } = response.data.data;
-        saveTokens(accessToken, newRefreshToken);
+        saveTokens(accessToken, newRefreshToken, isAdmin);
         return accessToken;
     } catch (error) {
         console.error("Failed to refresh access token", error);
-        if (error.response?.status === 401) {
-            clearTokens();
+        clearTokens();
+        if (error.response?.status === 403) {
             window.location.href = "/login"; // 로그인 페이지로 이동
         }
         return null;
