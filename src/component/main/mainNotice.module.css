@@ -45,46 +45,52 @@
     }
 
     .div_notice {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        width: 100%;
         color: #52555b;
         font-size: 11px;
         font-weight: 350;
-        padding-right: 25px;
         background-color: #ffffff;
         border: #ffffff;
         font-family: Noto Sans KR;
+    }
+
+    .notice_div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .notice_div:hover {
+        color: #7bc8e0;
     }
 
     .notice_title {
+        display: flex;
+        flex-direction: row;
         text-align: start;
-        width: 65%;
+        width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        color: black;
+        /* color: black; */
         background-color: #ffffff;
         border: #ffffff;
         font-family: Noto Sans KR;
-    }
-
-    .notice_title:hover {
-        color: #7bc8e0;
     }
 
     .notice_line {
         padding: 0px 2px;
         background-color: #ffffff;
         border: #ffffff;
+        margin-right: 5%;
     }
 
     .notice_date {
-        width: 15%;
+        width: fit-content;
         margin-left: 5px;
         background-color: #ffffff;
         border: #ffffff;
         font-family: Noto Sans KR;
+        text-align: end;
     }
 }
 
@@ -130,9 +136,9 @@
 
     .div_notice {
         font-family: Noto Sans KR;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        /* display: flex; */
+        /* flex-direction: row; */
+        /* justify-content: space-between; */
         color: #52555b;
         font-size: 11px;
         font-weight: 350;
@@ -140,9 +146,18 @@
         border: #ffffff;
     }
 
+    .notice_div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .notice_div:hover {
+        color: #7bc8e0;
+    }
+
     .notice_title {
         text-align: start;
-        width: 65%;
+        width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
