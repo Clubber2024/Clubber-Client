@@ -12,11 +12,8 @@ export default function MainRanking() {
             const res = await customAxios.get(`/v1/clubs/popular`);
             if (res.data.success) {
                 setRankingData(res.data.data);
-                //console.log(res.data.data);
             }
-        } catch (error) {
-            //console.error("Error fetching data : ", error);
-        }
+        } catch (error) {}
     };
 
     useEffect(() => {
@@ -32,13 +29,12 @@ export default function MainRanking() {
                     return (
                         <div key={item.clubId} className={styles.div_ranking_hover}>
                             <div key={index} className={styles.div_ranking}>
-                                <p>{index + 1}. </p>
                                 <Link
                                     to={`/clubs/${item.clubId}`}
                                     className={styles.clubName}
                                     style={{ textDecoration: 'none' }}
                                 >
-                                    {item.clubName}
+                                    {index + 1}. {item.clubName}
                                 </Link>
                             </div>
                         </div>

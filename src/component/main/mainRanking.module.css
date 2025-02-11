@@ -133,6 +133,10 @@
         font-family: Noto Sans KR;
     }
 
+    .div_ranking_hover :hover {
+        color: #7bc8e0;
+    }
+
     .div_ranking p {
         margin-right: 3px;
         overflow: hidden;
