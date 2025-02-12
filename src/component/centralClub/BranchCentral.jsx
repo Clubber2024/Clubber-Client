@@ -4,6 +4,7 @@ import styles from './brnachCentral.module.css';
 import CentralClub from './CentralClub';
 import { useLocation } from 'react-router-dom';
 import { customAxios } from '../../config/axios-config';
+import LoadingPage from '../loading/LoadingPage';
 
 function BranchCentral() {
     const [loading, setLoading] = useState(true);
@@ -30,7 +31,12 @@ function BranchCentral() {
         getCentralClubs();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading)
+        return (
+            <div>
+                <LoadingPage />
+            </div>
+        );
     //if (error) return <div>Error: {error.message}</div>;
 
     const renderDataInRows = (data) => {

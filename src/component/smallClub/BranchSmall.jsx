@@ -4,6 +4,7 @@ import styles from './branchSmall.module.css';
 import SmallClubProps from './SmallClubProps';
 import { useLocation } from 'react-router-dom';
 import { customAxios } from '../../config/axios-config';
+import LoadingPage from '../loading/LoadingPage';
 
 function BranchSmall() {
     const [loading, setLoading] = useState(true);
@@ -29,8 +30,12 @@ function BranchSmall() {
         getSmallClubs();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
-    //if (error) return <div>Error: {error.message}</div>;
+    if (loading)
+        return (
+            <div>
+                <LoadingPage />
+            </div>
+        );
 
     const renderDataInRows = (data) => {
         const rows = [];

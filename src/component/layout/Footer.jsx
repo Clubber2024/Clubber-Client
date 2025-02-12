@@ -68,11 +68,11 @@ function Footer() {
             <div className={styles.footer}>
                 <div className={styles.footer_content}>
                     <div className={styles.circle_div}>
-                        <div className={styles.circle_insta}>
+                        {/* <div className={styles.circle_insta}>
                             <a href="http://pf.kakao.com/_QiHDG">
                                 <img src={'/footer/email.png'} alt="mail" className={styles.footer_insta} />
                             </a>
-                        </div>
+                        </div> */}
                         <div className={styles.circle_insta}>
                             <a href="https://www.instagram.com/clubber_ssu/">
                                 <img src={'/footer/insta.png'} alt="insta" className={styles.footer_insta} />
@@ -88,7 +88,7 @@ function Footer() {
 
                     <br />
                     <div className={styles.font_container}>
-                        <p className={styles.font_copyright}>Copyrightⓒ2024-2024 Clubber Inc. All rights reserved.</p>
+                        <p className={styles.font_copyright}>email: ssuclubber@gmail.com</p>
                         <div className={styles.font_set}>
                             <p className={styles.font}>이용약관ㅣ</p>
                             <p className={styles.font}>개인정보처리방침ㅣ</p>

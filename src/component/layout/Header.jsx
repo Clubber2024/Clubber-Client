@@ -24,7 +24,7 @@ export default function Header() {
     const closeModal = () => {
         setIsModalOpen(false);
         setModalMessage('');
-        navigate(`/login`);
+        navigate(-1);
     };
 
     useEffect(() => {
@@ -33,6 +33,8 @@ export default function Header() {
             setMenuBarActive('tab_text_central_active');
         } else if (path.startsWith('/small')) {
             setMenuBarActive('tab_text_small_active');
+            setModalMessage('소모임 정보 페이지를 준비 중입니다.🙌');
+            setIsModalOpen(true);
         } else if (path.startsWith('/summary')) {
             setMenuBarActive('tab_text_highlight_active');
         } else if (path.startsWith('/official')) {
@@ -143,18 +145,6 @@ export default function Header() {
                         중앙 동아리
                     </p>
                 </Link>
-                <div className="small_club_container">
-                    <Link to="/small" style={{ textDecoration: 'none' }}>
-                        <p
-                            className={
-                                menubarActive === 'tab_text_small_active' ? 'tab_text_small_active' : 'tab_text_small'
-                            }
-                            onClick={() => handleTabClick('tab_text_small_active')}
-                        >
-                            단과대
-                        </p>
-                    </Link>
-                </div>
                 <Link to="/official" style={{ textDecoration: 'none' }}>
                     <p
                         className={
@@ -167,6 +157,18 @@ export default function Header() {
                         공식 단체
                     </p>
                 </Link>
+                <div className="small_club_container">
+                    <Link to="/small" style={{ textDecoration: 'none' }}>
+                        <p
+                            className={
+                                menubarActive === 'tab_text_small_active' ? 'tab_text_small_active' : 'tab_text_small'
+                            }
+                            onClick={() => handleTabClick('tab_text_small_active')}
+                        >
+                            단과대
+                        </p>
+                    </Link>
+                </div>
             </div>
             <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
         </>

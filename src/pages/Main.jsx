@@ -3,6 +3,8 @@ import MainRanking from '../component/main/MainRanking';
 import MainNotice from '../component/main/MainNotice';
 import './mainPage.css';
 import MainPromote from '../component/main/MainPromote';
+import QnA from '../component/QnA/QnA';
+import QnAMain from '../component/QnA/QnAMain';
 
 export default function MainPage() {
     return (
@@ -13,10 +15,12 @@ export default function MainPage() {
                     <MainNotice />
                     <MainRanking />
                 </div>
-                <div className="main_promote_container">
+                {/* <div className="main_promote_container">
                     <MainPromote />
-                </div>
+                </div> */}
             </div>
+
+            <QnAMain />
         </>
     );
 }
