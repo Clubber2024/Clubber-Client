@@ -44,30 +44,20 @@ export default function Header() {
             setMenuBarActive('tab_text_small_active');
         } else if (path.startsWith('/summary')) {
             setMenuBarActive('tab_text_highlight_active');
+        } else if (path.startsWith('/official')) {
+            setMenuBarActive('tab_text_official_active');
         } else {
             setMenuBarActive('');
         }
     }, [location]);
 
-    // useEffect(() => {
-    //     if (accessToken && !isAdmin) {
-    //         try {
-    //             const res = customAxios.get(`/v1/users/me`);
-    //             setUserEmail(res.data.data.email);
-    //         } catch (error) {
-    //             console.error('Error fetching user data : ', error);
-    //         }
-    //     }
-    // }, [accessToken, isAdmin, setUserEmail]);
-
-
     const onClickMy = async () => {
-        console.log("AccessToken:", accessToken);
-        console.log("IsAdmin:", isAdmin, typeof isAdmin); // 타입까지 출력
+        console.log('AccessToken:', accessToken);
+        console.log('IsAdmin:', isAdmin, typeof isAdmin); // 타입까지 출력
 
         if (accessToken) {
             try {
-                if (isAdmin) {  
+                if (isAdmin) {
                     await customAxios.get(`/v1/admins/mypage`);
                     navigate('/admin');
                     console.log("✅ 관리자 계정, '/admin'으로 이동");
@@ -77,7 +67,7 @@ export default function Header() {
                     console.log("🟡 일반 사용자 계정, '/user'으로 이동");
                 }
             } catch (error) {
-                console.error("❌ API 요청 중 오류 발생:", error);
+                console.error('❌ API 요청 중 오류 발생:', error);
             }
         } else {
             console.log("🔴 비로그인 상태, '/login'으로 이동");
@@ -174,6 +164,18 @@ export default function Header() {
                         </p>
                     </Link>
                 </div>
+                <Link to="/official" style={{ textDecoration: 'none' }}>
+                    <p
+                        className={
+                            menubarActive === 'tab_text_official_active'
+                                ? 'tab_text_official_active'
+                                : 'tab_text_official'
+                        }
+                        onClick={() => handleTabClick('tab_text_official_active')}
+                    >
+                        공식 단체
+                    </p>
+                </Link>
             </div>
             <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
         </>

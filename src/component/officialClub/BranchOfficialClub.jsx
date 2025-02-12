@@ -1,36 +1,32 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import styles from './branchSmall.module.css';
-import SmallClubProps from './SmallClubProps';
-import { useLocation } from 'react-router-dom';
 import { customAxios } from '../../config/axios-config';
+import styles from '../branch/branchCentral.module.css';
+import SmallClubProps from '../smallClub/SmallClubProps';
 
-function BranchSmall() {
+function BranchOfficalClub() {
     const [loading, setLoading] = useState(true);
     const [clubs, setClubs] = useState([]);
-    const [departmentTitle, setDepartmentTitle] = useState('');
-    const [error, setError] = useState(null);
-    const location = useLocation();
-    const department = location.state.department;
+    const [clubType, setClubType] = useState('');
 
-    const getSmallClubs = async () => {
+    const getOfficialClubs = async () => {
         try {
-            const response = await customAxios.get(`/v1/clubs?department=${department}`);
-            setDepartmentTitle(response.data.data.department);
+            const response = await customAxios.get(`/v1/clubs/official`);
+            console.log(response.data);
             setClubs(response.data.data.clubs);
+            setClubType(response.data.data.clubType);
+            // console.log(clubType);
         } catch (error) {
-            setError(error);
         } finally {
             setLoading(false);
         }
     };
 
     useEffect(() => {
-        getSmallClubs();
+        getOfficialClubs();
     }, []);
 
     if (loading) return <div>Loading...</div>;
-    //if (error) return <div>Error: {error.message}</div>;
 
     const renderDataInRows = (data) => {
         const rows = [];
@@ -39,7 +35,7 @@ function BranchSmall() {
                 const rowItems = data.slice(i, i + 2);
                 rows.push(
                     <div className={styles.container} key={i}>
-                        {rowItems.map((club) => (
+                        {rowItems?.map((club) => (
                             <SmallClubProps
                                 key={club.clubId}
                                 clubId={club.clubId}
@@ -56,7 +52,7 @@ function BranchSmall() {
                 const rowItems = data.slice(i, i + 4);
                 rows.push(
                     <div className={styles.container} key={i}>
-                        {rowItems.map((club) => (
+                        {rowItems?.map((club) => (
                             <SmallClubProps
                                 key={club.clubId}
                                 clubId={club.clubId}
@@ -73,15 +69,15 @@ function BranchSmall() {
     };
 
     return (
-        <div>
+        <>
             <div className={styles.wrap}>
                 <div className={styles.header}>
-                    <h2 className={styles.header_title}>{departmentTitle}</h2>
+                    <h2 className={styles.header_title}>{clubType}</h2>
                 </div>
                 {renderDataInRows(clubs)}
             </div>
-        </div>
+        </>
     );
 }
 
-export default BranchSmall;
+export default BranchOfficalClub;

@@ -74,6 +74,9 @@
         padding-right: 45px;
         color: #52555b;
         font-family: Noto Sans KR;
+        &:hover {
+            color: #7bc8e0;
+        }
     }
 
     .tab_text_highlight_active {
@@ -93,6 +96,9 @@
         color: #52555b;
         padding-right: 50px;
         font-family: Noto Sans KR;
+        &:hover {
+            color: #7bc8e0;
+        }
     }
 
     .tab_text_central_active {
@@ -107,11 +113,33 @@
         font-size: 16px;
         font-weight: 500;
         color: #52555b;
+        padding-right: 45px;
+        font-family: Noto Sans KR;
+        &:hover {
+            color: #7bc8e0;
+        }
+    }
+
+    .tab_text_small_active {
+        font-size: 16px;
+        font-weight: 600;
+        color: #52555b;
         padding-right: 7px;
         font-family: Noto Sans KR;
     }
 
-    .tab_text_small_active {
+    .tab_text_official {
+        font-size: 16px;
+        font-weight: 500;
+        color: #52555b;
+        padding-right: 7px;
+        font-family: Noto Sans KR;
+        &:hover {
+            color: #7bc8e0;
+        }
+    }
+
+    .tab_text_official_active {
         font-size: 16px;
         font-weight: 600;
         color: #52555b;
@@ -359,6 +387,9 @@
         cursor: pointer;
         text-align: left;
         color: #52555b;
+        &:hover {
+            color: #7bc8e0;
+        }
     }
 
     .tab_text_highlight_active {
@@ -378,6 +409,9 @@
         color: #52555b;
         padding-right: 15px;
         font-family: Noto Sans KR;
+        &:hover {
+            color: #7bc8e0;
+        }
     }
 
     .tab_text_central_active {
@@ -392,11 +426,33 @@
         font-size: 12px;
         font-weight: 600;
         color: #52555b;
-        padding-right: 7px;
+        padding-right: 15px;
         font-family: Noto Sans KR;
+        &:hover {
+            color: #7bc8e0;
+        }
     }
 
     .tab_text_small_active {
+        font-size: 14px;
+        font-weight: 800;
+        color: #52555b;
+        padding-right: 15px;
+        font-family: Noto Sans KR;
+    }
+
+    .tab_text_official {
+        font-size: 12px;
+        font-weight: 600;
+        color: #52555b;
+        padding-right: 7px;
+        font-family: Noto Sans KR;
+        &:hover {
+            color: #7bc8e0;
+        }
+    }
+
+    .tab_text_official_active {
         font-size: 14px;
         font-weight: 800;
         color: #52555b;

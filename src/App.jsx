@@ -35,6 +35,7 @@ import AdminRecruitContent from './component/admin/recruit/AdminRecruitContent';
 import LoadingPage from './component/loading/LoadingPage';
 import { minHeight } from '@mui/system';
 import { Padding } from '@mui/icons-material';
+import OfficialClubPage from './pages/OfficialClubPage';
 
 function App() {
     const appStyle = {
@@ -69,6 +70,7 @@ function App() {
                             <Route path="/central" element={<CentralClubPage />} />
                             {/* <Route path="/menu/central_club/detail_page/review_write" element={<ReviewWrite />} /> */}
                             <Route path="/small" element={<SmallClubPage />} />
+                            <Route path="/official" element={<OfficialClubPage />} />
                             <Route path="/clubs/:clubId" element={<DetailPage />} />
                             <Route path="/clubs/:clubId/review" element={<ReviewWrite />} />
                             <Route path="/clubs/:clubId/review/comment" element={<ReviewComment />} />
@@ -114,6 +116,7 @@ function App() {
                             <Route path="/notices/:noticeId" element={<NoticePage />} />
                             <Route path="/central" element={<CentralClubPage />} />
                             <Route path="/small" element={<SmallClubPage />} />
+                            <Route path="/official" element={<OfficialClubPage />} />
                             <Route path="/clubs/:clubId" element={<DetailPage />} />
                             <Route path="/clubs/:clubId/review" element={<ReviewWrite />} />
                             <Route path="/clubs/:clubId/review/comment" element={<ReviewComment />} />
