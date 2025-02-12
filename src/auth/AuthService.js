@@ -23,7 +23,6 @@ export const getIsAdmin = () => {
 export const saveTokens = (accessToken, refreshToken, isAdmin) => {
     localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
     localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
-    // 왜 다시 해줘야하는지 모르겠음 
     localStorage.setItem(IS_ADMIN_KEY, isAdmin ? "true" : "false");
     // localStorage.setItem(IS_ADMIN_KEY, isAdmin);
 };
@@ -33,6 +32,13 @@ export const clearTokens = () => {
     localStorage.removeItem(ACCESS_TOKEN_KEY);
     localStorage.removeItem(REFRESH_TOKEN_KEY);
     localStorage.removeItem(IS_ADMIN_KEY);
+};
+
+let onAuthErrorCallback = null; // 콜백 함수 저장 변수
+
+// 콜백 함수를 설정
+export const setAuthErrorCallback = (callback) => {
+    onAuthErrorCallback = callback;
 };
 
 // 액세스 토큰 갱신 요청
@@ -57,7 +63,10 @@ export const refreshAccessToken = async () => {
         console.error("Failed to refresh access token", error);
         clearTokens();
         if (error.response?.status === 403) {
-            window.location.href = "/login"; // 로그인 페이지로 이동
+            if (onAuthErrorCallback) {
+                onAuthErrorCallback("세션이 만료되었습니다. 다시 로그인해주세요.");
+            }
+            // window.location.href = "/login"; // 로그인 페이지로 이동
         }
         return null;
     }

@@ -100,6 +100,7 @@ function App() {
                         <Route path="/loading" element={<LoadingPage />} />
                     </Routes>
                     <Footer />
+                    </div>
                 </BrowserRouter>
             )}
 
