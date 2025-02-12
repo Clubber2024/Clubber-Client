@@ -90,18 +90,18 @@ function App() {
 
                             <Route path="/qna" element={<QnAPage />} />
 
-                            <Route path="/admin" element={<MyPage />} />
-                            <Route path="/admin/mypage" element={<AdminPage />} />
-                            <Route path="/admin/edit/:clubId" element={<EditPage />} />
-                            <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
-                            <Route path="/admin/mypage/pending" element={<PendingList />} />
-                            <Route path="/admin/recruit" element={<AdminRecruitList />} />
-                            <Route path="/admin/recruit/edit" element={<AdminRecruitWrite />} />
-                            <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
-                            <Route path="/admin/password" element={<ModifyPassword />} />
-                            <Route path="/loading" element={<LoadingPage />} />
-                        </Routes>
-                        <Footer />
+                        <Route path="/admin" element={<MyPage />} />
+                        <Route path="/admin/mypage" element={<AdminPage />} />
+                        <Route path="/admin/edit/:clubId" element={<EditPage />} />
+                        <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
+                        <Route path="/admin/mypage/pending" element={<PendingList />} />
+                        <Route path="/admin/recruit" element={<AdminRecruitList />} />
+                        <Route path="/admin/recruit/edit" element={<AdminRecruitWrite />} />
+                        <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
+                        <Route path="/admin/password" element={<ModifyPassword />} />
+                        <Route path="/loading" element={<LoadingPage />} />
+                    </Routes>
+                    <Footer />
                     </div>
                 </BrowserRouter>
             )}

@@ -4,7 +4,8 @@ import TagScroll from '../hashtag/TagScroll';
 import ErrorModal from '../modal/ErrorModal';
 import './header.css';
 import { customAxios } from '../../config/axios-config';
-import { getAccessToken, getIsAdmin } from '../../auth/AuthService';
+import {getAccessToken, getIsAdmin } from '../../auth/AuthService';
+import { setAuthErrorCallback } from '../../auth/AuthService';
 
 export default function Header() {
     const location = useLocation();
@@ -26,6 +27,14 @@ export default function Header() {
         setModalMessage('');
         navigate(`/login`);
     };
+
+    // 403 (리프레쉬 토큰 만료 시) 모달창
+    useEffect(() => {
+        setAuthErrorCallback((message) => {
+            setModalMessage(message);
+            setIsModalOpen(true);
+        });
+    }, []);
 
     useEffect(() => {
         const path = location.pathname;
