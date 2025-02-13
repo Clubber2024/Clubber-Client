@@ -5,6 +5,7 @@ import './detailPage.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { customAxios } from '../config/axios-config';
 import ErrorModal from '../component/modal/ErrorModal';
+import LoadingPage from '../component/loading/LoadingPage';
 
 export default function ClubsPage() {
     const url = window.location.href; // 현재 URL 가져오기
@@ -55,6 +56,13 @@ export default function ClubsPage() {
         getBookmarkData();
     }, [clubId]);
 
+    if (isLoading)
+        return (
+            <div>
+                <LoadingPage />
+            </div>
+        );
+
     const onClickIntroTab = () => {
         setWhichTab('Introduction');
     };
@@ -65,7 +73,7 @@ export default function ClubsPage() {
             if (res.data.data.agreeToReview) {
                 setWhichTab('Review');
             } else {
-                setModalMessage('리뷰 제공에 동의하지 않은 동아리 입니다.');
+                setModalMessage('리뷰 기능은 준비 중입니다.🙌');
                 setIsModalOpen(true);
             }
         } catch (error) {

@@ -33,8 +33,6 @@ import AdminRecruitWrite from './component/admin/recruit/AdminRecruitWrite';
 import DetailRecruitList from './component/recruit/DetailRecruitList';
 import AdminRecruitContent from './component/admin/recruit/AdminRecruitContent';
 import LoadingPage from './component/loading/LoadingPage';
-import { minHeight } from '@mui/system';
-import { Padding } from '@mui/icons-material';
 import OfficialClubPage from './pages/OfficialClubPage';
 
 function App() {
@@ -46,7 +44,7 @@ function App() {
 
     const wrapper = {
         height: 'auto',
-        minHeight: '100%',
+        // minHeight: '100%',
         paddingBottom: '110px',
     };
 

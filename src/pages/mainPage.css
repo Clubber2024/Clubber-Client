@@ -15,23 +15,27 @@
         margin-left: 20%;
         margin-right: 20%;
         margin-top: 32px;
-        margin-bottom: 347px;
+        margin-bottom: 300px;
     }
 
     .flex {
         display: flex;
+    }
+
+    .main_faq {
+        background-color: #f1f1f1;
+        width: 100%;
+        padding-top: 30px;
+        height: 100%;
+        margin-bottom: 0;
     }
 }
 
 @media screen and (max-width: 768px) {
     .notice_ranking_container {
         display: block;
-        /*align-items: center;*/
-        /* padding-left: 25%; */
-        /* width: 90%; */
         margin-top: 32px;
         margin-bottom: 270px;
-        /*margin-bottom: 347px;*/
     }
 
     .main_promote_container {

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { customAxios } from '../../config/axios-config';
 import styles from '../branch/branchCentral.module.css';
 import SmallClubProps from '../smallClub/SmallClubProps';
+import LoadingPage from '../loading/LoadingPage';
 
 function BranchOfficalClub() {
     const [loading, setLoading] = useState(true);
@@ -26,7 +27,12 @@ function BranchOfficalClub() {
         getOfficialClubs();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading)
+        return (
+            <div>
+                <LoadingPage />
+            </div>
+        );
 
     const renderDataInRows = (data) => {
         const rows = [];
