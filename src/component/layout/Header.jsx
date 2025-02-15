@@ -42,7 +42,7 @@ export default function Header() {
             setMenuBarActive('tab_text_central_active');
         } else if (path.startsWith('/small')) {
             setMenuBarActive('tab_text_small_active');
-            setModalMessage('소모임 정보 페이지를 준비 중입니다.🙌');
+            setModalMessage('소모임 정보 페이지 준비 중입니다. 🙌');
             setIsModalOpen(true);
         } else if (path.startsWith('/summary')) {
             setMenuBarActive('tab_text_highlight_active');
@@ -151,7 +151,7 @@ export default function Header() {
                         }
                         onClick={() => handleTabClick('tab_text_central_active')}
                     >
-                        중앙 동아리
+                        중앙동아리
                     </p>
                 </Link>
                 <Link to="/official" style={{ textDecoration: 'none' }}>
@@ -163,7 +163,7 @@ export default function Header() {
                         }
                         onClick={() => handleTabClick('tab_text_official_active')}
                     >
-                        공식 단체
+                        자치기구
                     </p>
                 </Link>
                 <div className="small_club_container">

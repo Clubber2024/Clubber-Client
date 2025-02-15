@@ -44,8 +44,6 @@ function App() {
 
     const wrapper = {
         height: 'auto',
-        // minHeight: '100%',
-        paddingBottom: '110px',
     };
 
     const isPc = useMediaQuery({

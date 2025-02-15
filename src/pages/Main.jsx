@@ -2,8 +2,6 @@ import MainBanner from '../component/main/MainBanner';
 import MainRanking from '../component/main/MainRanking';
 import MainNotice from '../component/main/MainNotice';
 import './mainPage.css';
-import MainPromote from '../component/main/MainPromote';
-import QnA from '../component/QnA/QnA';
 import QnAMain from '../component/QnA/QnAMain';
 
 export default function MainPage() {
@@ -19,7 +17,6 @@ export default function MainPage() {
                     <MainPromote />
                 </div> */}
             </div>
-
             <QnAMain />
         </>
     );

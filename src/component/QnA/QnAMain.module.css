@@ -139,8 +139,7 @@
 
 @media screen and (max-width: 768px) {
     .qna_div {
-        padding: 5%;
-        padding-top: 10px;
+        padding: 10% 5%;
         background-color: #f1f1f1;
         margin-bottom: 0;
         display: flex;
