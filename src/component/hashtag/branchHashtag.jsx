@@ -1,35 +1,41 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import HashTagClub from './HashTagClub';
 import styles from '../branch/branchCentral.module.css';
 import { customAxios } from '../../config/axios-config';
+import ErrorModal from '../modal/ErrorModal';
+import LoadingPage from '../loading/LoadingPage';
 
 function BranchHashTag() {
     const [loading, setLoading] = useState(true);
     const [clubs, setClubs] = useState([]);
-    // const [divisionClubs, setDivisionClubs] = useState([]);
     const [hashTagData, setHashTagData] = useState('');
     const [error, setError] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
     const location = useLocation();
     const hashtag = location.state?.hashtag;
+    const navigate = useNavigate();
 
     const getHashTagClubs = async () => {
         try {
             setLoading(true);
             const response = await customAxios.get(`/v1/clubs?hashtag=${hashtag}`);
-            // console.log(response.data);
-            setClubs(response.data.data.clubs);
-            if (response.data.data.hashtag == '해당 없음') {
-                setHashTagData('기타');
-            } else {
+            if (response.data.success) {
+                setClubs(response.data.data.clubs);
                 setHashTagData(response.data.data.hashtag);
+                setError(null);
+            } else {
+                setIsModalOpen(true);
             }
-
-            setError(null);
         } catch (error) {
-            setError(error);
+            setError(error.response.data.code);
+            console.log(error.response.data.code);
+            if (error.response.data.code === 'CLUB_404_5') {
+                setIsModalOpen(true);
+                setModalMessage(error.response.data.reason);
+            }
         } finally {
             setLoading(false);
         }
@@ -41,10 +47,18 @@ function BranchHashTag() {
         }
     }, [hashtag]); // hashtag 값이 변경될 때마다 호출
 
-    if (loading) return <div>Loading...</div>;
-    //if (error) return <div>Error: {error.message}</div>;
+    if (loading)
+        return (
+            <div>
+                <LoadingPage />
+            </div>
+        );
 
-    // console.log(clubs);
+    //  모달 닫을 때 이전 페이지로 이동하는 함수
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        navigate(-1); // 이전 페이지로 이동
+    };
 
     const renderDataInRows = (data) => {
         const rows = [];
@@ -76,6 +90,7 @@ function BranchHashTag() {
                 </div>
                 {renderDataInRows(clubs)}
             </div>
+            {isModalOpen && <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={handleCloseModal} />}
         </div>
     );
 }

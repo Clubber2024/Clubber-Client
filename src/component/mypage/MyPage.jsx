@@ -75,9 +75,9 @@ export default function MyPage() {
                         <NavLink to={`/user/bookmark`} className="menu_tab">
                             나의 즐겨찾기
                         </NavLink>
-                        <NavLink to={`/user/reviews`} className="menu_tab">
+                        {/* <NavLink to={`/user/reviews`} className="menu_tab">
                             내가 쓴 리뷰
-                        </NavLink>
+                        </NavLink> */}
                         <div className="my_divider" />
                         <div className="menu_tab" onClick={handleLogout}>
                             로그아웃

@@ -25,7 +25,7 @@ export default function Header() {
     const closeModal = () => {
         setIsModalOpen(false);
         setModalMessage('');
-        navigate(`/login`);
+        navigate(-1);
     };
 
     // 403 (리프레쉬 토큰 만료 시) 모달창
@@ -42,6 +42,8 @@ export default function Header() {
             setMenuBarActive('tab_text_central_active');
         } else if (path.startsWith('/small')) {
             setMenuBarActive('tab_text_small_active');
+            setModalMessage('소모임 정보 페이지 준비 중입니다. 🙌');
+            setIsModalOpen(true);
         } else if (path.startsWith('/summary')) {
             setMenuBarActive('tab_text_highlight_active');
         } else if (path.startsWith('/official')) {
@@ -149,7 +151,19 @@ export default function Header() {
                         }
                         onClick={() => handleTabClick('tab_text_central_active')}
                     >
-                        중앙 동아리
+                        중앙동아리
+                    </p>
+                </Link>
+                <Link to="/official" style={{ textDecoration: 'none' }}>
+                    <p
+                        className={
+                            menubarActive === 'tab_text_official_active'
+                                ? 'tab_text_official_active'
+                                : 'tab_text_official'
+                        }
+                        onClick={() => handleTabClick('tab_text_official_active')}
+                    >
+                        자치기구
                     </p>
                 </Link>
                 <div className="small_club_container">
@@ -164,18 +178,6 @@ export default function Header() {
                         </p>
                     </Link>
                 </div>
-                <Link to="/official" style={{ textDecoration: 'none' }}>
-                    <p
-                        className={
-                            menubarActive === 'tab_text_official_active'
-                                ? 'tab_text_official_active'
-                                : 'tab_text_official'
-                        }
-                        onClick={() => handleTabClick('tab_text_official_active')}
-                    >
-                        공식 단체
-                    </p>
-                </Link>
             </div>
             <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
         </>

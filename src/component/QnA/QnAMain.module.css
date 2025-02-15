@@ -1,0 +1,281 @@
+@media screen and (min-width: 768px) {
+    .qna_div {
+        padding: 10%;
+        padding-top: 30px;
+        background-color: #f1f1f1;
+        margin-bottom: 0;
+    }
+
+    .qna_title {
+        font-family: Noto Sans;
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 35.41px;
+        text-align: center;
+        color: #202123;
+        margin-top: 47px;
+        margin-bottom: 20px;
+    }
+
+    .faq_title {
+        font-family: Noto Sans;
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 35.41px;
+        text-align: left;
+        color: #202123;
+        margin-top: 65px;
+        margin-left: 5%;
+    }
+
+    .faq_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-bottom: 100px;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-top: 5px;
+        background: transparent;
+    }
+
+    .faq_item {
+        position: relative;
+        /* width: 90%; */
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* justify-content: center; */
+    }
+
+    .faq_rectangle {
+        width: 285px;
+        height: 115px;
+        border-radius: 20px;
+        background: #ffffff;
+        border: 1px solid #9c9c9c4d;
+        box-shadow: 0px 0px 2px 1px #0000000d;
+        margin-top: 100px;
+        margin-right: 20px;
+        display: block;
+        flex-direction: row;
+        /* margin-bottom: 70px; */
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .faq_Q {
+        font-family: Plus Jakarta Sans;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 25.2px;
+        text-align: left;
+        color: #202123;
+        margin-left: 7px;
+        margin-top: 15px;
+        margin-right: 8px;
+        background: transparent;
+
+        /* display: contents; */
+    }
+
+    .faq_question {
+        font-family: Noto Sans KR;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        text-align: left;
+        margin-top: 15px;
+        color: #202123;
+        margin-right: 5px;
+        background: transparent;
+
+        /* display: contents; */
+    }
+    .faq_answer_div {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        max-height: 0;
+        width: 285px;
+        overflow: visible;
+        background: #d6d6d633;
+        border-bottom: 1.5px solid #d6d6d6cc;
+        /* transition: max-height 0.3s ease-in-out; */
+    }
+    .expanded {
+        max-height: 300px; /* 적절한 높이 설정 */
+        /* padding: 20px; */
+        padding-right: 20px;
+        padding-bottom: 10px;
+    }
+
+    .faq_answer_placeholder {
+        height: 0px;
+        overflow: hidden;
+    }
+    .faq_answer {
+        height: 95px;
+        margin-bottom: 50px;
+        z-index: 100;
+        padding-top: 10px;
+        background: transparent;
+        /* justify-content: center; */
+
+        width: 100%;
+    }
+
+    .faq_answer_content {
+        font-family: Noto Sans KR;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26.06px;
+        text-align: left;
+        margin-top: 10px;
+
+        margin-left: 25px;
+        background: transparent;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .qna_div {
+        padding: 10% 5%;
+        background-color: #f1f1f1;
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .qna_title {
+        font-family: Noto Sans;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 35.41px;
+        text-align: center;
+        color: #202123;
+        margin-top: 50px;
+    }
+
+    .faq_item {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .faq_title {
+        font-family: Noto Sans;
+        font-size: 23px;
+        font-weight: 600;
+        line-height: 35.41px;
+        text-align: left;
+        color: #202123;
+        margin-top: 65px;
+    }
+
+    .faq_container {
+        display: flex;
+        flex-direction: row;
+        /* margin-bottom: 25px; */
+        background-color: transparent;
+        margin-left: 5%;
+        margin-right: 5%;
+        width: fit-content;
+    }
+
+    .faq_rectangle {
+        width: 290px;
+        height: 80px;
+        border-radius: 10px;
+        background: #ffffff;
+        border: 1px solid #9c9c9c4d;
+        box-shadow: 0px 0px 2px 1px #0000000d;
+        margin-top: 20px;
+        /* margin-right: 20px; */
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        cursor: pointer;
+        &:hover {
+            border: 1px solid var(--section2, #a7a7a7);
+        }
+    }
+
+    .active_faq_rectangle {
+        width: 290px;
+        height: 80px;
+        border-radius: 10px;
+        background: #ffffff;
+        border: 1px solid #9c9c9c4d;
+        box-shadow: 0px 0px 2px 1px #0000000d;
+        margin-top: 20px;
+        /* margin-right: 20px; */
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        cursor: pointer;
+        border: 1px solid var(--section2, #a7a7a7);
+    }
+
+    .faq_Q {
+        font-family: Plus Jakarta Sans;
+        font-size: 19px;
+        font-weight: 700;
+        line-height: 25.2px;
+        text-align: left;
+        color: #202123;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-right: 13px;
+        background-color: transparent;
+        /* display: contents; */
+    }
+
+    .faq_question {
+        font-family: Noto Sans KR;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 23px;
+        text-align: left;
+        margin-top: 10px;
+        color: #202123;
+        background-color: transparent;
+        margin-right: 5px;
+        /* display: contents; */
+    }
+
+    .faq_answer_div {
+        max-height: 0;
+        width: 290px;
+        overflow: hidden;
+        background: #d6d6d633;
+        border-bottom: 1.5px solid #d6d6d6cc;
+        transition: max-height 0.3s ease-in-out;
+    }
+
+    .expanded {
+        max-height: 500px; /* 최대 높이를 충분히 큰 값으로 설정 */
+    }
+    .faq_answer_placeholder {
+        height: 0px;
+        overflow: hidden;
+    }
+    .faq_answer {
+        height: 180px;
+        z-index: 100;
+        padding-top: 10px;
+        width: 100%;
+    }
+
+    .faq_answer_content {
+        font-family: Noto Sans KR;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 26.06px;
+        text-align: left;
+        margin-top: 3px;
+        margin-left: 28px;
+        margin-right: 15px;
+    }
+}
