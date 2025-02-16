@@ -30,7 +30,10 @@
 
     .font_set {
         display: flex;
-        margin-bottom: 10px;
+    }
+
+    .font_set a {
+        text-decoration: none;
     }
 
     .font:hover {
@@ -40,12 +43,12 @@
     .footer {
         background-color: #f1f1f1;
         position: relative;
-        /* transform: translateY(0%); */
+        transform: translateY(0%);
         height: 110px;
         width: 100%;
         border-top: 1px solid #f1f1f1;
         text-align: center;
-        transform: translateY(100%);
+        /* transform: translateY(100%); */
     }
 
     .footer_content {
@@ -129,7 +132,6 @@
     }
     .font_set {
         display: flex;
-        margin-bottom: 10px;
     }
     .font:hover {
         color: #7bc8e0;

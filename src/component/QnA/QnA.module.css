@@ -225,7 +225,6 @@
         margin-top: 10px;
         margin-right: 13px;
         background-color: transparent;
-        /* display: contents; */
     }
 
     .faq_question {
@@ -238,7 +237,6 @@
         color: #202123;
         background-color: transparent;
         margin-right: 5px;
-        /* display: contents; */
     }
 
     .faq_answer_div {

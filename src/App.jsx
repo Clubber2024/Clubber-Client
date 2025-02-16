@@ -146,8 +146,8 @@ function App() {
                             <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
                             <Route path="/admin/password" element={<ModifyPassword />} />
                         </Routes>
+                        <Footer />
                     </div>
-                    <Footer />
                 </BrowserRouter>
             )}
         </div>
