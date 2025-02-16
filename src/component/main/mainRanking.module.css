@@ -36,9 +36,8 @@
         margin-left: 20px;
         text-align: center;
         line-height: 26px;
-        /* box-shadow: 0px 0px 3px 1px #0000000d;*/
         box-shadow: 0px 0px 3px 1px #00000033;
-        padding: 15px 0px 15px 25px;
+        padding: 15px 25px;
         column-count: 2;
         column-gap: 10px;
         font-family: Noto Sans KR;
@@ -59,14 +58,6 @@
     }
 
     .div_ranking a {
-        background-color: white;
-    }
-
-    .div_ranking p {
-        margin-right: 3px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         background-color: white;
     }
 
@@ -117,7 +108,7 @@
         text-align: center;
         line-height: 26px;
         box-shadow: 0px 0px 3px 1px #00000033;
-        padding: 15px 0px 15px 25px;
+        padding: 15px 20px;
         column-count: 2;
         column-gap: 10px;
         font-family: Noto Sans KR;
@@ -134,14 +125,6 @@
 
     .div_ranking_hover :hover {
         color: #7bc8e0;
-    }
-
-    .div_ranking p {
-        margin-right: 3px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        font-family: Noto Sans KR;
     }
 
     .clubName {
