@@ -10,7 +10,7 @@ export default function QnAMain() {
     const getFaQData = async () => {
         try {
             const res = await customAxios.get(`/v1/faqs`);
-            //console.log(res.data.data);
+            console.log(res.data.data);
             setFaqData(res.data.data);
         } catch (error) {
             console.error('error:', error);
@@ -73,7 +73,7 @@ export default function QnAMain() {
                                 >
                                     <div className={styles.faq_container}>
                                         <p className={styles.faq_Q}>Q</p>
-                                        <p className={styles.faq_question}>{item.question}</p>
+                                        <p className={styles.faq_question}>{item.title}</p>
                                     </div>
                                 </div>
                                 {activeIndex === globalIndex ? ( // 현재 활성화된 질문에 대한 답변만 표시
