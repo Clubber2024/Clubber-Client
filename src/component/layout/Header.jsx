@@ -163,7 +163,7 @@ export default function Header() {
                         }
                         onClick={() => handleTabClick('tab_text_official_active')}
                     >
-                        자치기구
+                        공식단체
                     </p>
                 </Link>
                 <div className="small_club_container">

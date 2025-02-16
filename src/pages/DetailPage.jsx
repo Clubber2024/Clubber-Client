@@ -93,7 +93,7 @@ export default function ClubsPage() {
     };
 
     const getBookmarkData = async () => {
-        setIsLoading(true);
+        // setIsLoading(true);
         if (isAdmin) return;
         if (!token) return;
         try {
@@ -110,7 +110,7 @@ export default function ClubsPage() {
                 //console.log(clubIds);
                 const isFavoriteClub = clubIds.some((id) => id === intClubId);
                 const favorite = data.find((item) => item.favoriteClub['clubId'] === intClubId);
-                //console.log('isfavoriteClub: ', isFavoriteClub);
+                // console.log('isfavoriteClub: ', isFavoriteClub);
                 setIsFavorite(isFavoriteClub);
                 if (favorite) {
                     setFavoriteId(favorite.favoriteId);
@@ -118,10 +118,10 @@ export default function ClubsPage() {
                     setFavoriteId(null);
                 }
             } else {
-                //console.error('Failed to fetch bookmark data');
+                console.error('Failed to fetch bookmark data');
             }
         } catch (error) {
-            //console.error('Error fetching bookmark data : ', error);
+            console.error('Error fetching bookmark data : ', error);
         }
     };
 

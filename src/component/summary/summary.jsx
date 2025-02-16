@@ -5,7 +5,17 @@ import { customAxios } from '../../config/axios-config';
 
 function Summary() {
     const [summaryData, setSummaryData] = useState([]);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const getSummaryData = async () => {
         try {
@@ -32,7 +42,11 @@ function Summary() {
     return (
         <div className={styles.wrapper}>
             <div className={styles.summary_container}>
-                <img src="/summary/summary1.png" alt="summary" className={styles.summary_logo} />
+                <img
+                    src={isMobile ? "/summary/summary_mob.png" : "/summary/summary1.png"}
+                    alt="summary"
+                    className={styles.summary_logo}
+                />
                 {summaryData.map((item) => (
                     <div key={item.division} className={styles.division_container}>
                         <h3 className={styles.division_name}>{item.division}</h3>
