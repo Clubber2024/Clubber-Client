@@ -4,7 +4,7 @@ import TagScroll from '../hashtag/TagScroll';
 import ErrorModal from '../modal/ErrorModal';
 import './header.css';
 import { customAxios } from '../../config/axios-config';
-import {getAccessToken, getIsAdmin } from '../../auth/AuthService';
+import { getAccessToken, getIsAdmin } from '../../auth/AuthService';
 import { setAuthErrorCallback } from '../../auth/AuthService';
 
 export default function Header() {
@@ -42,7 +42,7 @@ export default function Header() {
             setMenuBarActive('tab_text_central_active');
         } else if (path.startsWith('/small')) {
             setMenuBarActive('tab_text_small_active');
-            setModalMessage('소모임 정보 페이지 준비 중입니다. 🙌');
+            setModalMessage('소모임 정보 페이지는 준비 중입니다. 🙌');
             setIsModalOpen(true);
         } else if (path.startsWith('/summary')) {
             setMenuBarActive('tab_text_highlight_active');
