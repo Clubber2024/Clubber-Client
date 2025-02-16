@@ -11,8 +11,7 @@ import ConfirmModal from '../../../modal/ConfirmModal';
 const Club = styled.img`
     width: 100px;
     height: 103px;
-    margin: 7px;
-    margin-top: 9px;
+    margin: 10px;
     float: left;
     background-color: #ffffff;
     /* border-radius: 15px; */
