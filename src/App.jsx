@@ -34,6 +34,8 @@ import DetailRecruitList from './component/recruit/DetailRecruitList';
 import AdminRecruitContent from './component/admin/recruit/AdminRecruitContent';
 import LoadingPage from './component/loading/LoadingPage';
 import OfficialClubPage from './pages/OfficialClubPage';
+import MainPromote from './component/main/MainPromote';
+import RecruitList from './component/recruit/RecruitList';
 
 function App() {
     const appStyle = {
@@ -63,6 +65,7 @@ function App() {
                             <Route path="/" element={<MainPage />} />
                             <Route path="/notices" element={<NoticeList />} />
                             <Route path="/notices/:noticeId" element={<NoticePage />} />
+                            <Route path="/recruit" element={<RecruitPage />} />
                             <Route path="/central" element={<CentralClubPage />} />
                             {/* <Route path="/menu/central_club/detail_page/review_write" element={<ReviewWrite />} /> */}
                             <Route path="/small" element={<SmallClubPage />} />
@@ -86,18 +89,18 @@ function App() {
 
                             <Route path="/qna" element={<QnAPage />} />
 
-                        <Route path="/admin" element={<MyPage />} />
-                        <Route path="/admin/mypage" element={<AdminPage />} />
-                        <Route path="/admin/edit/:clubId" element={<EditPage />} />
-                        <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
-                        <Route path="/admin/mypage/pending" element={<PendingList />} />
-                        <Route path="/admin/recruit" element={<AdminRecruitList />} />
-                        <Route path="/admin/recruit/edit" element={<AdminRecruitWrite />} />
-                        <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
-                        <Route path="/admin/password" element={<ModifyPassword />} />
-                        <Route path="/loading" element={<LoadingPage />} />
-                    </Routes>
-                    <Footer />
+                            <Route path="/admin" element={<MyPage />} />
+                            <Route path="/admin/mypage" element={<AdminPage />} />
+                            <Route path="/admin/edit/:clubId" element={<EditPage />} />
+                            <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
+                            <Route path="/admin/mypage/pending" element={<PendingList />} />
+                            <Route path="/admin/recruit" element={<AdminRecruitList />} />
+                            <Route path="/admin/recruit/edit" element={<AdminRecruitWrite />} />
+                            <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
+                            <Route path="/admin/password" element={<ModifyPassword />} />
+                            <Route path="/loading" element={<LoadingPage />} />
+                        </Routes>
+                        <Footer />
                     </div>
                 </BrowserRouter>
             )}
@@ -110,6 +113,7 @@ function App() {
                             <Route path="/" element={<MainPage />} />
                             <Route path="/notices" element={<NoticeList />} />
                             <Route path="/notices/:noticeId" element={<NoticePage />} />
+                            <Route path="/recruit" element={<RecruitPage />} />
                             <Route path="/central" element={<CentralClubPage />} />
                             <Route path="/small" element={<SmallClubPage />} />
                             <Route path="/official" element={<OfficialClubPage />} />
@@ -142,8 +146,8 @@ function App() {
                             <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
                             <Route path="/admin/password" element={<ModifyPassword />} />
                         </Routes>
+                        <Footer />
                     </div>
-                    <Footer />
                 </BrowserRouter>
             )}
         </div>

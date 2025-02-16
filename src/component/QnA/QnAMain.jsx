@@ -60,12 +60,11 @@ export default function QnAMain() {
             rows.push(
                 <div key={`row-${i}`} className={styles.faq_container}>
                     {rowItems.map((item, index) => {
-                        const globalIndex = i + index; // 전역 인덱스를 계산합니다.
+                        const globalIndex = i + index; // 전역 인덱스를 계산
 
                         return (
                             <div key={item.id} className={styles.faq_item}>
                                 <div
-                                    // key={item.id} // 고유한 key 사용
                                     className={`${styles.faq_rectangle} ${
                                         activeIndex === globalIndex ? styles.active_faq_rectangle : ''
                                     }`}

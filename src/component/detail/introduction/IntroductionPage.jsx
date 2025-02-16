@@ -42,18 +42,24 @@ export default function IntroductionPage({
                 <p>{introduction}</p>
                 <br></br>
                 <strong>📌 인스타</strong>
-                <a href={instagram} target="_blank" rel="noopener noreferrer">
-                    <img className="insta_icon" src="/buttons/instagram_icon.png" alt="instagram" />
-                </a>
+                {instagram ? (
+                    <a href={instagram} target="_blank" rel="noopener noreferrer">
+                        <img className="insta_icon" src="/buttons/instagram_icon.png" alt="instagram" />
+                    </a>
+                ) : (
+                    ''
+                )}
+
                 <br></br>
+
                 <strong>📌 대표 활동</strong>
                 <p>
                     <NewLines text={activity} />
                 </p>
                 <br></br>
-                <strong>📌 동아리장</strong>
+                {/* <strong>📌 동아리장</strong>
                 <p>{leader}</p>
-                <br></br>
+                <br></br> */}
                 <strong>📌 동아리실</strong>
                 <p>{room}</p>
             </div>

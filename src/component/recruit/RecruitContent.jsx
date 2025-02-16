@@ -253,6 +253,7 @@ export default function RecruitContent() {
                     <div className={styles.horizontal_line}></div>
 
                     <div className={styles.content_div}>
+                        <img src="/recruit/everytime.png" alt="ET" className={styles.everyTime_img} />
                         <p className={styles.content_content}>{contentData?.content}</p>
                     </div>
 

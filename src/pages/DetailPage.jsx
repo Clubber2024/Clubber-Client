@@ -229,9 +229,9 @@ export default function ClubsPage() {
                             </span>
                         </div>
 
-                        {/* <div className="recruit_btn" onClick={OnClickRecruitBtn}>
+                        <div className="recruit_btn" onClick={OnClickRecruitBtn}>
                             모집글 보러가기 <div className="recruit_btn_border"></div>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -88,18 +88,19 @@ function Footer() {
 
                     <br />
                     <div className={styles.font_container}>
-                        <p className={styles.font_copyright}>email: ssuclubber@gmail.com</p>
+                        <div>
+                            <p className={styles.font_copyright}>email: ssuclubber@gmail.com</p>
+                        </div>
                         <div className={styles.font_set}>
-                            <p className={styles.font}>이용약관ㅣ</p>
-                            <p className={styles.font}>개인정보처리방침ㅣ</p>
-                            <p className={styles.font}>운영정책ㅣ</p>
+                            <a href="https://polymorphismj.notion.site/clubber-19cfbba2687280089490c05f188083f8?pvs=4">
+                                <p className={styles.font}>이용약관ㅣ</p>
+                            </a>
+                            <a href="https://polymorphismj.notion.site/clubber-198fbba26872804ba430c3801b4e7b54?pvs=4">
+                                <p className={styles.font}>개인정보처리방침ㅣ</p>
+                            </a>
                             <p className={styles.font} onClick={onClickDelete}>
-                                회원탈퇴ㅣ
+                                회원탈퇴
                             </p>
-
-                            <LinkItem to={'/qna'}>
-                                <p className={styles.font}>FAQ</p>
-                            </LinkItem>
                         </div>
                     </div>
                 </div>

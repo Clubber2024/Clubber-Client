@@ -4,6 +4,7 @@
         padding-top: 30px;
         background-color: #f1f1f1;
         margin-bottom: 0;
+        padding-bottom: 5px;
     }
 
     .qna_title {
@@ -13,8 +14,8 @@
         line-height: 35.41px;
         text-align: center;
         color: #202123;
-        margin-top: 47px;
-        margin-bottom: 20px;
+        margin-top: 20px;
+        margin-bottom: 30px;
     }
 
     .faq_title {
@@ -32,19 +33,31 @@
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        margin-bottom: 100px;
+        margin-bottom: 25px;
         margin-left: 5%;
         margin-right: 5%;
         padding-top: 5px;
         background: transparent;
+        /* width: fit-content; */
     }
 
     .faq_item {
         position: relative;
-        /* width: 90%; */
-        /* display: flex; */
-        /* flex-direction: column; */
-        /* justify-content: center; */
+    }
+
+    .active_faq_rectangle {
+        width: 285px;
+        height: 115px;
+        border-radius: 20px;
+        background: #ffffff;
+        border: 1px solid #9c9c9c4d;
+        box-shadow: 0px 0px 2px 1px #0000000d;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        cursor: pointer;
+        border: 1px solid var(--section2, #a7a7a7);
     }
 
     .faq_rectangle {
@@ -54,13 +67,14 @@
         background: #ffffff;
         border: 1px solid #9c9c9c4d;
         box-shadow: 0px 0px 2px 1px #0000000d;
-        margin-top: 100px;
-        margin-right: 20px;
-        display: block;
+        margin-top: 20px;
+        display: flex;
+        margin-bottom: 10px;
         flex-direction: row;
-        /* margin-bottom: 70px; */
         cursor: pointer;
-        z-index: 1;
+        &:hover {
+            border: 1px solid var(--section2, #a7a7a7);
+        }
     }
 
     .faq_Q {
@@ -74,8 +88,6 @@
         margin-top: 15px;
         margin-right: 8px;
         background: transparent;
-
-        /* display: contents; */
     }
 
     .faq_question {
@@ -88,23 +100,17 @@
         color: #202123;
         margin-right: 5px;
         background: transparent;
-
-        /* display: contents; */
     }
     .faq_answer_div {
-        position: absolute;
-        top: 100%;
-        left: 0;
         max-height: 0;
         width: 285px;
-        overflow: visible;
+        overflow: hidden;
         background: #d6d6d633;
         border-bottom: 1.5px solid #d6d6d6cc;
-        /* transition: max-height 0.3s ease-in-out; */
+        transition: max-height 0.3s ease-in-out;
     }
     .expanded {
-        max-height: 300px; /* 적절한 높이 설정 */
-        /* padding: 20px; */
+        max-height: 500px; /* 적절한 높이 설정 */
         padding-right: 20px;
         padding-bottom: 10px;
     }
@@ -113,14 +119,13 @@
         height: 0px;
         overflow: hidden;
     }
+
     .faq_answer {
         height: 95px;
         margin-bottom: 50px;
         z-index: 100;
         padding-top: 10px;
         background: transparent;
-        /* justify-content: center; */
-
         width: 100%;
     }
 
@@ -131,7 +136,6 @@
         line-height: 26.06px;
         text-align: left;
         margin-top: 10px;
-
         margin-left: 25px;
         background: transparent;
     }
@@ -210,7 +214,6 @@
         border: 1px solid #9c9c9c4d;
         box-shadow: 0px 0px 2px 1px #0000000d;
         margin-top: 20px;
-        /* margin-right: 20px; */
         display: flex;
         flex-direction: row;
         margin-bottom: 10px;
