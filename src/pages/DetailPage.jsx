@@ -93,7 +93,7 @@ export default function ClubsPage() {
     };
 
     const getBookmarkData = async () => {
-        setIsLoading(true);
+        // setIsLoading(true);
         if (isAdmin) return;
         if (!token) return;
         try {
@@ -118,11 +118,8 @@ export default function ClubsPage() {
                     setFavoriteId(null);
                 }
             } else {
-                //console.error('Failed to fetch bookmark data');
             }
-        } catch (error) {
-            //console.error('Error fetching bookmark data : ', error);
-        }
+        } catch (error) {}
     };
 
     const handleFavorite = async () => {
@@ -229,9 +226,9 @@ export default function ClubsPage() {
                             </span>
                         </div>
 
-                        <div className="recruit_btn" onClick={OnClickRecruitBtn}>
+                        {/* <div className="recruit_btn" onClick={OnClickRecruitBtn}>
                             모집글 보러가기 <div className="recruit_btn_border"></div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
