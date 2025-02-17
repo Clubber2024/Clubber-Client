@@ -49,31 +49,28 @@ export default function RecruitList() {
 
     return (
         <>
-            <div className={styles.title}>모집글</div>
-            <div className={styles.recruit_container}>
-                {PromoteData?.map((item) => (
-                    <div
-                        className={styles.recruit_box}
-                        key={item.recruitId}
-                        onClick={() => onClickRecruit(item.recruitId)}
-                    >
-                        {item.title !== " " && item.content !== " " && (
-                            <div className={styles.recruit_div}>
-                            <p className={styles.recruit_title}>{item.title}</p>
-                            <p className={styles.recruit_text}>{item.content}</p>
+            <div className={styles.recruit_list_total_div}>
+                <div className={styles.title}>모집글</div>
+                <div className={styles.recruit_container}>
+                    {PromoteData?.map((item) => (
+                        <div
+                            className={styles.recruit_box}
+                            key={item.recruitId}
+                            onClick={() => onClickRecruit(item.recruitId)}
+                        >
+                            {item.title !== ' ' && item.content !== ' ' && (
+                                <div className={styles.recruit_div}>
+                                    <p className={styles.recruit_title}>{item.title}</p>
+                                    <p className={styles.recruit_text}>{item.content}</p>
+                                </div>
+                            )}
+                            {item.imageUrl && (
+                                <img src={item.imageUrl} className={styles.recruit_logo} alt="recruit logo" />
+                            )}
                         </div>
-                        )}
-                        {item.imageUrl && (
-                            <img
-                                src={item.imageUrl}
-                                className={styles.recruit_logo}
-                                alt="recruit logo"
-                            />
-                        )}
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-
             <ReactPaginate
                 previousLabel={'<'}
                 nextLabel={'>'}
