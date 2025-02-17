@@ -35,7 +35,7 @@ export default function MainBanner() {
     }
 
     const onClickBan2 = () => {
-        navigate("/menu/summary");
+        navigate("/summary");
     }
 
     return (
