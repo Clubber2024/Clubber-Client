@@ -64,7 +64,7 @@ export const refreshAccessToken = async () => {
         clearTokens();
         if (error.response?.status === 403) {
             if (onAuthErrorCallback) {
-                onAuthErrorCallback("세션이 만료되었습니다. 다시 로그인해주세요.");
+                onAuthErrorCallback("로그인 정보가 만료되었습니다. 다시 로그인해주세요.");
             }
             // window.location.href = "/login"; // 로그인 페이지로 이동
         }
