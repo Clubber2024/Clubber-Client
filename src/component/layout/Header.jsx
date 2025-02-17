@@ -18,6 +18,7 @@ export default function Header() {
     const accessToken = getAccessToken();
     const isAdmin = getIsAdmin();
 
+    const [isAuthError, setIsAuthError] = useState(false);
     // 에러 모달창
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
@@ -25,7 +26,12 @@ export default function Header() {
     const closeModal = () => {
         setIsModalOpen(false);
         setModalMessage('');
-        navigate(-1);
+        if (isAuthError) {
+            navigate('/login');
+            setIsAuthError(false);
+        } else {
+            navigate(-1);
+        }
     };
 
     // 403 (리프레쉬 토큰 만료 시) 모달창
@@ -33,6 +39,7 @@ export default function Header() {
         setAuthErrorCallback((message) => {
             setModalMessage(message);
             setIsModalOpen(true);
+            setIsAuthError(true);
         });
     }, []);
 

@@ -17,6 +17,7 @@
         border-radius: 10px;
         background-color: white;
         font-family: 'Noto Sans KR', sans-serif;
+        margin-bottom: 150px;
     }
 
     .division_container {
@@ -54,12 +55,13 @@
     
     .summary_container {
         display: grid;
-        /* grid-template-rows: repeat(5, 1fr); */
+        grid-template-columns: repeat(2, 1fr);
         width: 80%;
         border: solid 1px #0000001A;
         border-radius: 10px;
         background-color: white;
         font-family: 'Noto Sans KR', sans-serif;
+        margin-bottom: 80px;
     }
 
     .division_container {
