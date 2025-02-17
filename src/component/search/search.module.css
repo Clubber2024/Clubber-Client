@@ -61,8 +61,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        /* padding-top: 20px; */
+        padding-bottom: 5%;
     }
 
     .warning_container {
