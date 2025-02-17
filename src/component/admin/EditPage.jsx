@@ -87,7 +87,12 @@ export default function EditPage() {
             setClub(response.data.data);
             setIntroCount(response.data.data.introduction.length);
             setClubInfo(response.data.data.clubInfo);
-            // setActiCount(response.data.data.clubInfo.activity.length);
+            {
+                response.data.data.clubInfo.activity !== null && response.data.data.clubInfo.activity.length > 0
+                    ? setActiCount(response.data.data.clubInfo.activity.length)
+                    : setActiCount(0);
+            }
+
             setImageUrl(response.data.data.imageUrl);
             console.log('imageurl', imageUrl);
             const clubID = response.data.data.clubId;
