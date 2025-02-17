@@ -152,8 +152,9 @@
         flex-direction: row;
         align-items: center;
         position: relative;
-        left: -10px;
+        left: -15px;
         border: none;
+        background-color: transparent;
     }
 
     .notion_logo {
@@ -333,6 +334,7 @@
         position: relative;
         left: -15px;
         border: none;
+        background-color: transparent;
     }
 
     .notion_logo {

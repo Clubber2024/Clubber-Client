@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 //import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
-import { LinkItem } from '../branch/BranchCentral';
 import { customAxios } from '../../config/axios-config';
 import { useNavigate } from 'react-router-dom';
 import ConfirmModal from '../modal/ConfirmModal';
@@ -93,10 +92,12 @@ function Footer() {
                         </div>
                         <div className={styles.font_set}>
                             <a href="https://polymorphismj.notion.site/clubber-19cfbba2687280089490c05f188083f8?pvs=4">
-                                <p className={styles.font}>이용약관ㅣ</p>
+                                <p className={styles.font}>이용약관</p>
+                                <p className={styles.vertical_line}>ㅣ</p>
                             </a>
                             <a href="https://polymorphismj.notion.site/clubber-198fbba26872804ba430c3801b4e7b54?pvs=4">
-                                <p className={styles.font}>개인정보처리방침ㅣ</p>
+                                <p className={styles.font}>개인정보처리방침</p>
+                                <p className={styles.vertical_line}>ㅣ</p>
                             </a>
                             <p className={styles.font} onClick={onClickDelete}>
                                 회원탈퇴
