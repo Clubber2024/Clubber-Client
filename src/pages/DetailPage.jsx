@@ -103,14 +103,10 @@ export default function ClubsPage() {
                 },
             });
             if (response.data.success) {
-                setIsLoading(false);
                 const data = response.data.data.userFavorites;
-                //console.log('Data: ', data);
                 const clubIds = data.map((item) => item.favoriteClub['clubId']);
-                //console.log(clubIds);
                 const isFavoriteClub = clubIds.some((id) => id === intClubId);
                 const favorite = data.find((item) => item.favoriteClub['clubId'] === intClubId);
-                //console.log('isfavoriteClub: ', isFavoriteClub);
                 setIsFavorite(isFavoriteClub);
                 if (favorite) {
                     setFavoriteId(favorite.favoriteId);
@@ -139,13 +135,11 @@ export default function ClubsPage() {
                         },
                     });
                     if (res.status === 200) {
-                        //console.log('delete res:', res);
                         setIsFavorite(false);
                         setFavoriteId(null); //즐겨찾기 ID 초기화
                         setBookmarkMessage('동아리가 즐겨찾기에서 해제되었습니다.');
                         setIsBookmarkModalOpen(true);
                     } else {
-                        //console.error('Failed to delete favorite:', res);
                         return; // 실패 시 추가 요청을 하지 않음
                     }
                 }
@@ -158,25 +152,23 @@ export default function ClubsPage() {
                         },
                     });
                     if (address.data.success) {
-                        //console.log('add res : ', addres);
                         setIsFavorite(true);
                         setFavoriteId(address.data.data.favoriteId);
                         setBookmarkMessage('동아리가 즐겨찾기에 추가되었습니다.');
                         setIsBookmarkModalOpen(true);
                     } else {
-                        //console.error('Failed to add favorite:', addres);
                     }
                 }
-            } else if (isAdmin && token) {
-                setModalMessage('관리자는 즐겨찾기를 이용할 수 없습니다.');
-                setIsModalOpen(true);
-            } else {
-                setModalMessage('즐겨찾기 추가는 로그인 이후 가능합니다.');
-                setIsModalOpen(true);
             }
+            // } else if (isAdmin && token) {
+            //     setModalMessage('관리자는 즐겨찾기를 이용할 수 없습니다.');
+            //     setIsModalOpen(true);
+            // } else {
+            //     setModalMessage('즐겨찾기 추가는 로그인 이후 가능합니다.');
+            //     setIsModalOpen(true);
+            // }
             getBookmarkData(); // 각 요청 후 즐겨찾기 리스트 업데이트
         } catch (error) {
-            //console.error('Favorite error:', error); // 에러 로그
             getBookmarkData(); //에러 발생해도 업데이트
         }
     };
@@ -205,7 +197,7 @@ export default function ClubsPage() {
                     <div className="detail_header_name">
                         <h3 className="detail_club_name">{detailData.clubName}</h3>
                         <div className="imgDiv">
-                            {isAdmin ? (
+                            {isAdmin || !token ? (
                                 ''
                             ) : (
                                 <img

@@ -13,7 +13,7 @@ export default function AdminRecruitWrite() {
     const inputFileRef = useRef(null);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const [everyTimeUrl, setEveryTimeUrl] = useState('');
+    const [everytimeUrl, setEverytimeUrl] = useState('');
     const [selectedImages, setSelectedImages] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,7 +48,7 @@ export default function AdminRecruitWrite() {
                 setContentCount(res.data.data.content.length);
                 setSelectedImages(res.data.data.imageUrls);
                 setRemainedImages(res.data.data.imageUrls);
-                setEveryTimeUrl(res.data.data.everyTimeUrl);
+                setEverytimeUrl(res.data.data.everytimeUrl);
             }
         } catch (error) {
             console.error(error);
@@ -60,7 +60,7 @@ export default function AdminRecruitWrite() {
             getRecruitData();
         }
     }, []);
-    console.log('Selected Images', remainedImages);
+    // console.log('Selected Images', remainedImages);
 
     const closeModal = () => {
         setIsModalOpen(false);
@@ -82,7 +82,8 @@ export default function AdminRecruitWrite() {
     };
 
     const handleEveryTimeUrlChange = (e) => {
-        setEveryTimeUrl(e.target.value);
+        setEverytimeUrl(e.target.value);
+        console.log(e.target.value);
     };
 
     // 파일 선택 핸들러
@@ -233,27 +234,28 @@ export default function AdminRecruitWrite() {
             try {
                 const imageUrls = await uploadImages();
 
-                console.log(
-                    'title:',
-                    title,
-                    'content:',
-                    content,
-                    'deletedImageUrls:',
-                    deletedFiles,
-                    'newImageKeys:',
-                    imageUrls,
-                    'remainImageUrls:',
-                    remainedImages
-                );
+                // console.log(
+                //     'title:',
+                //     title,
+                //     'content:',
+                //     content,
+                //     'deletedImageUrls:',
+                //     deletedFiles,
+                //     'newImageKeys:',
+                //     imageUrls,
+                //     'remainImageUrls:',
+                //     remainedImages
+                // );
+                console.log('every', everytimeUrl);
                 if (recruitId) {
                     const combinedImages = [...remainedImages, ...imageUrls];
-                    console.log('imageurls', imageUrls);
+
                     const res = await customAxios.patch(
                         `/v1/admins/recruits/${recruitId}`,
                         {
                             title: title,
                             content: content,
-                            everyTimeUrl: everyTimeUrl,
+                            everytimeUrl: everytimeUrl,
                             deletedImageUrls: deletedFiles,
                             newImageKeys: imageUrls,
                             remainImageUrls: remainedImages ? remainedImages : selectedImages,
@@ -267,6 +269,7 @@ export default function AdminRecruitWrite() {
                     );
                     if (res.data.success) {
                         setIsModalOpen(true);
+                        console.log(res.data);
                     }
                 } else {
                     const res = await customAxios.post(
@@ -274,7 +277,7 @@ export default function AdminRecruitWrite() {
                         {
                             title: title,
                             content: content,
-                            everyTimeUrl: everyTimeUrl,
+                            everytimeUrl: everytimeUrl,
                             imageKey: imageUrls,
                         },
                         {
@@ -319,7 +322,7 @@ export default function AdminRecruitWrite() {
                     <input
                         type="text"
                         className={styles.write_title_input}
-                        value={everyTimeUrl}
+                        value={everytimeUrl}
                         onChange={handleEveryTimeUrlChange}
                         placeholder="주소를 입력해주세요."
                     />

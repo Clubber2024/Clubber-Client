@@ -9,6 +9,7 @@ function Search() {
     const [clubs, setClubs] = useState([]);
     const [central, setCentral] = useState([]);
     const [division, setDivision] = useState([]);
+    const [official, setOfficial] = useState([]);
     const [error, setError] = useState(null);
     const location = useLocation();
     const clubName = location.state.clubName;
@@ -30,6 +31,10 @@ function Search() {
 
             if (data['소모임']) {
                 setDivision(data['소모임']);
+            }
+
+            if (data['공식단체']) {
+                setOfficial(data['공식단체']);
             }
 
             setError(null);
@@ -95,6 +100,11 @@ function Search() {
         return result;
     };
 
+    const renderDataOfficial = (official) => {
+        const result = renderData(official);
+        return result;
+    };
+
     return (
         <div>
             {central.length > 0 && (
@@ -103,6 +113,15 @@ function Search() {
                         <h2 className={styles.header_title}>중앙동아리</h2>
                     </div>
                     {renderDataCentral(central)}
+                </div>
+            )}
+
+            {official.length > 0 && (
+                <div className={styles.wrap}>
+                    <div className={styles.header}>
+                        <h2 className={styles.header_title}>공식단체</h2>
+                    </div>
+                    {renderDataOfficial(official)}
                 </div>
             )}
 

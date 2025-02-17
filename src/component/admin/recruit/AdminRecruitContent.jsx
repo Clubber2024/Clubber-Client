@@ -82,6 +82,12 @@ export default function AdminRecruitContent() {
                     <div className={styles.horizontal_line}></div>
 
                     <div className={styles.content_div}>
+                        <div className={styles.everytime_div}>
+                            <img src="/recruit/everytime.png" alt="ET" className={styles.everyTime_img} />
+                            <a href={contentData?.everytimeUrl}>
+                                <p className={styles.everyTime_p}>{contentData?.everytimeUrl}</p>
+                            </a>
+                        </div>
                         <p className={styles.content_content}>{contentData?.content}</p>
                     </div>
 
