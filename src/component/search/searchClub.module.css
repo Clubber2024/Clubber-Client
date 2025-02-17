@@ -70,14 +70,21 @@
 @media screen and (max-width: 769px) {
     .rectangle {
         position: relative;
-        width: 20%;
-        height: 21.6%;
+        width: 162px;
+        height: 210px;
         border-radius: 10px;
         background: #ffffff;
         border: 1px solid #d9d9d9;
         box-shadow: 0px 0px 5px 0px #00000033;
         margin: 10px;
         cursor: pointer;
+    }
+    .rectangle h3 {
+        background: #ffffff;
+    }
+
+    .rectangle p {
+        background: transparent;
     }
     .image {
         width: 100%;
@@ -93,6 +100,7 @@
         font-weight: 600;
         text-align: left;
         padding: 0 0 0 3%;
+        border-radius: 10px;
     }
     .content {
         width: 100%;
@@ -106,6 +114,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow-y: auto;
+        border-radius: 10px;
     }
     .department {
         font-family: Noto Sans KR;

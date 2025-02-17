@@ -83,11 +83,18 @@ export default function EditPage() {
                 },
             });
             console.log('setClub', response.data.data);
+
             setClub(response.data.data);
             setIntroCount(response.data.data.introduction.length);
             setClubInfo(response.data.data.clubInfo);
-            setActiCount(response.data.data.clubInfo.activity.length);
+            {
+                response.data.data.clubInfo.activity !== null && response.data.data.clubInfo.activity.length > 0
+                    ? setActiCount(response.data.data.clubInfo.activity.length)
+                    : setActiCount(0);
+            }
+
             setImageUrl(response.data.data.imageUrl);
+            console.log('imageurl', imageUrl);
             const clubID = response.data.data.clubId;
             const intClubID = parseInt(clubID);
             setClubId(clubID);
@@ -99,6 +106,7 @@ export default function EditPage() {
     useEffect(() => {
         getAdminClub();
     }, []);
+    console.log('img', imageUrl);
 
     const handleFileChange = async (event) => {
         const file = event.target.files[0];
@@ -108,6 +116,7 @@ export default function EditPage() {
         setImagePreview(URL.createObjectURL(file));
         setExtension(file.name.split('.').pop().toUpperCase()); // 확장자 추출
     };
+    console.log('ima', imageUrl);
 
     const deleteImage = async () => {
         if (!imageUrl) return;
@@ -149,7 +158,7 @@ export default function EditPage() {
                         }
                     );
 
-                    setImageUrl(data.data.imageKey);
+                    console.log('presignedUrl', data);
 
                     // 이미지 파일을 presigned URL로 업로드
                     await axios.put(data.data.presignedUrl, imageFile, {
@@ -158,7 +167,8 @@ export default function EditPage() {
                         },
                     });
                     patchEditClub(data.data.imageKey);
-                    console.log('imagefile', imageFile);
+                    setImageUrl(data.data.imageKey);
+                    console.log('imagefile', imageUrl);
                 } catch (error) {
                     console.error('이미지 업로드 실패:', error);
                     alert('이미지 업로드에 실패했습니다.');
@@ -187,7 +197,7 @@ export default function EditPage() {
                     },
                 }
             );
-            // console.log('res', response);
+            console.log('res', response);
             setIsModalOpen(true);
         } catch (error) {
             console.log(error);
