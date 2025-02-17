@@ -48,7 +48,7 @@ export default function RecruitList() {
     };
 
     return (
-        <>
+        <div>
             <div className={styles.title}>모집글</div>
             <div className={styles.recruit_container}>
                 {PromoteData?.map((item) => (
@@ -57,18 +57,14 @@ export default function RecruitList() {
                         key={item.recruitId}
                         onClick={() => onClickRecruit(item.recruitId)}
                     >
-                        {item.title !== " " && item.content !== " " && (
+                        {item.title !== ' ' && item.content !== ' ' && (
                             <div className={styles.recruit_div}>
-                            <p className={styles.recruit_title}>{item.title}</p>
-                            <p className={styles.recruit_text}>{item.content}</p>
-                        </div>
+                                <p className={styles.recruit_title}>{item.title}</p>
+                                <p className={styles.recruit_text}>{item.content}</p>
+                            </div>
                         )}
                         {item.imageUrl && (
-                            <img
-                                src={item.imageUrl}
-                                className={styles.recruit_logo}
-                                alt="recruit logo"
-                            />
+                            <img src={item.imageUrl} className={styles.recruit_logo} alt="recruit logo" />
                         )}
                     </div>
                 ))}
@@ -85,6 +81,6 @@ export default function RecruitList() {
                 disabledClassName={'pagination_link_disabled'}
                 activeClassName={'active'}
             />
-        </>
+        </div>
     );
 }

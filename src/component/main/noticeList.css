@@ -1,5 +1,6 @@
 .notice_container {
     width: 70%;
+    min-height: auto;
     margin: 0 auto;
     padding: 50px 0px 100px 0px;
 }
