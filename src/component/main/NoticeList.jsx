@@ -49,7 +49,7 @@ export default function NoticeList() {
             <div className="notice_list">
                 <div className="notice_header">
                     <span>번호</span>
-                    <span style={{ textAlign: 'start' }}>제목</span>
+                    <span style={{ textAlign: 'start', marginLeft: '5px' }}>제목</span>
                     <span>날짜</span>
                     <span>작성자</span>
                     <span>조회수</span>
