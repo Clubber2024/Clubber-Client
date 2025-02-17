@@ -98,9 +98,23 @@ export default function QnAMain() {
         return rows;
     };
 
+    const onClickNotion = () => {
+        window.open('https://www.notion.so/polymorphismj/19cfbba268728049b974f28a3254bb17', '_blank');
+      };
+
     return (
         <div className={styles.qna_div}>
-            <p className={styles.qna_title}>자주 묻는 질문</p>
+            <div className={styles.title_notion_div}>
+                <p className={styles.qna_title}>자주 묻는 질문</p>
+                <button onClick={onClickNotion} className={styles.notion_button}>
+                    <img
+                        src="/buttons/notion_button.png"
+                        alt="notion"
+                        className={styles.notion_logo}
+                    />
+                    <span className={styles.notion_text}>클러버에 대해 궁금하다면? Notion 클릭!</span>
+                </button>
+            </div>
             {renderDataInRows(faqData)}
         </div>
     );

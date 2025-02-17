@@ -64,33 +64,29 @@
     }
 
     .notice_title {
-        display: flex;
-        flex-direction: row;
-        text-align: start;
-        width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        /* color: black; */
         background-color: #ffffff;
         border: #ffffff;
         font-family: Noto Sans KR;
+        text-align: start;
+        flex: 3;
     }
 
     .notice_line {
-        padding: 0px 2px;
         background-color: #ffffff;
         border: #ffffff;
-        margin-right: 5%;
+        text-align: center;
+        flex: 0.2;
     }
 
     .notice_date {
-        width: fit-content;
-        margin-left: 5px;
         background-color: #ffffff;
         border: #ffffff;
         font-family: Noto Sans KR;
         text-align: end;
+        flex: 1;
     }
 }
 
@@ -157,6 +153,7 @@
 
     .notice_title {
         text-align: start;
+        flex: 3;
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -171,12 +168,15 @@
     }
 
     .notice_line {
-        padding: 0px 2px;
+        text-align: center;
+        flex: 0.2;
         background-color: #ffffff;
         border: #ffffff;
     }
 
     .notice_date {
+        text-align: end;
+        flex: 1;
         width: 15%;
         margin-left: 5px;
         margin-right: 25px;

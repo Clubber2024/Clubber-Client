@@ -49,25 +49,25 @@ export default function MainBanner() {
                 </div>
                 <div className="banner_container" onClick={onClickBan2}>
                 <img
-                    src={isMobile ? "/main/ban2_mob.png" : "/main/ban2.png"}
+                    src={isMobile ? "/main/ban2_mob2.png" : "/main/ban2.png"}
                     alt="main banner"
                 />
                 </div>
-                <div className="banner_container">
+                {/* <div className="banner_container">
                 <img
                     src={isMobile ? "/main/ban3_mob.png" : "/main/ban3.png"}
                     alt="main banner"
                 />
-                </div>
+                </div> */}
                 <div className="banner_container">
                 <img
-                    src={isMobile ? "/main/ban4_mob.png" : "/main/ban4.png"}
+                    src={isMobile ? "/main/ban4_mob2.png" : "/main/ban4.png"}
                     alt="main banner"
                 />
                 </div>
                 <div className="banner_container">
                 <img
-                    src={isMobile ? "/main/ban1_mob.png" : "/main/ban1.png"}
+                    src={isMobile ? "/main/ban5_mob2.png" : "/main/ban5.png"}
                     alt="main banner"
                 />
                 </div>

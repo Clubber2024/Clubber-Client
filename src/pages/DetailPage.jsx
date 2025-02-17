@@ -114,8 +114,11 @@ export default function ClubsPage() {
                     setFavoriteId(null);
                 }
             } else {
+                console.error('Failed to fetch bookmark data');
             }
-        } catch (error) {}
+        } catch (error) {
+            console.error('Error fetching bookmark data : ', error);
+        }
     };
 
     const handleFavorite = async () => {

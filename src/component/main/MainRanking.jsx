@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import styles from './mainRanking.module.css';
 import { customAxios } from '../../config/axios-config';
 import { Link } from 'react-router-dom';
