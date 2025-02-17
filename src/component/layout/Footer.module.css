@@ -34,10 +34,17 @@
 
     .font_set a {
         text-decoration: none;
+        display: flex;
+        flex-direction: row;
     }
 
     .font:hover {
         color: #7bc8e0;
+    }
+
+    .vertical_line {
+        color: #646464;
+        font-size: 15px;
     }
 
     .footer {
@@ -130,6 +137,19 @@
         color: #646464;
         cursor: pointer;
     }
+
+    .font_set a {
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .vertical_line {
+        color: #646464;
+        font-size: 14px;
+        padding-top: 1px;
+    }
+
     .font_set {
         display: flex;
     }
@@ -192,6 +212,7 @@
         line-height: 20.27px;
         text-align: center;
     }
+
     .text_ContactUs {
         font-family: Noto Sans KR;
         font-size: 16px;

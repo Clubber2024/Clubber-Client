@@ -1,4 +1,7 @@
 @media screen and (min-width: 768px) {
+    .recruit_list_total_div {
+        min-height: 150%;
+    }
     .title {
         font-family: Noto Sans;
         font-size: 26px;
