@@ -3,7 +3,6 @@
         padding: 10%;
         padding-top: 30px;
         background-color: #f1f1f1;
-        margin-bottom: 0;
         padding-bottom: 5px;
     }
 
@@ -180,7 +179,7 @@
 
 @media screen and (max-width: 768px) {
     .qna_div {
-        padding: 10% 5%;
+        padding: 2% 5%;
         background-color: #f1f1f1;
         margin-bottom: 0;
         display: flex;
