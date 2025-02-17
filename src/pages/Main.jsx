@@ -14,9 +14,9 @@ export default function MainPage() {
                     <MainNotice />
                     <MainRanking />
                 </div>
-                <div className="main_promote_container">
+                {/* <div className="main_promote_container">
                     <MainPromote />
-                </div>
+                </div> */}
             </div>
             <QnAMain />
         </>
