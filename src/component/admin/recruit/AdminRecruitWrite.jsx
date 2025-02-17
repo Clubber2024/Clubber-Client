@@ -13,6 +13,7 @@ export default function AdminRecruitWrite() {
     const inputFileRef = useRef(null);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [everytimeUrl, setEverytimeUrl] = useState('');
     const [selectedImages, setSelectedImages] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,12 +41,14 @@ export default function AdminRecruitWrite() {
         try {
             const res = await customAxios.get(`/v1/admins/recruits/${recruitId}`);
             if (res.data.success) {
-                console.log('edit content', res.data);
+                // console.log('edit content', res.data);
                 setTitle(res.data.data.title);
                 setTitleCount(res.data.data.title.length);
                 setContent(res.data.data.content);
                 setContentCount(res.data.data.content.length);
                 setSelectedImages(res.data.data.imageUrls);
+                setRemainedImages(res.data.data.imageUrls);
+                setEverytimeUrl(res.data.data.everytimeUrl);
             }
         } catch (error) {
             console.error(error);
@@ -57,6 +60,7 @@ export default function AdminRecruitWrite() {
             getRecruitData();
         }
     }, []);
+    // console.log('Selected Images', remainedImages);
 
     const closeModal = () => {
         setIsModalOpen(false);
@@ -75,6 +79,11 @@ export default function AdminRecruitWrite() {
     const handleContentChange = (e) => {
         setContent(e.target.value);
         setContentCount(e.target.value.length);
+    };
+
+    const handleEveryTimeUrlChange = (e) => {
+        setEverytimeUrl(e.target.value);
+        console.log(e.target.value);
     };
 
     // 파일 선택 핸들러
@@ -98,6 +107,8 @@ export default function AdminRecruitWrite() {
         //모집글 수정 시
         if (recruitId) {
             // 새로 추가된 파일과 이미지 URL 상태 업데이트
+            setRemainedImages(selectedImages);
+
             setNewAddedFiles(newImageFiles);
             setNewAddedImages(newImageURLs);
         }
@@ -133,8 +144,9 @@ export default function AdminRecruitWrite() {
         });
     };
 
+    // console.log('Ss', selectedImages);
+
     const uploadImages = async () => {
-        // console.log('Ff', selectedFiles);
         //선택된 파일 배열 확정
         const filesToUpload = recruitId ? newAddedFiles.flat() : selectedFiles.flat();
 
@@ -192,6 +204,7 @@ export default function AdminRecruitWrite() {
 
         updateImages.splice(index, 0, movedImage);
         setSelectedImages(updateImages);
+        setRemainedImages(updateImages);
     };
 
     const onDragOver = (e) => {
@@ -220,29 +233,32 @@ export default function AdminRecruitWrite() {
         } else {
             try {
                 const imageUrls = await uploadImages();
-                console.log(
-                    'title:',
-                    title,
-                    'content:',
-                    content,
-                    'deletedImageUrls:',
-                    deletedFiles,
-                    'newImageKeys:',
-                    imageUrls,
-                    'remainImageUrls:',
-                    remainedImages
-                );
+
+                // console.log(
+                //     'title:',
+                //     title,
+                //     'content:',
+                //     content,
+                //     'deletedImageUrls:',
+                //     deletedFiles,
+                //     'newImageKeys:',
+                //     imageUrls,
+                //     'remainImageUrls:',
+                //     remainedImages
+                // );
+                console.log('every', everytimeUrl);
                 if (recruitId) {
                     const combinedImages = [...remainedImages, ...imageUrls];
-                    console.log('combined', combinedImages);
+
                     const res = await customAxios.patch(
                         `/v1/admins/recruits/${recruitId}`,
                         {
                             title: title,
                             content: content,
+                            everytimeUrl: everytimeUrl,
                             deletedImageUrls: deletedFiles,
                             newImageKeys: imageUrls,
-                            remainImageUrls: remainedImages,
+                            remainImageUrls: remainedImages ? remainedImages : selectedImages,
                             images: combinedImages,
                         },
                         {
@@ -253,6 +269,7 @@ export default function AdminRecruitWrite() {
                     );
                     if (res.data.success) {
                         setIsModalOpen(true);
+                        console.log(res.data);
                     }
                 } else {
                     const res = await customAxios.post(
@@ -260,6 +277,7 @@ export default function AdminRecruitWrite() {
                         {
                             title: title,
                             content: content,
+                            everytimeUrl: everytimeUrl,
                             imageKey: imageUrls,
                         },
                         {
@@ -295,6 +313,22 @@ export default function AdminRecruitWrite() {
                     />
                     <p className={styles.write_title_font}>제목을 입력해주세요.</p>
                 </div>
+
+                <p className={styles.write_title}>
+                    에브리타임 URL
+                    {/* <p className={styles.write_title_sub}>({titleCount}/100)	</p> */}
+                </p>
+                <div className={styles.write_backgroud}>
+                    <input
+                        type="text"
+                        className={styles.write_title_input}
+                        value={everytimeUrl}
+                        onChange={handleEveryTimeUrlChange}
+                        placeholder="주소를 입력해주세요."
+                    />
+                    <p className={styles.write_title_font}>주소를 입력해주세요.</p>
+                </div>
+
                 <p className={styles.write_title}>
                     내용 <p className={styles.write_title_sub}>({contentCount}/2000)</p>
                 </p>
