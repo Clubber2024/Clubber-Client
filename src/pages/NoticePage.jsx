@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
-import { customAxios } from "../config/axios-config";
+import { useState, useEffect } from 'react';
+import { customAxios } from '../config/axios-config';
 import './noticePage.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import parse from 'html-react-parser';
 
 export default function NoticePage() {
     const navigate = useNavigate();
@@ -16,6 +18,10 @@ export default function NoticePage() {
     const [noticeData, setNoticeData] = useState([]);
     const [prevData, setPrevData] = useState([]);
     const [nextData, setNextData] = useState([]);
+
+    const transformContent = (text) => {
+        return text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    };
 
     const getNoticeData = async () => {
         try {
@@ -40,7 +46,7 @@ export default function NoticePage() {
             console.error('Error fetching data : ', error);
             setPrevData(null); // 이전 글이 없으면 null로 설정
         }
-    }
+    };
 
     const nextNoticeData = async () => {
         try {
@@ -54,7 +60,7 @@ export default function NoticePage() {
             console.error('Error fetching data : ', error);
             setNextData(null); // 이전 글이 없으면 null로 설정
         }
-    }
+    };
 
     useEffect(() => {
         getNoticeData();
@@ -64,16 +70,15 @@ export default function NoticePage() {
 
     const onClickPrev = () => {
         navigate(`/notices/${prevNoticeId}`);
-    }
+    };
 
     const onClickNext = () => {
         navigate(`/notices/${nextNoticeId}`);
-    }
-
+    };
 
     const onClickList = () => {
         navigate('/notices');
-    }
+    };
 
     return (
         <div className="notice_detail_container">
@@ -83,37 +88,53 @@ export default function NoticePage() {
                 <p className="detail_title">{noticeData.title}</p>
                 <p className="detail_date">{noticeData.createdAt}</p>
                 <div className="detail_divider" />
-                <div className="detail_content">{noticeData.content}</div>
+                <div className="detail_content">
+                    {noticeData.content ? parse(transformContent(noticeData.content)) : ''}
+                </div>
                 <div className="detail_divider" />
                 {prevData ? (
                     <div className="prev_next">
-                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>이전</p>
-                        <p className="prev_next_title" onClick={onClickPrev} style={{ cursor: "pointer" }}>{prevData.title}</p>
-                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>{prevData ? prevData.createdAt : ""}</p>
+                        <p className="prev_next_header">이전</p>
+                        <p className="prev_next_title" onClick={onClickPrev} style={{ cursor: 'pointer' }}>
+                            {prevData.title}
+                        </p>
+                        <p style={{ color: '#9C9C9C', fontSize: '13px', width: '100px' }}>
+                            {prevData ? prevData.createdAt : ''}
+                        </p>
                     </div>
                 ) : (
                     <div className="prev_next_null">
-                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>이전</p>
-                        <p className="prev_next_title" style={{ color: "#9C9C9C", textAlign: "left", padding: "0" }}>이전 글이 없습니다.</p>
+                        <p className="prev_next_header">이전</p>
+                        <p className="prev_next_title" style={{ color: '#9C9C9C', textAlign: 'left', padding: '0' }}>
+                            이전 글이 없습니다.
+                        </p>
                     </div>
                 )}
                 <div className="detail_divider" />
                 {nextData ? (
                     <div className="prev_next">
-                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>다음</p>
-                        <p className="prev_next_title" onClick={onClickNext} style={{ cursor: "pointer" }}>{nextData.title}</p>
-                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>{nextData ? nextData.createdAt : ""}</p>
+                        <p className="prev_next_header">다음</p>
+                        <p className="prev_next_title" onClick={onClickNext} style={{ cursor: 'pointer' }}>
+                            {nextData.title}
+                        </p>
+                        <p style={{ color: '#9C9C9C', fontSize: '13px', width: '100px' }}>
+                            {nextData ? nextData.createdAt : ''}
+                        </p>
                     </div>
                 ) : (
                     <div className="prev_next_null">
-                        <p style={{color: "#9C9C9C", fontSize: "13px"}}>다음</p>
-                        <p className="prev_next_title" style={{ color: "#9C9C9C", textAlign: "left", padding: "0" }}>다음 글이 없습니다.</p>
+                        <p className="prev_next_header">다음</p>
+                        <p className="prev_next_title" style={{ color: '#9C9C9C', textAlign: 'left', padding: '0' }}>
+                            다음 글이 없습니다.
+                        </p>
                     </div>
                 )}
 
                 <div className="detail_divider" />
             </div>
-            <button className="list_button" onClick={onClickList}>목록</button>
+            <button className="list_button" onClick={onClickList}>
+                목록
+            </button>
         </div>
-    )
+    );
 }
