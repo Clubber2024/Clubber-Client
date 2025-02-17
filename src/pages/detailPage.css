@@ -53,10 +53,8 @@
     .star_icon {
         width: 22px;
         height: 21px;
-        margin-top: 6px;
         margin-left: 7px;
         background-color: transparent;
-        /*transition: filter 0.3s ease;*/
     }
     .imgDiv:hover .star_icon {
         filter: drop-shadow(0 0 1px #ffe600) drop-shadow(0 0 1px #ffe600);
@@ -99,7 +97,8 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
-        padding: 0px 6px 0px 6px;
+        padding: 0px 6px;
+        /* margin-top: 5px; */
         margin-left: 15px;
         cursor: pointer;
     }
@@ -242,7 +241,6 @@
     .star_icon {
         width: 23px;
         height: 23px;
-        margin-top: 5px;
         margin-left: 2px;
         padding: 2px;
         background-color: transparent;

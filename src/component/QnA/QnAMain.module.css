@@ -9,18 +9,18 @@
 
     .qna_title {
         font-family: Noto Sans;
-        font-size: 26px;
+        font-size: 24px;
         font-weight: 700;
         line-height: 35.41px;
         text-align: center;
         color: #202123;
         margin-top: 20px;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
     }
 
     .faq_title {
         font-family: Noto Sans;
-        font-size: 26px;
+        font-size: 24px;
         font-weight: 700;
         line-height: 35.41px;
         text-align: left;
@@ -81,7 +81,7 @@
         font-family: Plus Jakarta Sans;
         font-size: 20px;
         font-weight: 700;
-        line-height: 25.2px;
+        line-height: 24px;
         text-align: left;
         color: #202123;
         margin-left: 7px;
@@ -92,7 +92,7 @@
 
     .faq_question {
         font-family: Noto Sans KR;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 600;
         line-height: 24px;
         text-align: left;
@@ -131,13 +131,50 @@
 
     .faq_answer_content {
         font-family: Noto Sans KR;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 400;
         line-height: 26.06px;
         text-align: left;
         margin-top: 10px;
         margin-left: 25px;
         background: transparent;
+    }
+
+    .title_notion_div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .notion_button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        left: -10px;
+        border: none;
+    }
+
+    .notion_logo {
+        width: 70px;
+        height: 70px;
+        position: relative;
+        right: -30px;
+    }
+
+    .notion_text {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px 12px 35px;
+        border-radius: 30px;
+        background-color: #000;
+        color: #fff;
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
     }
 }
 
@@ -153,7 +190,7 @@
 
     .qna_title {
         font-family: Noto Sans;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 600;
         line-height: 35.41px;
         text-align: center;
@@ -223,9 +260,9 @@
 
     .faq_Q {
         font-family: Plus Jakarta Sans;
-        font-size: 19px;
+        font-size: 18px;
         font-weight: 700;
-        line-height: 25.2px;
+        line-height: 24px;
         text-align: left;
         color: #202123;
         margin-left: 10px;
@@ -237,7 +274,7 @@
 
     .faq_question {
         font-family: Noto Sans KR;
-        font-size: 15px;
+        font-size: 13px;
         font-weight: 600;
         line-height: 23px;
         text-align: left;
@@ -273,12 +310,49 @@
 
     .faq_answer_content {
         font-family: Noto Sans KR;
-        font-size: 15px;
+        font-size: 12px;
         font-weight: 400;
         line-height: 26.06px;
         text-align: left;
         margin-top: 3px;
         margin-left: 28px;
         margin-right: 15px;
+    }
+
+    .title_notion_div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .notion_button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        left: -15px;
+        border: none;
+    }
+
+    .notion_logo {
+        width: 57px;
+        height: 57px;
+        position: relative;
+        right: -30px;
+    }
+
+    .notion_text {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px 10px 33px;
+        border-radius: 30px;
+        background-color: #000;
+        color: #fff;
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
     }
 }
