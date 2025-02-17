@@ -254,6 +254,7 @@ export default function RecruitContent() {
 
                     <div className={styles.content_div}>
                         <img src="/recruit/everytime.png" alt="ET" className={styles.everyTime_img} />
+                        <a href={contentData?.everytimeUrl}>{contentData?.eveytimeUrl}</a>
                         <p className={styles.content_content}>{contentData?.content}</p>
                     </div>
 
