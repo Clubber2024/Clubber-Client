@@ -3,6 +3,7 @@
         position: relative;
         width: 88%;
         margin-left: 5%;
+        margin-bottom: 80px;
     }
 
     .promote_index {
@@ -99,6 +100,7 @@
     .container {
         position: relative;
         width: 100%;
+        margin-bottom: 20px;
     }
 
     .promote_index {
