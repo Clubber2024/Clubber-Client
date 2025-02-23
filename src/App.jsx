@@ -46,7 +46,10 @@ function App() {
     };
 
     const wrapper = {
+        minHeight: '100vh',
         height: 'auto',
+        position: 'relative',
+        width: '100%',
     };
 
     const isPc = useMediaQuery({
@@ -102,8 +105,8 @@ function App() {
                             <Route path="/admin/password" element={<ModifyPassword />} />
                             <Route path="/loading" element={<LoadingPage />} />
                         </Routes>
-                        <Footer />
                     </div>
+                    <Footer />
                 </BrowserRouter>
             )}
 
@@ -150,8 +153,8 @@ function App() {
                             <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
                             <Route path="/admin/password" element={<ModifyPassword />} />
                         </Routes>
-                        <Footer />
                     </div>
+                    <Footer />
                 </BrowserRouter>
             )}
         </div>

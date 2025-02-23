@@ -32,11 +32,15 @@ export default function EditPage() {
     };
 
     const handleIntroductionChange = (e) => {
+        const introValue = e.target.value;
+
+        if (introValue.length > 1000) return;
+
         setClub((prevState) => ({
             ...prevState,
-            introduction: e.target.value,
+            introduction: introValue,
         }));
-        setIntroCount(e.target.value.length);
+        setIntroCount(introValue.length);
     };
     const handleInstagramChange = (e) => {
         setClubInfo((prevState) => ({
@@ -53,11 +57,15 @@ export default function EditPage() {
     };
 
     const handleActivityChange = (e) => {
+        const activityValue = e.target.value;
+
+        if (activityValue.length > 1500) return;
+
         setClubInfo((prevState) => ({
             ...prevState,
-            activity: e.target.value,
+            activity: activityValue,
         }));
-        setActiCount(e.target.value.length);
+        setActiCount(activityValue.length);
     };
 
     const handleRoomChange = (e) => {
@@ -82,8 +90,6 @@ export default function EditPage() {
                     Authorization: `Bearer ${accessToken}`,
                 },
             });
-            console.log('setClub', response.data.data);
-
             setClub(response.data.data);
             setIntroCount(response.data.data.introduction.length);
             setClubInfo(response.data.data.clubInfo);
@@ -92,9 +98,8 @@ export default function EditPage() {
                     ? setActiCount(response.data.data.clubInfo.activity.length)
                     : setActiCount(0);
             }
-
             setImageUrl(response.data.data.imageUrl);
-            console.log('imageurl', imageUrl);
+
             const clubID = response.data.data.clubId;
             const intClubID = parseInt(clubID);
             setClubId(clubID);
@@ -106,7 +111,6 @@ export default function EditPage() {
     useEffect(() => {
         getAdminClub();
     }, []);
-    console.log('img', imageUrl);
 
     const handleFileChange = async (event) => {
         const file = event.target.files[0];
@@ -116,7 +120,6 @@ export default function EditPage() {
         setImagePreview(URL.createObjectURL(file));
         setExtension(file.name.split('.').pop().toUpperCase()); // 확장자 추출
     };
-    console.log('ima', imageUrl);
 
     const deleteImage = async () => {
         if (!imageUrl) return;
@@ -125,7 +128,6 @@ export default function EditPage() {
             setImageUrl(`common/logo/soongsil_default.png `);
             setImagePreview(`https://image.ssuclubber.com/common/logo/soongsil_default.png `);
         } catch (error) {
-            console.error('이미지 삭제 실패:', error);
             alert('이미지 삭제에 실패했습니다.');
         }
     };
@@ -135,7 +137,7 @@ export default function EditPage() {
         if (clubInfo?.activity?.length > 1500) {
             setIsErrorModalOpen(true);
             setModalMessage("'📌 대표활동 ' 은 최대 1500자까지 작성 가능합니다.");
-        } else if (club?.introduction?.length > 100) {
+        } else if (club?.introduction?.length > 1000) {
             setIsErrorModalOpen(true);
             setModalMessage("'📌 소개 ' 는 최대 100자까지 작성 가능합니다. ");
         } else {
@@ -158,8 +160,6 @@ export default function EditPage() {
                         }
                     );
 
-                    console.log('presignedUrl', data);
-
                     // 이미지 파일을 presigned URL로 업로드
                     await axios.put(data.data.presignedUrl, imageFile, {
                         headers: {
@@ -168,7 +168,6 @@ export default function EditPage() {
                     });
                     patchEditClub(data.data.imageKey);
                     setImageUrl(data.data.imageKey);
-                    console.log('imagefile', imageUrl);
                 } catch (error) {
                     console.error('이미지 업로드 실패:', error);
                     alert('이미지 업로드에 실패했습니다.');
@@ -197,7 +196,7 @@ export default function EditPage() {
                     },
                 }
             );
-            console.log('res', response);
+
             setIsModalOpen(true);
         } catch (error) {
             console.log(error);
@@ -258,7 +257,7 @@ export default function EditPage() {
                         {club.department === null ? club.division : club.department}
                     </p>
                     <br />
-                    <strong>📌 소개 ({introCount}/100)</strong>
+                    <strong>📌 소개 ({introCount}/1000)</strong>
 
                     <textarea
                         value={club.introduction}

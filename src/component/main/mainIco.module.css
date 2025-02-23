@@ -1,0 +1,168 @@
+@media screen and (min-width: 768px) {
+    .ico_div {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        /* gap: 20px; */
+        width: 100%;
+        justify-content: center;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .calender_container,
+    .map_container,
+    .pencil_container,
+    .folder_container {
+        /* width: 200px;
+        height: 200px; */
+        max-width: calc(20% - 50px);
+        width: calc(20% - 50px);
+        min-width: 19%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        box-shadow: 0px 0px 5px 0px #0000001a;
+        border-radius: 20px;
+        margin-right: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        height: 100%;
+        padding-bottom: 30px;
+        cursor: pointer;
+    }
+
+    .calender_container {
+        background-color: #fff5d6;
+    }
+
+    .map_container {
+        background-color: #f2f4ff;
+    }
+
+    .pencil_container {
+        background-color: #e0f9f3;
+    }
+
+    .folder_container {
+        background: #e2e2e2;
+        margin-right: 0;
+    }
+
+    .ico_img {
+        width: 121px;
+        height: 121px;
+    }
+
+    .ico_text {
+        font-family: Noto Sans KR;
+        font-weight: 600;
+        font-size: 18px;
+        text-align: center;
+        color: #202123;
+    }
+
+    .allow_right_container {
+        width: 37px;
+        height: 37px;
+        background: #ffffff;
+        box-shadow: 0px 0px 5px 0px #0000001a;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        padding: 10px;
+        margin-top: auto;
+    }
+
+    .allow_right_img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ico_div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .calender_container,
+    .map_container,
+    .pencil_container,
+    .folder_container {
+        width: calc(50% - 50px);
+        min-width: 20%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        box-shadow: 0px 0px 5px 0px #0000001a;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .calender_container {
+        background-color: #fff5d6;
+        margin-right: 35px;
+        margin-bottom: 20px;
+    }
+    .map_container {
+        background-color: #f2f4ff;
+        margin-bottom: 20px;
+    }
+
+    .pencil_container {
+        background-color: #e0f9f3;
+        margin-right: 35px;
+    }
+
+    .folder_container {
+        background: #e2e2e2;
+    }
+
+    .ico_img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .ico_text {
+        font-family: Noto Sans KR;
+        font-weight: 600;
+        font-size: 15px;
+        text-align: center;
+        color: #202123;
+    }
+
+    .allow_right_container {
+        width: 37px;
+        height: 37px;
+        background: #ffffff;
+        box-shadow: 0px 0px 5px 0px #0000001a;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        padding: 10px;
+        margin-top: auto;
+    }
+
+    .allow_right_img {
+        width: 20px;
+        height: 20px;
+    }
+}

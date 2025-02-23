@@ -126,7 +126,11 @@ export default function ClubsPage() {
             clubId: clubId,
         };
 
-        if (!token) return;
+        if (!token) {
+            setModalMessage('즐겨찾기 추가는 로그인 이후 가능합니다.');
+            setIsModalOpen(true);
+            return;
+        }
         if (isAdmin) return;
         try {
             if (!isAdmin && token) {
@@ -163,13 +167,7 @@ export default function ClubsPage() {
                     }
                 }
             }
-            // } else if (isAdmin && token) {
-            //     setModalMessage('관리자는 즐겨찾기를 이용할 수 없습니다.');
-            //     setIsModalOpen(true);
-            // } else {
-            //     setModalMessage('즐겨찾기 추가는 로그인 이후 가능합니다.');
-            //     setIsModalOpen(true);
-            // }
+
             getBookmarkData(); // 각 요청 후 즐겨찾기 리스트 업데이트
         } catch (error) {
             getBookmarkData(); //에러 발생해도 업데이트
@@ -200,7 +198,7 @@ export default function ClubsPage() {
                     <div className="detail_header_name">
                         <h3 className="detail_club_name">{detailData.clubName}</h3>
                         <div className="imgDiv">
-                            {isAdmin || !token ? (
+                            {isAdmin ? (
                                 ''
                             ) : (
                                 <img
@@ -221,9 +219,9 @@ export default function ClubsPage() {
                             </span>
                         </div>
 
-                        <div className="recruit_btn" onClick={OnClickRecruitBtn}>
+                        {/* <div className="recruit_btn" onClick={OnClickRecruitBtn}>
                             모집글 보러가기 <div className="recruit_btn_border"></div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

@@ -14,6 +14,7 @@
 
     .recruit_container {
         display: flex;
+        min-height: 100%;
         flex-wrap: wrap; /* 자식 요소 줄 바꿈 가능하게 */
         gap: 20px;
         justify-content: center;
