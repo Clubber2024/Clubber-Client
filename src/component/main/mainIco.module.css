@@ -19,6 +19,7 @@
         max-width: calc(20% - 50px);
         width: calc(20% - 50px);
         min-width: 19%;
+        /* width: 150px; */
         aspect-ratio: 1/1;
         object-fit: cover;
         box-shadow: 0px 0px 5px 0px #0000001a;
@@ -30,6 +31,7 @@
         flex-direction: column;
         position: relative;
         height: 100%;
+        padding-top: 15px;
         padding-bottom: 30px;
         cursor: pointer;
     }
@@ -52,14 +54,15 @@
     }
 
     .ico_img {
-        width: 121px;
-        height: 121px;
+        width: 50%;
+        height: 65%;
+        margin-bottom: 8px;
     }
 
     .ico_text {
         font-family: Noto Sans KR;
         font-weight: 600;
-        font-size: 18px;
+        font-size: 16px;
         text-align: center;
         color: #202123;
     }
@@ -135,6 +138,7 @@
     .ico_img {
         width: 70px;
         height: 70px;
+        margin-bottom: 10px;
     }
 
     .ico_text {
