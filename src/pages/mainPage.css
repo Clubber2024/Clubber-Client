@@ -7,13 +7,6 @@
         margin-bottom: 220px;
         width: 100%;
     }
-
-    .ico_container {
-        display: flex;
-        justify-content: center;
-        margin-top: 40px;
-    }
-
     .main_promote_container {
         display: flex;
         flex-direction: column;
@@ -43,12 +36,6 @@
         display: block;
         margin-top: 32px;
         margin-bottom: 270px;
-    }
-
-    .ico_container {
-        display: flex;
-        justify-content: center;
-        margin-top: 40px;
     }
 
     .main_promote_container {
