@@ -1,4 +1,5 @@
 import React from 'react';
+import parse from 'html-react-parser';
 
 export default function IntroductionPage({
     clubName,
@@ -27,6 +28,10 @@ export default function IntroductionPage({
     const NewLines = ({ text }) => {
         return <div>{handleNewLines(text)}</div>;
     };
+    //링크 텍스트 존재 시 하이퍼링크 자동처리 컴포넌트
+    const transformContent = (text) => {
+        return text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    };
 
     return (
         <>
@@ -39,7 +44,7 @@ export default function IntroductionPage({
                 </p>
                 <br></br>
                 <strong>📌 소개</strong>
-                <p>{introduction}</p>
+                <p>{introduction ? parse(transformContent(introduction)) : ''}</p>
                 <br></br>
                 <strong>📌 인스타</strong>
                 {instagram ? (

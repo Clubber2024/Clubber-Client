@@ -42,6 +42,7 @@
 
     .faq_item {
         position: relative;
+        margin-right: 20px;
     }
 
     .active_faq_rectangle {
