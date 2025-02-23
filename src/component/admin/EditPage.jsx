@@ -32,15 +32,11 @@ export default function EditPage() {
     };
 
     const handleIntroductionChange = (e) => {
-        const introValue = e.target.value;
-
-        if (introValue.length > 1000) return;
-
         setClub((prevState) => ({
             ...prevState,
-            introduction: introValue,
+            introduction: e.target.value,
         }));
-        setIntroCount(introValue.length);
+        setIntroCount(e.target.value.length);
     };
     const handleInstagramChange = (e) => {
         setClubInfo((prevState) => ({
@@ -57,15 +53,11 @@ export default function EditPage() {
     };
 
     const handleActivityChange = (e) => {
-        const activityValue = e.target.value;
-
-        if (activityValue.length > 1500) return;
-
         setClubInfo((prevState) => ({
             ...prevState,
-            activity: activityValue,
+            activity: e.target.value,
         }));
-        setActiCount(activityValue.length);
+        setActiCount(e.target.value.length);
     };
 
     const handleRoomChange = (e) => {
@@ -137,7 +129,7 @@ export default function EditPage() {
         if (clubInfo?.activity?.length > 1500) {
             setIsErrorModalOpen(true);
             setModalMessage("'📌 대표활동 ' 은 최대 1500자까지 작성 가능합니다.");
-        } else if (club?.introduction?.length > 1000) {
+        } else if (club?.introduction?.length > 100) {
             setIsErrorModalOpen(true);
             setModalMessage("'📌 소개 ' 는 최대 100자까지 작성 가능합니다. ");
         } else {
@@ -257,7 +249,7 @@ export default function EditPage() {
                         {club.department === null ? club.division : club.department}
                     </p>
                     <br />
-                    <strong>📌 소개 ({introCount}/1000)</strong>
+                    <strong>📌 소개 ({introCount}/100)</strong>
 
                     <textarea
                         value={club.introduction}

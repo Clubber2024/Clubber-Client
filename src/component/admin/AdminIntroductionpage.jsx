@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from './AdminIntroductionPage.module.css';
-import parse from 'html-react-parser';
-
 export default function AdminIntroductionPage({
     clubName,
     college,
@@ -28,10 +26,7 @@ export default function AdminIntroductionPage({
     const NewLines = ({ text }) => {
         return <div>{handleNewLines(text)}</div>;
     };
-    //링크 텍스트 존재 시 하이퍼링크 자동처리 컴포넌트
-    const transformContent = (text) => {
-        return text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
-    };
+    console.log(activity);
     return (
         <>
             <div className={styles.detailBody}>
@@ -43,7 +38,7 @@ export default function AdminIntroductionPage({
                 </p>
                 <br></br>
                 <strong>📌 소개</strong>
-                <p className={styles.p_style}>{introduction ? parse(transformContent(introduction)) : ''}</p>
+                <p className={styles.p_style}>{introduction}</p>
                 <br></br>
                 <strong>📌 인스타</strong>
                 {instagram !== null ? (
