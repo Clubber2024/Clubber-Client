@@ -36,6 +36,7 @@ import LoadingPage from './component/loading/LoadingPage';
 import OfficialClubPage from './pages/OfficialClubPage';
 import MainPromote from './component/main/MainPromote';
 import RecruitList from './component/recruit/RecruitList';
+import RecruitCalendar from './component/calendar/RecruitCalendar';
 
 function App() {
     const appStyle = {
@@ -88,7 +89,8 @@ function App() {
                             <Route path="/recruit/club/:clubId" element={<DetailRecruitList />} />
 
                             <Route path="/qna" element={<QnAPage />} />
-
+                            <Route path="/calendar" element={<RecruitCalendar />} />
+                            
                             <Route path="/admin" element={<MyPage />} />
                             <Route path="/admin/mypage" element={<AdminPage />} />
                             <Route path="/admin/edit/:clubId" element={<EditPage />} />
@@ -130,10 +132,12 @@ function App() {
                             <Route path="/user" element={<MyPage />} />
                             <Route path="/user/bookmark" element={<BookMarkPage />} />
                             <Route path="/user/reviews" element={<MyReview />} />
-                            <Route path="/qna" element={<QnAPage />} />
                             <Route path="/recruit" element={<RecruitPage />} />
                             <Route path="/recruit/:recruitId" element={<RecruitContent />} />
                             <Route path="/recruit/club/:clubId" element={<DetailRecruitList />} />
+
+                            <Route path="/qna" element={<QnAPage />} />
+                            <Route path="/calendar" element={<RecruitCalendar />} />
 
                             <Route path="/admin" element={<MyPage />} />
                             <Route path="/admin/mypage" element={<AdminPage />} />
