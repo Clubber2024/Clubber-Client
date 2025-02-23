@@ -3,10 +3,10 @@
     justify-content: center;
     align-items: center;
     max-width: 1000px;
-    /* width: 100%; */
+    width: 90%;
     /* height: 700px; */
     background-color: #7BC8E0;
-    margin: 50px 100px;
+    margin: 50px auto;
 }
 
 .calendar_container {
