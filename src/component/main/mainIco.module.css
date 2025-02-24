@@ -65,8 +65,12 @@
     }
 
     .allow_right_container {
-        width: 37px;
-        height: 37px;
+        /* min-width: 37px; */
+        /* height: 37px; */
+        min-width: 27px;
+        min-height: 27px;
+        width: 12%;
+        aspect-ratio: 1 / 1;
         background: #ffffff;
         box-shadow: 0px 0px 5px 0px #0000001a;
         border-radius: 100%;
@@ -81,8 +85,10 @@
     }
 
     .allow_right_img {
-        width: 20px;
-        height: 20px;
+        /* width: 20px;
+        height: 20px; */
+        width: 15px;
+        height: 15px;
     }
 }
 
@@ -146,8 +152,8 @@
     }
 
     .allow_right_container {
-        width: 37px;
-        height: 37px;
+        width: 25px;
+        height: 25px;
         background: #ffffff;
         box-shadow: 0px 0px 5px 0px #0000001a;
         border-radius: 100%;
@@ -162,7 +168,7 @@
     }
 
     .allow_right_img {
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
     }
 }

@@ -237,7 +237,7 @@
         /* margin-right: 20px; */
         display: flex;
         flex-direction: row;
-        margin-bottom: 10px;
+        /* margin-bottom: 10px; */
         cursor: pointer;
         &:hover {
             border: 1px solid var(--section2, #a7a7a7);
@@ -251,10 +251,10 @@
         background: #ffffff;
         border: 1px solid #9c9c9c4d;
         box-shadow: 0px 0px 2px 1px #0000000d;
-        margin-top: 20px;
+        /* margin-top: 20px; */
         display: flex;
         flex-direction: row;
-        margin-bottom: 10px;
+        /* margin-bottom: 10px; */
         cursor: pointer;
         border: 1px solid var(--section2, #a7a7a7);
     }

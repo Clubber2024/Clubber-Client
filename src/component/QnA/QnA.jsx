@@ -10,7 +10,6 @@ export default function QnA() {
     const getFaQData = async () => {
         try {
             const res = await customAxios.get(`/v1/faqs`);
-            //console.log(res.data.data);
             setFaqData(res.data.data);
         } catch (error) {
             console.error('error:', error);
@@ -49,7 +48,6 @@ export default function QnA() {
             setActiveIndex(null); // 같은 질문 클릭 시 닫기
         } else {
             setActiveIndex(index); // 다른 질문 클릭 시 해당 인덱스로 설정
-            console.log('index', index);
         }
     };
 
@@ -65,7 +63,6 @@ export default function QnA() {
                         return (
                             <div key={item.id} className={styles.faq_item}>
                                 <div
-                                    // key={item.id} // 고유한 key 사용
                                     className={`${styles.faq_rectangle} ${
                                         activeIndex === globalIndex ? styles.active_faq_rectangle : ''
                                     }`}
@@ -73,7 +70,7 @@ export default function QnA() {
                                 >
                                     <div className={styles.faq_container}>
                                         <p className={styles.faq_Q}>Q</p>
-                                        <p className={styles.faq_question}>{item.question}</p>
+                                        <p className={styles.faq_question}>{item.title}</p>
                                     </div>
                                 </div>
                                 {activeIndex === globalIndex ? ( // 현재 활성화된 질문에 대한 답변만 표시
@@ -99,10 +96,19 @@ export default function QnA() {
         return rows;
     };
 
+    const onClickNotion = () => {
+        window.open('https://www.notion.so/polymorphismj/19cfbba268728049b974f28a3254bb17', '_blank');
+    };
+
     return (
         <div className={styles.qna_div}>
-            <p className={styles.qna_title}>문의사항</p>
-            <p className={styles.faq_title}>자주 묻는 질문</p>
+            <div className={styles.title_notion_div}>
+                <p className={styles.qna_title}>자주 묻는 질문</p>
+                <button onClick={onClickNotion} className={styles.notion_button}>
+                    <img src="/buttons/notion_button.png" alt="notion" className={styles.notion_logo} />
+                    <span className={styles.notion_text}>클러버에 대해 궁금하다면? Notion 클릭!</span>
+                </button>
+            </div>
             {renderDataInRows(faqData)}
         </div>
     );
