@@ -49,7 +49,7 @@ export default function MainIco() {
 
                 <div className={styles.pencil_container}>
                     <LinkItem to={'/qna'}>
-                        <img src="/main/icon/PENCIL.png" className={styles.ico_img} />
+                        <img src="/main/icon/PENCIL.png" className={styles.ico_img_pencil} />
                         <p className={styles.ico_text}>자주 묻는 질문</p>
                         <div className={styles.allow_right_container}>
                             <img src="/main/icon/arrow-right.png" className={styles.allow_right_img} />
