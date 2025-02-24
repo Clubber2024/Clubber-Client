@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './mainIco.module.css';
 import React from 'react';
 import { useState } from 'react';
@@ -5,8 +6,11 @@ import ErrorModal from '../modal/ErrorModal';
 import { LinkItem } from '../branch/BranchCentral';
 
 export default function MainIco() {
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const navigate = useNavigate();
+
 
     const closeModal = () => {
         setIsModalOpen(false);
@@ -20,14 +24,14 @@ export default function MainIco() {
 
     return (
         <>
-            <div className={styles.ico_div}>
-                <div className={styles.calender_container}>
-                    <img src="/main/icon/CALENDAR.png" className={styles.ico_img} />
-                    <p className={styles.ico_text}>
-                        숭실대 동아리
-                        <br />
-                        모집 일정
-                    </p>
+           <div className={styles.ico_div}>
+            <div className={styles.calender_container} onClick={() => navigate('/calendar')}>
+                <img src="/main/icon/CALENDAR.png" alt="calendar_container" className={styles.ico_img} />
+                <p className={styles.ico_text}>
+                    숭실대 동아리
+                    <br />
+                    모집 일정
+                </p>
                     <div className={styles.allow_right_container}>
                         <img src="/main/icon/arrow-right.png" className={styles.allow_right_img} />
                     </div>
@@ -42,6 +46,7 @@ export default function MainIco() {
                     <div className={styles.allow_right_container}>
                         <img src="/main/icon/arrow-right.png" className={styles.allow_right_img} />
                     </div>
+
                 </div>
 
                 <div className={styles.pencil_container}>
@@ -60,6 +65,7 @@ export default function MainIco() {
                     <div className={styles.allow_right_container}>
                         <img src="/main/icon/arrow-right.png" className={styles.allow_right_img} />
                     </div>
+
                 </div>
             </div>
             {isModalOpen && <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />}

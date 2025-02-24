@@ -30,7 +30,7 @@ export default function ErrorModal({ isOpen, message, onClose }) {
             alignItems: 'center',
             textAlign: 'center',
             fontFamily: 'Noto Sans KR',
-            fontSize: isMobile ? '14px' : '18px',
+            fontSize: isMobile ? '14px' : '16px',
             fontWeight: '500',
         },
     };
