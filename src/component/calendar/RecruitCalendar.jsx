@@ -4,6 +4,7 @@ import './recruitCalendar.css';
 import { customAxios } from '../../config/axios-config';
 import ErrorModal from '../modal/ErrorModal';
 import { ChevronLeft, ChevronRight, Dot } from 'lucide-react';
+import LoadingPage from '../loading/LoadingPage';
 
 export default function RecruitCalendar() {
     const [currentDate, setCurrentDate] = useState(new Date());
@@ -21,6 +22,8 @@ export default function RecruitCalendar() {
     // 이전 달의 마지막 날 날짜
     const lastMonthLastDate = getDate(new Date(year, month - 1, 0));
 
+    const totalCells = curMonthFirstDay + curMonthLastDate > 35 ? 42 : 35;
+
     //즐겨찾기 상태관리
     const [favoriteClubs, setFavoriteClubs] = useState([]);
     const [favoriteClubIds, setFavoriteClubIds] = useState([]);
@@ -30,13 +33,19 @@ export default function RecruitCalendar() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 
-    const totalCells = curMonthFirstDay + curMonthLastDate > 35 ? 42 : 35;
+    //로딩창 상태관리
+    const [isLoading, setIsLoading] = useState(false);
 
     //캘린더 조회 api
     const getCalendarData = async () => {
         try {
+            setIsLoading(true);
             const res = await customAxios.get(`/v1/calendar?year=${year}&month=${month}`);
             setCalendarData(res.data.data);
+
+            if (res.data.success) {
+                setIsLoading(false);
+            }
         } catch (e) {
             console.error(e);
         }
@@ -124,6 +133,13 @@ export default function RecruitCalendar() {
             }
         }
     };
+
+    if (isLoading)
+        return (
+            <div>
+                <LoadingPage />
+            </div>
+        );
 
     return (
         <div className="calendar_wrapper">
