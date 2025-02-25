@@ -51,6 +51,21 @@ export default function RecruitCalendar() {
         setCurrentDate(newDate);
     };
 
+    //회원 즐겨찾기 조회 api
+    const getFavoriteData = async () => {
+        if (!token) return;
+        try {
+            const res = await customAxios.get(`/v1/users/favorite`);
+            // console.log(res.data.data.userFavorites);
+            const data = res.data.data.userFavorites;
+            setFavoriteClubs(data);
+            const clubIds = data.map((item) => item.favoriteClub['clubId']);
+            setFavoriteClubIds(clubIds);
+
+            // console.log(clubIds);
+        } catch (e) {}
+    };
+
     const getFavoriteId = (clubId) => {
         const favorite = favoriteClubs.find((item) => item.favoriteClub.clubId === clubId);
         return Number(favorite.favoriteId);
@@ -110,21 +125,6 @@ export default function RecruitCalendar() {
         }
     };
 
-    //회원 즐겨찾기 조회 api
-    const getFavoriteData = async () => {
-        if (!token) return;
-        try {
-            const res = await customAxios.get(`/v1/users/favorite`);
-            // console.log(res.data.data.userFavorites);
-            const data = res.data.data.userFavorites;
-            setFavoriteClubs(data);
-            const clubIds = data.map((item) => item.favoriteClub['clubId']);
-            setFavoriteClubIds(clubIds);
-
-            // console.log(clubIds);
-        } catch (e) {}
-    };
-
     return (
         <div className="calendar_wrapper">
             <div className="calendar_container">
@@ -156,43 +156,55 @@ export default function RecruitCalendar() {
                         const date = i - curMonthFirstDay + 1;
                         const currentMonthDate = date;
                         const isCurrentMonth = currentMonthDate > 0 && currentMonthDate <= curMonthLastDate;
-                        {
-                            calendarData?.recruitList?.map((date) => (
-                                <>
-                                    {currentMonthDate === getDate(date.startAt) &&
-                                        month === getMonth(date.startAt) + 1 && (
-                                            <div key={date.clubId} className="day_event_start">
-                                                <p className="calendar_club">➡️ {date.clubName}</p>
-                                                <img
-                                                    className="calendar_star"
-                                                    src={
-                                                        favoriteClubIds.includes(date.clubId)
-                                                            ? '/bookmark/starYellow.png'
-                                                            : '/bookmark/star.png'
-                                                    }
-                                                    alt="star"
-                                                    onClick={() => handleFavorite(date.clubId)}
-                                                />
-                                            </div>
-                                        )}
-                                    {currentMonthDate === getDate(date.endAt) && month === getMonth(date.endAt) + 1 && (
-                                        <div key="date.clubId" className="day_event_end">
-                                            <p className="calendar_club">⬅️ {date.clubName}</p>
-                                            <img
-                                                className="calendar_star"
-                                                src={
-                                                    favoriteClubIds.includes(date.clubId)
-                                                        ? '/bookmark/starYellow.png'
-                                                        : '/bookmark/star.png'
-                                                }
-                                                alt="star"
-                                                onClick={() => handleFavorite(date.clubId)}
-                                            />
-                                        </div>
-                                    )}
-                                </>
-                            ));
-                        }
+
+                        const displayDate = isCurrentMonth
+                            ? date // 현재 달 날짜
+                            : date <= 0
+                            ? lastMonthLastDate + date // 이전 달 날짜
+                            : date - curMonthLastDate; // 다음 달 날짜
+
+                        return (
+                            <div key={i} className={isCurrentMonth ? 'day_cell' : 'day_cell_other'}>
+                                <span className={isCurrentMonth ? 'day_num' : 'day_num_other'}>{displayDate}</span>
+
+                                {calendarData?.recruitList?.map((date) => (
+                                    <>
+                                        {currentMonthDate === getDate(date.startAt) &&
+                                            month === getMonth(date.startAt) + 1 && (
+                                                <div key={date.clubId} className="day_event_start">
+                                                    <p className="calendar_club">➡️ {date.clubName}</p>
+                                                    <img
+                                                        className="calendar_star"
+                                                        src={
+                                                            favoriteClubIds.includes(date.clubId)
+                                                                ? '/bookmark/starYellow.png'
+                                                                : '/bookmark/star.png'
+                                                        }
+                                                        alt="star"
+                                                        onClick={() => handleFavorite(date.clubId)}
+                                                    />
+                                                </div>
+                                            )}
+                                        {currentMonthDate === getDate(date.endAt) &&
+                                            month === getMonth(date.endAt) + 1 && (
+                                                <div key="date.clubId" className="day_event_end">
+                                                    <p className="calendar_club">⬅️ {date.clubName}</p>
+                                                    <img
+                                                        className="calendar_star"
+                                                        src={
+                                                            favoriteClubIds.includes(date.clubId)
+                                                                ? '/bookmark/starYellow.png'
+                                                                : '/bookmark/star.png'
+                                                        }
+                                                        alt="star"
+                                                        onClick={() => handleFavorite(date.clubId)}
+                                                    />
+                                                </div>
+                                            )}
+                                    </>
+                                ))}
+                            </div>
+                        );
                     })}
                 </div>
             </div>

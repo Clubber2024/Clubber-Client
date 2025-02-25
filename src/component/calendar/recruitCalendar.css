@@ -30,7 +30,7 @@
 .calendar_header_right {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     width: 100%; /* */
     padding: 0 20px;
@@ -103,7 +103,8 @@
 .day_event_end {
     display: flex;
     flex-direction: row;
-    justify-content: stretch;
+    /* justify-content: stretch; */
+    justify-content: space-between;
     background-color: #fde3eb;
     border-radius: 4px;
     font-size: 11px;
