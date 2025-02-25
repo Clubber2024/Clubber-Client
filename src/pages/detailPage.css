@@ -40,8 +40,15 @@
 
     .insta_icon {
         margin-top: 1%;
-        margin-left: 3%;
+        margin-left: 4.5%;
         width: 20px;
+        height: 20px;
+    }
+
+    .youtube_icon {
+        margin-top: 1%;
+        margin-left: 5px;
+        width: 25px;
         height: 20px;
     }
 
@@ -235,6 +242,13 @@
         margin-top: 1%;
         margin-left: 5%;
         width: 20px;
+        height: 20px;
+    }
+
+    .youtube_icon {
+        margin-top: 1%;
+        margin-left: 5px;
+        width: 25px;
         height: 20px;
     }
 
