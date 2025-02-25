@@ -3,9 +3,11 @@
     justify-content: center;
     align-items: center;
     max-width: 1000px;
+    min-width: 800px;
     width: 90%;
+
     /* height: 700px; */
-    background-color: #7BC8E0;
+    background-color: #7bc8e0;
     margin: 50px auto;
 }
 
@@ -28,7 +30,7 @@
 .calendar_header_right {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     width: 100%; /* */
     padding: 0 20px;
@@ -63,7 +65,8 @@
     padding: 12px;
 }
 
-.day_cell, .day_cell_other {
+.day_cell,
+.day_cell_other {
     background-color: white;
     padding: 8px;
     display: flex;
@@ -90,7 +93,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: #E3F2FD;
+    background-color: #e3f2fd;
     border-radius: 4px;
     font-size: 11px;
     padding: 4px 8px;
@@ -100,7 +103,8 @@
 .day_event_end {
     display: flex;
     flex-direction: row;
-    justify-content: stretch;
+    /* justify-content: stretch; */
+    justify-content: space-between;
     background-color: #fde3eb;
     border-radius: 4px;
     font-size: 11px;
@@ -109,5 +113,6 @@
 }
 
 .calendar_star {
-    
+    width: 15px;
+    height: 15px;
 }
