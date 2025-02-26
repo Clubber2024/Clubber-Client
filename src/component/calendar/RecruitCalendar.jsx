@@ -2,9 +2,24 @@ import { useEffect, useState } from "react";
 import { getMonth, getDate, getDay } from "date-fns";
 import "./recruitCalendar.css";
 import { customAxios } from "../../config/axios-config";
-import { ChevronLeft, ChevronRight, Dot } from "lucide-react";
+import {
+  ChevronLeftSquareIcon,
+  ChevronRightSquareIcon,
+  Dot,
+} from "lucide-react";
 
 export default function RecruitCalendar() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const [currentDate, setCurrentDate] = useState(new Date());
   const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
@@ -46,25 +61,31 @@ export default function RecruitCalendar() {
     <div className="calendar_wrapper">
       <div className="calendar_container">
         <div className="calendar_header">
-          <h1 className="calendar_header_left">
-            {calendarData.year}.{String(calendarData.month).padStart(2, "0")}
-          </h1>
-          <div className="calendar_header_right">
+          <div className="calendar_header_left">
+            <h1 className="calendar_header_month">
+              {calendarData.year}.{String(calendarData.month).padStart(2, "0")}
+            </h1>
             <div className="calendar_chevrons">
-              <ChevronLeft
+              <ChevronLeftSquareIcon
+                className="chevron_left"
                 onClick={() => changeMonth(-1)}
-                style={{ width: "40px", height: "35px" }}
               />
-              <Dot style={{ width: "50px", height: "50px" }} />
-              <ChevronRight
+              <ChevronRightSquareIcon
+                className="chevron_right"
                 onClick={() => changeMonth(1)}
-                style={{ width: "40px", height: "35px" }}
               />
             </div>
-            <div>
-              <p className="day_event_start">➡️ 모집 시작일</p>
-              <p className="day_event_end">⬅️ 모집 마감일</p>
-            </div>
+          </div>
+          <div className="calendar_header_right">
+            <p className="day_event_start">
+              {isMobile ? "모집 시작일" : "▶︎ 모집 시작일"}
+            </p>
+            <p className="day_event_end">
+              {isMobile ? "모집 마감일" : "◀︎ 모집 마감일"}
+            </p>
+            <p className="day_event_always">
+              {isMobile ? "상시 모집" : "◆ 상시 모집"}
+            </p>
           </div>
         </div>
         <div className="weeks_container">
@@ -96,34 +117,40 @@ export default function RecruitCalendar() {
                   {displayDate}
                 </span>
 
-                {calendarData?.recruitList?.map((date) => (
-                  <>
-                    {currentMonthDate === getDate(date.startAt) &&
-                      month === getMonth(date.startAt) + 1 && (
-                        <div key="date.clubId" className="day_event_start">
-                          <p className="calendar_club">➡️ {date.clubName}</p>
-                          {/* <img
+                <div className="day_event_container">
+                  {calendarData?.recruitList?.map((date) => (
+                    <>
+                      {currentMonthDate === getDate(date.startAt) &&
+                        month === getMonth(date.startAt) + 1 && (
+                          <div key="date.clubId" className="day_event_start">
+                            <p className="calendar_club">
+                              {isMobile ? date.clubName : `▶︎ ${date.clubName}`}
+                            </p>
+                            {/* <img
                           className="calendar_star"
                           src="/bookmark/starYellow.png"
                           alt="star"
                           // onClick={handleFavorite}
                         /> */}
-                        </div>
-                      )}
-                    {currentMonthDate === getDate(date.endAt) &&
-                      month === getMonth(date.endAt) + 1 && (
-                        <div key="date.clubId" className="day_event_end">
-                          <p className="calendar_club">⬅️ {date.clubName}</p>
-                          {/* <img
+                          </div>
+                        )}
+                      {currentMonthDate === getDate(date.endAt) &&
+                        month === getMonth(date.endAt) + 1 && (
+                          <div key="date.clubId" className="day_event_end">
+                            <p className="calendar_club">
+                              {isMobile ? date.clubName : `◀︎ ${date.clubName}`}
+                            </p>
+                            {/* <img
                           className="calendar_star"
                           src="/bookmark/starYellow.png"
                           alt="star"
                           // onClick={handleFavorite}
                         /> */}
-                        </div>
-                      )}
-                  </>
-                ))}
+                          </div>
+                        )}
+                    </>
+                  ))}
+                </div>
               </div>
             );
           })}
