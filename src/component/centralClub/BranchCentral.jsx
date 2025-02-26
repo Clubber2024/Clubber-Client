@@ -19,7 +19,6 @@ function BranchCentral() {
             const response = await customAxios.get(`/v1/clubs?division=${division}`);
             setDivisionData(response.data.data.division);
             setClubs(response.data.data.clubs);
-            console.log(response.data.data.clubs);
         } catch (error) {
             setError(error);
         } finally {

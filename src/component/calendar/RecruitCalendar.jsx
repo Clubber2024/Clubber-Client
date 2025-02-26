@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { getMonth, getDate, getDay } from "date-fns";
 import "./recruitCalendar.css";
 import { customAxios } from "../../config/axios-config";
+import ErrorModal from "../modal/ErrorModal";
 import {
   ChevronLeftSquareIcon,
   ChevronRightSquareIcon,
   Dot,
 } from "lucide-react";
+import LoadingPage from "../loading/LoadingPage";
 
 export default function RecruitCalendar() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -37,12 +39,31 @@ export default function RecruitCalendar() {
 
   const totalCells = curMonthFirstDay + curMonthLastDate > 35 ? 42 : 35;
 
+  //즐겨찾기 상태관리
+  const [favoriteClubs, setFavoriteClubs] = useState([]);
+  const [favoriteClubIds, setFavoriteClubIds] = useState([]);
+  const token = localStorage.getItem("accessToken");
+
+  //모달 상태관리
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+
+  //로딩창 상태관리
+  const [isLoading, setIsLoading] = useState(false);
+
+  //캘린더 조회 api
   const getCalendarData = async () => {
     try {
+      setIsLoading(true);
       const res = await customAxios.get(
         `/v1/calendar?year=${year}&month=${month}`
       );
+      console.log(res.data.data);
       setCalendarData(res.data.data);
+
+      if (res.data.success) {
+        setIsLoading(false);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -56,6 +77,92 @@ export default function RecruitCalendar() {
     const newDate = new Date(year, month - 1 + offset, 1);
     setCurrentDate(newDate);
   };
+
+  //회원 즐겨찾기 조회 api
+  const getFavoriteData = async () => {
+    if (!token) return;
+    try {
+      const res = await customAxios.get(`/v1/users/favorite`);
+      // console.log(res.data.data.userFavorites);
+      const data = res.data.data.userFavorites;
+      setFavoriteClubs(data);
+      const clubIds = data.map((item) => item.favoriteClub["clubId"]);
+      setFavoriteClubIds(clubIds);
+
+      // console.log(clubIds);
+    } catch (e) {}
+  };
+
+  const getFavoriteId = (clubId) => {
+    const favorite = favoriteClubs.find(
+      (item) => item.favoriteClub.clubId === clubId
+    );
+    return Number(favorite.favoriteId);
+  };
+
+  useEffect(() => {
+    getFavoriteData();
+  }, []);
+
+  const handleFavorite = async (clubId) => {
+    if (!token) {
+      setModalMessage("로그인 후 즐겨찾기를 이용해주세요!");
+      setIsModalOpen(true);
+      return;
+    }
+    //관리자일 때 ->> 추후 추가예정
+
+    if (favoriteClubIds.includes(clubId)) {
+      const favoriteId = getFavoriteId(clubId);
+      const res = await customAxios.delete(
+        `/v1/clubs/${clubId}/favorites/${favoriteId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.data.success) {
+        getFavoriteData();
+        setModalMessage("동아리가 즐겨찾기에서 해제되었습니다.");
+        setIsModalOpen(true);
+      } else {
+        getFavoriteData();
+        setModalMessage("죄송합니다. 다시 한번 시도해주세요.");
+        setIsModalOpen(true);
+      }
+    } else {
+      const res = await customAxios.post(
+        `/v1/clubs/${clubId}/favorites`,
+        {
+          clubId: clubId,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.data.success) {
+        getFavoriteData();
+        setModalMessage("동아리가 즐겨찾기에 추가되었습니다.");
+        setIsModalOpen(true);
+      } else {
+        getFavoriteData();
+        setModalMessage("죄송합니다. 다시 한번 시도해주세요.");
+        setIsModalOpen(true);
+      }
+    }
+  };
+
+  if (isLoading)
+    return (
+      <div>
+        <LoadingPage />
+      </div>
+    );
 
   return (
     <div className="calendar_wrapper">
@@ -120,32 +227,80 @@ export default function RecruitCalendar() {
                 <div className="day_event_container">
                   {calendarData?.recruitList?.map((date) => (
                     <>
-                      {currentMonthDate === getDate(date.startAt) &&
+                      {date.semester === "ONE" &&
+                        currentMonthDate === getDate(date.startAt) &&
                         month === getMonth(date.startAt) + 1 && (
-                          <div key="date.clubId" className="day_event_start">
-                            <p className="calendar_club">
-                              {isMobile ? date.clubName : `▶︎ ${date.clubName}`}
-                            </p>
-                            {/* <img
-                          className="calendar_star"
-                          src="/bookmark/starYellow.png"
-                          alt="star"
-                          // onClick={handleFavorite}
-                        /> */}
+                          <div key={date.clubId} className="day_event_start">
+                            <a
+                              href={date.everytimeUrl}
+                              className="calendar_club_a"
+                            >
+                              <p className="calendar_club">
+                                {isMobile
+                                  ? date.clubName
+                                  : `▶︎ ${date.clubName}`}
+                              </p>
+                              <img
+                                className="calendar_star"
+                                src={
+                                  favoriteClubIds.includes(date.clubId)
+                                    ? "/bookmark/starYellow.png"
+                                    : "/bookmark/star-icon.png"
+                                }
+                                alt="star"
+                                onClick={() => handleFavorite(date.clubId)}
+                              />
+                            </a>
                           </div>
                         )}
-                      {currentMonthDate === getDate(date.endAt) &&
+                      {date.semester === "ONE" &&
+                        currentMonthDate === getDate(date.endAt) &&
                         month === getMonth(date.endAt) + 1 && (
                           <div key="date.clubId" className="day_event_end">
-                            <p className="calendar_club">
-                              {isMobile ? date.clubName : `◀︎ ${date.clubName}`}
-                            </p>
-                            {/* <img
-                          className="calendar_star"
-                          src="/bookmark/starYellow.png"
-                          alt="star"
-                          // onClick={handleFavorite}
-                        /> */}
+                            <a
+                              href={date.everytimeUrl}
+                              className="calendar_club_a"
+                            >
+                              <p className="calendar_club">
+                                ◀︎ {date.clubName}
+                              </p>
+                              <img
+                                className="calendar_star"
+                                src={
+                                  favoriteClubIds.includes(date.clubId)
+                                    ? "/bookmark/starYellow.png"
+                                    : "/bookmark/star-icon.png"
+                                }
+                                alt="star"
+                                onClick={() => handleFavorite(date.clubId)}
+                              />
+                            </a>
+                          </div>
+                        )}
+                      {date.semester === "ALWAYS" &&
+                        currentMonthDate === getDate(date.startAt) &&
+                        month === getMonth(date.startAt) + 1 && (
+                          <div key="date.clubId" className="day_event_always">
+                            <a
+                              href={date.everytimeUrl}
+                              className="calendar_club_a"
+                            >
+                              <p className="calendar_club">
+                                {isMobile
+                                  ? date.clubName
+                                  : `◆ ${date.clubName}`}
+                              </p>
+                              <img
+                                className="calendar_star"
+                                src={
+                                  favoriteClubIds.includes(date.clubId)
+                                    ? "/bookmark/starYellow.png"
+                                    : "/bookmark/star-icon.png"
+                                }
+                                alt="star"
+                                onClick={() => handleFavorite(date.clubId)}
+                              />
+                            </a>
                           </div>
                         )}
                     </>
@@ -156,6 +311,13 @@ export default function RecruitCalendar() {
           })}
         </div>
       </div>
+      {isModalOpen && (
+        <ErrorModal
+          isOpen={isModalOpen}
+          message={modalMessage}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
