@@ -52,7 +52,6 @@ export default function RecruitCalendar() {
         try {
             setIsLoading(true);
             const res = await customAxios.get(`/v1/calendar?year=${year}&month=${month}`);
-            console.log(res.data.data);
             setCalendarData(res.data.data);
 
             if (res.data.success) {
@@ -68,6 +67,16 @@ export default function RecruitCalendar() {
     }, [currentDate]);
 
     const changeMonth = (offset) => {
+        if (month === 1 && offset === -1) {
+            setModalMessage('이전 달로 이동할 수 없습니다.');
+            setIsModalOpen(true);
+            return;
+        } else if (month === 12 && offset === 1) {
+            setModalMessage('다음 달로 이동할 수 없습니다.');
+            setIsModalOpen(true);
+            return;
+        }
+
         const newDate = new Date(year, month - 1 + offset, 1);
         setCurrentDate(newDate);
     };
