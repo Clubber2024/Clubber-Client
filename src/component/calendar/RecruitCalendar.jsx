@@ -41,6 +41,7 @@ export default function RecruitCalendar() {
         try {
             setIsLoading(true);
             const res = await customAxios.get(`/v1/calendar?year=${year}&month=${month}`);
+            console.log(res.data.data);
             setCalendarData(res.data.data);
 
             if (res.data.success) {
@@ -155,8 +156,12 @@ export default function RecruitCalendar() {
                             <ChevronRight onClick={() => changeMonth(1)} style={{ width: '40px', height: '35px' }} />
                         </div>
                         <div>
-                            <p className="day_event_start">➡️ 모집 시작일</p>
-                            <p className="day_event_end">⬅️ 모집 마감일</p>
+                            <p className="header_day_event_start">➡️ 모집 시작일</p>
+                            <p className="header_day_event_end">⬅️ 모집 마감일</p>
+                            <p className="header_day_event_always">
+                                {' '}
+                                <div className="header_day_event_always_square"></div>상시 모집
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -185,36 +190,61 @@ export default function RecruitCalendar() {
 
                                 {calendarData?.recruitList?.map((date) => (
                                     <>
-                                        {currentMonthDate === getDate(date.startAt) &&
+                                        {date.semester === 'ONE' &&
+                                            currentMonthDate === getDate(date.startAt) &&
                                             month === getMonth(date.startAt) + 1 && (
                                                 <div key={date.clubId} className="day_event_start">
-                                                    <p className="calendar_club">➡️ {date.clubName}</p>
-                                                    <img
-                                                        className="calendar_star"
-                                                        src={
-                                                            favoriteClubIds.includes(date.clubId)
-                                                                ? '/bookmark/starYellow.png'
-                                                                : '/bookmark/star.png'
-                                                        }
-                                                        alt="star"
-                                                        onClick={() => handleFavorite(date.clubId)}
-                                                    />
+                                                    <a href={date.everytimeUrl} className="calendar_club_a">
+                                                        <p className="calendar_club">➡️ {date.clubName}</p>
+                                                        <img
+                                                            className="calendar_star"
+                                                            src={
+                                                                favoriteClubIds.includes(date.clubId)
+                                                                    ? '/bookmark/starYellow.png'
+                                                                    : '/bookmark/star-icon.png'
+                                                            }
+                                                            alt="star"
+                                                            onClick={() => handleFavorite(date.clubId)}
+                                                        />
+                                                    </a>
                                                 </div>
                                             )}
-                                        {currentMonthDate === getDate(date.endAt) &&
+                                        {date.semester === 'ONE' &&
+                                            currentMonthDate === getDate(date.endAt) &&
                                             month === getMonth(date.endAt) + 1 && (
                                                 <div key="date.clubId" className="day_event_end">
-                                                    <p className="calendar_club">⬅️ {date.clubName}</p>
-                                                    <img
-                                                        className="calendar_star"
-                                                        src={
-                                                            favoriteClubIds.includes(date.clubId)
-                                                                ? '/bookmark/starYellow.png'
-                                                                : '/bookmark/star.png'
-                                                        }
-                                                        alt="star"
-                                                        onClick={() => handleFavorite(date.clubId)}
-                                                    />
+                                                    <a href={date.everytimeUrl} className="calendar_club_a">
+                                                        <p className="calendar_club">⬅️ {date.clubName}</p>
+                                                        <img
+                                                            className="calendar_star"
+                                                            src={
+                                                                favoriteClubIds.includes(date.clubId)
+                                                                    ? '/bookmark/starYellow.png'
+                                                                    : '/bookmark/star-icon.png'
+                                                            }
+                                                            alt="star"
+                                                            onClick={() => handleFavorite(date.clubId)}
+                                                        />
+                                                    </a>
+                                                </div>
+                                            )}
+                                        {date.semester === 'ALWAYS' &&
+                                            currentMonthDate === getDate(date.startAt) &&
+                                            month === getMonth(date.startAt) + 1 && (
+                                                <div key="date.clubId" className="day_event_always">
+                                                    <a href={date.everytimeUrl} className="calendar_club_a">
+                                                        <p className="calendar_club">⬅️ {date.clubName}</p>
+                                                        <img
+                                                            className="calendar_star"
+                                                            src={
+                                                                favoriteClubIds.includes(date.clubId)
+                                                                    ? '/bookmark/starYellow.png'
+                                                                    : '/bookmark/star-icon.png'
+                                                            }
+                                                            alt="star"
+                                                            onClick={() => handleFavorite(date.clubId)}
+                                                        />
+                                                    </a>
                                                 </div>
                                             )}
                                     </>

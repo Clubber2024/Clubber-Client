@@ -88,31 +88,96 @@
     color: #666;
 }
 
-.day_event_start {
+.header_day_event_always {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    background-color: #fff7cd;
+    border-radius: 4px;
+    font-size: 11px;
+    padding: 4px 5px;
+    margin-bottom: 4px;
+}
+
+.header_day_event_end {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-between; */
+    background-color: #fde3eb;
+    border-radius: 4px;
+    font-size: 11px;
+    padding: 4px 5px;
+    margin-bottom: 4px;
+}
+
+.header_day_event_start {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-between; */
     background-color: #e3f2fd;
     border-radius: 4px;
     font-size: 11px;
-    padding: 4px 8px;
+    padding: 4px 5px;
+    margin-bottom: 4px;
+}
+.header_day_event_always_square {
+    width: 10.24px;
+    height: 10.24px;
+    transform: rotate(45deg);
+    background-color: #000000;
+    display: flex;
+    margin: 0 5px;
+}
+
+.day_event_start {
+    /* display: flex; */
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-between; */
+    background-color: #e3f2fd;
+    border-radius: 4px;
+    font-size: 11px;
+    padding: 4px 5px;
     margin-bottom: 4px;
 }
 
 .day_event_end {
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
-    /* justify-content: stretch; */
-    justify-content: space-between;
+    align-items: center;
+    /* justify-content: space-between; */
     background-color: #fde3eb;
     border-radius: 4px;
     font-size: 11px;
-    padding: 4px 8px;
+    padding: 4px 5px;
+    margin-bottom: 4px;
+}
+
+.day_event_always {
+    /* display: flex; */
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-between; */
+    background-color: #fff7cd;
+    border-radius: 4px;
+    font-size: 11px;
+    padding: 4px 5px;
     margin-bottom: 4px;
 }
 
 .calendar_star {
     width: 15px;
     height: 15px;
+    margin-top: 1px;
+    /* margin-left: 1px; */
+}
+
+.calendar_club_a {
+    display: flex;
+    text-decoration: none;
+    color: #202123;
+    justify-content: space-between;
 }
