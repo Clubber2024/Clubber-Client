@@ -1,4 +1,5 @@
 import React from 'react';
+import parse from 'html-react-parser';
 
 export default function IntroductionPage({
     clubName,
@@ -6,6 +7,7 @@ export default function IntroductionPage({
     department,
     introduction,
     instagram,
+    youtube,
     imgUrl,
     leader,
     activity,
@@ -27,6 +29,10 @@ export default function IntroductionPage({
     const NewLines = ({ text }) => {
         return <div>{handleNewLines(text)}</div>;
     };
+    //링크 텍스트 존재 시 하이퍼링크 자동처리 컴포넌트
+    const transformContent = (text) => {
+        return text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    };
 
     return (
         <>
@@ -39,17 +45,25 @@ export default function IntroductionPage({
                 </p>
                 <br></br>
                 <strong>📌 소개</strong>
-                <p>{introduction}</p>
+                <p>{introduction ? parse(transformContent(introduction)) : ''}</p>
                 <br></br>
-                <strong>📌 인스타</strong>
-                {instagram ? (
-                    <a href={instagram} target="_blank" rel="noopener noreferrer">
-                        <img className="insta_icon" src="/buttons/instagram_icon.png" alt="instagram" />
-                    </a>
-                ) : (
-                    ''
-                )}
-
+                <strong>📌 SNS</strong>
+                <div>
+                    {instagram ? (
+                        <a href={instagram} target="_blank" rel="noopener noreferrer">
+                            <img className="insta_icon" src="/buttons/instagram_icon.png" alt="instagram" />
+                        </a>
+                    ) : (
+                        ''
+                    )}
+                    {youtube ? (
+                        <a href={youtube} target="_blank" rel="noopener noreferrer">
+                            <img className="youtube_icon" src="/buttons/youtube.png" alt="youtube" />
+                        </a>
+                    ) : (
+                        ''
+                    )}
+                </div>
                 <br></br>
 
                 <strong>📌 대표 활동</strong>

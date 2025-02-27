@@ -13,9 +13,7 @@
         justify-content: space-between;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        /* padding-left: 0; */
         white-space: no-wrap;
-        /* justify-content: space-around; */
     }
 
     .tags_wrapper::-webkit-scrollbar {
