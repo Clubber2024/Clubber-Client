@@ -1,8 +1,9 @@
 import ReactModal from 'react-modal';
 import { useState, useEffect } from 'react';
 import './modal.css';
+import { LinkItem } from '../branch/BranchCentral';
 
-export default function ErrorModal({ isOpen, message, onClose }) {
+export default function LoginModal({ isOpen, message, onClose }) {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 480);
 
     useEffect(() => {
@@ -39,9 +40,12 @@ export default function ErrorModal({ isOpen, message, onClose }) {
         <div>
             <ReactModal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
                 <p>{message}</p>
-                <button onClick={onClose} className="ok_button">
-                    확인
-                </button>
+                <LinkItem to={'/login'}>
+                    <button onClick={onClose} className="login_ok_button">
+                        <img src="/login/kakaologo.png" className="login_kakaologo" />
+                        카카오 로그인
+                    </button>
+                </LinkItem>
             </ReactModal>
         </div>
     );

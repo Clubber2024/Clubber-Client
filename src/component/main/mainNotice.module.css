@@ -127,14 +127,11 @@
         font-family: Noto Sans KR;
         line-height: 26px;
         box-shadow: 0px 0px 3px 1px #00000033;
-        padding: 15px 25px;
+        padding: 15px 5px 15px 25px;
     }
 
     .div_notice {
         font-family: Noto Sans KR;
-        /* display: flex; */
-        /* flex-direction: row; */
-        /* justify-content: space-between; */
         color: #52555b;
         font-size: 11px;
         font-weight: 350;

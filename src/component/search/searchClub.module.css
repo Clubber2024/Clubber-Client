@@ -42,6 +42,11 @@
         padding: 0 0 0 3%;
         margin: 0 0 5px 0;
         float: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+        overflow-y: auto;
     }
     .content {
         width: 100%;
@@ -101,6 +106,11 @@
         text-align: left;
         padding: 0 0 0 3%;
         border-radius: 10px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        white-space: nowrap;
+        overflow-y: auto;
     }
     .content {
         width: 100%;
