@@ -29,7 +29,7 @@ export default function ConfirmModal({ isOpen, message, onClickOk, onClose }) {
             alignItems: 'center',
             textAlign: 'center',
             fontFamily: 'Noto Sans KR',
-            fontSize: isMobile ? '14px' : '16px',
+            fontSize: isMobile ? '14px' : '18px',
             fontWeight: '500',
         },
     };

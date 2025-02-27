@@ -167,7 +167,13 @@ export default function ClubsPage() {
                     }
                 }
             }
-
+            // } else if (isAdmin && token) {
+            //     setModalMessage('관리자는 즐겨찾기를 이용할 수 없습니다.');
+            //     setIsModalOpen(true);
+            // } else {
+            //     setModalMessage('즐겨찾기 추가는 로그인 이후 가능합니다.');
+            //     setIsModalOpen(true);
+            // }
             getBookmarkData(); // 각 요청 후 즐겨찾기 리스트 업데이트
         } catch (error) {
             getBookmarkData(); //에러 발생해도 업데이트
