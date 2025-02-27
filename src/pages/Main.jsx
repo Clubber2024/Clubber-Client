@@ -3,8 +3,7 @@ import MainRanking from '../component/main/MainRanking';
 import MainNotice from '../component/main/MainNotice';
 import MainPromote from '../component/main/MainPromote';
 import './mainPage.css';
-// import QnAMain from '../component/QnA/QnAMain';
-import MainIco from '../component/main/MainIco';
+import QnAMain from '../component/QnA/QnAMain';
 
 export default function MainPage() {
     return (
@@ -19,7 +18,7 @@ export default function MainPage() {
                     <MainPromote />
                 </div> */}
             </div>
-            {/* <QnAMain /> */}
+            <QnAMain />
         </>
     );
 }

@@ -34,6 +34,8 @@ export default function HashTag() {
                 setImgUrls(imageUrls);
                 setTitles(titles);
                 setCodes(code);
+                console.log(imgUrls);
+                console.log(titles);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);
@@ -45,6 +47,8 @@ export default function HashTag() {
     }, []);
 
     const onClicked = (hashTagValue) => {
+        console.log(hashTagValue);
+
         navigate(`/hashtag?tag=${hashTagValue}`, { state: { hashtag: hashTagValue } });
     };
     return (
