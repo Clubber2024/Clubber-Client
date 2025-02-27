@@ -169,7 +169,8 @@
     }
 
     .day_event_container {
-        overflow: auto; /* 넘칠 경우 스크롤 */
+        overflow-y: auto; /* 넘칠 경우 스크롤 */
+        overflow-x: hidden;
     }
 
     .day_cell,
@@ -178,7 +179,7 @@
         padding: 5px;
         display: flex;
         flex-direction: column;
-        width: 100%;
+        /* width: 100%; */
         /* height: auto; */
         height: 140px;
         border: 0.5px solid #d6d6d6;
@@ -216,6 +217,7 @@
         width: 9px;
         height: 9px;
         margin-left: 1px;
+        margin-bottom: 2px;
     }
 }
 
