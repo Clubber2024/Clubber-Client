@@ -4,7 +4,7 @@
         justify-content: center;
         align-items: center;
         max-width: 1000px;
-        min-width: 850px;
+        min-width: 800px;
         width: 90%;
         background-color: #7bc8e0;
         margin: 50px auto;
@@ -230,8 +230,6 @@
     padding: 4px 6px;
     margin-bottom: 4px;
     max-width: 100%;
-    white-space: normal;
-    word-break: break-word;
 }
 
 .day_event_end {

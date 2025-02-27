@@ -9,7 +9,7 @@
 
 .ok_button {
     /* width: 101px;
-    height: 35px; */
+	height: 35px; */
     padding: 10px 35px;
     margin-top: 18px;
     border-radius: 5px;
@@ -23,7 +23,7 @@
 
 .cancel_button {
     /* width: 101px;
-    height: 35px; */
+	height: 35px; */
     padding: 10px 35px;
     margin-top: 18px;
     border-radius: 5px;
@@ -35,10 +35,39 @@
     font-weight: 500;
 }
 
+.login_ok_button {
+    /* width: 101px;
+	height: 35px; */
+    padding: 10px 35px;
+    margin-top: 18px;
+    border-radius: 5px;
+    border: none;
+    background-color: #fee500;
+    color: black;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: Noto Sans;
+}
+
+.login_kakaologo {
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+}
+
 @media (max-width: 480px) {
-    .ok_button, .cancel_button {
+    .ok_button,
+    .cancel_button,
+    .login_ok_button {
         padding: 7px 30px;
         font-size: 13px;
         margin-top: 14px;
+    }
+
+    .login_kakaologo {
+        width: 13px;
+        height: 13px;
+        margin-right: 8px;
     }
 }
