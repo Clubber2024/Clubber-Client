@@ -10,7 +10,6 @@ export default function QnAMain() {
     const getFaQData = async () => {
         try {
             const res = await customAxios.get(`/v1/faqs`);
-            console.log(res.data.data);
             setFaqData(res.data.data);
         } catch (error) {
             console.error('error:', error);
@@ -49,7 +48,6 @@ export default function QnAMain() {
             setActiveIndex(null); // 같은 질문 클릭 시 닫기
         } else {
             setActiveIndex(index); // 다른 질문 클릭 시 해당 인덱스로 설정
-            console.log('index', index);
         }
     };
 
@@ -100,18 +98,14 @@ export default function QnAMain() {
 
     const onClickNotion = () => {
         window.open('https://www.notion.so/polymorphismj/19cfbba268728049b974f28a3254bb17', '_blank');
-      };
+    };
 
     return (
         <div className={styles.qna_div}>
             <div className={styles.title_notion_div}>
                 <p className={styles.qna_title}>자주 묻는 질문</p>
                 <button onClick={onClickNotion} className={styles.notion_button}>
-                    <img
-                        src="/buttons/notion_button.png"
-                        alt="notion"
-                        className={styles.notion_logo}
-                    />
+                    <img src="/buttons/notion_button.png" alt="notion" className={styles.notion_logo} />
                     <span className={styles.notion_text}>클러버에 대해 궁금하다면? Notion 클릭!</span>
                 </button>
             </div>

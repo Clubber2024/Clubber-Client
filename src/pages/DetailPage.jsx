@@ -248,6 +248,7 @@ export default function ClubsPage() {
                     introduction={detailData.introduction}
                     imgUrl={detailData.imageUrl}
                     instagram={clubInfoData.instagram}
+                    youtube={clubInfoData.youtube}
                     activity={clubInfoData.activity}
                     leader={clubInfoData.leader}
                     room={clubInfoData.room}

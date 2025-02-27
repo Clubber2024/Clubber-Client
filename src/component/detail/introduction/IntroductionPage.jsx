@@ -6,6 +6,7 @@ export default function IntroductionPage({
     department,
     introduction,
     instagram,
+    youtube,
     imgUrl,
     leader,
     activity,
@@ -41,15 +42,23 @@ export default function IntroductionPage({
                 <strong>📌 소개</strong>
                 <p>{introduction}</p>
                 <br></br>
-                <strong>📌 인스타</strong>
-                {instagram ? (
-                    <a href={instagram} target="_blank" rel="noopener noreferrer">
-                        <img className="insta_icon" src="/buttons/instagram_icon.png" alt="instagram" />
-                    </a>
-                ) : (
-                    ''
-                )}
-
+                <strong>📌 SNS</strong>
+                <div>
+                    {instagram ? (
+                        <a href={instagram} target="_blank" rel="noopener noreferrer">
+                            <img className="insta_icon" src="/buttons/instagram_icon.png" alt="instagram" />
+                        </a>
+                    ) : (
+                        ''
+                    )}
+                    {youtube ? (
+                        <a href={youtube} target="_blank" rel="noopener noreferrer">
+                            <img className="youtube_icon" src="/buttons/youtube.png" alt="youtube" />
+                        </a>
+                    ) : (
+                        ''
+                    )}
+                </div>
                 <br></br>
 
                 <strong>📌 대표 활동</strong>
