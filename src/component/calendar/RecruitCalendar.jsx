@@ -6,7 +6,6 @@ import ErrorModal from "../modal/ErrorModal";
 import {
   ChevronLeftSquareIcon,
   ChevronRightSquareIcon,
-  Dot,
 } from "lucide-react";
 import LoadingPage from "../loading/LoadingPage";
 
@@ -22,6 +21,7 @@ export default function RecruitCalendar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const today = new Date();
   const [currentDate, setCurrentDate] = useState(new Date());
   const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
@@ -215,19 +215,29 @@ export default function RecruitCalendar() {
               ? lastMonthLastDate + date // 이전 달 날짜
               : date - curMonthLastDate; // 다음 달 날짜
 
+            const isToday =
+              isCurrentMonth &&
+              date === today.getDate() &&
+              month === today.getMonth() + 1 &&
+              year === today.getFullYear();
+
             return (
               <div
                 key={i}
-                className={isCurrentMonth ? "day_cell" : "day_cell_other"}
+                className={`day_cell ${isCurrentMonth ? "" : "day_cell_other"} ${
+                    isToday ? "today_cell" : ""
+                  }`}
               >
-                <span className={isCurrentMonth ? "day_num" : "day_num_other"}>
+                <span className={`day_num ${isCurrentMonth ? "" : "day_num_other"} ${
+                    isToday ? "today_num" : ""
+                  }`}>
                   {displayDate}
                 </span>
 
                 <div className="day_event_container">
                   {calendarData?.recruitList?.map((date) => (
                     <>
-                      {date.semester === "ONE" &&
+                      {date.semester !== "ALWAYS" &&
                         currentMonthDate === getDate(date.startAt) &&
                         month === getMonth(date.startAt) + 1 && (
                           <div key={date.clubId} className="day_event_start">
@@ -240,20 +250,20 @@ export default function RecruitCalendar() {
                                   ? date.clubName
                                   : `▶︎ ${date.clubName}`}
                               </p>
-                              <img
-                                className="calendar_star"
-                                src={
-                                  favoriteClubIds.includes(date.clubId)
-                                    ? "/bookmark/starYellow.png"
-                                    : "/bookmark/star-icon.png"
-                                }
-                                alt="star"
-                                onClick={() => handleFavorite(date.clubId)}
-                              />
                             </a>
+                            <img
+                              className="calendar_star"
+                              src={
+                                favoriteClubIds.includes(date.clubId)
+                                  ? "/bookmark/starYellow.png"
+                                  : "/bookmark/star-icon.png"
+                              }
+                              alt="star"
+                              onClick={() => handleFavorite(date.clubId)}
+                            />
                           </div>
                         )}
-                      {date.semester === "ONE" &&
+                      {date.semester !== "ALWAYS" &&
                         currentMonthDate === getDate(date.endAt) &&
                         month === getMonth(date.endAt) + 1 && (
                           <div key="date.clubId" className="day_event_end">
@@ -264,17 +274,17 @@ export default function RecruitCalendar() {
                               <p className="calendar_club">
                                 ◀︎ {date.clubName}
                               </p>
-                              <img
-                                className="calendar_star"
-                                src={
-                                  favoriteClubIds.includes(date.clubId)
-                                    ? "/bookmark/starYellow.png"
-                                    : "/bookmark/star-icon.png"
-                                }
-                                alt="star"
-                                onClick={() => handleFavorite(date.clubId)}
-                              />
                             </a>
+                            <img
+                              className="calendar_star"
+                              src={
+                                favoriteClubIds.includes(date.clubId)
+                                  ? "/bookmark/starYellow.png"
+                                  : "/bookmark/star-icon.png"
+                              }
+                              alt="star"
+                              onClick={() => handleFavorite(date.clubId)}
+                            />
                           </div>
                         )}
                       {date.semester === "ALWAYS" &&
@@ -290,17 +300,17 @@ export default function RecruitCalendar() {
                                   ? date.clubName
                                   : `◆ ${date.clubName}`}
                               </p>
-                              <img
-                                className="calendar_star"
-                                src={
-                                  favoriteClubIds.includes(date.clubId)
-                                    ? "/bookmark/starYellow.png"
-                                    : "/bookmark/star-icon.png"
-                                }
-                                alt="star"
-                                onClick={() => handleFavorite(date.clubId)}
-                              />
                             </a>
+                            <img
+                              className="calendar_star"
+                              src={
+                                favoriteClubIds.includes(date.clubId)
+                                  ? "/bookmark/starYellow.png"
+                                  : "/bookmark/star-icon.png"
+                              }
+                              alt="star"
+                              onClick={() => handleFavorite(date.clubId)}
+                            />
                           </div>
                         )}
                     </>
