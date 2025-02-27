@@ -192,13 +192,13 @@ export default function RecruitCalendar() {
             </div>
           </div>
           <div className="calendar_header_right">
-            <p className="day_event_start">
+            <p className="day_event_start header_day_event">
               {isMobile ? "모집 시작일" : "▶︎ 모집 시작일"}
             </p>
-            <p className="day_event_end">
+            <p className="day_event_end header_day_event">
               {isMobile ? "모집 마감일" : "◀︎ 모집 마감일"}
             </p>
-            <p className="day_event_always">
+            <p className="day_event_always header_day_event">
               {isMobile ? "상시 모집" : "◆ 상시 모집"}
             </p>
           </div>
@@ -282,7 +282,9 @@ export default function RecruitCalendar() {
                               className="calendar_club_a"
                             >
                               <p className="calendar_club">
-                                ◀︎ {date.clubName}
+                                {isMobile
+                                  ? date.clubName
+                                  : `◀︎ ${date.clubName}`}
                               </p>
                             </a>
                             <img
@@ -311,8 +313,7 @@ export default function RecruitCalendar() {
                                   : `◆ ${date.clubName}`}
                               </p>
                             </a>
-                            {!isMobile && (
-                              <img
+                            <img
                                 className="calendar_star"
                                 src={
                                   favoriteClubIds.includes(date.clubId)
@@ -322,7 +323,6 @@ export default function RecruitCalendar() {
                                 alt="star"
                                 onClick={() => handleFavorite(date.clubId)}
                               />
-                            )}
                           </div>
                         )}
                     </>

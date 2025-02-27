@@ -208,6 +208,10 @@
         font-size: 9px;
     }
 
+    .header_day_event {
+        font-size: 11px;
+    }
+
     .calendar_star {
         width: 9px;
         height: 9px;
