@@ -3,12 +3,9 @@ import { getMonth, getDate, getDay } from "date-fns";
 import "./recruitCalendar.css";
 import { customAxios } from "../../config/axios-config";
 import ErrorModal from "../modal/ErrorModal";
-import {
-  ChevronLeftSquareIcon,
-  ChevronRightSquareIcon,
-} from "lucide-react";
+import { ChevronLeftSquareIcon, ChevronRightSquareIcon } from "lucide-react";
 import LoadingPage from "../loading/LoadingPage";
-import LoginModal from '../modal/LoginModal';
+import LoginModal from "../modal/LoginModal";
 
 export default function RecruitCalendar() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -45,10 +42,10 @@ export default function RecruitCalendar() {
   const [favoriteClubIds, setFavoriteClubIds] = useState([]);
   const token = localStorage.getItem("accessToken");
 
-    //모달 상태관리
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalMessage, setModalMessage] = useState('');
-    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  //모달 상태관리
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   //로딩창 상태관리
   const [isLoading, setIsLoading] = useState(false);
@@ -74,20 +71,20 @@ export default function RecruitCalendar() {
     getCalendarData();
   }, [currentDate]);
 
-    const changeMonth = (offset) => {
-        if (month === 1 && offset === -1) {
-            setModalMessage('이전 달로 이동할 수 없습니다.');
-            setIsModalOpen(true);
-            return;
-        } else if (month === 12 && offset === 1) {
-            setModalMessage('다음 달로 이동할 수 없습니다.');
-            setIsModalOpen(true);
-            return;
-        }
+  const changeMonth = (offset) => {
+    if (month === 1 && offset === -1) {
+      setModalMessage("이전 달로 이동할 수 없습니다.");
+      setIsModalOpen(true);
+      return;
+    } else if (month === 12 && offset === 1) {
+      setModalMessage("다음 달로 이동할 수 없습니다.");
+      setIsModalOpen(true);
+      return;
+    }
 
-        const newDate = new Date(year, month - 1 + offset, 1);
-        setCurrentDate(newDate);
-    };
+    const newDate = new Date(year, month - 1 + offset, 1);
+    setCurrentDate(newDate);
+  };
 
   //회원 즐겨찾기 조회 api
   const getFavoriteData = async () => {
@@ -115,13 +112,13 @@ export default function RecruitCalendar() {
     getFavoriteData();
   }, []);
 
-    const handleFavorite = async (clubId) => {
-        if (!token) {
-            setModalMessage('로그인 후 즐겨찾기를 이용해주세요!');
-            setIsLoginModalOpen(true);
-            return;
-        }
-        //관리자일 때 ->> 추후 추가예정
+  const handleFavorite = async (clubId) => {
+    if (!token) {
+      setModalMessage("로그인 후 즐겨찾기를 이용해주세요!");
+      setIsLoginModalOpen(true);
+      return;
+    }
+    //관리자일 때 ->> 추후 추가예정
 
     if (favoriteClubIds.includes(clubId)) {
       const favoriteId = getFavoriteId(clubId);
@@ -235,13 +232,15 @@ export default function RecruitCalendar() {
             return (
               <div
                 key={i}
-                className={`day_cell ${isCurrentMonth ? "" : "day_cell_other"} ${
-                    isToday ? "today_cell" : ""
-                  }`}
+                className={`day_cell ${
+                  isCurrentMonth ? "" : "day_cell_other"
+                } ${isToday ? "today_cell" : ""}`}
               >
-                <span className={`day_num ${isCurrentMonth ? "" : "day_num_other"} ${
-                    isToday ? "today_num" : ""
-                  }`}>
+                <span
+                  className={`day_num ${
+                    isCurrentMonth ? "" : "day_num_other"
+                  } ${isToday ? "today_num" : ""}`}
+                >
                   {displayDate}
                 </span>
 
@@ -263,15 +262,15 @@ export default function RecruitCalendar() {
                               </p>
                             </a>
                             <img
-                              className="calendar_star"
-                              src={
-                                favoriteClubIds.includes(date.clubId)
-                                  ? "/bookmark/starYellow-calendar.png"
-                                  : "/bookmark/star-calendar.png"
-                              }
-                              alt="star"
-                              onClick={() => handleFavorite(date.clubId)}
-                            />
+                                className="calendar_star"
+                                src={
+                                  favoriteClubIds.includes(date.clubId)
+                                    ? "/bookmark/starYellow-calendar.png"
+                                    : "/bookmark/star-calendar.png"
+                                }
+                                alt="star"
+                                onClick={() => handleFavorite(date.clubId)}
+                              />
                           </div>
                         )}
                       {date.semester !== "ALWAYS" &&
@@ -312,16 +311,18 @@ export default function RecruitCalendar() {
                                   : `◆ ${date.clubName}`}
                               </p>
                             </a>
-                            <img
-                              className="calendar_star"
-                              src={
-                                favoriteClubIds.includes(date.clubId)
-                                  ? "/bookmark/starYellow-calendar.png"
-                                  : "/bookmark/star-calendar.png"
-                              }
-                              alt="star"
-                              onClick={() => handleFavorite(date.clubId)}
-                            />
+                            {!isMobile && (
+                              <img
+                                className="calendar_star"
+                                src={
+                                  favoriteClubIds.includes(date.clubId)
+                                    ? "/bookmark/starYellow-calendar.png"
+                                    : "/bookmark/star-calendar.png"
+                                }
+                                alt="star"
+                                onClick={() => handleFavorite(date.clubId)}
+                              />
+                            )}
                           </div>
                         )}
                     </>
@@ -339,13 +340,13 @@ export default function RecruitCalendar() {
           onClose={() => setIsModalOpen(false)}
         />
       )}
-            {isLoginModalOpen && (
-                <LoginModal
-                    isOpen={isLoginModalOpen}
-                    message={modalMessage}
-                    onClose={() => setIsLoginModalOpen(false)}
-                />
-            )}
+      {isLoginModalOpen && (
+        <LoginModal
+          isOpen={isLoginModalOpen}
+          message={modalMessage}
+          onClose={() => setIsLoginModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
