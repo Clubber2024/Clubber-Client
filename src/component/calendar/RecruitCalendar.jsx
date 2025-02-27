@@ -5,6 +5,7 @@ import { customAxios } from '../../config/axios-config';
 import ErrorModal from '../modal/ErrorModal';
 import { ChevronLeftSquareIcon, ChevronRightSquareIcon, Dot } from 'lucide-react';
 import LoadingPage from '../loading/LoadingPage';
+import LoginModal from '../modal/LoginModal';
 
 export default function RecruitCalendar() {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -43,6 +44,7 @@ export default function RecruitCalendar() {
     //모달 상태관리
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
     //로딩창 상태관리
     const [isLoading, setIsLoading] = useState(false);
@@ -108,7 +110,7 @@ export default function RecruitCalendar() {
     const handleFavorite = async (clubId) => {
         if (!token) {
             setModalMessage('로그인 후 즐겨찾기를 이용해주세요!');
-            setIsModalOpen(true);
+            setIsLoginModalOpen(true);
             return;
         }
         //관리자일 때 ->> 추후 추가예정
@@ -278,6 +280,13 @@ export default function RecruitCalendar() {
             </div>
             {isModalOpen && (
                 <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={() => setIsModalOpen(false)} />
+            )}
+            {isLoginModalOpen && (
+                <LoginModal
+                    isOpen={isLoginModalOpen}
+                    message={modalMessage}
+                    onClose={() => setIsLoginModalOpen(false)}
+                />
             )}
         </div>
     );

@@ -4,7 +4,7 @@
         justify-content: center;
         align-items: center;
         max-width: 1000px;
-        min-width: 850px;
+        min-width: 800px;
         width: 90%;
         background-color: #7bc8e0;
         margin: 50px auto;
@@ -198,7 +198,7 @@
     background-color: #e3f2fd;
     border-radius: 4px;
     font-size: 11px;
-    padding: 4px 8px;
+    padding: 4px 5px;
     margin-bottom: 4px;
     max-width: 100%;
     white-space: normal;
@@ -209,6 +209,16 @@
     display: flex;
     justify-content: space-between;
     background-color: #fde3eb;
+    border-radius: 4px;
+    font-size: 11px;
+    padding: 4px 5px;
+    margin-bottom: 4px;
+}
+
+.day_event_always {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff7cd;
     border-radius: 4px;
     font-size: 11px;
     padding: 4px 5px;
@@ -226,14 +236,4 @@
     &:hover {
         font-weight: 600;
     }
-}
-
-.day_event_always {
-    display: flex;
-    justify-content: space-between;
-    background-color: #fff7cd;
-    border-radius: 4px;
-    font-size: 11px;
-    padding: 4px 5px;
-    margin-bottom: 4px;
 }
