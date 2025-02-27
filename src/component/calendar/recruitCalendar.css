@@ -63,6 +63,10 @@
         padding: 12px;
     }
 
+    .day_event_container {
+        word-break: break-all;
+    }
+
     .day_cell,
     .day_cell_other {
         background-color: white;
@@ -81,7 +85,7 @@
         font-size: 16px;
         margin-bottom: 6px;
     }
-    
+
     .today_num {
         width: 27px;
         height: 27px;
@@ -92,7 +96,9 @@
         padding-top: 4px;
     }
 
-    .day_event_start, .day_event_always, .day_event_end {
+    .day_event_start,
+    .day_event_always,
+    .day_event_end {
         font-size: 11px;
     }
 
@@ -104,7 +110,7 @@
         cursor: pointer;
     }
     .calendar_star:hover {
-        filter: drop-shadow(0 0 1px #FFD000) drop-shadow(0 0 1px #ffe600);
+        filter: drop-shadow(0 0 1px #ffd000) drop-shadow(0 0 1px #ffe600);
     }
 }
 
@@ -152,6 +158,10 @@
     .chevron_right {
         width: 20px;
         height: 20px;
+        cursor: pointer;
+        &:hover {
+            filter: drop-shadow(0 0 1px white) drop-shadow(0 0 1px white);
+        }
     }
 
     .weeks_container {
@@ -170,6 +180,23 @@
 
     .day_event_container {
         overflow-y: auto; /* 넘칠 경우 스크롤 */
+        word-break: break-all;
+        scroll-snap-type: y mandatory;
+    }
+
+    .day_event_container::-webkit-scrollbar {
+        height: 2px;
+        width: 2px;
+    }
+
+    .day_event_container::-webkit-scrollbar-thumb {
+        background-color: #0000002a;
+        border-radius: 10px;
+    }
+
+    .day_event_container ::-webkit-scrollbar-track {
+        background-color: #9c9c9c1a;
+        border-radius: 10px;
         overflow-x: hidden;
     }
 
@@ -193,7 +220,7 @@
         font-size: 14px;
         margin-bottom: 6px;
     }
-    
+
     .today_num {
         width: 21px;
         height: 30px;
@@ -205,7 +232,9 @@
         font-size: 14px;
     }
 
-    .day_event_start, .day_event_always, .day_event_end {
+    .day_event_start,
+    .day_event_always,
+    .day_event_end {
         font-size: 9px;
     }
 
@@ -217,6 +246,9 @@
         width: 9px;
         height: 9px;
         margin-left: 1px;
+        &:hover {
+            filter: drop-shadow(0 0 1px #ffd000) drop-shadow(0 0 1px #ffd000);
+        }
         margin-bottom: 2px;
     }
 }
@@ -255,7 +287,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FFE3EC;
+    background-color: #ffe3ec;
     border-radius: 4px;
     padding: 4px 6px;
     margin-bottom: 4px;
