@@ -220,8 +220,8 @@ export default function RecruitCalendar() {
                                                             className="calendar_star"
                                                             src={
                                                                 favoriteClubIds.includes(date.clubId)
-                                                                    ? '/bookmark/starYellow.png'
-                                                                    : '/bookmark/star-icon.png'
+                                                                    ? '/bookmark/starYellow-calendar.png'
+                                                                    : '/bookmark/star-calendar.png'
                                                             }
                                                             alt="star"
                                                             onClick={() => handleFavorite(date.clubId)}
@@ -239,8 +239,8 @@ export default function RecruitCalendar() {
                                                             className="calendar_star"
                                                             src={
                                                                 favoriteClubIds.includes(date.clubId)
-                                                                    ? '/bookmark/starYellow.png'
-                                                                    : '/bookmark/star-icon.png'
+                                                                    ? '/bookmark/starYellow-calendar.png'
+                                                                    : '/bookmark/star-calendar.png'
                                                             }
                                                             alt="star"
                                                             onClick={() => handleFavorite(date.clubId)}
@@ -260,8 +260,8 @@ export default function RecruitCalendar() {
                                                             className="calendar_star"
                                                             src={
                                                                 favoriteClubIds.includes(date.clubId)
-                                                                    ? '/bookmark/starYellow.png'
-                                                                    : '/bookmark/star-icon.png'
+                                                                    ? '/bookmark/starYellow-calendar.png'
+                                                                    : '/bookmark/star-calendar.png'
                                                             }
                                                             alt="star"
                                                             onClick={() => handleFavorite(date.clubId)}
