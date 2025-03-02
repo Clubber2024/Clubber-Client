@@ -34,8 +34,8 @@ import DetailRecruitList from './component/recruit/DetailRecruitList';
 import AdminRecruitContent from './component/admin/recruit/AdminRecruitContent';
 import LoadingPage from './component/loading/LoadingPage';
 import OfficialClubPage from './pages/OfficialClubPage';
-import MainPromote from './component/main/MainPromote';
-import RecruitList from './component/recruit/RecruitList';
+// import MainPromote from './component/main/MainPromote';
+// import RecruitList from './component/recruit/RecruitList';
 import RecruitCalendar from './component/calendar/RecruitCalendar';
 
 function App() {
