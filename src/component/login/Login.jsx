@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { customAxios } from '../../config/axios-config';
 import ErrorModal from '../modal/ErrorModal';
 import { saveTokens } from '../../auth/AuthService';
+import { LinkItem } from '../branch/BranchCentral';
+import { Nav } from 'react-bootstrap';
 
 function Login() {
     const restApiKey = process.env.REACT_APP_REST_API_KEY;
@@ -55,7 +57,7 @@ function Login() {
     const saveAdminPw = (event) => setAdminPw(event.target.value);
     const handleTabClick = (form) => setActiveForm(form);
     const handleFormSubmit = (event) => event.preventDefault();
-    
+
     return (
         <>
             <div className="wrapper">
@@ -115,6 +117,9 @@ function Login() {
                                         <button className="login-button" onClick={adminLoginHandler}>
                                             로그인
                                         </button>
+                                        <LinkItem to={'/login/adminJoin'} className="sign_up_p">
+                                            회원가입
+                                        </LinkItem>
                                     </form>
                                 )}
                             </div>

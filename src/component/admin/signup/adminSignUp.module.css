@@ -1,0 +1,94 @@
+@media screen and (min-width: 768px) {
+    .signup_div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 67px;
+    }
+
+    .signup_logo {
+        width: 410px;
+        height: 134px;
+    }
+
+    .content_div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 62px;
+    }
+
+    .content_title {
+        font-family: Noto Sans KR;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 100%;
+        color: #202123;
+        text-align: left;
+    }
+
+    .content_id_div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .content_input,
+    .content_input_id {
+        border: 1.3px solid #9c9c9c80;
+        border-radius: 5px;
+        width: 472px;
+        height: 55px;
+        color: #202123;
+        display: flex;
+        align-items: center;
+        padding-left: 11px;
+        margin-top: 13px;
+        margin-bottom: 36px;
+    }
+
+    .content_input_id {
+        width: 351px;
+    }
+
+    .contact_title {
+        font-family: Noto Sans KR;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        color: #202123;
+    }
+
+    .id_duplicate_check_button {
+        width: 110px;
+        height: 55px;
+        background-color: #7bc8e0;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top: 13px;
+        cursor: pointer;
+        font-family: Noto Sans KR;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        text-align: center;
+    }
+
+    .message,
+    .message_confirm {
+        width: 461px;
+        margin-top: -34px;
+        margin-bottom: 35px;
+        font-size: 13px;
+    }
+    .message {
+        color: red;
+    }
+    .message_confirm {
+        color: blue;
+    }
+}
