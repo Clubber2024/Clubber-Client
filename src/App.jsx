@@ -28,7 +28,6 @@ import AdminPage from './pages/AdminPage';
 import MyPage from './component/mypage/MyPage';
 import AdminRecruitList from './component/admin/recruit/AdminRecruitList';
 import RecruitContent from './component/recruit/RecruitContent';
-import ModifyPassword from './component/mypage/ModifyPassword';
 import AdminRecruitWrite from './component/admin/recruit/AdminRecruitWrite';
 import DetailRecruitList from './component/recruit/DetailRecruitList';
 import AdminRecruitContent from './component/admin/recruit/AdminRecruitContent';
@@ -39,6 +38,7 @@ import OfficialClubPage from './pages/OfficialClubPage';
 import RecruitCalendar from './component/calendar/RecruitCalendar';
 import EditAdminProfile from './component/admin/profile/EditAdminProfile';
 import AdminSignUp from './component/admin/signup/AdminSignUp';
+import ChangeAdminPassword from './component/admin/password/ChangeAdminPassword';
 
 function App() {
     const appStyle = {
@@ -106,7 +106,7 @@ function App() {
                             <Route path="/admin/recruit" element={<AdminRecruitList />} />
                             <Route path="/admin/recruit/edit" element={<AdminRecruitWrite />} />
                             <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
-                            <Route path="/admin/password" element={<ModifyPassword />} />
+                            <Route path="/admin/password" element={<ChangeAdminPassword />} />
                             <Route path="/admin/edit-profile" element={<EditAdminProfile />} />
 
                             <Route path="/loading" element={<LoadingPage />} />
@@ -159,7 +159,7 @@ function App() {
                             <Route path="/admin/recruit" element={<AdminRecruitList />} />
                             <Route path="/admin/recruit/edit" element={<AdminRecruitWrite />} />
                             <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
-                            <Route path="/admin/password" element={<ModifyPassword />} />
+                            <Route path="/admin/password" element={<ChangeAdminPassword />} />
                             <Route path="/admin/edit-profile" element={<EditAdminProfile />} />
 
                             <Route path="/loading" element={<LoadingPage />} />

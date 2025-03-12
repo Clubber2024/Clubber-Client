@@ -49,18 +49,6 @@ export default function EditAdminProfile() {
         } catch {}
     };
 
-    const patchAdminPassword = async () => {
-        try {
-            const res = await customAxios.patch(`/v1/admins/me/password`, {
-                oldPassword: '',
-                newPassword: '',
-            });
-            if (res.data.success) {
-                navigate('/admin');
-            }
-        } catch {}
-    };
-
     useEffect(() => {
         getAdminProfile();
     }, []);
@@ -126,12 +114,12 @@ export default function EditAdminProfile() {
                         className={styles.content_input}
                         placeholder="아이디 입력"
                     />
-                    <p className={styles.content_title}>현재 비밀번호</p>
+                    {/* <p className={styles.content_title}>현재 비밀번호</p>
                     <input className={styles.content_input} placeholder="현재 비밀번호 입력" />
                     <p className={styles.content_title}>새 비밀번호</p>
                     <input className={styles.content_input} placeholder="영문, 숫자, 특수문자 포함 8자 이상" />
                     <p className={styles.content_title}>새 비밀번호 확인</p>
-                    <input className={styles.content_input} placeholder="영문, 숫자, 특수문자 포함 8자 이상" />
+                    <input className={styles.content_input} placeholder="영문, 숫자, 특수문자 포함 8자 이상" /> */}
                     <p className={styles.content_title}>이메일 주소</p>
                     <div className={styles.input_email_div}>
                         <input
