@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
 import { customAxios } from '../../config/axios-config';
@@ -6,8 +6,11 @@ import ErrorModal from '../modal/ErrorModal';
 import { saveTokens } from '../../auth/AuthService';
 import { LinkItem } from '../branch/BranchCentral';
 import { Nav } from 'react-bootstrap';
+import { getAccessToken, saveTokens } from '../../auth/AuthService';
+
 
 function Login() {
+    const accessToken = getAccessToken();
     const restApiKey = process.env.REACT_APP_REST_API_KEY;
     const redirectURL = process.env.REACT_APP_REDIRECT_URI;
 
@@ -24,6 +27,13 @@ function Login() {
         setIsModalOpen(false);
         setModalMessage('');
     };
+
+    useEffect(()=>{
+        if (accessToken) {
+            // 이미 로그인된 상태면 메인 페이지로 이동
+            navigate('/', { replace: true });
+        }
+    })
 
     // 카카오 로그인 핸들러 : 카카오 버튼 클릭 시, 로그인 창 (링크는 노션에서 가져옴)
     //  rest api key와 redirect uri 값 받아서 해당 링크로 연결, window.location.href 이용하여 주소 변경
