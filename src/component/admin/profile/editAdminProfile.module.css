@@ -42,6 +42,7 @@
         padding-left: 11px;
         margin-top: 13px;
         margin-bottom: 36px;
+        font-size: 16px;
     }
 
     .contact_title {
@@ -86,6 +87,35 @@
         font-size: 18px;
         line-height: 100%;
         text-align: center;
+    }
+
+    .input_email_div {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    .content_input_email {
+        border: 1.3px solid #9c9c9c80;
+        border-radius: 5px;
+        width: 210px;
+        height: 55px;
+        color: #202123;
+        display: flex;
+        align-items: center;
+        padding-left: 11px;
+        margin-top: 13px;
+        margin-bottom: 36px;
+        font-size: 16px;
+    }
+
+    .content_input_email_at {
+        font-family: Noto Sans KR;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 100%;
+        color: #9c9c9ccc;
+        margin: 0 17px;
     }
 }
 
