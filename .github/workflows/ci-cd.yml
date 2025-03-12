@@ -2,7 +2,7 @@ name: CI-CD
 
 on:
     push:
-        branches: ['main', 'dev']
+        branches: ['main', 'release']
 
 jobs:
     build:
@@ -21,19 +21,19 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - name: Set environment variables for staging
-              if: contains(github.ref, 'dev')
+              if: contains(github.ref, 'release')
               run: echo "${{ secrets.STAGING_ENV }}" > .env
 
             - name: Set environment variables for prod
               if: contains(github.ref, 'main')
               run: echo "${{ secrets.PRODUCTION_ENV }}" > .env
 
-            - name: Docker build and push to dev
-              if: contains(github.ref, 'dev')
+            - name: Docker build and push to release
+              if: contains(github.ref, 'release')
               run: |
                   docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-                  docker build -t ${{ secrets.DOCKER_REPO }}/clubber-front-dev .
-                  docker push ${{ secrets.DOCKER_REPO }}/clubber-front-dev
+                  docker build -t ${{ secrets.DOCKER_REPO }}/clubber-front-release .
+                  docker push ${{ secrets.DOCKER_REPO }}/clubber-front-release
 
             - name: Docker build and push to prod
               if: contains(github.ref, 'main')
@@ -42,17 +42,17 @@ jobs:
                   docker build -t ${{ secrets.DOCKER_REPO }}/clubber-front-prod .
                   docker push ${{ secrets.DOCKER_REPO }}/clubber-front-prod
 
-            - name: Deploy to dev
-              if: contains(github.ref, 'dev')
+            - name: Deploy to release
+              if: contains(github.ref, 'release')
               uses: appleboy/ssh-action@master
               with:
-                  host: ${{ secrets.HOST_DEV }}
+                  host: ${{ secrets.HOST_RELEASE }}
                   username: ${{ secrets.SSH_USERNAME }}
-                  key: ${{ secrets.SSH_KEY_DEV }}
+                  key: ${{ secrets.SSH_KEY_RELEASE }}
                   port: ${{ secrets.SSH_PORT }}
                   script: |
                       sudo docker rm -f $(docker ps -qa)
-                      sudo docker pull ${{ secrets.DOCKER_REPO }}/clubber-front-dev
+                      sudo docker pull ${{ secrets.DOCKER_REPO }}/clubber-front-release
                       sudo docker-compose -f docker-compose-dev.yml up -d
                       docker image prune -f
 

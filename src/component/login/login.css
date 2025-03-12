@@ -155,6 +155,16 @@
         margin-top: 20px;
         cursor: pointer;
     }
+
+    .sign_up_p {
+        color: #9c9c9c !important;
+        display: flex;
+        justify-content: end;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 @media screen and (max-width: 769px) {

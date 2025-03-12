@@ -1,0 +1,33 @@
+@media screen and (min-width: 768px) {
+    .content_search_div {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+    }
+
+    .content_search_img {
+        width: 23px;
+        height: 23px;
+        position: absolute;
+        top: 30px;
+        left: 11px;
+        cursor: pointer;
+    }
+
+    .content_input_search {
+        border: 1.3px solid #9c9c9c80;
+        border-radius: 5px;
+        width: 472px;
+        height: 55px;
+        color: #202123;
+        display: flex;
+        align-items: center;
+        padding-left: 38px;
+        margin-top: 13px;
+        margin-bottom: 50px;
+        font-family: Noto Sans KR;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+    }
+}
