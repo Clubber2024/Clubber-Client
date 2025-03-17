@@ -3,6 +3,7 @@
         display: flex;
         flex-direction: row;
         position: relative;
+        justify-content: space-between;
     }
 
     .content_search_img {
@@ -29,5 +30,81 @@
         font-weight: 400;
         font-size: 18px;
         line-height: 100%;
+    }
+
+    .search_content_title {
+        font-family: Noto Sans KR;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 100%;
+        color: #202123;
+    }
+
+    .sign_up_search_club_img {
+        width: 17.25px;
+        height: 17.25px;
+        align-items: center;
+        margin-right: 5px;
+    }
+
+    .sign_up_search_club_ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 68px;
+        width: 100%;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        max-height: 150px;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        z-index: 100;
+    }
+
+    .sign_up_search_club_li {
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .sign_up_search_club_ul::-webkit-scrollbar {
+        height: 5px;
+        width: 5px;
+    }
+    .checkbox_div {
+        margin-top: 14px;
+        margin-bottom: 37px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .checkbox_input {
+        font-family: Noto Sans KR;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        color: #202123;
+        width: 23px;
+        height: 23px;
+        border-radius: 100%;
+        border: 1.2px solid #aeaeb2;
+        padding: 2.39px;
+        appearance: none; /* 기본 체크박스 숨김 */
+        margin-right: 5px;
+    }
+
+    .checkbox_input:checked {
+        background: var(--Main-Color, #7bc8e0);
+        border-color: #7bc8e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .checkbox_input:checked::after {
+        content: '✔';
+        color: white;
     }
 }

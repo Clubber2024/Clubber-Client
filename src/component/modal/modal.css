@@ -56,6 +56,14 @@
     margin-right: 8px;
 }
 
+.modal_p {
+    font-family: Noto Sans KR;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    color: #202123;
+}
+
 @media (max-width: 480px) {
     .ok_button,
     .cancel_button,

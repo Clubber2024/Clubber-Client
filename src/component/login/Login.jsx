@@ -3,11 +3,8 @@ import './login.css';
 import { useNavigate } from 'react-router-dom';
 import { customAxios } from '../../config/axios-config';
 import ErrorModal from '../modal/ErrorModal';
-import { saveTokens } from '../../auth/AuthService';
 import { LinkItem } from '../branch/BranchCentral';
-import { Nav } from 'react-bootstrap';
 import { getAccessToken, saveTokens } from '../../auth/AuthService';
-
 
 function Login() {
     const accessToken = getAccessToken();
@@ -28,12 +25,12 @@ function Login() {
         setModalMessage('');
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         if (accessToken) {
             // 이미 로그인된 상태면 메인 페이지로 이동
             navigate('/', { replace: true });
         }
-    })
+    });
 
     // 카카오 로그인 핸들러 : 카카오 버튼 클릭 시, 로그인 창 (링크는 노션에서 가져옴)
     //  rest api key와 redirect uri 값 받아서 해당 링크로 연결, window.location.href 이용하여 주소 변경
@@ -127,9 +124,15 @@ function Login() {
                                         <button className="login-button" onClick={adminLoginHandler}>
                                             로그인
                                         </button>
-                                        <LinkItem to={'/login/adminJoin'} className="sign_up_p">
-                                            회원가입
-                                        </LinkItem>
+                                        <div className="sign_up_div">
+                                            <LinkItem to={`/login/adminFindPassword`} className="sign_up_p">
+                                                비밀번호 찾기
+                                            </LinkItem>
+
+                                            <LinkItem to={'/login/adminJoin'} className="sign_up_p">
+                                                회원가입
+                                            </LinkItem>
+                                        </div>
                                     </form>
                                 )}
                             </div>

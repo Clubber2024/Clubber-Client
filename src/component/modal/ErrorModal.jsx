@@ -38,7 +38,7 @@ export default function ErrorModal({ isOpen, message, onClose }) {
     return (
         <div>
             <ReactModal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
-                <p>{message}</p>
+                <p className="modal_p">{message}</p>
                 <button onClick={onClose} className="ok_button">
                     확인
                 </button>
