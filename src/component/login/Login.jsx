@@ -124,9 +124,15 @@ function Login() {
                                         <button className="login-button" onClick={adminLoginHandler}>
                                             로그인
                                         </button>
-                                        <LinkItem to={'/login/adminJoin'} className="sign_up_p">
-                                            회원가입
-                                        </LinkItem>
+                                        <div className="sign_up_div">
+                                            <LinkItem to={`/login/adminFindPassword`} className="sign_up_p">
+                                                비밀번호 찾기
+                                            </LinkItem>
+
+                                            <LinkItem to={'/login/adminJoin'} className="sign_up_p">
+                                                회원가입
+                                            </LinkItem>
+                                        </div>
                                     </form>
                                 )}
                             </div>

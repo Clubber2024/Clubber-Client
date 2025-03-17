@@ -39,6 +39,7 @@ import RecruitCalendar from './component/calendar/RecruitCalendar';
 import EditAdminProfile from './component/admin/profile/EditAdminProfile';
 import AdminSignUp from './component/admin/signup/AdminSignUp';
 import ChangeAdminPassword from './component/admin/password/ChangeAdminPassword';
+import FindAdminPassword from './component/admin/password/FindAdminPassword';
 
 function App() {
     const appStyle = {
@@ -108,7 +109,7 @@ function App() {
                             <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
                             <Route path="/admin/password" element={<ChangeAdminPassword />} />
                             <Route path="/admin/edit-profile" element={<EditAdminProfile />} />
-
+                            <Route path="/login/adminFindPassword" element={<FindAdminPassword />} />
                             <Route path="/loading" element={<LoadingPage />} />
                         </Routes>
                     </div>
@@ -161,7 +162,7 @@ function App() {
                             <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
                             <Route path="/admin/password" element={<ChangeAdminPassword />} />
                             <Route path="/admin/edit-profile" element={<EditAdminProfile />} />
-
+                            <Route path="/login/adminFindPassword" element={<FindAdminPassword />} />
                             <Route path="/loading" element={<LoadingPage />} />
                         </Routes>
                     </div>

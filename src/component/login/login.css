@@ -158,12 +158,19 @@
 
     .sign_up_p {
         color: #9c9c9c !important;
-        display: flex;
-        justify-content: end;
+        /* display: flex; */
+        margin-right: 5px;
         cursor: pointer;
         &:hover {
             text-decoration: underline;
         }
+    }
+
+    .sign_up_div {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        text-align: end;
     }
 }
 

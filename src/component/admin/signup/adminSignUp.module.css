@@ -99,7 +99,7 @@
         align-items: center;
         padding-left: 11px;
         margin-top: 13px;
-        margin-bottom: 25px;
+        margin-bottom: 40px;
         margin-right: 5px;
         font-size: 16px;
         font-family: Noto Sans KR;
@@ -142,9 +142,13 @@
     }
 
     .message,
-    .message_confirm {
+    .message_confirm,
+    .message_email,
+    .message_email_confirm,
+    .message_code,
+    .message_code_confirm {
         width: 461px;
-        margin-top: -36px;
+        margin-top: -37px;
         margin-bottom: 35px;
         font-size: 13px;
     }
@@ -152,6 +156,26 @@
         color: red;
     }
     .message_confirm {
+        color: blue;
+    }
+
+    .message_email_confirm {
+        margin-bottom: 20px;
+        color: blue;
+    }
+
+    .message_email {
+        margin-bottom: 20px;
+        color: red;
+    }
+
+    .message_code {
+        margin-top: -47px;
+        color: red;
+    }
+
+    .message_code_confirm {
+        margin-top: -47px;
         color: blue;
     }
 

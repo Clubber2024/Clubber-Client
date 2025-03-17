@@ -4,22 +4,31 @@ import { useState } from 'react';
 import { customAxios } from '../../../config/axios-config';
 import ErrorModal from '../../modal/ErrorModal';
 import SignUpSearchClub from './SignUpSearchClub';
+import { Contact } from 'lucide-react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminSignUp() {
     const accessToken = localStorage.getItem('accessToken');
+    const navigate = useNavigate();
     //값 저장
     const [id, setId] = useState('');
-    const [name, setName] = useState('');
+    const [clubName, setClubName] = useState('');
+    const [clubType, setClubType] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [imageFile, setImageFile] = useState('');
     const [fileName, setFileName] = useState('');
     const [extension, setExtension] = useState('');
-    const [nameKeyword, setNameKeyword] = useState('');
+    const [imageKey, setImageKey] = useState('');
+    const [presignedUrl, setPresignedUrl] = useState('');
+    const [instagram, setInstagram] = useState('');
+    const [etc, setEtc] = useState('');
     //이메일 상태 관리
     const [email, setEmail] = useState('');
     const [code, setCode] = useState('');
-    const [isCode, setIsCode] = useState(true);
+    const [isCode, setIsCode] = useState(false);
+    const [isVerifyCode, setIsVerifyCode] = useState(false);
     const passwordRef = useRef(null);
     const passwordConfirmRef = useRef(null);
 
@@ -44,6 +53,7 @@ export default function AdminSignUp() {
     const [passwordMessage3, setPasswordMessage3] = useState('');
     const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
     const [emailMessage, setEmailMessage] = useState('');
+    const [emailCodeMessage, setEmailCodeMessage] = useState('');
 
     //모달 상태 관리
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -55,6 +65,7 @@ export default function AdminSignUp() {
         setEmail(currentEmail);
         try {
             const res = await customAxios.post(`/v1/admins/auths/sign-up/send`, {
+                clubName: clubName,
                 email: currentEmail,
             });
         } catch {}
@@ -64,22 +75,26 @@ export default function AdminSignUp() {
     const postVerfifyCode = async () => {
         try {
             const res = await customAxios.post(`/v1/admins/auths/sign-up/verify`, {
+                clubName: clubName,
                 email: email,
                 authCode: code,
             });
             console.log(res);
             if (res.data.success) {
                 console.log(res.data);
-                setModalMessage('인증되었습니다.');
-                setIsModalOpen(true);
+                setIsVerifyCode(true);
+                setEmailCodeMessage('인증되었습니다.');
             }
-        } catch {}
+        } catch {
+            setIsVerifyCode(false);
+            setEmailCodeMessage('인증번호를 확인해주세요.');
+        }
     };
 
     //아이디 중복 확인 api
     const getIdDuplicate = async () => {
         try {
-            const res = await customAxios.get(`/v1/admins/username-duplicate?username=${id}`);
+            const res = await customAxios.get(`/v1/admins/username/duplicate?username=${id}`);
             console.log(res.data.data.isAvailable);
             if (res.data.data.isAvailable) {
                 setId(res.data.data.username);
@@ -94,24 +109,13 @@ export default function AdminSignUp() {
         } catch {}
     };
 
-    //동아리명 검색 api
-    // const getClubs = () => {
-    //     return customAxios
-    //         .get(`/v1/clubs?clubName=${name}`)
-    //         .then((res) => res.data)
-    //         .catch((error) => {
-    //             console.error('Error fetching clubs:', error);
-    //             return null; // 에러 발생 시 null 반환
-    //         });
-    // };
-
     //증빙 이미지 등록 Presigned URL 생성 api
-    const postVerifyPresignedURL = async () => {
+    const postVerifyPresignedURL = async (extension) => {
         try {
             const res = await customAxios.post(
                 `/v1/images/admin/sign-up/verify`,
                 {
-                    username: name,
+                    username: id,
                     imageFileExtension: extension,
                 },
                 {
@@ -119,12 +123,68 @@ export default function AdminSignUp() {
                         Authorization: `Bearer ${accessToken}`,
                     },
                     params: {
+                        username: id,
                         imageFileExtension: extension,
                     },
                 }
             );
+            console.log(res.data.imageKey);
             if (res.data.success) {
-                console.log(res.data);
+                console.log(res.data.data);
+                setImageKey(res.data.data.imageKey);
+                setPresignedUrl(res.data.data.presignedUrl);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    //이미지 파일을 presigned URl로 업로드
+    const putPresignedURL = async () => {
+        try {
+            const res = await axios.put(presignedUrl, imageFile, {
+                headers: {
+                    'Content-Type': imageFile.type,
+                },
+            });
+
+            return true;
+        } catch (error) {
+            console.log('putERror', error);
+            return false;
+        }
+    };
+
+    //회원가입 완료 api
+    const postSignUp = async () => {
+        try {
+            const isImgUpload = await putPresignedURL();
+            if (!isImgUpload) {
+                setModalMessage('이미지 업로드에 실패하였습니다.');
+                setIsModalOpen(true);
+                return;
+            } else if (!instagram & !etc) {
+                setModalMessage('인스타그램 또는 기타 연락수단을 입력해주세요.');
+                setIsModalOpen(true);
+            }
+
+            const res = await customAxios.post(`/v1/admins/sign-up`, {
+                username: id,
+                password: password,
+                clubType: clubType,
+                clubName: clubName,
+                email: email,
+                contact: {
+                    instagram: instagram,
+                    etc: etc,
+                },
+                imageForApproval: imageKey,
+            });
+
+            if (res.data.success) {
+                setModalMessage('회원가입을 완료하였습니다.');
+                setIsModalOpen(true);
+                navigate(`/`);
             }
         } catch {}
     };
@@ -146,23 +206,6 @@ export default function AdminSignUp() {
         } else {
             return;
         }
-    };
-
-    const onChangeName = (e) => {
-        const currentName = e.target.value;
-        setName(currentName);
-
-        if (currentName.length < 1) {
-            setNameMessage('필수입력사항');
-            setIsName(false);
-        } else {
-            setNameMessage('사용 가능한 닉네임입니다.');
-            setIsName(true);
-        }
-    };
-
-    const onChangeNameKeyword = (e) => {
-        setNameKeyword(e.target.value);
     };
 
     const onChangePassword = (e) => {
@@ -249,10 +292,14 @@ export default function AdminSignUp() {
         }
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailRegex.test(email)) {
-            alert('올바른 이메일 형식이 아닙니다.');
+            setIsVerifyEmail(false);
+            setEmailMessage('올바른 이메일 형식이 아닙니다.');
             return;
         } else {
             postSignUpCode(email);
+            // setIsVerifyEmail(true);
+            setEmailMessage('인증번호를 전송했습니다.');
+            setIsCode(true);
         }
     };
 
@@ -266,17 +313,27 @@ export default function AdminSignUp() {
         }
     };
 
-    const hadnleVerfiyCode = () => {
+    const handleVerfiyCode = () => {
         if (isVerfiyEmail) {
             return;
         } else {
             if (code) {
                 postVerfifyCode();
+                setIsVerifyCode(true);
             }
         }
     };
 
-    //동아리 증명 이미지 업로드
+    //연락수단 입력
+    const onChangeInsta = (e) => {
+        const currentInsta = e.target.value;
+        setInstagram(currentInsta);
+    };
+
+    const onChangeEtc = (e) => {
+        const currentEtc = e.target.value;
+        setEtc(currentEtc);
+    };
 
     // 이미지 클릭 시 파일 업로드 입력창 클릭
     const handleImageClick = () => {
@@ -290,9 +347,9 @@ export default function AdminSignUp() {
         if (!file) return;
         setImageFile(file);
         setFileName(file.name);
-        setExtension(file.name.split('.').pop().toUpperCase());
-        console.log('file', file);
-        console.log('Extension', extension);
+        const extension = file.name.split('.').pop().toUpperCase();
+        await setExtension(extension);
+        postVerifyPresignedURL(extension);
     };
 
     //아이디 중복 확인
@@ -302,6 +359,11 @@ export default function AdminSignUp() {
     const handleModalClose = () => {
         setIsVerifyEmail(true);
         setIsModalOpen(false);
+    };
+
+    //회원가입 버튼
+    const onClickSignUp = () => {
+        postSignUp();
     };
 
     return (
@@ -383,18 +445,13 @@ export default function AdminSignUp() {
                         <p className={styles.content_title}>동아리명</p>
                         <p className={styles.content_option_p}>필수사항</p>
                     </div>
-                    <SignUpSearchClub />
-                    {/* <div className={styles.content_search_div}>
-                        <input
-                            id="name"
-                            name="name"
-                            value={name}
-                            onChange={onChangeName}
-                            className={styles.content_input_search}
-                            placeholder="동아리명 입력"
-                        />
-                        <img src="/admin/sign-up/search.png" className={styles.content_search_img} />
-                    </div> */}
+                    <SignUpSearchClub
+                        clubName={clubName}
+                        setClubName={setClubName}
+                        clubType={clubType}
+                        setClubType={setClubType}
+                    />
+
                     <p className={isname ? styles.message_confirm : styles.message}> {nameMessage} </p>
                     <div className={styles.content_id_div}>
                         <p className={styles.content_title}>이메일 주소</p>
@@ -418,6 +475,9 @@ export default function AdminSignUp() {
                             인증메일 인증
                         </button>
                     </div>
+                    <p className={isVerfiyEmail ? styles.message_email_confirm : styles.message_email}>
+                        {emailMessage}
+                    </p>
 
                     {isCode ? (
                         <div>
@@ -432,7 +492,7 @@ export default function AdminSignUp() {
                                     placeholder="인증코드 입력"
                                 />
                                 <button
-                                    onClick={hadnleVerfiyCode}
+                                    onClick={handleVerfiyCode}
                                     className={
                                         code
                                             ? styles.id_duplicate_check_button
@@ -442,6 +502,9 @@ export default function AdminSignUp() {
                                     인증번호 확인
                                 </button>
                             </div>
+                            <p className={isVerifyCode ? styles.message_confirm : styles.message_code}>
+                                {emailCodeMessage}
+                            </p>
                         </div>
                     ) : (
                         ''
@@ -456,9 +519,23 @@ export default function AdminSignUp() {
                         동아리 인증 결과를 수신할 수 있는 연락수단을 입력해주세요.
                     </p>
                     <p className={styles.contact_title}>1. 인스타그램</p>
-                    <input className={styles.content_input_contact} placeholder="인스타그램 아이디 입력" />
+                    <input
+                        id="insta"
+                        name="insta"
+                        value={instagram}
+                        onChange={onChangeInsta}
+                        className={styles.content_input_contact}
+                        placeholder="인스타그램 아이디 입력"
+                    />
                     <p className={styles.contact_title}>2. 기타</p>
-                    <input className={styles.content_input_contact} placeholder="기타 연락수단 입력" />
+                    <input
+                        id="etc"
+                        name="etc"
+                        value={etc}
+                        onChange={onChangeEtc}
+                        className={styles.content_input_contact}
+                        placeholder="기타 연락수단 입력"
+                    />
                     <div className={styles.content_id_div}>
                         <p className={styles.content_title}>동아리 증빙서류</p>
                         <p className={styles.content_option_p}>선택사항</p>
@@ -487,7 +564,9 @@ export default function AdminSignUp() {
                         </p>
                     </div>
 
-                    <button className={styles.sign_up_button}>회원가입</button>
+                    <button className={styles.sign_up_button} onClick={onClickSignUp}>
+                        회원가입
+                    </button>
                 </div>
             </div>
             {isModalOpen && <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={handleModalClose} />}
