@@ -10,13 +10,10 @@ function Login() {
     const accessToken = getAccessToken();
     const restApiKey = process.env.REACT_APP_REST_API_KEY;
     const redirectURL = process.env.REACT_APP_REDIRECT_URI;
-
     const [activeForm, setActiveForm] = useState('sign-in-form-active');
-
     const [adminId, setAdminId] = useState('');
     const [adminPw, setAdminPw] = useState('');
     const navigate = useNavigate();
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 

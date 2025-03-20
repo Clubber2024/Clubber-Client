@@ -184,7 +184,7 @@ export default function ChangeAdminPassword() {
                         />
                     </div>
                 </div>
-                <div>
+                <div className={styles.password_content_div}>
                     <p className={styles.password_content_title}>새 비밀번호</p>
                     <div className={styles.content_pw_div}>
                         <input
@@ -207,7 +207,7 @@ export default function ChangeAdminPassword() {
                     <p className={isPassword2 ? styles.message_confirm : styles.message}> {passwordMessage2} </p>
                     <p className={isPassword3 ? styles.message_confirm : styles.message}> {passwordMessage3} </p>
                 </div>
-                <div>
+                <div className={styles.password_content_div}>
                     <p className={styles.password_content_title}>새 비밀번호 확인</p>
                     <div className={styles.content_pw_div}>
                         <input
