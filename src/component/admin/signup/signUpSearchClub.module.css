@@ -6,7 +6,8 @@
         justify-content: space-between;
     }
 
-    .content_search_img {
+    .content_search_img,
+    .content_search_img_find {
         width: 23px;
         height: 23px;
         position: absolute;
@@ -15,7 +16,8 @@
         cursor: pointer;
     }
 
-    .content_input_search {
+    .content_input_search,
+    .content_input_search_find {
         border: 1.3px solid #9c9c9c80;
         border-radius: 5px;
         width: 472px;
@@ -30,6 +32,10 @@
         font-weight: 400;
         font-size: 18px;
         line-height: 100%;
+    }
+
+    .content_input_search_find {
+        width: 538px;
     }
 
     .search_content_title {
@@ -89,6 +95,139 @@
         color: #202123;
         width: 23px;
         height: 23px;
+        border-radius: 100%;
+        border: 1.2px solid #aeaeb2;
+        padding: 2.39px;
+        appearance: none; /* 기본 체크박스 숨김 */
+        margin-right: 5px;
+    }
+
+    .checkbox_input:checked {
+        background: var(--Main-Color, #7bc8e0);
+        border-color: #7bc8e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .checkbox_input:checked::after {
+        content: '✔';
+        color: white;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content_search_div {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .content_search_img {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 30px;
+        left: 4%;
+        cursor: pointer;
+    }
+
+    .content_search_img_find {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 30px;
+        left: 7.3%;
+        cursor: pointer;
+    }
+
+    .content_input_search,
+    .content_input_search_find {
+        border: 1.3px solid #9c9c9c80;
+        border-radius: 5px;
+        width: 100%;
+        height: 50px;
+        color: #202123;
+        display: flex;
+        align-items: center;
+        padding-left: 38px;
+        margin-top: 13px;
+        margin-bottom: 50px;
+        font-family: Noto Sans KR;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 100%;
+    }
+
+    .content_input_search_find {
+        width: 90%;
+    }
+
+    .search_content_title {
+        font-family: Noto Sans KR;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 100%;
+        color: #202123;
+    }
+
+    .sign_up_search_club_img {
+        width: 16px;
+        height: 16px;
+        align-items: center;
+        margin-right: 5px;
+    }
+
+    .sign_up_search_club_ul,
+    .sign_up_search_club_ul_find {
+        list-style: none;
+        padding: 0;
+        margin: -5px;
+        position: absolute;
+        top: 68px;
+        width: 100%;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        max-height: 150px;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        z-index: 100;
+    }
+
+    .sign_up_search_club_ul_find {
+        width: 90%;
+    }
+
+    .sign_up_search_club_li {
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    .sign_up_search_club_ul::-webkit-scrollbar {
+        height: 5px;
+        width: 5px;
+    }
+    .checkbox_div {
+        margin-top: 14px;
+        margin-bottom: 37px;
+        display: flex;
+        flex-direction: row;
+        font-size: 13px;
+    }
+
+    .checkbox_input {
+        font-family: Noto Sans KR;
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 100%;
+        color: #202123;
+        width: 18px;
+        height: 18px;
         border-radius: 100%;
         border: 1.2px solid #aeaeb2;
         padding: 2.39px;

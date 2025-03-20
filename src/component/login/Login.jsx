@@ -125,6 +125,10 @@ function Login() {
                                             로그인
                                         </button>
                                         <div className="sign_up_div">
+                                            <LinkItem to={`/login/adminFindId`} className="sign_up_p">
+                                                아이디 찾기
+                                            </LinkItem>
+
                                             <LinkItem to={`/login/adminFindPassword`} className="sign_up_p">
                                                 비밀번호 찾기
                                             </LinkItem>

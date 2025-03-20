@@ -26,7 +26,9 @@ export default function AdminSignUp() {
     const [etc, setEtc] = useState('');
     //이메일 상태 관리
     const [email, setEmail] = useState('');
+    const [authEmail, setAuthEmail] = useState('');
     const [code, setCode] = useState('');
+    const [authCode, setAuthCode] = useState('');
     const [isCode, setIsCode] = useState(false);
     const [isVerifyCode, setIsVerifyCode] = useState(false);
     const passwordRef = useRef(null);
@@ -68,6 +70,10 @@ export default function AdminSignUp() {
                 clubName: clubName,
                 email: currentEmail,
             });
+
+            if (res.data.success) {
+                setAuthEmail(currentEmail);
+            }
         } catch {}
     };
 
@@ -83,6 +89,7 @@ export default function AdminSignUp() {
             if (res.data.success) {
                 console.log(res.data);
                 setIsVerifyCode(true);
+                setAuthCode(code);
                 setEmailCodeMessage('인증되었습니다.');
             }
         } catch {
@@ -173,12 +180,13 @@ export default function AdminSignUp() {
                 password: password,
                 clubType: clubType,
                 clubName: clubName,
-                email: email,
+                email: authEmail,
                 contact: {
                     instagram: instagram,
                     etc: etc,
                 },
                 imageForApproval: imageKey,
+                authCode: authCode,
             });
 
             if (res.data.success) {
@@ -278,12 +286,9 @@ export default function AdminSignUp() {
 
     //이메일 관련 함수
     const onChangeEmail = (e) => {
-        if (isVerfiyEmail) {
-            return;
-        } else {
-            const currentEmail = e.target.value;
-            setEmail(currentEmail);
-        }
+        if (isVerifyCode) return;
+        const currentEmail = e.target.value;
+        setEmail(currentEmail);
     };
 
     const handleEmailVerificationButton = () => {
@@ -305,7 +310,7 @@ export default function AdminSignUp() {
 
     //인증코드 관련 함수
     const onChangeCode = (e) => {
-        if (isVerfiyEmail) {
+        if (isVerifyCode) {
             return;
         } else {
             const currentCode = e.target.value;
@@ -314,12 +319,11 @@ export default function AdminSignUp() {
     };
 
     const handleVerfiyCode = () => {
-        if (isVerfiyEmail) {
+        if (isVerifyCode) {
             return;
         } else {
             if (code) {
                 postVerfifyCode();
-                setIsVerifyCode(true);
             }
         }
     };
@@ -373,7 +377,7 @@ export default function AdminSignUp() {
             </div>
 
             <div className={styles.content_div}>
-                <div>
+                <div className={styles.content_total_div}>
                     <div className={styles.content_id_div}>
                         <p className={styles.content_title}>아이디</p>
                         <p className={styles.content_option_p}>필수사항</p>
@@ -387,6 +391,7 @@ export default function AdminSignUp() {
                             onChange={onChangeId}
                             className={styles.content_input_id}
                             placeholder="아이디 입력"
+                            autoComplete="off"
                         />
                         <button className={styles.id_duplicate_check_button} onClick={onClickIdDuplicate}>
                             중복확인
@@ -407,6 +412,7 @@ export default function AdminSignUp() {
                             ref={passwordRef}
                             className={styles.content_input}
                             placeholder="비밀번호 입력"
+                            autoComplete="off"
                         />
                         <img
                             src={isShowPwChecked ? '/admin/sign-up/eye.png' : '/admin/sign-up/eye-off.png'}
@@ -431,6 +437,7 @@ export default function AdminSignUp() {
                             ref={passwordConfirmRef}
                             className={styles.content_input}
                             placeholder=""
+                            autoComplete="off"
                         />
                         <img
                             src={isShowPwConfirmChecked ? '/admin/sign-up/eye.png' : '/admin/sign-up/eye-off.png'}
@@ -445,11 +452,13 @@ export default function AdminSignUp() {
                         <p className={styles.content_title}>동아리명</p>
                         <p className={styles.content_option_p}>필수사항</p>
                     </div>
+
                     <SignUpSearchClub
                         clubName={clubName}
                         setClubName={setClubName}
                         clubType={clubType}
                         setClubType={setClubType}
+                        type={'signup'}
                     />
 
                     <p className={isname ? styles.message_confirm : styles.message}> {nameMessage} </p>
@@ -465,6 +474,7 @@ export default function AdminSignUp() {
                             onChange={onChangeEmail}
                             className={styles.content_input_email}
                             placeholder="이메일 입력"
+                            autoComplete="off"
                         />
                         <button
                             onClick={handleEmailVerificationButton}
@@ -490,6 +500,7 @@ export default function AdminSignUp() {
                                     onChange={onChangeCode}
                                     className={styles.content_input_id}
                                     placeholder="인증코드 입력"
+                                    autoComplete="off"
                                 />
                                 <button
                                     onClick={handleVerfiyCode}
@@ -526,6 +537,7 @@ export default function AdminSignUp() {
                         onChange={onChangeInsta}
                         className={styles.content_input_contact}
                         placeholder="인스타그램 아이디 입력"
+                        autoComplete="off"
                     />
                     <p className={styles.contact_title}>2. 기타</p>
                     <input
@@ -535,6 +547,7 @@ export default function AdminSignUp() {
                         onChange={onChangeEtc}
                         className={styles.content_input_contact}
                         placeholder="기타 연락수단 입력"
+                        autoComplete="off"
                     />
                     <div className={styles.content_id_div}>
                         <p className={styles.content_title}>동아리 증빙서류</p>
@@ -555,6 +568,7 @@ export default function AdminSignUp() {
                                 ref={fileInputRef}
                                 onChange={handleProofButton}
                                 style={{ display: 'none' }}
+                                autoComplete="off"
                             />
                             {fileName ? <p>{fileName}</p> : <p>파일 올리기</p>}
                         </div>

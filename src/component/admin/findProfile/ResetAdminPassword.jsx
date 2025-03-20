@@ -1,17 +1,18 @@
 import React, { useRef, useState } from 'react';
-import styles from './changeAdminPassword.module.css';
+import styles from '../password/changeAdminPassword.module.css';
 import { customAxios } from '../../../config/axios-config';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ErrorModal from '../../modal/ErrorModal';
 
-export default function ChangeAdminPassword() {
+export default function ResetAdminPassword() {
     const accessToken = localStorage.getItem('accessToken');
     const navigate = useNavigate();
+    const location = useLocation();
+    const { id, authCode } = location.state || {};
     //비밀번호 변경값 관리
-    const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [newPasswordConfirm, setNewPasswordConfirm] = useState('');
-    const passwordRef = useRef(null);
+
     const newPasswordRef = useRef(null);
     const newPasswordConfirmRef = useRef(null);
     //유효성 검사
@@ -19,7 +20,7 @@ export default function ChangeAdminPassword() {
     const [isPassword2, setIsPassword2] = useState(false);
     const [isPassword3, setIsPassword3] = useState(false);
     const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
-    const [isShowCurrentPwChecked, setIsShowCurrentPwChecked] = useState(false);
+
     const [isShowPwChecked, setIsShowPwChecked] = useState(false);
     const [isShowPwConfirmChecked, setIsShowPwConfirmChecked] = useState(false);
     //오류메세지 상태 저장
@@ -33,13 +34,14 @@ export default function ChangeAdminPassword() {
     const [modalMessage, setModalMessage] = useState('');
 
     //비밀번호 변경 api
-    const patchAdminPassword = async () => {
+    const patchResetAdminPassword = async () => {
         try {
             const res = await customAxios.patch(
-                `/v1/admins/me/password`,
+                `/v1/admins/password/reset`,
                 {
-                    oldPassword: oldPassword,
-                    newPassword: newPassword,
+                    username: id,
+                    password: newPassword,
+                    authCode: authCode,
                 },
                 {
                     headers: {
@@ -51,6 +53,7 @@ export default function ChangeAdminPassword() {
             if (res.data.success) {
                 setModalMessage('비밀번호 변경이 완료되었습니다.');
                 setIsModalOpen(true);
+                console.log(res.data);
             }
         } catch (error) {
             console.error(error.response.data.reason);
@@ -59,20 +62,13 @@ export default function ChangeAdminPassword() {
         }
     };
 
-    console.log(modalMessage);
-
     //비밀번호 변경 버튼
     const onClickPasswordChange = () => {
         if (newPassword === newPasswordConfirm) {
-            patchAdminPassword();
+            patchResetAdminPassword();
         } else {
             return;
         }
-    };
-
-    const onChangeOldPassword = (e) => {
-        const currentPassword = e.target.value;
-        setOldPassword(currentPassword);
     };
 
     const onChangeNewPassword = (e) => {
@@ -143,50 +139,24 @@ export default function ChangeAdminPassword() {
         }
     };
 
-    const handleShowCurrentPwChecked = async () => {
-        const currentPassword = await passwordRef.current;
-        if (currentPassword === null) return;
-
-        await setIsShowCurrentPwChecked(!isShowCurrentPwChecked);
-        if (!isShowCurrentPwChecked) {
-            currentPassword.type = 'text';
-        } else {
-            currentPassword.type = 'password';
-        }
-    };
-
     const onCloseModal = () => {
         setIsModalOpen(false);
-        navigate('/admin');
+        navigate('/login');
     };
 
     return (
         <>
             <div className={styles.password_total_div}>
-                <p className={styles.password_title}>비밀번호 변경</p>
+                <p className={styles.password_title}>비밀번호 찾기</p>
+
                 <div className={styles.password_content_div}>
-                    <p className={styles.password_content_title}>현재 비밀번호</p>
-                    <div className={styles.content_pw_div}>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={oldPassword}
-                            onChange={onChangeOldPassword}
-                            ref={passwordRef}
-                            className={styles.password_content_input}
-                            placeholder="현재 비밀번호 입력"
-                        />
-                        <img
-                            src={isShowCurrentPwChecked ? '/admin/sign-up/eye.png' : '/admin/sign-up/eye-off.png'}
-                            onClick={handleShowCurrentPwChecked}
-                            className={styles.content_input_pw_img}
-                        />
-                    </div>
-                </div>
-                <div>
                     <p className={styles.password_content_title}>새 비밀번호</p>
                     <div className={styles.content_pw_div}>
+                        <img
+                            src={isShowPwConfirmChecked ? '/admin/sign-up/eye.png' : '/admin/sign-up/eye-off.png'}
+                            onClick={handleShowPwChecked}
+                            className={styles.content_input_pw_img}
+                        />
                         <input
                             type="password"
                             id="password"
@@ -197,19 +167,19 @@ export default function ChangeAdminPassword() {
                             className={styles.password_content_input}
                             placeholder="새 비밀번호 입력"
                         />
-                        <img
-                            src={isShowPwConfirmChecked ? '/admin/sign-up/eye.png' : '/admin/sign-up/eye-off.png'}
-                            onClick={handleShowPwChecked}
-                            className={styles.content_input_pw_img}
-                        />
                     </div>
                     <p className={isPassword1 ? styles.message_confirm : styles.message}> {passwordMessage1} </p>
                     <p className={isPassword2 ? styles.message_confirm : styles.message}> {passwordMessage2} </p>
                     <p className={isPassword3 ? styles.message_confirm : styles.message}> {passwordMessage3} </p>
                 </div>
-                <div>
+                <div className={styles.password_content_div}>
                     <p className={styles.password_content_title}>새 비밀번호 확인</p>
                     <div className={styles.content_pw_div}>
+                        <img
+                            src={isShowPwConfirmChecked ? '/admin/sign-up/eye.png' : '/admin/sign-up/eye-off.png'}
+                            onClick={handleShowPwConfirmChecked}
+                            className={styles.content_input_pw_img}
+                        />
                         <input
                             type="password"
                             id="password"
@@ -219,11 +189,6 @@ export default function ChangeAdminPassword() {
                             ref={newPasswordConfirmRef}
                             className={styles.password_content_input}
                             placeholder="새 비밀번호 재입력"
-                        />
-                        <img
-                            src={isShowPwConfirmChecked ? '/admin/sign-up/eye.png' : '/admin/sign-up/eye-off.png'}
-                            onClick={handleShowPwConfirmChecked}
-                            className={styles.content_input_pw_img}
                         />
                     </div>
                     <p className={isPasswordConfirm ? styles.message_confirm : styles.message}>

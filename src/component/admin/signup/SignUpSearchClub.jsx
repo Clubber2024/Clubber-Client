@@ -14,7 +14,7 @@ const getClubNames = (name) => {
         });
 };
 
-const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType }) => {
+const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId, setClubId, type }) => {
     const [suggestion, setSuggestion] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(true); // 추천어 보이기 여부
     const [isType, setIsType] = useState(false);
@@ -85,74 +85,84 @@ const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType }) => {
 
     return (
         <>
-            <div>
-                <div className={styles.content_search_div}>
-                    <input
-                        id="name"
-                        name="name"
-                        value={clubName}
-                        onChange={onChangeName}
-                        className={styles.content_input_search}
-                        autoComplete="off"
-                        placeholder="동아리명 입력"
-                    />
-                    <img src="/admin/sign-up/search.png" className={styles.content_search_img} />
-                    {showSuggestions && (
-                        <ul className={styles.sign_up_search_club_ul}>
-                            {suggestion.length > 0 ? (
-                                suggestion.map((club, index) => (
-                                    <li
-                                        key={index}
-                                        className={styles.sign_up_search_club_li}
-                                        onClick={() => {
-                                            setShowSuggestions(false);
-                                            setClubName(club.clubName);
-                                            setClubType(club.clubType);
-                                            setIsType(true);
-                                            setIsName(true);
-                                        }}
-                                    >
-                                        <img
-                                            src="/admin/sign-up/search.png"
-                                            className={styles.sign_up_search_club_img}
-                                        />
-                                        {club.clubName}
-                                    </li>
-                                ))
-                            ) : (
+            <div className={styles.content_search_div}>
+                <img
+                    src="/admin/sign-up/search.png"
+                    className={type === 'signup' ? styles.content_search_img : styles.content_search_img_find}
+                />
+                <input
+                    id="name"
+                    name="name"
+                    value={clubName}
+                    onChange={onChangeName}
+                    className={type === 'signup' ? styles.content_input_search : styles.content_input_search_find}
+                    autoComplete="off"
+                    placeholder="동아리명 입력"
+                />
+
+                {showSuggestions && (
+                    <ul
+                        className={
+                            type === 'signup' ? styles.sign_up_search_club_ul : styles.sign_up_search_club_ul_find
+                        }
+                    >
+                        {suggestion.length > 0 ? (
+                            suggestion.map((club, index) => (
                                 <li
+                                    key={index}
                                     className={styles.sign_up_search_club_li}
                                     onClick={() => {
-                                        setIsType(false);
-                                        setIsName(false);
                                         setShowSuggestions(false);
+                                        setClubName(club.clubName);
+                                        setClubType(club.clubType);
+                                        setClubId(club.clubId);
+                                        setIsType(true);
+                                        setIsName(true);
                                     }}
                                 >
-                                    <img src="/admin/sign-up/search.png" className={styles.sign_up_search_club_img} />{' '}
-                                    직접 입력
+                                    <img src="/admin/sign-up/search.png" className={styles.sign_up_search_club_img} />
+                                    {club.clubName}
                                 </li>
-                            )}
-                        </ul>
-                    )}
-                </div>
-                <p className={styles.search_content_title}>동아리 타입</p>
-                <div className={styles.content_search_div}>
-                    {Object.entries(checkClubType).map(([key, value], idx) => (
-                        <div key={idx} className={styles.checkbox_div}>
-                            <input
-                                type="radio"
-                                name="clubType"
-                                id={value}
-                                value={value}
-                                checked={clubType === value}
-                                onChange={handleCheckboxChange} // 선택한 값 설정
-                                className={styles.checkbox_input}
-                            />
-                            <label htmlFor={value}>{key}</label>
-                        </div>
-                    ))}
-                </div>
+                            ))
+                        ) : (
+                            <li
+                                className={styles.sign_up_search_club_li}
+                                onClick={() => {
+                                    setIsType(false);
+                                    setIsName(false);
+                                    setShowSuggestions(false);
+                                }}
+                            >
+                                <img src="/admin/sign-up/search.png" className={styles.sign_up_search_club_img} /> 직접
+                                입력
+                            </li>
+                        )}
+                    </ul>
+                )}
             </div>
+            {type === 'signup' ? (
+                <div>
+                    <p className={styles.search_content_title}>동아리 타입</p>
+                    <div className={styles.content_search_div}>
+                        {Object.entries(checkClubType).map(([key, value], idx) => (
+                            <div key={idx} className={styles.checkbox_div}>
+                                <input
+                                    type="radio"
+                                    name="clubType"
+                                    id={value}
+                                    value={value}
+                                    checked={clubType === value}
+                                    onChange={handleCheckboxChange} // 선택한 값 설정
+                                    className={styles.checkbox_input}
+                                />
+                                <label htmlFor={value}>{key}</label>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ) : (
+                ''
+            )}
         </>
     );
 };
