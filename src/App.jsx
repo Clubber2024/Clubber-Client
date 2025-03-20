@@ -39,7 +39,9 @@ import RecruitCalendar from './component/calendar/RecruitCalendar';
 import EditAdminProfile from './component/admin/profile/EditAdminProfile';
 import AdminSignUp from './component/admin/signup/AdminSignUp';
 import ChangeAdminPassword from './component/admin/password/ChangeAdminPassword';
-import FindAdminPassword from './component/admin/password/FindAdminPassword';
+import FindAdminPassword from './component/admin/findProfile/FindAdminPassword';
+import ResetAdminPassword from './component/admin/findProfile/ResetAdminPassword';
+import FindAdminID from './component/admin/findProfile/FindAdminID';
 
 function App() {
     const appStyle = {
@@ -110,6 +112,8 @@ function App() {
                             <Route path="/admin/password" element={<ChangeAdminPassword />} />
                             <Route path="/admin/edit-profile" element={<EditAdminProfile />} />
                             <Route path="/login/adminFindPassword" element={<FindAdminPassword />} />
+                            <Route path="/login/adminResetPassword" element={<ResetAdminPassword />} />
+                            <Route path="/login/adminFindId" element={<FindAdminID />} />
                             <Route path="/loading" element={<LoadingPage />} />
                         </Routes>
                     </div>
@@ -163,6 +167,9 @@ function App() {
                             <Route path="/admin/password" element={<ChangeAdminPassword />} />
                             <Route path="/admin/edit-profile" element={<EditAdminProfile />} />
                             <Route path="/login/adminFindPassword" element={<FindAdminPassword />} />
+                            <Route path="/login/adminResetPassword" element={<ResetAdminPassword />} />
+                            <Route path="/login/adminFindId" element={<FindAdminID />} />
+
                             <Route path="/loading" element={<LoadingPage />} />
                         </Routes>
                     </div>
