@@ -52,17 +52,21 @@ export default function MyPage() {
                         <NavLink to={`/admin/mypage`} className="menu_tab">
                             동아리 정보수정
                         </NavLink>
+                        <NavLink to={`/admin/edit-profile`} className="menu_tab">
+                            회원정보 수정
+                        </NavLink>
+                        <div className="my_divider" />
                         <NavLink to={`/admin/recruit`} className="menu_tab">
                             나의 모집글
                         </NavLink>
                         <div className="my_divider" />
-                        <NavLink to={`/admin/mypage/reviews`} className="menu_tab">
+                        {/* <NavLink to={`/admin/mypage/reviews`} className="menu_tab">
                             리뷰 목록
                         </NavLink>
                         <NavLink to={`/admin/mypage/pending`} className="menu_tab">
                             리뷰 승인
-                        </NavLink>
-                        <div className="my_divider" />
+                        </NavLink> */}
+                        {/* <div className="my_divider" /> */}
                         <div className="menu_tab" onClick={handleModifyPW}>
                             비밀번호 변경
                         </div>
