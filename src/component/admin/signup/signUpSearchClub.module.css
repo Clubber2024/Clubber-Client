@@ -122,6 +122,7 @@
         position: relative;
         justify-content: center;
         width: 100%;
+        justify-content: space-around;
     }
 
     .content_search_img {
