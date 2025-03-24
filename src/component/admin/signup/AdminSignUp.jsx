@@ -495,7 +495,7 @@ export default function AdminSignUp() {
                                 email ? styles.content_input_email_button : styles.content_input_email_button_before
                             }
                         >
-                            인증메일 인증
+                            인증메일 전송
                         </button>
                     </div>
                     <p className={isVerfiyEmail ? styles.message_email_confirm : styles.message_email}>
