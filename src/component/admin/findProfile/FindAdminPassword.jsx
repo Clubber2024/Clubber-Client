@@ -171,7 +171,7 @@ export default function FindAdminPassword() {
                         <p className={styles.content_title}>인증 코드</p>
                     </div>
 
-                    <div className={styles.content_id_div}>
+                    <div className={styles.input_email_div}>
                         <input
                             id="code"
                             name="code"

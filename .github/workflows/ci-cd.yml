@@ -46,9 +46,9 @@ jobs:
               if: contains(github.ref, 'release')
               uses: appleboy/ssh-action@master
               with:
-                  host: ${{ secrets.HOST_RELEASE }}
+                  host: ${{ secrets.HOST_DEV }}
                   username: ${{ secrets.SSH_USERNAME }}
-                  key: ${{ secrets.SSH_KEY_RELEASE }}
+                  key: ${{ secrets.SSH_KEY_DEV }}
                   port: ${{ secrets.SSH_PORT }}
                   script: |
                       sudo docker rm -f $(docker ps -qa)

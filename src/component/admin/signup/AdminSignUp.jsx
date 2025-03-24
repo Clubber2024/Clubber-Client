@@ -15,6 +15,7 @@ export default function AdminSignUp() {
     const [id, setId] = useState('');
     const [clubName, setClubName] = useState('');
     const [clubType, setClubType] = useState('');
+    const [clubId, setClubId] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [imageFile, setImageFile] = useState('');
@@ -247,7 +248,17 @@ export default function AdminSignUp() {
         } else if (!consecutiveRegExp.test(currentPassword)) {
             setIsPassword3(true);
         }
+
+        // newPasswordConfirm과 비교하여 일치하는지 여부 확인
+        if (passwordConfirm && currentPassword !== passwordConfirm) {
+            setPasswordConfirmMessage('비밀번호가 일치하지 않습니다.');
+            setIsPasswordConfirm(false);
+        } else {
+            setPasswordConfirmMessage('비밀번호가 일치합니다.');
+            setIsPasswordConfirm(true);
+        }
     };
+
     const onChangePasswordConfirm = (e) => {
         const currentPasswordConfirm = e.target.value;
         setPasswordConfirm(currentPasswordConfirm);
@@ -458,6 +469,8 @@ export default function AdminSignUp() {
                         setClubName={setClubName}
                         clubType={clubType}
                         setClubType={setClubType}
+                        clubId={clubId}
+                        setClubId={setClubId}
                         type={'signup'}
                     />
 
@@ -482,7 +495,7 @@ export default function AdminSignUp() {
                                 email ? styles.content_input_email_button : styles.content_input_email_button_before
                             }
                         >
-                            인증메일 인증
+                            인증메일 전송
                         </button>
                     </div>
                     <p className={isVerfiyEmail ? styles.message_email_confirm : styles.message_email}>
@@ -527,7 +540,8 @@ export default function AdminSignUp() {
                     <p className={styles.content_option_p}>선택 1</p>
                     <br />
                     <p className={styles.content_notice_p}>
-                        동아리 인증 결과를 수신할 수 있는 연락수단을 입력해주세요.
+                        팀 클러버와 공식적으로 소통할 수 있는 동아리 연락 수단을 작성해주세요! <br />
+                        해당 연락수단으로 추후 동아리 인증 결과를 전달해드릴 예정입니다.
                     </p>
                     <p className={styles.contact_title}>1. 인스타그램</p>
                     <input
@@ -554,14 +568,9 @@ export default function AdminSignUp() {
                         <p className={styles.content_option_p}>선택사항</p>
                     </div>
                     <div className={styles.content_input_proof_div}>
-                        <div className={styles.content_input_proof}>
+                        <div className={styles.content_input_proof} onClick={handleImageClick}>
                             {' '}
-                            <img
-                                src="/admin/sign-up/download.png"
-                                className={styles.proof_img}
-                                onClick={handleImageClick}
-                                ty
-                            />{' '}
+                            <img src="/admin/sign-up/download.png" className={styles.proof_img} ty />{' '}
                             <input
                                 type="file"
                                 accept=".png, .jpeg, .jpg"

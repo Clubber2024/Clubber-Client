@@ -106,6 +106,15 @@ export default function ChangeAdminPassword() {
         } else if (!consecutiveRegExp.test(currentPassword)) {
             setIsPassword3(true);
         }
+
+        // newPasswordConfirm과 비교하여 일치하는지 여부 확인
+        if (newPasswordConfirm && currentPassword !== newPasswordConfirm) {
+            setPasswordConfirmMessage('비밀번호가 일치하지 않습니다.');
+            setIsPasswordConfirm(false);
+        } else {
+            setPasswordConfirmMessage('비밀번호가 일치합니다.');
+            setIsPasswordConfirm(true);
+        }
     };
     const onChangeNewPasswordConfirm = (e) => {
         const currentPasswordConfirm = e.target.value;
@@ -184,7 +193,7 @@ export default function ChangeAdminPassword() {
                         />
                     </div>
                 </div>
-                <div>
+                <div className={styles.password_content_div}>
                     <p className={styles.password_content_title}>새 비밀번호</p>
                     <div className={styles.content_pw_div}>
                         <input
@@ -207,7 +216,7 @@ export default function ChangeAdminPassword() {
                     <p className={isPassword2 ? styles.message_confirm : styles.message}> {passwordMessage2} </p>
                     <p className={isPassword3 ? styles.message_confirm : styles.message}> {passwordMessage3} </p>
                 </div>
-                <div>
+                <div className={styles.password_content_div}>
                     <p className={styles.password_content_title}>새 비밀번호 확인</p>
                     <div className={styles.content_pw_div}>
                         <input

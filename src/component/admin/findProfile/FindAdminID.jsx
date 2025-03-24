@@ -7,7 +7,6 @@ import SignUpSearchClub from '../signup/SignUpSearchClub';
 
 export default function FindAdminID() {
     const navigate = useNavigate();
-
     const [clubName, setClubName] = useState('');
     const [clubType, setClubType] = useState('');
     const [clubId, setClubId] = useState('');
@@ -58,6 +57,7 @@ export default function FindAdminID() {
                 setIsVerifyEmail(true);
                 setEmailCodeMessage('인증되었습니다.');
                 setAuthCode(emailCode);
+                // setId(res.data.data.username);
                 setIsNext(true);
             }
         } catch {
@@ -67,7 +67,21 @@ export default function FindAdminID() {
         }
     };
 
-    //
+    //아이디 찾기 api
+    const postAdminId = async () => {
+        try {
+            const res = await customAxios.post(`/v1/admins/username/find`, {
+                clubId: clubId,
+                email: authEmail,
+                authCode: authCode,
+            });
+            if (res.data.success) {
+                const currentId = res.data.data.username;
+
+                return currentId;
+            }
+        } catch {}
+    };
 
     //이메일 관련 함수
     const onChangeEmail = (e) => {
@@ -109,14 +123,17 @@ export default function FindAdminID() {
         }
     };
 
-    const onClickCompleteButton = () => {
+    const onClickCompleteButton = async () => {
         if (clubName && authCode) {
-            navigate(`/login/adminResetPassword`, {
-                state: {
-                    clubName: clubName,
-                    authCode: authCode,
-                },
-            });
+            const id = await postAdminId();
+            if (id) {
+                navigate(`/login/adminShowId`, {
+                    state: {
+                        id: id,
+                        clubName: clubName,
+                    },
+                });
+            }
         }
     };
 
@@ -128,7 +145,6 @@ export default function FindAdminID() {
                     <div className={styles.content_title_div}>
                         <p className={styles.content_title}>동아리명</p>
                     </div>
-
                     <div className={styles.content_search_div}>
                         <SignUpSearchClub
                             clubName={clubName}
@@ -189,7 +205,9 @@ export default function FindAdminID() {
                             인증번호 확인
                         </button>
                     </div>
-                    <p className={isVerifyCode ? styles.message_confirm : styles.message_code}>{emailCodeMessage}</p>
+                    <p className={isVerifyCode ? styles.message_email_confirm : styles.message_email}>
+                        {emailCodeMessage}
+                    </p>
                 </div>
 
                 <button

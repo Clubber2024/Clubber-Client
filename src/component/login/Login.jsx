@@ -10,13 +10,10 @@ function Login() {
     const accessToken = getAccessToken();
     const restApiKey = process.env.REACT_APP_REST_API_KEY;
     const redirectURL = process.env.REACT_APP_REDIRECT_URI;
-
     const [activeForm, setActiveForm] = useState('sign-in-form-active');
-
     const [adminId, setAdminId] = useState('');
     const [adminPw, setAdminPw] = useState('');
     const navigate = useNavigate();
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 
@@ -126,11 +123,11 @@ function Login() {
                                         </button>
                                         <div className="sign_up_div">
                                             <LinkItem to={`/login/adminFindId`} className="sign_up_p">
-                                                아이디 찾기
+                                                아이디 찾기 |
                                             </LinkItem>
 
                                             <LinkItem to={`/login/adminFindPassword`} className="sign_up_p">
-                                                비밀번호 찾기
+                                                비밀번호 찾기 |
                                             </LinkItem>
 
                                             <LinkItem to={'/login/adminJoin'} className="sign_up_p">

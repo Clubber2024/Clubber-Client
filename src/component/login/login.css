@@ -169,8 +169,8 @@
     .sign_up_div {
         display: flex;
         flex-direction: row;
-        justify-content: end;
-        text-align: end;
+        justify-content: center;
+        margin-top: 5px;
     }
 }
 
@@ -316,5 +316,23 @@
         padding: 0;
         margin-top: 20px;
         cursor: pointer;
+    }
+
+    .sign_up_div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 5px;
+    }
+
+    .sign_up_p {
+        color: #9c9c9c !important;
+        /* display: flex; */
+        margin-right: 5px;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+        font-size: 11px;
     }
 }
