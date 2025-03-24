@@ -58,7 +58,7 @@
         align-items: center;
         padding-left: 11px;
         margin-top: 13px;
-        margin-bottom: 50px;
+        margin-bottom: 45px;
         font-family: Noto Sans KR;
         font-weight: 400;
         font-size: 18px;
@@ -83,6 +83,7 @@
         font-weight: 400;
         font-size: 18px;
         line-height: 100%;
+        cursor: pointer;
     }
 
     .content_input_search {
@@ -313,7 +314,7 @@
         font-family: Noto Sans KR;
         font-weight: 500;
         font-size: 17px;
-        line-height: 100%;
+        line-height: 90%;
         color: #202123;
         text-align: left;
     }
@@ -372,6 +373,7 @@
         font-weight: 400;
         font-size: 15px;
         line-height: 100%;
+        cursor: pointer;
     }
 
     .content_input_search {

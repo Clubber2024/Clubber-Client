@@ -1,0 +1,139 @@
+@media screen and (min-width: 768px) {
+    .show_id_total_div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10%;
+
+        flex-direction: column;
+    }
+
+    .show_id_total_title {
+        font-family: Noto Sans;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 100%;
+        color: #202123;
+        margin-bottom: 55px;
+    }
+
+    .show_id_content_div {
+        width: 501px;
+        height: 146px;
+        background: #d6d6d64d;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .show_id_content_p,
+    .highlight_id {
+        font-family: Noto Sans KR;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 100%;
+        color: #202123;
+    }
+
+    .highlight_id {
+        color: #7bc8e0;
+    }
+
+    .show_id_button_div {
+        display: flex;
+        flex-direction: row;
+        width: 501px;
+        justify-content: space-between;
+        margin-top: 45px;
+        margin-bottom: 20%;
+    }
+
+    .show_id_login_button {
+        width: 247px;
+        height: 55px;
+        border-radius: 5px;
+        background: var(--section2, #a7a7a7);
+        color: #ffffff;
+        border: none;
+    }
+
+    .show_id_find_pw_button {
+        width: 247px;
+        height: 55px;
+        border-radius: 5px;
+        background: var(--Main-Color, #7bc8e0);
+        border: none;
+        color: #ffffff;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .show_id_total_div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20%;
+
+        flex-direction: column;
+    }
+
+    .show_id_total_title {
+        font-family: Noto Sans;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 100%;
+        color: #202123;
+        margin-bottom: 55px;
+    }
+
+    .show_id_content_div {
+        width: 90%;
+        height: 146px;
+        background: #d6d6d64d;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .show_id_content_p,
+    .highlight_id {
+        font-family: Noto Sans KR;
+        font-weight: 500;
+        font-size: 19px;
+        line-height: 100%;
+        color: #202123;
+    }
+
+    .highlight_id {
+        color: #7bc8e0;
+    }
+
+    .show_id_button_div {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        justify-content: space-between;
+        margin-top: 45px;
+        margin-bottom: 20%;
+    }
+
+    .show_id_login_button {
+        width: 48%;
+        height: 50px;
+        border-radius: 5px;
+        background: var(--section2, #a7a7a7);
+        color: #ffffff;
+        border: none;
+    }
+
+    .show_id_find_pw_button {
+        width: 48%;
+        height: 50px;
+        border-radius: 5px;
+        background: var(--Main-Color, #7bc8e0);
+        border: none;
+        color: #ffffff;
+    }
+}

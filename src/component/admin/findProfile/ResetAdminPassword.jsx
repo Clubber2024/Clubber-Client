@@ -102,6 +102,15 @@ export default function ResetAdminPassword() {
         } else if (!consecutiveRegExp.test(currentPassword)) {
             setIsPassword3(true);
         }
+
+        // newPasswordConfirm과 비교하여 일치하는지 여부 확인
+        if (newPasswordConfirm && currentPassword !== newPasswordConfirm) {
+            setPasswordConfirmMessage('비밀번호가 일치하지 않습니다.');
+            setIsPasswordConfirm(false);
+        } else {
+            setPasswordConfirmMessage('비밀번호가 일치합니다.');
+            setIsPasswordConfirm(true);
+        }
     };
     const onChangeNewPasswordConfirm = (e) => {
         const currentPasswordConfirm = e.target.value;

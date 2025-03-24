@@ -1,0 +1,245 @@
+@media screen and (min-width: 768px) {
+    .change_email_total_div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 8%;
+    }
+
+    .change_email_total_title {
+        font-family: Noto Sans;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 100%;
+        color: #202123;
+        margin-bottom: 91px;
+    }
+
+    .content_title_div {
+        width: 538px;
+    }
+    .content_title {
+        font-family: Noto Sans KR;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 100%;
+        color: #202123;
+        text-align: left;
+        width: 100%;
+    }
+
+    .input_email_div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .content_input_email {
+        border: 1.3px solid #9c9c9c80;
+        border-radius: 5px;
+        width: 416px;
+        height: 55px;
+        color: #202123;
+        display: flex;
+        align-items: center;
+        padding-left: 11px;
+        margin-top: 13px;
+        margin-bottom: 70px;
+        margin-right: 5px;
+        font-size: 16px;
+        font-family: Noto Sans KR;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+    }
+
+    .message_email,
+    .message_email_confirm {
+        width: 538px;
+        margin-top: -37px;
+        margin-bottom: 35px;
+        font-size: 13px;
+    }
+
+    .message_email_confirm {
+        margin-top: -67px;
+        margin-bottom: 20px;
+        color: blue;
+    }
+
+    .message_email {
+        margin-top: -67px;
+        margin-bottom: 20px;
+        color: red;
+    }
+
+    .content_input_email_button,
+    .content_input_email_button_before {
+        width: 116px;
+        height: 55px;
+        border-radius: 5px;
+        border: none;
+        background-color: #7bc8e0;
+        font-family: Noto Sans KR;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        color: #ffffff;
+        padding-bottom: 4px;
+        cursor: pointer;
+        margin-top: 13px;
+        margin-bottom: 70px;
+    }
+
+    .content_input_email_button_before {
+        background: var(--section, #d6d6d6);
+        cursor: pointer;
+    }
+
+    .sign_up_button,
+    .sign_up_button_no {
+        width: 538px;
+        height: 55px;
+        border: none;
+        border-radius: 5px;
+        background-color: #7bc8e0;
+        color: white;
+        font-family: Noto Sans;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 100%;
+        text-align: center;
+        margin-bottom: 20%;
+        margin-top: 50px;
+    }
+
+    .sign_up_button_no {
+        background-color: #9c9c9c80;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .change_email_total_div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 10%;
+    }
+
+    .change_email_total_title {
+        font-family: Noto Sans;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 100%;
+        color: #202123;
+        margin-bottom: 91px;
+    }
+
+    .content_title_div {
+        width: 80%;
+    }
+    .content_title {
+        font-family: Noto Sans KR;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+        color: #202123;
+        text-align: left;
+    }
+
+    .input_email_div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+    }
+
+    .content_input_email {
+        border: 1.3px solid #9c9c9c80;
+        border-radius: 5px;
+        width: 70%;
+        height: 50px;
+        color: #202123;
+        display: flex;
+        align-items: center;
+        padding-left: 11px;
+        margin-top: 13px;
+        margin-bottom: 70px;
+        margin-right: 5px;
+        font-size: 16px;
+        font-family: Noto Sans KR;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+    }
+
+    .message_email,
+    .message_email_confirm {
+        width: 80%;
+        margin-top: -37px;
+        margin-bottom: 35px;
+        font-size: 11px;
+    }
+
+    .message_email_confirm {
+        margin-top: -67px;
+        margin-bottom: 20px;
+        color: blue;
+    }
+
+    .message_email {
+        margin-top: -67px;
+        margin-bottom: 20px;
+        color: red;
+    }
+
+    .content_input_email_button,
+    .content_input_email_button_before {
+        width: 25%;
+        height: 50px;
+        border-radius: 5px;
+        border: none;
+        background-color: #7bc8e0;
+        font-family: Noto Sans KR;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        color: #ffffff;
+        padding-bottom: 4px;
+        cursor: pointer;
+        margin-top: 13px;
+        margin-bottom: 70px;
+    }
+
+    .content_input_email_button_before {
+        background: var(--section, #d6d6d6);
+        cursor: pointer;
+    }
+
+    .sign_up_button,
+    .sign_up_button_no {
+        width: 80%;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+        background-color: #7bc8e0;
+        color: white;
+        font-family: Noto Sans;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 100%;
+        text-align: center;
+        margin-bottom: 20%;
+        margin-top: 50px;
+    }
+
+    .sign_up_button_no {
+        background-color: #9c9c9c80;
+    }
+}

@@ -1,7 +1,7 @@
 @media screen and (min-width: 768px) {
     .content_search_div {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         position: relative;
         justify-content: space-between;
     }
@@ -53,7 +53,8 @@
         margin-right: 5px;
     }
 
-    .sign_up_search_club_ul {
+    .sign_up_search_club_ul,
+    .sign_up_search_club_ul_find {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -66,7 +67,7 @@
         max-height: 150px;
         overflow-y: auto;
         scroll-snap-type: y mandatory;
-        z-index: 100;
+        z-index: 1000;
     }
 
     .sign_up_search_club_li {
@@ -100,6 +101,7 @@
         padding: 2.39px;
         appearance: none; /* 기본 체크박스 숨김 */
         margin-right: 5px;
+        cursor: pointer;
     }
 
     .checkbox_input:checked {
@@ -234,6 +236,7 @@
         padding: 2.39px;
         appearance: none; /* 기본 체크박스 숨김 */
         margin-right: 5px;
+        cursor: pointer;
     }
 
     .checkbox_input:checked {

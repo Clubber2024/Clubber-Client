@@ -150,8 +150,8 @@ const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId
                                     type="radio"
                                     name="clubType"
                                     id={value}
-                                    value={value}
-                                    checked={clubType === value}
+                                    value={key}
+                                    checked={clubType === key}
                                     onChange={handleCheckboxChange} // 선택한 값 설정
                                     className={styles.checkbox_input}
                                 />
