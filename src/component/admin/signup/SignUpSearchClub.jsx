@@ -17,6 +17,7 @@ const getClubNames = (name) => {
 const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId, setClubId, type }) => {
     const [suggestion, setSuggestion] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(true); // 추천어 보이기 여부
+    const [clubTypes, setClubTypes] = useState([]);
     const [isType, setIsType] = useState(false);
     const [isName, setIsName] = useState(false);
     //GENERAL, OFFICIAL, ETC, CENTER, SMALL
@@ -26,6 +27,16 @@ const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId
         공식단체: 'OFFICIAL',
         소모임: 'SMALL',
         기타: 'ETC',
+    };
+
+    const getClubTypes = async () => {
+        try {
+            const res = await customAxios.get(`v1/clubs/types`);
+
+            if (res.data.success) {
+                setClubTypes(res.data.data);
+            }
+        } catch {}
     };
 
     // 🔹 useCallback을 사용하여 debounce 함수 생성
@@ -53,6 +64,10 @@ const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId
     );
 
     useEffect(() => {
+        getClubTypes();
+    }, []);
+
+    useEffect(() => {
         if (showSuggestions) {
             fetchSuggestions(clubName);
         }
@@ -71,7 +86,7 @@ const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId
         }
     };
 
-    console.log(clubName);
+    console.log(clubType);
 
     const handleCheckboxChange = (e) => {
         if (isType) {
@@ -81,7 +96,7 @@ const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId
         }
     };
 
-    console.log(clubType);
+    console.log(clubTypes);
 
     return (
         <>
@@ -143,19 +158,19 @@ const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId
             {type === 'signup' ? (
                 <div>
                     <p className={styles.search_content_title}>동아리 타입</p>
-                    <div className={styles.content_search_div}>
-                        {Object.entries(checkClubType).map(([key, value], idx) => (
+                    <div className={styles.search_content_clubType_div}>
+                        {clubTypes.map(({ code, title }, idx) => (
                             <div key={idx} className={styles.checkbox_div}>
                                 <input
                                     type="radio"
                                     name="clubType"
-                                    id={value}
-                                    value={key}
-                                    checked={clubType === key}
+                                    id={code}
+                                    value={code}
+                                    checked={clubType === code}
                                     onChange={handleCheckboxChange} // 선택한 값 설정
                                     className={styles.checkbox_input}
                                 />
-                                <label htmlFor={value}>{key}</label>
+                                <label htmlFor={code}>{title}</label>
                             </div>
                         ))}
                     </div>
