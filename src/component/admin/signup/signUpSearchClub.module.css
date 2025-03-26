@@ -60,7 +60,7 @@
         margin: 0;
         position: absolute;
         top: 68px;
-        width: 100%;
+        width: 472px;
         background: #fff;
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -75,11 +75,15 @@
         cursor: pointer;
         display: flex;
         align-items: center;
+
+        &:hover {
+            background: #d9d9d959;
+        }
     }
 
     .sign_up_search_club_ul::-webkit-scrollbar {
-        height: 5px;
-        width: 5px;
+        height: 0px;
+        width: 0px;
     }
     .checkbox_div {
         margin-top: 14px;
@@ -114,6 +118,12 @@
     .checkbox_input:checked::after {
         content: '✔';
         color: white;
+    }
+
+    .search_content_clubType_div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
@@ -209,11 +219,15 @@
         display: flex;
         align-items: center;
         font-size: 14px;
+
+        &:active {
+            background: #d9d9d959;
+        }
     }
 
     .sign_up_search_club_ul::-webkit-scrollbar {
-        height: 5px;
-        width: 5px;
+        height: 0px;
+        width: 0px;
     }
     .checkbox_div {
         margin-top: 14px;
@@ -249,5 +263,11 @@
     .checkbox_input:checked::after {
         content: '✔';
         color: white;
+    }
+
+    .search_content_clubType_div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }

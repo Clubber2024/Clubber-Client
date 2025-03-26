@@ -40,7 +40,7 @@
     .input_email_div {
         display: flex;
         flex-direction: row;
-        align-items: baseline;
+        align-items: center;
         justify-content: space-between;
     }
 
@@ -220,6 +220,8 @@
         color: #ffffff;
         padding-bottom: 4px;
         cursor: pointer;
+        margin-top: 13px;
+        margin-bottom: 40px;
     }
 
     .content_input_email_button_before {
