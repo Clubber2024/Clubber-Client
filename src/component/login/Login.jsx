@@ -16,6 +16,8 @@ function Login() {
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [isId, setIsId] = useState(false);
+    const [isPw, setIsPw] = useState(false);
 
     const closeModal = () => {
         setIsModalOpen(false);
@@ -37,6 +39,7 @@ function Login() {
 
     // 관리자 로그인 핸들러
     const adminLoginHandler = async () => {
+        if (!isId || !isPw) return;
         try {
             const res = await customAxios.post(`/v1/admins/login`, {
                 username: adminId,
@@ -57,8 +60,22 @@ function Login() {
         }
     };
 
-    const saveAdminId = (event) => setAdminId(event.target.value);
-    const saveAdminPw = (event) => setAdminPw(event.target.value);
+    const saveAdminId = (event) => {
+        const value = event.target.value;
+        setAdminId(value);
+        setIsId(true);
+        if (value == '') {
+            setIsId(false);
+        }
+    };
+    const saveAdminPw = (event) => {
+        const value = event.target.value;
+        setAdminPw(value);
+        setIsPw(true);
+        if (value == '') {
+            setIsPw(false);
+        }
+    };
     const handleTabClick = (form) => setActiveForm(form);
     const handleFormSubmit = (event) => event.preventDefault();
 
@@ -104,9 +121,9 @@ function Login() {
                                     <form className="sign-up-form-active" onSubmit={handleFormSubmit}>
                                         <input
                                             type="text"
-                                            placeholder="이메일"
-                                            autoComplete="current-email"
-                                            className="email-input"
+                                            placeholder="아이디"
+                                            autoComplete="current-id"
+                                            className="id-input"
                                             value={adminId}
                                             onChange={saveAdminId}
                                         />
@@ -118,7 +135,10 @@ function Login() {
                                             value={adminPw}
                                             onChange={saveAdminPw}
                                         />
-                                        <button className="login-button" onClick={adminLoginHandler}>
+                                        <button
+                                            className={isId && isPw ? 'login-button-active' : 'login-button'}
+                                            onClick={adminLoginHandler}
+                                        >
                                             로그인
                                         </button>
                                         <div className="sign_up_div">
