@@ -314,7 +314,10 @@ export default function AdminSignUp() {
         } else {
             postSignUpCode(email);
             // setIsVerifyEmail(true);
-            setEmailMessage('인증번호를 전송했습니다.');
+            // setEmailMessage('인증번호를 전송했습니다.');
+            setEmailMessage(
+                '인증번호를 발송했습니다. 인증번호가 오지 않으면 입력하신 정보가 회원정보와 일치하는지 확인해 주세요.'
+            );
             setIsCode(true);
         }
     };
