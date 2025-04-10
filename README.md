@@ -2,7 +2,6 @@
 <table align="center">
     <tr>
         <th colspan="2" style="font-size:18px;">Frontend</th>
-        <th colspan="2" style="font-size:18px;">Backend</th>
     </tr>
     <tr align="center">
         <td><b>강예은</b></td>
