@@ -1,4 +1,5 @@
-# 🍀숭실대학교 통합 동아리 서비스 [Clubber]<img src="https://github.com/user-attachments/assets/7d52a366-3aec-4d4b-ab68-eb8822e3a1a9" align=left width=100>
+# 🍀숭실대학교 통합 동아리 서비스 [Clubber]
+<img src="https://github.com/user-attachments/assets/7d52a366-3aec-4d4b-ab68-eb8822e3a1a9" align=left width=100>
 
 <br> <br/>
 
@@ -34,7 +35,7 @@
 
 
 
-## 참여자
+## 2. 참여자
 <table align="center">
     <tr>
         <th colspan="2" style="font-size:18px;">Frontend</th>
@@ -56,3 +57,16 @@
         </td>
     </tr>
 </table>
+
+<br><br/>
+
+##🚀 Skills & Social
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+<img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white"/>
+<img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?&style=for-the-badge&logo=javascript&logoColor=black" />
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
+<img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white"/>
+<img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white"/>
+
