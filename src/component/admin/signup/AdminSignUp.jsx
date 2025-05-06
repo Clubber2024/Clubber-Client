@@ -18,6 +18,8 @@ export default function AdminSignUp() {
     const [clubId, setClubId] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
+    const [college, setCollege] = useState('');
+    const [department, setDepartment] = useState('');
     const [imageFile, setImageFile] = useState('');
     const [fileName, setFileName] = useState('');
     const [extension, setExtension] = useState('');
@@ -61,6 +63,9 @@ export default function AdminSignUp() {
     //모달 상태 관리
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [isTotalModalOpen, setIsTotalModalOpen] = useState(false);
+    const [modalTotalMessage, setTotalModalMessage] = useState('');
+
     const fileInputRef = useRef(null);
 
     //인증번호 메일 전송 api
@@ -180,6 +185,8 @@ export default function AdminSignUp() {
                 username: id,
                 password: password,
                 clubType: clubType,
+                college: college,
+                department: department,
                 clubName: clubName,
                 email: authEmail,
                 contact: {
@@ -191,9 +198,8 @@ export default function AdminSignUp() {
             });
 
             if (res.data.success) {
-                setModalMessage('회원가입을 완료하였습니다.');
-                setIsModalOpen(true);
-                navigate(`/`);
+                setTotalModalMessage('회원가입을 완료하였습니다.');
+                setIsTotalModalOpen(true);
             }
         } catch {}
     };
@@ -379,6 +385,12 @@ export default function AdminSignUp() {
         setIsModalOpen(false);
     };
 
+    //최종 모달
+    const handleTotalModalClose = () => {
+        setIsTotalModalOpen(false);
+        navigate('/');
+    };
+
     //회원가입 버튼
     const onClickSignUp = () => {
         postSignUp();
@@ -474,7 +486,11 @@ export default function AdminSignUp() {
                         setClubType={setClubType}
                         clubId={clubId}
                         setClubId={setClubId}
-                        type={'signup'}
+                        type={''}
+                        college={college}
+                        setCollege={setCollege}
+                        department={department}
+                        setDepartment={setDepartment}
                     />
 
                     <p className={isname ? styles.message_confirm : styles.message}> {nameMessage} </p>
@@ -596,6 +612,9 @@ export default function AdminSignUp() {
                 </div>
             </div>
             {isModalOpen && <ErrorModal isOpen={isModalOpen} message={modalMessage} onClose={handleModalClose} />}
+            {isTotalModalOpen && (
+                <ErrorModal isOpen={isTotalModalOpen} message={modalTotalMessage} onClose={handleTotalModalClose} />
+            )}
         </>
     );
 }

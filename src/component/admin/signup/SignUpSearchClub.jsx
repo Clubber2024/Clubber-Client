@@ -14,12 +14,29 @@ const getClubNames = (name) => {
         });
 };
 
-const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId, setClubId, type }) => {
+const SignUpSearchClub = ({
+    clubName,
+    setClubName,
+    clubType,
+    setClubType,
+    clubId,
+    setClubId,
+    type,
+    college,
+    setCollege,
+    department,
+    setDepartment,
+}) => {
     const [suggestion, setSuggestion] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(true); // 추천어 보이기 여부
     const [clubTypes, setClubTypes] = useState([]);
     const [isType, setIsType] = useState(false);
     const [isName, setIsName] = useState(false);
+    //소모임 관리
+    const [isSmall, setIsSmall] = useState(false);
+    const [departments, setDepartments] = useState([]);
+    const [colleges, setColleges] = useState([]);
+
     //GENERAL, OFFICIAL, ETC, CENTER, SMALL
     const checkClubType = {
         중앙동아리: 'CENTER',
@@ -31,10 +48,38 @@ const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId
 
     const getClubTypes = async () => {
         try {
-            const res = await customAxios.get(`v1/clubs/types`);
+            const res = await customAxios.get(`v1/clubs/category/club-types`);
 
             if (res.data.success) {
                 setClubTypes(res.data.data);
+                setIsType(true);
+            }
+        } catch {}
+    };
+
+    //소모임 단과대 목록 조회
+    const getCollegesList = async () => {
+        try {
+            const res = await customAxios.get(`v1/clubs/category/colleges`);
+
+            if (res.data.success) {
+                setColleges(res.data.data);
+                console.log(res.data.data);
+            }
+        } catch {}
+    };
+
+    //단과대 소속 학과 목록 조회
+    const getDepartmentsList = async (college) => {
+        try {
+            const res = await customAxios.get(`v1/clubs/category/departments`, {
+                params: {
+                    college: college,
+                },
+            });
+
+            if (res.data.success) {
+                setDepartments(res.data.data);
             }
         } catch {}
     };
@@ -65,6 +110,7 @@ const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId
 
     useEffect(() => {
         getClubTypes();
+        getCollegesList();
     }, []);
 
     useEffect(() => {
@@ -86,13 +132,24 @@ const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId
         }
     };
 
+    const onClickDepartment = (e) => {
+        console.log(e.target.value);
+        const collegeCode = e.target.value;
+        setCollege(e.target.value);
+        getDepartmentsList(collegeCode);
+    };
+
     console.log(clubType);
 
     const handleCheckboxChange = (e) => {
         if (isType) {
             return;
         } else {
-            setClubType(e.target.value);
+            const value = e.target.value;
+            setClubType(value);
+            if (value == 'SMALL') {
+                setIsSmall(true);
+            }
         }
     };
 
@@ -155,29 +212,56 @@ const SignUpSearchClub = ({ clubName, setClubName, clubType, setClubType, clubId
                     </ul>
                 )}
             </div>
-            {type === 'signup' ? (
-                <div>
-                    <p className={styles.search_content_title}>동아리 타입</p>
-                    <div className={styles.search_content_clubType_div}>
-                        {clubTypes.map(({ code, title }, idx) => (
-                            <div key={idx} className={styles.checkbox_div}>
-                                <input
-                                    type="radio"
-                                    name="clubType"
-                                    id={code}
-                                    value={code}
-                                    checked={clubType === code}
-                                    onChange={handleCheckboxChange} // 선택한 값 설정
-                                    className={styles.checkbox_input}
-                                />
-                                <label htmlFor={code}>{title}</label>
-                            </div>
-                        ))}
-                    </div>
+
+            <div>
+                <p className={styles.search_content_title}>동아리 타입</p>
+                <div className={styles.search_content_clubType_div}>
+                    {clubTypes?.map(({ code, title }, idx) => (
+                        <div key={idx} className={styles.checkbox_div}>
+                            <input
+                                type="radio"
+                                name="clubType"
+                                id={code}
+                                value={code}
+                                checked={clubType === code}
+                                onChange={handleCheckboxChange} // 선택한 값 설정
+                                className={styles.checkbox_input}
+                            />
+                            <label htmlFor={code}>{title}</label>
+                        </div>
+                    ))}
                 </div>
-            ) : (
-                ''
-            )}
+
+                {isSmall ? (
+                    <div className={styles.content_form_div}>
+                        <p className={styles.search_content_title}>단과대 선택</p>
+                        <div>
+                            <form>
+                                {' '}
+                                <select className={styles.search_colleages} onChange={onClickDepartment}>
+                                    {colleges.map((colleges) => (
+                                        <option key={colleges.code} value={colleges.code}>
+                                            {colleges.title}
+                                        </option>
+                                    ))}
+                                </select>
+                                <select
+                                    className={styles.search_colleages}
+                                    onChange={() => setDepartment(departments.code)}
+                                >
+                                    {departments?.map((departments) => (
+                                        <option key={departments.code} value={departments.code}>
+                                            {departments.title}
+                                        </option>
+                                    ))}
+                                </select>
+                            </form>{' '}
+                        </div>
+                    </div>
+                ) : (
+                    ''
+                )}
+            </div>
         </>
     );
 };

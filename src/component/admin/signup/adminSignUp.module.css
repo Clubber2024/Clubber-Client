@@ -51,7 +51,7 @@
     .content_input_contact {
         border: 1.3px solid #9c9c9c80;
         border-radius: 5px;
-        width: 472px;
+        width: 561px;
         height: 55px;
         color: #202123;
         display: flex;
@@ -66,7 +66,7 @@
     }
 
     .content_input_id {
-        width: 351px;
+        width: 401px;
         /* margin-bottom: 20px; */
     }
 
@@ -93,7 +93,7 @@
     .content_input_email {
         border: 1.3px solid #9c9c9c80;
         border-radius: 5px;
-        width: 349px;
+        width: 401px;
         height: 55px;
         color: #202123;
         display: flex;
@@ -148,7 +148,7 @@
     .message_email_confirm,
     .message_code,
     .message_code_confirm {
-        width: 461px;
+        width: 561px;
         margin-top: -37px;
         margin-bottom: 35px;
         font-size: 13px;
@@ -181,7 +181,7 @@
     }
 
     .content_notice_p {
-        width: 461px;
+        width: 561px;
         font-family: Noto Sans KR;
         font-weight: 400;
         font-size: 16px;
@@ -240,7 +240,7 @@
         height: 28px;
         position: absolute;
         top: 26px;
-        left: 430px;
+        left: 515px;
         cursor: pointer;
     }
 
@@ -269,7 +269,7 @@
     }
 
     .sign_up_button {
-        width: 471px;
+        width: 561px;
         height: 55px;
         border: none;
         border-radius: 5px;
