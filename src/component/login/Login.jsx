@@ -3,33 +3,33 @@ import './login.css';
 import { useNavigate } from 'react-router-dom';
 import { customAxios } from '../../config/axios-config';
 import ErrorModal from '../modal/ErrorModal';
+import { LinkItem } from '../branch/BranchCentral';
 import { getAccessToken, saveTokens } from '../../auth/AuthService';
 
 function Login() {
     const accessToken = getAccessToken();
     const restApiKey = process.env.REACT_APP_REST_API_KEY;
     const redirectURL = process.env.REACT_APP_REDIRECT_URI;
-
     const [activeForm, setActiveForm] = useState('sign-in-form-active');
-
     const [adminId, setAdminId] = useState('');
     const [adminPw, setAdminPw] = useState('');
     const navigate = useNavigate();
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [isId, setIsId] = useState(false);
+    const [isPw, setIsPw] = useState(false);
 
     const closeModal = () => {
         setIsModalOpen(false);
         setModalMessage('');
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         if (accessToken) {
             // 이미 로그인된 상태면 메인 페이지로 이동
             navigate('/', { replace: true });
         }
-    })
+    });
 
     // 카카오 로그인 핸들러 : 카카오 버튼 클릭 시, 로그인 창 (링크는 노션에서 가져옴)
     //  rest api key와 redirect uri 값 받아서 해당 링크로 연결, window.location.href 이용하여 주소 변경
@@ -39,6 +39,7 @@ function Login() {
 
     // 관리자 로그인 핸들러
     const adminLoginHandler = async () => {
+        if (!isId || !isPw) return;
         try {
             const res = await customAxios.post(`/v1/admins/login`, {
                 username: adminId,
@@ -59,11 +60,25 @@ function Login() {
         }
     };
 
-    const saveAdminId = (event) => setAdminId(event.target.value);
-    const saveAdminPw = (event) => setAdminPw(event.target.value);
+    const saveAdminId = (event) => {
+        const value = event.target.value;
+        setAdminId(value);
+        setIsId(true);
+        if (value == '') {
+            setIsId(false);
+        }
+    };
+    const saveAdminPw = (event) => {
+        const value = event.target.value;
+        setAdminPw(value);
+        setIsPw(true);
+        if (value == '') {
+            setIsPw(false);
+        }
+    };
     const handleTabClick = (form) => setActiveForm(form);
     const handleFormSubmit = (event) => event.preventDefault();
-    
+
     return (
         <>
             <div className="wrapper">
@@ -106,9 +121,9 @@ function Login() {
                                     <form className="sign-up-form-active" onSubmit={handleFormSubmit}>
                                         <input
                                             type="text"
-                                            placeholder="이메일"
-                                            autoComplete="current-email"
-                                            className="email-input"
+                                            placeholder="아이디"
+                                            autoComplete="current-id"
+                                            className="id-input"
                                             value={adminId}
                                             onChange={saveAdminId}
                                         />
@@ -120,9 +135,25 @@ function Login() {
                                             value={adminPw}
                                             onChange={saveAdminPw}
                                         />
-                                        <button className="login-button" onClick={adminLoginHandler}>
+                                        <button
+                                            className={isId && isPw ? 'login-button-active' : 'login-button'}
+                                            onClick={adminLoginHandler}
+                                        >
                                             로그인
                                         </button>
+                                        <div className="sign_up_div">
+                                            <LinkItem to={`/login/adminFindId`} className="sign_up_p">
+                                                아이디 찾기 |
+                                            </LinkItem>
+
+                                            <LinkItem to={`/login/adminFindPassword`} className="sign_up_p">
+                                                비밀번호 찾기 |
+                                            </LinkItem>
+
+                                            <LinkItem to={'/login/adminJoin'} className="sign_up_p">
+                                                회원가입
+                                            </LinkItem>
+                                        </div>
                                     </form>
                                 )}
                             </div>

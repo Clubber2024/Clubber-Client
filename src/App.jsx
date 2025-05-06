@@ -28,7 +28,6 @@ import AdminPage from './pages/AdminPage';
 import MyPage from './component/mypage/MyPage';
 import AdminRecruitList from './component/admin/recruit/AdminRecruitList';
 import RecruitContent from './component/recruit/RecruitContent';
-import ModifyPassword from './component/mypage/ModifyPassword';
 import AdminRecruitWrite from './component/admin/recruit/AdminRecruitWrite';
 import DetailRecruitList from './component/recruit/DetailRecruitList';
 import AdminRecruitContent from './component/admin/recruit/AdminRecruitContent';
@@ -37,6 +36,15 @@ import OfficialClubPage from './pages/OfficialClubPage';
 // import MainPromote from './component/main/MainPromote';
 // import RecruitList from './component/recruit/RecruitList';
 import RecruitCalendar from './component/calendar/RecruitCalendar';
+
+import AdminSignUp from './component/admin/signup/AdminSignUp';
+import ChangeAdminPassword from './component/admin/password/ChangeAdminPassword';
+import FindAdminPassword from './component/admin/findProfile/FindAdminPassword';
+import ResetAdminPassword from './component/admin/findProfile/ResetAdminPassword';
+import EditAdminProfile from './component/admin/profile/EditAdminProfile';
+import FindAdminID from './component/admin/findProfile/FindAdminID';
+import ShowAdminId from './component/admin/findProfile/ShowAdminId';
+import ChangeAdminEmail from './component/admin/profile/email/ChangeAdminEmail';
 
 function App() {
     const appStyle = {
@@ -79,6 +87,8 @@ function App() {
                             <Route path="/clubs/:clubId/review/comment" element={<ReviewComment />} />
                             <Route path="/central/divisions" element={<BranchCentralPage />} />
                             <Route path="/login" element={<LoginPage />} />
+                            <Route path="/login/adminJoin" element={<AdminSignUp />} />
+
                             <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
                             <Route path="/small/colleges" element={<BranchSmallPage />} />
                             <Route path="/hashtag" element={<HashTagPage />} />
@@ -93,7 +103,7 @@ function App() {
 
                             <Route path="/qna" element={<QnAPage />} />
                             <Route path="/calendar" element={<RecruitCalendar />} />
-                            
+
                             <Route path="/admin" element={<MyPage />} />
                             <Route path="/admin/mypage" element={<AdminPage />} />
                             <Route path="/admin/edit/:clubId" element={<EditPage />} />
@@ -102,7 +112,14 @@ function App() {
                             <Route path="/admin/recruit" element={<AdminRecruitList />} />
                             <Route path="/admin/recruit/edit" element={<AdminRecruitWrite />} />
                             <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
-                            <Route path="/admin/password" element={<ModifyPassword />} />
+                            <Route path="/admin/password" element={<ChangeAdminPassword />} />
+                            <Route path="/admin/edit-profile" element={<EditAdminProfile />} />
+                            <Route path="/admin/edit-email" element={<ChangeAdminEmail />} />
+                            <Route path="/login/adminFindId" element={<FindAdminID />} />
+                            <Route path="/login/adminFindPassword" element={<FindAdminPassword />} />
+                            <Route path="/login/adminResetPassword" element={<ResetAdminPassword />} />
+                            <Route path="/login/adminShowId" element={<ShowAdminId />} />
+
                             <Route path="/loading" element={<LoadingPage />} />
                         </Routes>
                     </div>
@@ -127,6 +144,8 @@ function App() {
                             <Route path="/clubs/:clubId/review/comment" element={<ReviewComment />} />
                             <Route path="/central/divisions" element={<BranchCentralPage />} />
                             <Route path="/login" element={<LoginPage />} />
+                            <Route path="/login/adminJoin" element={<AdminSignUp />} />
+
                             <Route path="/v1/auths/oauth/kakao" element={<KakaoRedirection />} />
                             <Route path="/small/colleges" element={<BranchSmallPage />} />
                             <Route path="/hashtag" element={<HashTagPage />} />
@@ -150,8 +169,17 @@ function App() {
 
                             <Route path="/admin/recruit" element={<AdminRecruitList />} />
                             <Route path="/admin/recruit/edit" element={<AdminRecruitWrite />} />
+
                             <Route path="/admin/recruit/:recruitId" element={<AdminRecruitContent />} />
-                            <Route path="/admin/password" element={<ModifyPassword />} />
+                            <Route path="/admin/edit-profile" element={<EditAdminProfile />} />
+                            <Route path="/admin/password" element={<ChangeAdminPassword />} />
+                            <Route path="/admin/edit-email" element={<ChangeAdminEmail />} />
+                            <Route path="/login/adminFindId" element={<FindAdminID />} />
+                            <Route path="/login/adminFindPassword" element={<FindAdminPassword />} />
+                            <Route path="/login/adminResetPassword" element={<ResetAdminPassword />} />
+                            <Route path="/login/adminShowId" element={<ShowAdminId />} />
+
+                            <Route path="/loading" element={<LoadingPage />} />
                         </Routes>
                     </div>
                     <Footer />
