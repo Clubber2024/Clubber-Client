@@ -117,7 +117,6 @@ const SignUpSearchClub = ({
         if (showSuggestions) {
             fetchSuggestions(clubName);
         }
-        // console.log(clubName);
     }, [clubName, fetchSuggestions, showSuggestions]);
 
     const onChangeName = (e) => {
@@ -128,7 +127,6 @@ const SignUpSearchClub = ({
         if (currentName.length < 1) {
             setIsName(false);
             setIsType(false);
-            // setShowSuggestions(true);
         }
     };
 
@@ -149,6 +147,8 @@ const SignUpSearchClub = ({
             setClubType(value);
             if (value == 'SMALL') {
                 setIsSmall(true);
+            } else {
+                setIsSmall(false);
             }
         }
     };

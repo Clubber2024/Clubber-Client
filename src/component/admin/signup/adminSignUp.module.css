@@ -449,22 +449,18 @@
     .message_confirm {
         color: blue;
     }
-
     .message_email_confirm {
         margin-bottom: 20px;
         color: blue;
     }
-
     .message_email {
         margin-bottom: 20px;
         color: red;
     }
-
     .message_code {
         margin-top: -47px;
         color: red;
     }
-
     .message_code_confirm {
         margin-top: -47px;
         color: blue;
@@ -528,7 +524,7 @@
         height: 25px;
         position: absolute;
         top: 26px;
-        left: 88%;
+        left: 90%;
         cursor: pointer;
     }
 
