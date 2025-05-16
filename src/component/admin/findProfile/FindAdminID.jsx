@@ -4,6 +4,7 @@ import { customAxios } from '../../../config/axios-config';
 import { useNavigate } from 'react-router-dom';
 import ErrorModal from '../../modal/ErrorModal';
 import SignUpSearchClub from '../signup/SignUpSearchClub';
+import Timer from './Timer/Timer';
 
 export default function FindAdminID() {
     const navigate = useNavigate();
@@ -16,6 +17,9 @@ export default function FindAdminID() {
     const [authCode, setAuthCode] = useState('');
     const [isVerifyEmail, setIsVerifyEmail] = useState(false);
     const [isVerifyCode, setIsVerifyCode] = useState(false);
+    //타이머
+    const [showTimer, setShowTimer] = useState(false);
+    const [start, setStart] = useState(0);
 
     const [emailMessage, setEmailMessage] = useState('');
     const [emailCodeMessage, setEmailCodeMessage] = useState('');
@@ -38,6 +42,8 @@ export default function FindAdminID() {
             if (res.data.success) {
                 setAuthEmail(currentEmail);
                 console.log('auth', authEmail);
+                setShowTimer(true);
+                setStart((prev) => prev + 1);
             }
         } catch {}
     };
@@ -196,6 +202,7 @@ export default function FindAdminID() {
                             placeholder="인증코드 입력"
                             autoComplete="off"
                         />
+                        <div className={styles.timer_container}>{showTimer ? <Timer key={start} /> : ''}</div>
                         <button
                             onClick={handleVerfiyCode}
                             className={
