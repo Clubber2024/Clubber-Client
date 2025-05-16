@@ -7,6 +7,7 @@ import SignUpSearchClub from './SignUpSearchClub';
 import { Contact } from 'lucide-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Timer from '../findProfile/Timer/Timer';
 
 export default function AdminSignUp() {
     const accessToken = localStorage.getItem('accessToken');
@@ -39,6 +40,10 @@ export default function AdminSignUp() {
 
     //이메일 안내문구 상태관리
     const [onEmailInfo, setOnEmailInfo] = useState(false);
+
+    //타이머 관리
+    const [showTimer, setShowTimer] = useState(false);
+    const [start, setStart] = useState(0);
 
     //유효성 검사
     const [isId1, setIsId1] = useState(false);
@@ -82,6 +87,8 @@ export default function AdminSignUp() {
 
             if (res.data.success) {
                 setAuthEmail(currentEmail);
+                setShowTimer(true);
+                setStart((prev) => prev + 1);
             }
         } catch {}
     };
@@ -537,6 +544,7 @@ export default function AdminSignUp() {
                             placeholder="이메일 입력"
                             autoComplete="off"
                         />
+
                         <button
                             onClick={handleEmailVerificationButton}
                             className={
@@ -562,6 +570,7 @@ export default function AdminSignUp() {
                                     placeholder="인증코드 입력"
                                     autoComplete="off"
                                 />
+                                <div className={styles.timer_container}>{showTimer ? <Timer key={start} /> : ''}</div>
                                 <button
                                     onClick={handleVerfiyCode}
                                     className={

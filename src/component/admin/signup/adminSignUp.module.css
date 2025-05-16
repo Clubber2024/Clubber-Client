@@ -34,6 +34,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        position: relative;
         /* margin-bottom: 20px; */
     }
 
@@ -348,6 +349,12 @@
         color: #52555b;
         margin-top: 18px;
     }
+
+    .timer_container {
+        position: absolute;
+        left: 335px;
+        top: 30px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -390,6 +397,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        position: relative;
         /* width: 90%; */
         /* margin-bottom: 20px; */
     }
@@ -696,5 +704,11 @@
         letter-spacing: 0%;
         color: #52555b;
         margin-top: 10px;
+    }
+
+    .timer_container {
+        position: absolute;
+        left: 165px;
+        top: 30px;
     }
 }
