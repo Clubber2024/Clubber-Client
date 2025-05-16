@@ -3,6 +3,7 @@ import styles from './findAdminPassword.module.css';
 import { customAxios } from '../../../config/axios-config';
 import { useNavigate } from 'react-router-dom';
 import ErrorModal from '../../modal/ErrorModal';
+import Timer from './Timer/Timer';
 
 export default function FindAdminPassword() {
     const navigate = useNavigate();
@@ -20,6 +21,9 @@ export default function FindAdminPassword() {
     const [idMessage, setIdMessage] = useState('');
 
     const [isNext, setIsNext] = useState(false);
+    //타이머 시작
+    const [showTimer, setShowTimer] = useState(false);
+    const [start, setStart] = useState(0);
 
     const onChangeId = (e) => {
         setId(e.target.value);
@@ -38,6 +42,8 @@ export default function FindAdminPassword() {
                 setIdMessage('');
                 setIsVerifyEmail(true);
                 setEmailMessage('인증번호를 전송했습니다.');
+                setShowTimer(true);
+                setStart((prev) => prev + 1);
             }
         } catch (error) {
             // console.log(error.response.data.reason);
@@ -181,6 +187,7 @@ export default function FindAdminPassword() {
                             placeholder="인증코드 입력"
                             autoComplete="off"
                         />
+                        <div className={styles.timer_container}>{showTimer ? <Timer key={start} /> : ''}</div>
                         <button
                             onClick={handleVerfiyCode}
                             className={

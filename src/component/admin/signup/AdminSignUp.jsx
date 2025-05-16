@@ -37,6 +37,9 @@ export default function AdminSignUp() {
     const passwordRef = useRef(null);
     const passwordConfirmRef = useRef(null);
 
+    //이메일 안내문구 상태관리
+    const [onEmailInfo, setOnEmailInfo] = useState(false);
+
     //유효성 검사
     const [isId1, setIsId1] = useState(false);
     const [isIdAvailable, setIsIdAvailable] = useState(false);
@@ -396,6 +399,11 @@ export default function AdminSignUp() {
         postSignUp();
     };
 
+    //이메일 info 아이콘 버튼
+    const onClickEmailInfo = () => {
+        setOnEmailInfo((prev) => !prev);
+    };
+
     return (
         <>
             <div className={styles.signup_div}>
@@ -408,7 +416,6 @@ export default function AdminSignUp() {
                         <p className={styles.content_title}>아이디</p>
                         <p className={styles.content_option_p}>필수사항</p>
                     </div>
-
                     <div className={styles.content_id_div}>
                         <input
                             id="id"
@@ -478,7 +485,6 @@ export default function AdminSignUp() {
                         <p className={styles.content_title}>동아리명</p>
                         <p className={styles.content_option_p}>필수사항</p>
                     </div>
-
                     <SignUpSearchClub
                         clubName={clubName}
                         setClubName={setClubName}
@@ -486,18 +492,41 @@ export default function AdminSignUp() {
                         setClubType={setClubType}
                         clubId={clubId}
                         setClubId={setClubId}
-                        type={''}
+                        type={'signup'}
                         college={college}
                         setCollege={setCollege}
                         department={department}
                         setDepartment={setDepartment}
                     />
-
                     <p className={isname ? styles.message_confirm : styles.message}> {nameMessage} </p>
                     <div className={styles.content_id_div}>
-                        <p className={styles.content_title}>이메일 주소</p>
+                        <div className={styles.email_info_container}>
+                            <p className={styles.content_title}>이메일 주소</p>{' '}
+                            <div className={styles.email_info_div}>
+                                <img
+                                    src="/admin/sign-up/exclamation-circle.png"
+                                    className={styles.email_info_icon}
+                                    onClick={onClickEmailInfo}
+                                />
+                                {onEmailInfo ? (
+                                    <div>
+                                        <div className={styles.email_info_text_container_triangle}></div>
+                                        <div className={styles.email_info_text_container}>
+                                            <p>
+                                                입력하신 이메일은 클러버의 공지사항 및 주요 업데이트 전달에 사용됩니다.
+                                            </p>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    ''
+                                )}
+                            </div>
+                        </div>
                         <p className={styles.content_option_p}>필수사항</p>
-                    </div>
+                    </div>{' '}
+                    <p className={styles.email_info_use_text}>
+                        * 용도: 비밀번호 찾기 (마이페이지에서 추후 수정 가능합니다.)
+                    </p>
                     <div className={styles.input_email_div}>
                         <input
                             id="email"
@@ -520,7 +549,6 @@ export default function AdminSignUp() {
                     <p className={isVerfiyEmail ? styles.message_email_confirm : styles.message_email}>
                         {emailMessage}
                     </p>
-
                     {isCode ? (
                         <div>
                             <p className={styles.content_title}>인증 코드</p>
@@ -552,9 +580,7 @@ export default function AdminSignUp() {
                     ) : (
                         ''
                     )}
-
                     <br />
-
                     <p className={styles.content_title}>연락수단</p>
                     <p className={styles.content_option_p}>선택 1</p>
                     <br />
@@ -605,7 +631,6 @@ export default function AdminSignUp() {
                             에브리타임 모집글, 동아리 활동 사진 등 동아리를 증빙할 수 있는 최소한의 정보
                         </p>
                     </div>
-
                     <button className={styles.sign_up_button} onClick={onClickSignUp}>
                         회원가입
                     </button>

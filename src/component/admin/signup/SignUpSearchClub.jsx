@@ -214,23 +214,29 @@ const SignUpSearchClub = ({
             </div>
 
             <div>
-                <p className={styles.search_content_title}>동아리 타입</p>
-                <div className={styles.search_content_clubType_div}>
-                    {clubTypes?.map(({ code, title }, idx) => (
-                        <div key={idx} className={styles.checkbox_div}>
-                            <input
-                                type="radio"
-                                name="clubType"
-                                id={code}
-                                value={code}
-                                checked={clubType === code}
-                                onChange={handleCheckboxChange} // 선택한 값 설정
-                                className={styles.checkbox_input}
-                            />
-                            <label htmlFor={code}>{title}</label>
+                {type === 'signup' ? (
+                    <div>
+                        <p className={styles.search_content_title}>동아리 타입</p>
+                        <div className={styles.search_content_clubType_div}>
+                            {clubTypes?.map(({ code, title }, idx) => (
+                                <div key={idx} className={styles.checkbox_div}>
+                                    <input
+                                        type="radio"
+                                        name="clubType"
+                                        id={code}
+                                        value={code}
+                                        checked={clubType === code}
+                                        onChange={handleCheckboxChange} // 선택한 값 설정
+                                        className={styles.checkbox_input}
+                                    />
+                                    <label htmlFor={code}>{title}</label>
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ) : (
+                    ''
+                )}
 
                 {isSmall ? (
                     <div className={styles.content_form_div}>
