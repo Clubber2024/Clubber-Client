@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import styles from './brnachCentral.module.css';
+import styles from './centralClubList.module.css';
 import CentralClub from './CentralClub';
 import { useLocation } from 'react-router-dom';
 import { customAxios } from '../../config/axios-config';
