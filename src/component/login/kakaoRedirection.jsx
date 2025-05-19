@@ -23,7 +23,7 @@ export default function KakaoRedirection() {
                     localStorage.setItem('refreshToken', refreshToken);
 
                     // 메인 페이지 이동 및 무한로딩 방지
-                    navigate('/', { replace: true });
+                    navigate('/');
                 })
                 .catch((error) => {
                     console.error(error);

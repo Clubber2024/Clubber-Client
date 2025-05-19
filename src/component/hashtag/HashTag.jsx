@@ -3,20 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { customAxios } from '../../config/axios-config';
 import './hashtag.css';
 
-// const hashtag = [
-//     { MUSIC: '음악' },
-//     { GAME: '게임' },
-//     { PICTURE: '사진' },
-//     { PROGRAMMING: '개발' },
-//     { LANGUAGE: '언어' },
-//     { SPORTS: '스포츠' },
-//     { DANCE: '댄스' },
-//     { VOLUNTEER: '봉사' },
-//     { RELIGION: '종교' },
-//     { STUDY: '학술' },
-//     { ETC: '기타' },
-// ];
-
 export default function HashTag() {
     const navigate = useNavigate();
     const [imgUrls, setImgUrls] = useState([]);
@@ -25,15 +11,15 @@ export default function HashTag() {
 
     const getHashtagImg = async () => {
         try {
-            const res = await customAxios.get(`/v1/clubs/hashtags`);
+            const res = await customAxios.get(`/v1/clubs/category/hashtags`);
 
             if (res.data.success) {
                 const imageUrls = res.data.data.map((item) => item.imageUrl);
                 const titles = res.data.data.map((item) => item.title);
-                const code = res.data.data.map((item) => item.code);
+                const codes = res.data.data.map((item) => item.code);
                 setImgUrls(imageUrls);
                 setTitles(titles);
-                setCodes(code);
+                setCodes(codes);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);

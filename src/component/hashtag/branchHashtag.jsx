@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import HashTagClub from './HashTagClub';
-import styles from '../branch/branchCentral.module.css';
+import styles from '../centralClub/centralClubList.module.css';
 import { customAxios } from '../../config/axios-config';
 import ErrorModal from '../modal/ErrorModal';
 import LoadingPage from '../loading/LoadingPage';
