@@ -1,10 +1,13 @@
-import styles from './AdminRecruitWrite.module.css';
+import styles from './adminRecruitWrite.module.css';
 import { customAxios } from '../../../config/axios-config';
 import React, { useEffect, useState, useRef } from 'react';
 import ConfirmModal from '../../modal/ConfirmModal';
 import ErrorModal from '../../modal/ErrorModal';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import MyCalendar from './Calendar';
+import TimePicker from 'react-time-picker';
+import RecruitFinishModal from '../../modal/RecruitFinishModal';
 
 export default function AdminRecruitWrite() {
     const navigate = useNavigate();
@@ -21,6 +24,7 @@ export default function AdminRecruitWrite() {
     const [modalMessage, setModalMessage] = useState('');
     const [titleCount, setTitleCount] = useState(0);
     const [contentCount, setContentCount] = useState(0);
+
     //모집글 수정인 경우로 넘어올 때 recruitId 존재
     //그냥 모집글 작성인 경우는 recruitId 존재x
     const recruitId = location.state?.recruitId;
@@ -35,6 +39,16 @@ export default function AdminRecruitWrite() {
     //
     const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+    const [calendarIsOpen, setCalendarIsOpen] = useState(false);
+    const [endCalendarIsOpen, setEndCalendarIsOpen] = useState(false);
+    const [startTime, setStartTime] = useState('00:00');
+    const [endTime, setEndTime] = useState('00:00');
+    // const [isOngoing, setIsOngoing] = useState(false);
+    const [recruitType, setRecruitType] = useState('');
+    //캘린더 연동 유무
+    const [isCalendarLink, setIsCalendarLink] = useState(false);
 
     //모집글 수정 시 데이터 get
     const getRecruitData = async () => {
@@ -62,9 +76,49 @@ export default function AdminRecruitWrite() {
     }, []);
     // console.log('Selected Images', remainedImages);
 
+    //캘린더 관련 함수
+    const formatDate = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
+    const handleToggleCalendar = () => {
+        if (recruitType === '추가모집' || recruitType === '정규모집') {
+            setCalendarIsOpen(!calendarIsOpen);
+        } else {
+            return;
+        }
+    };
+
+    const handleToggleEndCalendar = () => {
+        if (recruitType === '추가모집' || recruitType === '정규모집') {
+            setEndCalendarIsOpen(!endCalendarIsOpen);
+        } else {
+            return;
+        }
+    };
+
+    const handleStartDateChange = (selectedData) => {
+        setStartDate(selectedData);
+        // setCalendarIsOpen(false);
+    };
+
+    const handleEndDateChange = (selectedData) => {
+        setEndDate(selectedData);
+        // setCalendarIsOpen(false);
+    };
+
     const closeModal = () => {
         setIsModalOpen(false);
         navigate(`/admin/recruit`);
+    };
+
+    const lookCalendar = () => {
+        setIsModalOpen(false);
+        //관리자 캘린더 링크로 -> 링크 정해지면 주소 수정!!
+        navigate(`/admin/calendar`);
     };
 
     const errorCloseModal = () => {
@@ -314,6 +368,111 @@ export default function AdminRecruitWrite() {
                     <p className={styles.write_title_font}>제목을 입력해주세요.</p>
                 </div>
 
+                <p className={styles.write_title}>모집기간</p>
+                <div className={styles.write_calendar_backgroud}>
+                    <label className={styles.AdminRecruitWrite_label_container}>
+                        <input
+                            type="radio"
+                            name="recruitType"
+                            value="상시모집"
+                            onChange={(e) => setRecruitType(e.target.value)}
+                            checked={recruitType === '상시모집'}
+                            className={styles.AdminRecruitWrite_radio_Button}
+                        />
+                        상시모집
+                    </label>
+                    <label className={styles.AdminRecruitWrite_label_container}>
+                        <input
+                            type="radio"
+                            name="recruitType"
+                            value="추가모집"
+                            checked={recruitType === '추가모집'}
+                            onChange={(e) => setRecruitType(e.target.value)}
+                            className={styles.AdminRecruitWrite_radio_Button}
+                        />
+                        추가모집
+                    </label>
+                    <label className={styles.AdminRecruitWrite_label_container}>
+                        <input
+                            type="radio"
+                            name="recruitType"
+                            value="정규모집"
+                            checked={recruitType === '정규모집'}
+                            onChange={(e) => setRecruitType(e.target.value)}
+                            className={styles.AdminRecruitWrite_radio_Button}
+                        />
+                        정규모집
+                    </label>
+
+                    <div className={styles.write_calendar_div}>
+                        <div className={styles.calendar_time_total_div}>
+                            <div className={styles.calendar_time_div}>
+                                <div className={styles.write_calendar_container}>
+                                    <input
+                                        type="text"
+                                        value={formatDate(startDate)}
+                                        className={styles.write_calendar_input}
+                                        placeholder="YYYY-MM-DD"
+                                    />
+                                    <img
+                                        src="/recruit/calendar.png"
+                                        className={styles.write_calendar_img}
+                                        onClick={handleToggleCalendar}
+                                    />
+                                </div>
+                                <input
+                                    type="time"
+                                    value={startTime}
+                                    onChange={(e) => setStartTime(e.target.value)}
+                                    className={styles.write_time_input}
+                                    placeholder="00:00"
+                                />
+                            </div>
+                            <div>
+                                {calendarIsOpen && recruitType !== '상시모집' && (
+                                    <div className={styles.calendar_div}>
+                                        <MyCalendar onChange={handleStartDateChange} value={startDate} />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        <p className={styles.write_calendar_p}>~</p>
+
+                        <div className={styles.calendar_time_total_div}>
+                            <div className={styles.calendar_time_div}>
+                                <div className={styles.write_calendar_container}>
+                                    <input
+                                        type="text"
+                                        value={formatDate(endDate)}
+                                        className={styles.write_calendar_input}
+                                        placeholder="YYYY-MM-DD"
+                                    />
+                                    <img
+                                        src="/recruit/calendar.png"
+                                        className={styles.write_calendar_img}
+                                        onClick={handleToggleEndCalendar}
+                                    />
+                                </div>
+                                <input
+                                    type="time"
+                                    value={endTime}
+                                    onChange={(e) => setEndTime(e.target.value)}
+                                    className={styles.write_time_input}
+                                    placeholder="00:00"
+                                />
+                            </div>
+                            <div>
+                                {endCalendarIsOpen && recruitType !== '상시모집' && (
+                                    <div className={styles.calendar_div}>
+                                        <MyCalendar onChange={handleEndDateChange} value={endDate} />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <p className={styles.write_title}>
                     에브리타임 URL
                     {/* <p className={styles.write_title_sub}>({titleCount}/100)	</p> */}
@@ -395,6 +554,17 @@ export default function AdminRecruitWrite() {
                               ))}
                     </div>
                 </div>
+                <label>
+                    <input
+                        type="radio"
+                        name="calendarLink"
+                        value="캘린더 연동"
+                        checked={isCalendarLink === true}
+                        onClick={() => setIsCalendarLink(!isCalendarLink)}
+                        className={styles.calendarLinkText}
+                    />
+                    <span style={{ color: ' #7bc8e0' }}> 캘린더 연동하기</span>
+                </label>
                 <ErrorModal isOpen={isErrorModalOpen} message={modalMessage} onClose={errorCloseModal} />
                 <button className={styles.write_upload_button} onClick={handleSubmitButton}>
                     업로드
@@ -405,6 +575,14 @@ export default function AdminRecruitWrite() {
                         message={'모집글 작성이 완료되었습니다.'}
                         onClose={closeModal}
                         onClickOk={closeModal}
+                    />
+                )}
+                {isModalOpen && isCalendarLink && (
+                    <RecruitFinishModal
+                        isOpen={isModalOpen}
+                        message={'📢모집글 수정이 완료되었습니다. 캘린더 일정도 자동으로 업데이트되었어요.'}
+                        onClose={lookCalendar}
+                        onClickOk={lookCalendar}
                     />
                 )}
             </div>

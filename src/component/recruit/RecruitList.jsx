@@ -26,7 +26,6 @@ export default function RecruitList() {
             if (res.data.success) {
                 setPromoteData(res.data.data.content);
                 setTotalPages(res.data.data.totalPages);
-                // console.log(res.data.data);
             }
         } catch (error) {
             console.error('Error fetching data : ', error);

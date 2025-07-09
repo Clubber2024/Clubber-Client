@@ -59,7 +59,7 @@ export default function RecruitContent() {
     const location = useLocation();
     const recruitId = location.state?.recruitId;
     const [contentData, setContentData] = useState();
-    //즐겨찾기 기능능
+    //즐겨찾기 기능
     const isAdmin = localStorage.getItem('isAdmin');
 
     const accessToken = localStorage.getItem('accessToken');
