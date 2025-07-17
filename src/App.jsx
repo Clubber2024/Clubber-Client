@@ -74,7 +74,7 @@ function App() {
                     <div style={wrapper}>
                         <Header />
                         <Routes>
-                            <Route path="/" element={<MainPage />} />
+                            {/* <Route path="/" element={<MainPage />} /> */}
                             <Route path="/notices" element={<NoticeList />} />
                             <Route path="/notices/:noticeId" element={<NoticePage />} />
                             <Route path="/recruit" element={<RecruitPage />} />
@@ -104,7 +104,7 @@ function App() {
                             <Route path="/qna" element={<QnAPage />} />
                             <Route path="/calendar" element={<RecruitCalendar />} />
 
-                            <Route path="/admin" element={<MyPage />} />
+                            <Route path="/" element={<MyPage />} />
                             <Route path="/admin/mypage" element={<AdminPage />} />
                             <Route path="/admin/edit/:clubId" element={<EditPage />} />
                             <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
