@@ -55,7 +55,7 @@ export default function AdminRecruitList() {
                 <div className={styles.recruit_button_div}>
                     <LinkItem to={`/admin/recruit/edit`}>
                         <button className={styles.recruit_button}>
-                            <img src="/admin/edit.png" className={styles.recruit_edit_img} alt='recruit_edit'/>
+                            <img src="/admin/edit.png" className={styles.recruit_edit_img} alt="recruit_edit" />
                             글쓰기
                         </button>
                     </LinkItem>
@@ -72,11 +72,7 @@ export default function AdminRecruitList() {
                                 <p className={styles.recruit_text}>{item.content}</p>
                             </div>
                             {item.imageUrl && (
-                                <img
-                                    src={item.imageUrl}
-                                    className={styles.recruit_logo}
-                                    alt="recruit logo"
-                                />
+                                <img src={item.imageUrl} className={styles.recruit_logo} alt="recruit logo" />
                             )}
                         </div>
                     ))}

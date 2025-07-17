@@ -608,14 +608,16 @@
 
     .write_calendar_div {
         display: flex;
-        align-items: center;
-        width: 90%;
+        /* align-items: center; */
+        /* width: 90%; */
+        width: fit-content;
         margin-top: 10px;
         flex-direction: column;
     }
 
     .write_calendar_p {
         margin: 0 5%;
+        text-align: center;
     }
 
     .write_calendar_img {
@@ -650,5 +652,7 @@
     .calendarLinkText {
         color: #7bc8e0;
         margin-top: 20px;
+        width: 20px;
+        height: 13px;
     }
 }
