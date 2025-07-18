@@ -116,7 +116,7 @@ function App() {
               <Route path="/qna" element={<QnAPage />} />
               <Route path="/calendar" element={<RecruitCalendar />} />
 
-              <Route path="/" element={<MyPage />} />
+              <Route path="/admin" element={<MyPage />} />
               <Route path="/admin/mypage" element={<AdminPage />} />
               <Route path="/admin/edit/:clubId" element={<EditPage />} />
               <Route path="/admin/mypage/reviews" element={<ClubReviews />} />
