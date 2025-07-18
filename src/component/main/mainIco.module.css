@@ -8,6 +8,7 @@
         justify-content: center;
         margin-left: 10%;
         margin-right: 10%;
+        padding: 0px 40px;
     }
 
     .calender_container,
@@ -16,8 +17,8 @@
     .folder_container {
         /* width: 200px;
         height: 200px; */
-        max-width: calc(20% - 50px);
-        width: calc(20% - 50px);
+        max-width: calc(20% - 70px);
+        width: calc(20% - 70px);
         min-width: 19%;
         aspect-ratio: 1/1;
         object-fit: cover;
@@ -52,8 +53,8 @@
     }
 
     .ico_img {
-        max-width: 121px;
-        max-height: 121px;
+        max-width: 130px;
+        max-height: 130px;
         width: 60%;
         /* height: 80%; */
         aspect-ratio: 1/1;
@@ -64,8 +65,8 @@
     }
 
     .ico_img_pencil {
-        max-width: 161px;
-        max-height: 161px;
+        max-width: 170px;
+        max-height: 170px;
         width: 70%;
         aspect-ratio: 1/1;
         object-fit: cover;
