@@ -42,8 +42,22 @@ jobs:
           docker build -t ${{ secrets.DOCKER_REPO }}/clubber-front-prod .
           docker push ${{ secrets.DOCKER_REPO }}/clubber-front-prod
 
-      - name: Deploy to release
-        if: contains(github.ref, 'release')
+      # - name: Deploy to release
+      #   if: contains(github.ref, 'release')
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.HOST_DEV }}
+      #     username: ${{ secrets.SSH_USERNAME }}
+      #     key: ${{ secrets.SSH_KEY_DEV }}
+      #     port: ${{ secrets.SSH_PORT }}
+      #     script: |
+      #       sudo docker rm -f $(docker ps -qa)
+      #       sudo docker pull ${{ secrets.DOCKER_REPO }}/clubber-front-release
+      #       sudo docker-compose -f docker-compose-dev.yml up -d
+      #       docker image prune -f
+
+      - name: Deploy to dev
+        if: contains(github.ref, 'dev')
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DEV }}
@@ -52,7 +66,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             sudo docker rm -f $(docker ps -qa)
-            sudo docker pull ${{ secrets.DOCKER_REPO }}/clubber-front-release
+            sudo docker pull ${{ secrets.DOCKER_REPO }}/clubber-front-dev
             sudo docker-compose -f docker-compose-dev.yml up -d
             docker image prune -f
 
