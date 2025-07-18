@@ -12,6 +12,7 @@
     display: flex;
     justify-content: center;
     margin-top: 40px;
+    padding: 10px 40px;
   }
 
   .main_promote_container {

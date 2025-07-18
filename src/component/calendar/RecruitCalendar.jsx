@@ -55,7 +55,7 @@ export default function RecruitCalendar() {
     try {
       setIsLoading(true);
       const res = await customAxios.get(
-        `/v1/calendar?year=${year}&month=${month}`
+        `/v1/calendars?year=${year}&month=${month}`
       );
       setCalendarData(res.data.data);
 
@@ -262,15 +262,15 @@ export default function RecruitCalendar() {
                               </p>
                             </a>
                             <img
-                                className="calendar_star"
-                                src={
-                                  favoriteClubIds.includes(date.clubId)
-                                    ? "/bookmark/starYellow-calendar.png"
-                                    : "/bookmark/star-calendar.png"
-                                }
-                                alt="star"
-                                onClick={() => handleFavorite(date.clubId)}
-                              />
+                              className="calendar_star"
+                              src={
+                                favoriteClubIds.includes(date.clubId)
+                                  ? "/bookmark/starYellow-calendar.png"
+                                  : "/bookmark/star-calendar.png"
+                              }
+                              alt="star"
+                              onClick={() => handleFavorite(date.clubId)}
+                            />
                           </div>
                         )}
                       {date.semester !== "ALWAYS" &&
@@ -314,15 +314,15 @@ export default function RecruitCalendar() {
                               </p>
                             </a>
                             <img
-                                className="calendar_star"
-                                src={
-                                  favoriteClubIds.includes(date.clubId)
-                                    ? "/bookmark/starYellow-calendar.png"
-                                    : "/bookmark/star-calendar.png"
-                                }
-                                alt="star"
-                                onClick={() => handleFavorite(date.clubId)}
-                              />
+                              className="calendar_star"
+                              src={
+                                favoriteClubIds.includes(date.clubId)
+                                  ? "/bookmark/starYellow-calendar.png"
+                                  : "/bookmark/star-calendar.png"
+                              }
+                              alt="star"
+                              onClick={() => handleFavorite(date.clubId)}
+                            />
                           </div>
                         )}
                     </>
